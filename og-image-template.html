@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{
+  background:#14181F;
+  color:#EEF0EC;
+  font-family:'IBM Plex Mono',monospace;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:64px 72px;
+}
+.top{display:flex;align-items:center;gap:18px}
+.logo-dot{
+  width:28px;height:28px;
+  background:#2546F0;
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  flex-shrink:0;
+  margin-top:6px;
+}
+.brand{
+  font-family:'Anton',sans-serif;
+  font-size:72px;
+  letter-spacing:.04em;
+  line-height:1;
+  color:#EEF0EC;
+}
+.middle{padding:0 0 4px}
+.tagline{
+  font-family:'Anton',sans-serif;
+  font-size:40px;
+  letter-spacing:.02em;
+  color:#2546F0;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+.pills{
+  display:flex;gap:16px;flex-wrap:wrap;
+}
+.pill{
+  font-size:13px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#EEF0EC;
+  opacity:.55;
+}
+.pill+.pill::before{content:'·';margin-right:16px;opacity:.4}
+.bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+.url{
+  font-size:15px;
+  letter-spacing:.08em;
+  color:#EEF0EC;
+  opacity:.45;
+}
+.barcode{
+  width:180px;height:28px;
+  background:
+    repeating-linear-gradient(90deg,#EEF0EC 0 2px,transparent 2px 5px),
+    repeating-linear-gradient(90deg,#EEF0EC 0 4px,transparent 4px 11px);
+  background-blend-mode:multiply;
+  opacity:.18;
+}
+.accent-bar{
+  position:absolute;
+  top:0;left:0;right:0;height:6px;
+  background:#2546F0;
+}
+</style>
+</head>
+<body>
+<div class="accent-bar"></div>
+<div class="top">
+  <div class="logo-dot"></div>
+  <div class="brand">NORTHBOUND</div>
+</div>
+<div class="middle">
+  <div class="tagline">AI-native product delivery.</div>
+  <div class="pills">
+    <span class="pill">Fixed scope</span>
+    <span class="pill">Fixed price</span>
+    <span class="pill">Fixed timeline</span>
+    <span class="pill">7 – 30 days</span>
+  </div>
+</div>
+<div class="bottom">
+  <div class="url">northboundsoftwarestudio.com</div>
+  <div class="barcode"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 800px; height: 800px;
+  background: #EEF0EC;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="#EEF0EC"/>
+
+  <!-- NORTH — line 1 -->
+  <text id="north"
+    x="166"
+    y="325"
+    text-anchor="start"
+    font-family="'Anton', sans-serif"
+    font-size="142"
+    fill="#14181F"
+    letter-spacing="-1"
+  >NORTH</text>
+
+  <!-- BOUND — line 2 -->
+  <text id="bound"
+    x="166"
+    y="478"
+    text-anchor="start"
+    font-family="'Anton', sans-serif"
+    font-size="142"
+    fill="#14181F"
+    letter-spacing="-1"
+  >BOUND</text>
+
+  <!-- software studio — below the wordmark -->
+  <text id="sub"
+    x="168"
+    y="516"
+    text-anchor="start"
+    font-family="'IBM Plex Mono', monospace"
+    font-size="18"
+    font-weight="500"
+    fill="#14181F"
+    letter-spacing="5"
+    opacity="0.5"
+  >software studio</text>
+
+  <!-- Triangle — JS-positioned to snap flush right of BOUND, cap-height tall -->
+  <polygon id="triangle" points="0,0 0,0 0,0" fill="#2546F0"/>
+
+  <!-- ── Circular seal — top-right corner ── -->
+  <defs>
+    <path id="sealRing" d="M 690,96 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/>
+  </defs>
+
+  <circle cx="690" cy="96" r="90" fill="none" stroke="#2546F0" stroke-width="2.2"/>
+  <circle cx="690" cy="96" r="54" fill="none" stroke="#2546F0" stroke-width="2.2"/>
+
+  <text font-family="'IBM Plex Mono', monospace" font-size="13.5" font-weight="600"
+        letter-spacing="3.2" fill="#2546F0">
+    <textPath href="#sealRing" startOffset="5%">NORTHBOUND · SHIPS ON TIME ·</textPath>
+  </text>
+
+  <text x="690" y="89" text-anchor="middle" font-size="20">🍁</text>
+  <text x="690" y="113" text-anchor="middle"
+    font-family="'Anton', sans-serif" font-size="15"
+    fill="#2546F0" letter-spacing="1.5">YYZ</text>
+
+  <!-- Bottom: A CANADIAN COMPANY + maple leaf -->
+  <text x="400" y="660"
+    text-anchor="middle"
+    font-family="'IBM Plex Mono', monospace"
+    font-size="15"
+    font-weight="500"
+    fill="#14181F"
+    letter-spacing="4.5"
+    opacity="0.55"
+  >A CANADIAN COMPANY</text>
+
+  <text x="400" y="700"
+    text-anchor="middle"
+    font-size="26"
+  >🍁</text>
+
+</svg>
+<script>
+document.fonts.ready.then(() => {
+  const bound   = document.getElementById('bound');
+  const bbox    = bound.getBBox();
+
+  const capH = 52;
+  const w    = 46;
+  const gap  = 12;
+
+  const lx = bbox.x + bbox.width + gap;       // left base of triangle
+  const by = 478;                             // BOUND baseline (no descenders)
+
+  document.getElementById('triangle').setAttribute(
+    'points',
+    `${lx + w / 2},${by - capH}  ${lx},${by}  ${lx + w},${by}`
+  );
+});
+</script>
+</body>
+</html>

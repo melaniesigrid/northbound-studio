@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@500;600&family=Archivo:wght@600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1584px;height:396px;overflow:hidden}
+body{
+  background:#14181F;
+  color:#EEF0EC;
+  font-family:'IBM Plex Mono',monospace;
+  position:relative;
+}
+
+/* background barcode strips */
+.strip-l{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:8px;
+  background:#2546F0;
+}
+.strip-r{
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:8px;
+  background:#2546F0;
+}
+.barcode-panel{
+  position:absolute;
+  right:48px;top:0;bottom:0;
+  width:240px;
+  display:flex;flex-direction:column;gap:0;
+  overflow:hidden;
+  opacity:.06;
+}
+.bcode-row{
+  flex:1;
+  background:
+    repeating-linear-gradient(90deg,#EEF0EC 0 2px,transparent 2px 5px),
+    repeating-linear-gradient(90deg,#EEF0EC 0 4px,transparent 4px 11px);
+  background-blend-mode:multiply;
+}
+
+/* hazard stripe at top */
+.hazard-bar{
+  position:absolute;
+  top:0;left:8px;right:8px;height:5px;
+  background:#FFC629;
+}
+
+/* main layout */
+.layout{
+  position:absolute;
+  inset:0;
+  padding:48px 60px 44px 72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:48px;
+}
+
+/* left: brand + tagline */
+.left{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.brand-row{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.logo-dot{
+  width:34px;height:34px;
+  background:#2546F0;
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  flex-shrink:0;
+  margin-top:4px;
+}
+.brand-name{
+  font-family:'Anton',sans-serif;
+  font-size:80px;
+  letter-spacing:.04em;
+  line-height:1;
+  color:#EEF0EC;
+}
+.tagline{
+  font-family:'Anton',sans-serif;
+  font-size:32px;
+  letter-spacing:.02em;
+  color:#2546F0;
+  line-height:1.1;
+}
+.pills{
+  display:flex;gap:0;margin-top:4px;
+}
+.pill{
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#EEF0EC;
+  opacity:.42;
+  padding-right:20px;
+}
+.pill::after{content:'·';margin-left:20px;opacity:.4}
+.pill:last-child::after{display:none}
+
+/* right: stat cards */
+.stats{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex-shrink:0;
+  width:280px;
+}
+.stat-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+  padding:16px 22px;
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+}
+.stat-n{
+  font-family:'Anton',sans-serif;
+  font-size:40px;
+  color:#FFC629;
+  line-height:1;
+}
+.stat-l{
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#8B93A5;
+}
+.stat-card.blue{
+  background:rgba(37,70,240,.12);
+  border-color:rgba(37,70,240,.25);
+}
+.stat-card.blue .stat-n{color:#fff}
+
+/* bottom-left label */
+.bottom-label{
+  position:absolute;
+  bottom:28px;
+  left:72px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#EEF0EC;
+  opacity:.25;
+}
+</style>
+</head>
+<body>
+<div class="strip-l"></div>
+<div class="strip-r"></div>
+<div class="hazard-bar"></div>
+<div class="barcode-panel">
+  <div class="bcode-row"></div>
+  <div class="bcode-row"></div>
+  <div class="bcode-row"></div>
+</div>
+
+<div class="layout">
+  <div class="left">
+    <div class="brand-row">
+      <div class="logo-dot"></div>
+      <div class="brand-name">NORTHBOUND</div>
+    </div>
+    <div class="tagline">AI-native software delivery.</div>
+    <div class="pills">
+      <span class="pill">Fixed scope</span>
+      <span class="pill">Fixed price</span>
+      <span class="pill">7–30 days</span>
+      <span class="pill">Toronto · Remote</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-n">7</span>
+      <span class="stat-l">Day launch sprint</span>
+    </div>
+    <div class="stat-card blue">
+      <span class="stat-n">100%</span>
+      <span class="stat-l">Fixed-price guarantee</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-n">$0</span>
+      <span class="stat-l">Surprise invoices</span>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-label">northboundsoftwarestudio.com · YYZ</div>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside the ReAct Loop: How Our Agents Think Before They Act — Northbound Studio</title>
+<meta name="description" content="ReAct isn't a buzzword — it's a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.">
+<link rel="canonical" href="https://northboundsoftwarestudio.com/blog-react-loop.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Northbound Software Studio">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://northboundsoftwarestudio.com/blog-react-loop.html">
+<meta property="og:title" content="Inside the ReAct Loop: How Our Agents Think Before They Act — Northbound Studio">
+<meta property="og:description" content="ReAct is a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.">
+<meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Northbound Studio">
+<meta property="article:published_time" content="2026-06-10T00:00:00+00:00">
+<meta property="article:author" content="Northbound Software Studio">
+<meta property="article:section" content="Technology">
+<meta property="article:tag" content="ReAct">
+<meta property="article:tag" content="AI agents">
+<meta property="article:tag" content="software development">
+<meta property="article:tag" content="agentic AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Inside the ReAct Loop: How Our Agents Think Before They Act">
+<meta name="twitter:description" content="ReAct is a specific loop: Reason, then Act, then Observe. Here's exactly how we run it on every build.">
+<meta name="twitter:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://northboundsoftwarestudio.com/blog-react-loop.html",
+    "headline": "Inside the ReAct Loop: How Our Agents Think Before They Act",
+    "description": "ReAct isn't a buzzword — it's a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.",
+    "url": "https://northboundsoftwarestudio.com/blog-react-loop.html",
+    "datePublished": "2026-06-10",
+    "dateModified": "2026-06-10",
+    "inLanguage": "en",
+    "keywords": ["ReAct loop", "AI agents", "agentic AI", "software development", "AI-native development", "reasoning loop", "AI coding"],
+    "articleSection": "Technology",
+    "author": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://northboundsoftwarestudio.com/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://northboundsoftwarestudio.com/blog-react-loop.html"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://northboundsoftwarestudio.com/og-image.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://northboundsoftwarestudio.com/blog.html",
+      "name": "Northbound Studio Writing"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://northboundsoftwarestudio.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://northboundsoftwarestudio.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Inside the ReAct Loop: How Our Agents Think Before They Act",
+        "item": "https://northboundsoftwarestudio.com/blog-react-loop.html"
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF0EC;
+  --paper-raise:#F7F8F5;
+  --ink:#14181F;
+  --ink-soft:#4A5160;
+  --cobalt:#2546F0;
+  --cobalt-deep:#1B34B8;
+  --hazard:#FFC629;
+  --line:2px solid var(--ink);
+  --font-display:'Anton',sans-serif;
+  --font-body:'Archivo',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--hazard);color:var(--ink)}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:28px;height:10px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px);}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:var(--line);animation:nav-enter .5s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes nav-enter{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.nav{display:flex;align-items:stretch;justify-content:space-between;height:64px;}
+.brand{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;display:flex;align-items:center;gap:12px;text-decoration:none;}
+.brand .dot{width:14px;height:14px;background:var(--cobalt);clip-path:polygon(50% 0,100% 100%,0 100%);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.02em;border-bottom:2px solid transparent;padding:4px 0;transition:border-color .15s ease;}
+.nav-links a:hover,.nav-links a[aria-current]{border-bottom-color:var(--cobalt)}
+.nav-cta{display:flex;align-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:0 22px;margin:-1px -24px -1px 0;text-decoration:none;transition:background .15s ease;}
+.nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:none;border-left:var(--line);cursor:pointer;padding:0 18px;color:var(--ink);align-items:center;justify-content:center;flex-shrink:0;}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}}
+.mobile-nav{display:none;flex-direction:column;position:sticky;top:64px;z-index:49;background:var(--paper);border-bottom:var(--line);}
+.mobile-nav.open{display:flex}
+.mobile-nav a{padding:16px 24px;border-bottom:1px solid #D8DACD;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .12s ease,padding-left .12s ease;}
+.mobile-nav a:hover{background:var(--paper-raise);padding-left:32px}
+.mobile-nav-cta{background:var(--ink);color:var(--paper);}
+.mobile-nav-cta:hover{background:var(--cobalt) !important;padding-left:24px !important;}
+
+/* ---------- article hero ---------- */
+.article-hero{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:80px 24px 68px;}
+.article-hero-inner{max-width:900px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.4);margin-bottom:36px;transition:color .15s ease;}
+.back-link:hover{color:var(--hazard)}
+.back-link::before{content:'←';font-size:14px;}
+.article-hero .eyebrow{color:rgba(255,255,255,.45);}
+.article-hero .eyebrow::before{background:rgba(255,255,255,.25);}
+.article-title{font-family:var(--font-display);font-size:clamp(38px,6.5vw,84px);text-transform:uppercase;line-height:.93;letter-spacing:.01em;margin:22px 0 32px;color:#fff;}
+.article-title em{color:var(--hazard);font-style:normal;}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B7585;border-top:1px solid #2A3140;padding-top:22px;}
+.article-meta span{display:flex;align-items:center;gap:8px;}
+.article-meta span::before{content:'';width:5px;height:5px;background:var(--hazard);border-radius:50%;flex-shrink:0;}
+
+/* ---------- article body ---------- */
+.article-body{max-width:720px;margin:0 auto;padding:68px 24px 88px;}
+.article-body > p{font-size:19px;line-height:1.82;color:var(--ink-soft);margin-bottom:26px;}
+.article-body > p:first-child{font-size:21px;color:var(--ink);line-height:1.72;font-weight:500;}
+.article-body p strong{color:var(--ink);}
+.article-body em{font-style:italic;color:var(--ink);}
+
+.section-block{margin:60px 0 0;}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--cobalt);}
+.section-block h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em;margin-bottom:22px;}
+.section-block p{font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:20px;}
+.section-block p strong{color:var(--ink);}
+.section-block p em{font-style:italic;}
+
+.pull-quote{border-left:4px solid var(--cobalt);padding:22px 30px;margin:44px 0;background:rgba(37,70,240,.05);}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);text-transform:uppercase;line-height:1.08;color:var(--ink);margin:0;}
+
+.callout{border:var(--line);background:var(--paper-raise);padding:28px 32px;margin:36px 0;}
+.callout h3{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);margin-bottom:18px;}
+.callout ul{list-style:none;}
+.callout li{padding:11px 0 11px 26px;border-bottom:1px dashed #C6CAC2;font-size:16px;position:relative;color:var(--ink-soft);}
+.callout li:last-child{border-bottom:none;padding-bottom:0;}
+.callout li::before{content:'▸';position:absolute;left:0;color:var(--cobalt);}
+.callout li strong{color:var(--ink);}
+
+.code-example{font-family:var(--font-mono);font-size:12.5px;background:var(--ink);color:#7EE0A3;padding:18px 22px;margin:26px 0;display:block;line-height:1.75;overflow-x:auto;border-left:3px solid var(--hazard);}
+.code-example .c-yellow{color:var(--hazard);}
+.code-example .c-blue{color:#9AA4F0;}
+.code-example .c-dim{color:#5D6577;}
+
+/* ---------- CTA ---------- */
+.article-cta{border-top:var(--line);background:var(--ink);padding:80px 24px;text-align:center;}
+.article-cta .eyebrow{justify-content:center;color:rgba(255,255,255,.4);}
+.article-cta .eyebrow::before{background:rgba(255,255,255,.2);}
+.article-cta h2{font-family:var(--font-display);font-size:clamp(34px,5.5vw,72px);text-transform:uppercase;line-height:.95;color:#fff;margin:18px 0 16px;}
+.article-cta h2 em{color:var(--hazard);font-style:normal;}
+.article-cta p{color:#8B93A5;font-size:17px;max-width:44ch;margin:0 auto 32px;}
+
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:16px 26px;border:var(--line);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;box-shadow:4px 4px 0 var(--ink);background:var(--paper-raise);}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn-primary{background:var(--cobalt);color:#fff;border-color:var(--cobalt-deep);position:relative;overflow:hidden;}
+.btn-primary:hover{background:var(--cobalt-deep)}
+.btn-primary::before{content:'';position:absolute;top:-60%;left:-80%;width:55%;height:220%;background:rgba(255,255,255,.16);transform:skewX(-22deg);animation:btn-shine 4s ease-in-out 1.4s infinite;pointer-events:none;}
+@keyframes btn-shine{0%,100%{left:-80%}45%,55%{left:160%}}
+
+/* ---------- footer ---------- */
+footer{padding:28px 0 36px;border-top:var(--line);}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.foot a{text-decoration:none;}
+.foot a:hover{color:var(--cobalt)}
+
+/* ---------- responsive ---------- */
+@media(max-width:760px){
+  .article-hero{padding:52px 20px 44px;}
+  .article-body{padding:48px 20px 64px;}
+  .pull-quote{padding:16px 20px;margin:32px 0;}
+  .callout{padding:20px 22px;}
+  .code-example{font-size:11.5px;padding:14px 16px;}
+  .article-cta{padding:56px 20px;}
+}
+@media(max-width:480px){
+  .article-title{font-size:clamp(32px,10vw,48px);}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#process">How we ship</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="blog.html" aria-current="page">Writing</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html#process">How we ship</a>
+  <a href="index.html#packages">Packages</a>
+  <a href="blog.html">Writing</a>
+  <a href="index.html#contact" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<main>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <a class="back-link" href="blog.html">All writing</a>
+    <span class="eyebrow">Deep Dive · Jun 2026 · 7 min read</span>
+    <h1 class="article-title">Inside the <em>ReAct loop</em>:<br>how our agents think<br>before they act</h1>
+    <div class="article-meta">
+      <span>Jun 10, 2026</span>
+      <span>7 min read</span>
+      <span>Northbound Studio</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-body">
+
+  <p>Most software teams that say they "use AI" mean they paste code from ChatGPT into their editor and fix the errors manually. That's a tool. What we run is a loop — a structured reasoning cycle that thinks about the problem, acts on it, observes what happened, and updates its understanding before doing anything else. That distinction is why the output is different.</p>
+
+  <div class="section-block">
+    <div class="section-label">01 / The Name</div>
+    <h2>What ReAct actually means</h2>
+    <p>ReAct is a research pattern from a 2022 paper (Yao et al.) that showed language models produce significantly better results when they interleave <strong>reasoning</strong> and <strong>acting</strong> — rather than generating all their reasoning up front and then taking action, or acting without reasoning at all.</p>
+    <p>The insight was simple: an agent that can observe the result of each action — a test failing, an API returning unexpected data, a file that doesn't exist yet — and reason about what to do next is fundamentally more reliable than one that commits to a multi-step plan without feedback.</p>
+    <p>In practice, it looks like this:</p>
+
+    <code class="code-example"><span class="c-dim">// payment integration, day 2</span>
+<span class="c-yellow">Thought:</span>  The Stripe webhook endpoint needs idempotency keys.
+          Without them, retries will create duplicate charges.
+<span class="c-blue">Action:</span>   read_file("api/webhooks/stripe.ts")
+Observation: No idempotency handling found. Retry logic present.
+<span class="c-yellow">Thought:</span>  This is a real risk. Flag for human review before proceeding.
+<span class="c-blue">Action:</span>   request_review(scope="stripe idempotency", priority="high")
+Observation: Review confirmed. Fix approved.
+<span class="c-yellow">Thought:</span>  Implement idempotency key storage using Redis TTL.
+<span class="c-blue">Action:</span>   edit_file("api/webhooks/stripe.ts", patch=idempotency_fix)
+Observation: Tests passing. No regressions in billing suite.</code>
+
+    <p>Notice what didn't happen: the agent didn't assume everything was fine. It read the actual file, found the actual gap, escalated before fixing, confirmed the fix. That's the loop working as designed.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">02 / Why It Matters</div>
+    <h2>The difference between a loop and a prompt</h2>
+    <p>A single prompt is a straight line: input → output. It can generate good code in a narrow, well-defined context. But real software development isn't narrow. It involves reading existing code, understanding dependencies, discovering that the database schema doesn't match the API contract, finding that the third-party service changed its response format last week.</p>
+    <p>A ReAct loop treats each of those discoveries as new input. The agent doesn't finish its plan and then hand it off — it adjusts the plan in response to what it finds. That's what makes it suitable for real codebases, not just greenfield toy projects.</p>
+
+    <div class="callout">
+      <h3>What a loop can do that a prompt cannot</h3>
+      <ul>
+        <li><strong>Read before writing.</strong> The agent inspects existing code, not just the description of it. It sees what's actually there.</li>
+        <li><strong>Test as it goes.</strong> Each action can include running the test suite. Failures are observations, not surprises.</li>
+        <li><strong>Escalate intelligently.</strong> When the agent hits something that requires product context or a judgment call, it flags it — instead of guessing.</li>
+        <li><strong>Update its own plan.</strong> New information changes what the agent does next. The plan isn't locked before the first line of code.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The agent doesn't finish its plan and then hand it off — it adjusts in response to what it finds."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">03 / The Human Role</div>
+    <h2>Where the loop stops and judgment starts</h2>
+    <p>The loop has hard stops. Not soft suggestions — actual gates where execution pauses until a senior developer reviews what happened and decides what comes next.</p>
+    <p>These checkpoints exist at predictable places: <strong>architectural decisions</strong> (which database pattern, which API contract, which trade-off between simplicity and extensibility), <strong>security-sensitive changes</strong> (auth, payments, permissions), and anywhere the agent's confidence is flagged below a threshold we set at project start.</p>
+    <p>What happens at those checkpoints isn't a rubber stamp. The developer reads the reasoning, not just the output. They check whether the agent understood the constraint correctly, whether the approach is the right one for this team's future maintainability, whether there's a simpler path the agent missed because it was optimizing for the wrong thing.</p>
+    <p>The agent is fast and consistent. The developer is the one with taste, product context, and accountability. Both are required. <strong>Neither works alone.</strong></p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">04 / What It Looks Like Live</div>
+    <h2>A real build loop, step by step</h2>
+    <p>On a typical Build package, the agent runs thousands of loop iterations over 30 days. Most of them are unremarkable — read a file, write a test, make a change, run the suite, move on. But the pattern of those iterations produces something a purely manual build rarely does: <strong>a codebase where every edge case was considered before it became a bug.</strong></p>
+
+    <code class="code-example"><span class="c-dim">// day 1 — scoping loop, before any code is written</span>
+<span class="c-yellow">Thought:</span>  Analyzing project brief. What are the likely edge cases
+          in the booking flow given this schema?
+<span class="c-blue">Action:</span>   analyze_schema("bookings", "users", "availability")
+Observation: 3 potential race conditions in slot reservation.
+             Multi-timezone support not specified in brief.
+<span class="c-yellow">Thought:</span>  These need to be resolved before implementation begins.
+<span class="c-blue">Action:</span>   generate_questions(scope="race conditions, timezone handling")
+<span class="c-dim">→ questions sent to client, answered on scope call</span>
+
+<span class="c-dim">// day 3 — implementation loop</span>
+<span class="c-yellow">Thought:</span>  Implement slot reservation with optimistic locking.
+<span class="c-blue">Action:</span>   write_file("db/migrations/add_reservation_lock.sql")
+<span class="c-blue">Action:</span>   run_tests(suite="reservations", include_concurrency=true)
+Observation: All passing. Race condition simulated and handled.</code>
+
+    <p>The edge cases that used to surface at QA — three weeks in, when fixing them is expensive — surface on day one, when they're just questions on a scope call.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">05 / How to Evaluate This</div>
+    <h2>Questions worth asking any AI-native agency</h2>
+    <p>If you're evaluating whether an agency is genuinely running agentic loops or just using AI as a fancy autocomplete, the questions that cut through the noise:</p>
+    <p><strong>Do they have structured checkpoints?</strong> Where does the agent stop and a human review? If they can't describe it precisely, the human is reviewing outputs, not the reasoning.</p>
+    <p><strong>Can they show you a real loop trace?</strong> The thought-action-observation sequence is visible if you're actually running it. If they can't show you what the agent was thinking, they're not running a reasoning loop.</p>
+    <p><strong>What does the agent escalate?</strong> An agent that never flags anything for human review is either working on trivial problems or not actually checking. The escalations are where the quality lives.</p>
+    <p>We show this on scope calls — not as a demo, but as the actual loop from a recent project. If you want to see it, book one.</p>
+  </div>
+
+</div>
+</main>
+
+<section class="article-cta">
+  <div class="wrap">
+    <span class="eyebrow">Ready to ship?</span>
+    <h2>Your product.<br><em>Fixed scope, fixed price.</em></h2>
+    <p>20 minutes. We'll walk you through the manifest, the price, and the ship date. No padding. No hourly meters. No surprises.</p>
+    <a class="btn btn-primary" href="index.html#contact">Book a scope call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Northbound Studio · Toronto, CA 🍁</span>
+    <a href="blog.html">← All writing</a>
+    <span><a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+</script>
+</body>
+</html>

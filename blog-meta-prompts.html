@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts — Northbound Studio</title>
+<meta name="description" content="The prompts we actually use to scope features, design APIs, write specs, and catch edge cases before they become bugs. Take them, use them, adapt them.">
+<link rel="canonical" href="https://northboundsoftwarestudio.com/blog-meta-prompts.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Northbound Software Studio">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://northboundsoftwarestudio.com/blog-meta-prompts.html">
+<meta property="og:title" content="Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts — Northbound Studio">
+<meta property="og:description" content="The prompts we actually use to scope features, design APIs, write specs, and catch edge cases before they become bugs. Take them, use them, adapt them.">
+<meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Northbound Studio">
+<meta property="article:published_time" content="2026-06-10T00:00:00+00:00">
+<meta property="article:author" content="Northbound Software Studio">
+<meta property="article:section" content="Technology">
+<meta property="article:tag" content="prompts">
+<meta property="article:tag" content="AI development">
+<meta property="article:tag" content="software engineering">
+<meta property="article:tag" content="meta-prompts">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts">
+<meta name="twitter:description" content="The prompts we use to scope features, design APIs, write specs, and catch edge cases. Take them.">
+<meta name="twitter:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://northboundsoftwarestudio.com/blog-meta-prompts.html",
+    "headline": "Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts",
+    "description": "The prompts we actually use to scope features, design APIs, write specs, and catch edge cases before they become bugs.",
+    "url": "https://northboundsoftwarestudio.com/blog-meta-prompts.html",
+    "datePublished": "2026-06-10",
+    "dateModified": "2026-06-10",
+    "inLanguage": "en",
+    "keywords": ["meta-prompts", "AI prompts", "software development", "prompt engineering", "AI coding", "developer tools"],
+    "articleSection": "Technology",
+    "author": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://northboundsoftwarestudio.com/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://northboundsoftwarestudio.com/blog-meta-prompts.html"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://northboundsoftwarestudio.com/og-image.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://northboundsoftwarestudio.com/blog.html",
+      "name": "Northbound Studio Writing"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://northboundsoftwarestudio.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://northboundsoftwarestudio.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts",
+        "item": "https://northboundsoftwarestudio.com/blog-meta-prompts.html"
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF0EC;
+  --paper-raise:#F7F8F5;
+  --ink:#14181F;
+  --ink-soft:#4A5160;
+  --cobalt:#2546F0;
+  --cobalt-deep:#1B34B8;
+  --hazard:#FFC629;
+  --line:2px solid var(--ink);
+  --font-display:'Anton',sans-serif;
+  --font-body:'Archivo',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--hazard);color:var(--ink)}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:28px;height:10px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px);}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:var(--line);animation:nav-enter .5s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes nav-enter{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.nav{display:flex;align-items:stretch;justify-content:space-between;height:64px;}
+.brand{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;display:flex;align-items:center;gap:12px;text-decoration:none;}
+.brand .dot{width:14px;height:14px;background:var(--cobalt);clip-path:polygon(50% 0,100% 100%,0 100%);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.02em;border-bottom:2px solid transparent;padding:4px 0;transition:border-color .15s ease;}
+.nav-links a:hover,.nav-links a[aria-current]{border-bottom-color:var(--cobalt)}
+.nav-cta{display:flex;align-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:0 22px;margin:-1px -24px -1px 0;text-decoration:none;transition:background .15s ease;}
+.nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:none;border-left:var(--line);cursor:pointer;padding:0 18px;color:var(--ink);align-items:center;justify-content:center;flex-shrink:0;}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}}
+.mobile-nav{display:none;flex-direction:column;position:sticky;top:64px;z-index:49;background:var(--paper);border-bottom:var(--line);}
+.mobile-nav.open{display:flex}
+.mobile-nav a{padding:16px 24px;border-bottom:1px solid #D8DACD;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .12s ease,padding-left .12s ease;}
+.mobile-nav a:hover{background:var(--paper-raise);padding-left:32px}
+.mobile-nav-cta{background:var(--ink);color:var(--paper);}
+.mobile-nav-cta:hover{background:var(--cobalt) !important;padding-left:24px !important;}
+
+/* ---------- article hero ---------- */
+.article-hero{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:80px 24px 68px;}
+.article-hero-inner{max-width:900px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.4);margin-bottom:36px;transition:color .15s ease;}
+.back-link:hover{color:var(--hazard)}
+.back-link::before{content:'←';font-size:14px;}
+.article-hero .eyebrow{color:rgba(255,255,255,.45);}
+.article-hero .eyebrow::before{background:rgba(255,255,255,.25);}
+.article-title{font-family:var(--font-display);font-size:clamp(38px,6.5vw,84px);text-transform:uppercase;line-height:.93;letter-spacing:.01em;margin:22px 0 32px;color:#fff;}
+.article-title em{color:var(--hazard);font-style:normal;}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B7585;border-top:1px solid #2A3140;padding-top:22px;}
+.article-meta span{display:flex;align-items:center;gap:8px;}
+.article-meta span::before{content:'';width:5px;height:5px;background:var(--hazard);border-radius:50%;flex-shrink:0;}
+
+/* ---------- article body ---------- */
+.article-body{max-width:720px;margin:0 auto;padding:68px 24px 88px;}
+.article-body > p{font-size:19px;line-height:1.82;color:var(--ink-soft);margin-bottom:26px;}
+.article-body > p:first-child{font-size:21px;color:var(--ink);line-height:1.72;font-weight:500;}
+.article-body p strong{color:var(--ink);}
+.article-body em{font-style:italic;color:var(--ink);}
+
+.section-block{margin:60px 0 0;}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--cobalt);}
+.section-block h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em;margin-bottom:22px;}
+.section-block p{font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:20px;}
+.section-block p strong{color:var(--ink);}
+.section-block p em{font-style:italic;}
+
+.pull-quote{border-left:4px solid var(--cobalt);padding:22px 30px;margin:44px 0;background:rgba(37,70,240,.05);}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);text-transform:uppercase;line-height:1.08;color:var(--ink);margin:0;}
+
+.prompt-block{border:var(--line);margin:36px 0;}
+.prompt-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--cobalt);padding:10px 20px;}
+.prompt-text{font-family:var(--font-mono);font-size:13px;background:var(--ink);color:#E8EAF0;padding:22px 24px;line-height:1.9;white-space:pre-wrap;}
+.prompt-text .fill{color:var(--hazard);}
+.prompt-note{padding:16px 20px;font-size:14px;color:var(--ink-soft);background:var(--paper-raise);border-top:1px solid #D8DACD;}
+
+.callout{border:var(--line);background:var(--paper-raise);padding:28px 32px;margin:36px 0;}
+.callout h3{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);margin-bottom:18px;}
+.callout ul{list-style:none;}
+.callout li{padding:11px 0 11px 26px;border-bottom:1px dashed #C6CAC2;font-size:16px;position:relative;color:var(--ink-soft);}
+.callout li:last-child{border-bottom:none;padding-bottom:0;}
+.callout li::before{content:'▸';position:absolute;left:0;color:var(--cobalt);}
+.callout li strong{color:var(--ink);}
+
+/* ---------- CTA ---------- */
+.article-cta{border-top:var(--line);background:var(--ink);padding:80px 24px;text-align:center;}
+.article-cta .eyebrow{justify-content:center;color:rgba(255,255,255,.4);}
+.article-cta .eyebrow::before{background:rgba(255,255,255,.2);}
+.article-cta h2{font-family:var(--font-display);font-size:clamp(34px,5.5vw,72px);text-transform:uppercase;line-height:.95;color:#fff;margin:18px 0 16px;}
+.article-cta h2 em{color:var(--hazard);font-style:normal;}
+.article-cta p{color:#8B93A5;font-size:17px;max-width:44ch;margin:0 auto 32px;}
+
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:16px 26px;border:var(--line);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;box-shadow:4px 4px 0 var(--ink);background:var(--paper-raise);}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn-primary{background:var(--cobalt);color:#fff;border-color:var(--cobalt-deep);position:relative;overflow:hidden;}
+.btn-primary:hover{background:var(--cobalt-deep)}
+.btn-primary::before{content:'';position:absolute;top:-60%;left:-80%;width:55%;height:220%;background:rgba(255,255,255,.16);transform:skewX(-22deg);animation:btn-shine 4s ease-in-out 1.4s infinite;pointer-events:none;}
+@keyframes btn-shine{0%,100%{left:-80%}45%,55%{left:160%}}
+
+/* ---------- footer ---------- */
+footer{padding:28px 0 36px;border-top:var(--line);}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.foot a{text-decoration:none;}
+.foot a:hover{color:var(--cobalt)}
+
+/* ---------- responsive ---------- */
+@media(max-width:760px){
+  .article-hero{padding:52px 20px 44px;}
+  .article-body{padding:48px 20px 64px;}
+  .pull-quote{padding:16px 20px;margin:32px 0;}
+  .callout{padding:20px 22px;}
+  .prompt-text{font-size:12px;padding:16px 18px;}
+  .article-cta{padding:56px 20px;}
+}
+@media(max-width:480px){
+  .article-title{font-size:clamp(32px,10vw,48px);}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#process">How we ship</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="blog.html" aria-current="page">Writing</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html#process">How we ship</a>
+  <a href="index.html#packages">Packages</a>
+  <a href="blog.html">Writing</a>
+  <a href="index.html#contact" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<main>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <a class="back-link" href="blog.html">All writing</a>
+    <span class="eyebrow">Playbook · Jun 2026 · 6 min read</span>
+    <h1 class="article-title">Prompts you<br>can <em>steal</em>:<br>our meta-prompts</h1>
+    <div class="article-meta">
+      <span>Jun 10, 2026</span>
+      <span>6 min read</span>
+      <span>Northbound Studio</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-body">
+
+  <p>A meta-prompt is a prompt template with blanks. Fill in your specific context and it produces consistent, high-quality output — whether you're scoping a feature, designing an API, writing a technical spec, or hunting for edge cases before they become production bugs. These are the ones we actually use.</p>
+
+  <div class="section-block">
+    <div class="section-label">01 / Why Templates Beat One-Offs</div>
+    <h2>The problem with prompting from scratch</h2>
+    <p>Most developers prompt like they're having a conversation: they describe what they want, get something back, iterate. That works fine for simple tasks. It breaks down on complex ones — because the quality of the output depends almost entirely on what context you remembered to include, and humans are inconsistent about what they remember to say.</p>
+    <p>A meta-prompt is a solved version of that problem. Someone — ideally someone who has run the task dozens of times and knows what the model needs — sat down and wrote out every piece of context that produces a good result. Now you fill in the blanks and get that result every time, not just when you remember to say the right things.</p>
+    <p>The templates below are structured around the tasks that matter most in a real software build. <strong>Take them. Adapt them. Run them on your own projects.</strong></p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The quality of the output depends on what context you remembered to include."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">02 / Scope a Feature</div>
+    <h2>The edge-case hunter</h2>
+    <p>Use this before writing any implementation code. It surfaces the ambiguities and edge cases you'll hit anyway — at day one instead of day twenty.</p>
+
+    <div class="prompt-block">
+      <div class="prompt-label">Template — Feature Scoping</div>
+      <div class="prompt-text">I'm building <span class="fill">[FEATURE NAME]</span> for a <span class="fill">[TYPE OF APP]</span>.
+
+Here is the intended behavior:
+<span class="fill">[2–3 sentences describing the happy path]</span>
+
+The data model looks like this:
+<span class="fill">[paste relevant schema or describe the key entities]</span>
+
+Your job:
+1. List every edge case you can find in this feature, grouped by category
+   (auth, data integrity, concurrency, error states, third-party deps).
+2. For each edge case, say whether it needs a product decision,
+   an engineering decision, or is safe to handle with a sensible default.
+3. Flag any ambiguities in the spec that will require client input
+   before implementation begins.
+4. Suggest the 3 tests that would give the most coverage if we
+   could only write 3.</div>
+      <div class="prompt-note">Best used at project kickoff or when starting a new feature. The output becomes the first item on your scope call agenda.</div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">03 / Design an API</div>
+    <h2>The contract drafter</h2>
+    <p>API contracts written well at the start save weeks of rework. This prompt produces an opinionated first draft you can argue with, which is faster than starting from a blank page.</p>
+
+    <div class="prompt-block">
+      <div class="prompt-label">Template — API Design</div>
+      <div class="prompt-text">I need to design a REST API for <span class="fill">[RESOURCE OR FEATURE]</span>.
+
+Context:
+- App type: <span class="fill">[web app / mobile app / internal tool]</span>
+- Auth: <span class="fill">[JWT / session / API key / none]</span>
+- Key consumers: <span class="fill">[frontend client / mobile app / third-party webhook]</span>
+- Scale expectations: <span class="fill">[rough MAU or request volume]</span>
+
+Business rules:
+<span class="fill">[2–4 rules that constrain the design, e.g. "users can only see their own resources", "soft deletes only", "all writes must be audited"]</span>
+
+Design the API:
+1. List all endpoints (method + path + one-line description).
+2. For the 2 most complex endpoints, show request/response shapes.
+3. Flag any design decisions where there are real trade-offs
+   (e.g. pagination strategy, nested vs flat resources).
+4. Note anything that will need a migration or be hard to change later.</div>
+      <div class="prompt-note">Run this output past your senior dev before it becomes a contract. The trade-off flags are what they'll care about.</div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">04 / Write a Technical Spec</div>
+    <h2>The spec generator</h2>
+    <p>Technical specs that actually get read are short, structured, and decision-focused. This template produces one — not a document, a tool.</p>
+
+    <div class="prompt-block">
+      <div class="prompt-label">Template — Technical Spec</div>
+      <div class="prompt-text">Write a technical spec for the following feature.
+
+Feature: <span class="fill">[FEATURE NAME]</span>
+Product goal: <span class="fill">[what problem it solves for the user, one sentence]</span>
+Acceptance criteria: <span class="fill">[list of "done" conditions, ideally testable]</span>
+Out of scope: <span class="fill">[what we are explicitly not building in this version]</span>
+Dependencies: <span class="fill">[other systems, APIs, or features this touches]</span>
+
+Format the spec with these sections only:
+1. Summary (2 sentences max)
+2. Technical approach (how we'll build it, what the key components are)
+3. Data changes (schema additions or modifications, if any)
+4. Open questions (decisions that need to be made before work starts)
+5. Risks (what could go wrong, and what we'll do about it)
+
+Keep it under 400 words. If you can't, the feature isn't scoped tightly enough — tell me why.</div>
+      <div class="prompt-note">The last instruction catches scope creep before it starts. If the model can't write it in 400 words, neither can you ship it in 7 days.</div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">05 / Debug a Problem</div>
+    <h2>The structured root cause prompt</h2>
+    <p>Debugging prompts fail when they're just "why is this broken." The model needs the full context of what you expected, what you observed, and what you've already tried.</p>
+
+    <div class="prompt-block">
+      <div class="prompt-label">Template — Root Cause Analysis</div>
+      <div class="prompt-text">I have a bug. Help me find the root cause.
+
+What I expected:
+<span class="fill">[describe the intended behavior]</span>
+
+What actually happened:
+<span class="fill">[describe the observed behavior, include error messages verbatim]</span>
+
+Relevant code:
+<span class="fill">[paste the specific function, route, or component — not the whole file]</span>
+
+What I've already tried:
+<span class="fill">[list 2–3 things you ruled out and why]</span>
+
+Environment:
+<span class="fill">[language/framework version, local vs staging vs prod, any recent deploys]</span>
+
+I want:
+1. Your most likely root cause hypothesis.
+2. The fastest way to confirm or rule it out.
+3. The fix, if the hypothesis is confirmed.
+4. Any related issues this fix might surface.</div>
+      <div class="prompt-note">The "what I've already tried" field is the most important. It stops the model from suggesting the thing you just ruled out.</div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">06 / Using These Well</div>
+    <h2>One rule that makes all of them better</h2>
+    <p>Every template above has a gap where you're asked to paste something real — a schema, a code block, an error message. That gap is where most people get lazy and write a vague description instead.</p>
+    <p>Don't. <strong>Paste the actual thing.</strong> The difference between "my database has a bookings table with some columns" and pasting the actual schema is the difference between a generic answer and a specific one. Generic answers look useful and aren't. Specific answers are what you can build on.</p>
+    <p>The other thing worth knowing: these templates are starting points, not final forms. If a section consistently produces bad output for your use case, remove it. If you find yourself always adding the same context, bake it in. The best prompt template for your team is the one your team has adapted for how you actually work.</p>
+
+    <div class="callout">
+      <h3>Quick reference — when to use each</h3>
+      <ul>
+        <li><strong>Edge-case hunter.</strong> Before writing implementation code for any non-trivial feature.</li>
+        <li><strong>Contract drafter.</strong> When designing an API that will have more than one consumer.</li>
+        <li><strong>Spec generator.</strong> When a feature needs sign-off before development starts.</li>
+        <li><strong>Root cause prompt.</strong> When you've been stuck on a bug for more than 20 minutes.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<section class="article-cta">
+  <div class="wrap">
+    <span class="eyebrow">Ready to ship?</span>
+    <h2>Your product.<br><em>Fixed scope, fixed price.</em></h2>
+    <p>20 minutes. We'll walk you through the manifest, the price, and the ship date. No padding. No hourly meters. No surprises.</p>
+    <a class="btn btn-primary" href="index.html#contact">Book a scope call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Northbound Studio · Toronto, CA 🍁</span>
+    <a href="blog.html">← All writing</a>
+    <span><a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+</script>
+</body>
+</html>

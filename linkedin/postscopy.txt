@@ -1,0 +1,36 @@
+1. "We'll know the cost better once we start building" is not a pricing model. It's a transfer of risk from the agency to you.
+
+Founders accept vague timelines, hourly meters, and scope-creep invoices because someone, somewhere, told them that's just how software works. Then they feel guilty asking for anything different. Difficult. Unsophisticated. Unreasonable.
+
+You are allowed to demand better before you sign anything.
+
+>> Ask for the full scope in writing before a single line of code is written.
+>> Get the total price confirmed on day zero, not day thirty.
+>> Require a committed ship date, not an estimated one.
+>> Ask exactly where AI is used in the build and who reviews the output.
+>> Confirm you own the source code the moment it ships.
+>> Walk away from any vendor who cannot answer these six questions.
+
+Traditional agencies quote 90 days because they're padding for unknown unknowns. You pay for the padding without knowing that's what you're buying.
+
+Fixed scope. Fixed price. 30 days. No hourly meters, no surprise invoices, no retainer strings.
+
+That isn't a premium ask. It's the floor.
+
+2. Traditional agencies quote 90 days because they don't know which 30 days of the 90 are actually the work. The other 60 are scope discovery, rework, and coordination tax. We removed that tax by removing the guesswork it was paying for.
+
+The mechanism is an agent loop with three stages:
+
+Plan. Read context, form an approach, identify the next concrete action.
+Act. Call the tool, write the code, ship the change.
+Verify. Observe the result, compare against intent, update the plan.
+
+Repeat until the work matches the spec.
+
+This loop runs thousands of times across a build. Each iteration compresses three things at once: speed of execution, confidence in scope, and a quality floor that doesn't drift as the codebase grows. That compression is what makes fixed price viable. Without it, fixed price is just a bet.
+
+Senior developer judgment sits at the checkpoints. Architecture decisions, security boundaries, product trade-offs. The agent handles the volume. The human handles the verdicts. Neither one alone can hold a 30-day commitment. Together they can.
+
+Fixed scope, fixed price, fixed timeline isn't a pricing preference. It's what becomes possible when the loop underneath actually closes.
+
+posts can be made with https://app.native.no/onboarding-v2

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northbound Social Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EEF0EC;
+    --ink: #14181F;
+    --ink-soft: #4A5160;
+    --cobalt: #2546F0;
+    --cobalt-deep: #1B34B8;
+    --hazard: #FFC629;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #2a2a2a;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+  }
+  h2 {
+    color: #888;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: -40px;
+  }
+
+  /* ---- BASE CARD ---- */
+  .card {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ========== CARD 1 — DARK ========== */
+  .card-dark {
+    background: var(--ink);
+  }
+  .card-dark .barcode-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 18px;
+    background:
+      repeating-linear-gradient(90deg, var(--cobalt) 0 4px, transparent 4px 10px),
+      repeating-linear-gradient(90deg, var(--cobalt) 0 8px, transparent 8px 22px);
+    background-blend-mode: screen;
+    opacity: .7;
+  }
+  .card-dark .barcode-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 18px;
+    background:
+      repeating-linear-gradient(90deg, var(--hazard) 0 3px, transparent 3px 8px),
+      repeating-linear-gradient(90deg, var(--hazard) 0 6px, transparent 6px 18px);
+    background-blend-mode: screen;
+    opacity: .6;
+  }
+  .card-dark .inner {
+    position: absolute;
+    inset: 0;
+    padding: 72px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-dark .top-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .card-dark .triangle {
+    width: 28px; height: 28px;
+    background: var(--cobalt);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    flex-shrink: 0;
+  }
+  .card-dark .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+  }
+  .card-dark .wordmark {
+    font-family: 'Anton', sans-serif;
+    font-size: 164px;
+    line-height: .9;
+    color: var(--paper);
+    letter-spacing: .01em;
+  }
+  .card-dark .rule {
+    width: 100%;
+    height: 3px;
+    background: var(--cobalt);
+    margin: 32px 0;
+  }
+  .card-dark .tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--paper);
+    line-height: 1.45;
+    max-width: 700px;
+  }
+  .card-dark .tagline em {
+    color: var(--hazard);
+    font-style: normal;
+  }
+  .card-dark .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .card-dark .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    color: #5D6577;
+  }
+  .card-dark .stamp {
+    width: 220px; height: 220px;
+    opacity: .65;
+  }
+
+  /* ========== CARD 2 — PAPER ========== */
+  .card-paper {
+    background: var(--paper);
+    border: 6px solid var(--ink);
+  }
+  .card-paper .inner {
+    position: absolute;
+    inset: 0;
+    padding: 72px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-paper .top-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .card-paper .triangle {
+    width: 28px; height: 28px;
+    background: var(--cobalt);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    flex-shrink: 0;
+  }
+  .card-paper .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .card-paper .wordmark {
+    font-family: 'Anton', sans-serif;
+    font-size: 164px;
+    line-height: .9;
+    color: var(--ink);
+    letter-spacing: .01em;
+  }
+  .card-paper .rule {
+    width: 100%;
+    height: 3px;
+    background: var(--ink);
+    margin: 32px 0;
+  }
+  .card-paper .tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.45;
+    max-width: 700px;
+  }
+  .card-paper .tagline em {
+    color: var(--cobalt);
+    font-style: normal;
+  }
+  .card-paper .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .card-paper .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .card-paper .stamp {
+    width: 220px; height: 220px;
+    opacity: .75;
+  }
+  .card-paper .corner-fill {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 220px; height: 220px;
+    background: var(--cobalt);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  /* ========== CARD 3 — COBALT ========== */
+  .card-cobalt {
+    background: var(--cobalt);
+  }
+  .card-cobalt .inner {
+    position: absolute;
+    inset: 0;
+    padding: 72px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-cobalt .top-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .card-cobalt .triangle {
+    width: 28px; height: 28px;
+    background: var(--hazard);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    flex-shrink: 0;
+  }
+  .card-cobalt .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.7);
+  }
+  .card-cobalt .wordmark {
+    font-family: 'Anton', sans-serif;
+    font-size: 164px;
+    line-height: .9;
+    color: #fff;
+    letter-spacing: .01em;
+  }
+  .card-cobalt .rule {
+    width: 100%;
+    height: 3px;
+    background: var(--hazard);
+    margin: 32px 0;
+  }
+  .card-cobalt .tagline {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.45;
+    max-width: 700px;
+  }
+  .card-cobalt .tagline em {
+    color: var(--hazard);
+    font-style: normal;
+  }
+  .card-cobalt .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .card-cobalt .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+  }
+  .card-cobalt .stamp {
+    width: 220px; height: 220px;
+    opacity: .5;
+  }
+  .card-cobalt .noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: .04;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<h2>Card 1 — Dark</h2>
+<div class="card card-dark">
+  <div class="barcode-top"></div>
+  <div class="barcode-bottom"></div>
+  <div class="inner">
+    <div class="top-row">
+      <div class="triangle"></div>
+      <span class="eyebrow">AI-Native Product Studio</span>
+    </div>
+    <div>
+      <div class="wordmark">NORTH<br>BOUND</div>
+      <div class="rule"></div>
+      <div class="tagline">Fixed scope.<br>Fixed price.<br><em>Ships in 7 days.</em></div>
+    </div>
+    <div class="bottom-row">
+      <span class="url">northboundsoftwarestudio.com</span>
+      <svg class="stamp" viewBox="0 0 120 120">
+        <defs><path id="c1" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#2546F0" stroke-width="2"/>
+        <circle cx="60" cy="60" r="32" fill="none" stroke="#2546F0" stroke-width="2"/>
+        <text font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="3.5" fill="#2546F0">
+          <textPath href="#c1">NORTHBOUND · SHIPS ON TIME ·</textPath>
+        </text>
+        <text x="60" y="54" text-anchor="middle" font-size="20">🍁</text>
+        <text x="60" y="72" text-anchor="middle" font-family="Anton, sans-serif" font-size="13" fill="#2546F0">YYZ</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<h2>Card 2 — Paper</h2>
+<div class="card card-paper">
+  <div class="corner-fill"></div>
+  <div class="inner">
+    <div class="top-row">
+      <div class="triangle"></div>
+      <span class="eyebrow">AI-Native Product Studio</span>
+    </div>
+    <div>
+      <div class="wordmark">NORTH<br>BOUND</div>
+      <div class="rule"></div>
+      <div class="tagline">Fixed scope.<br>Fixed price.<br><em>Ships in 7 days.</em></div>
+    </div>
+    <div class="bottom-row">
+      <span class="url">northboundsoftwarestudio.com</span>
+      <svg class="stamp" viewBox="0 0 120 120">
+        <defs><path id="c2" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#14181F" stroke-width="2"/>
+        <circle cx="60" cy="60" r="32" fill="none" stroke="#14181F" stroke-width="2"/>
+        <text font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="3.5" fill="#14181F">
+          <textPath href="#c2">NORTHBOUND · SHIPS ON TIME ·</textPath>
+        </text>
+        <text x="60" y="54" text-anchor="middle" font-size="20">🍁</text>
+        <text x="60" y="72" text-anchor="middle" font-family="Anton, sans-serif" font-size="13" fill="#14181F">YYZ</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<h2>Card 3 — Cobalt</h2>
+<div class="card card-cobalt">
+  <div class="noise"></div>
+  <div class="inner">
+    <div class="top-row">
+      <div class="triangle"></div>
+      <span class="eyebrow">AI-Native Product Studio</span>
+    </div>
+    <div>
+      <div class="wordmark">NORTH<br>BOUND</div>
+      <div class="rule"></div>
+      <div class="tagline">Fixed scope.<br>Fixed price.<br><em>Ships in 7 days.</em></div>
+    </div>
+    <div class="bottom-row">
+      <span class="url">northboundsoftwarestudio.com</span>
+      <svg class="stamp" viewBox="0 0 120 120">
+        <defs><path id="c3" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#fff" stroke-width="2"/>
+        <circle cx="60" cy="60" r="32" fill="none" stroke="#fff" stroke-width="2"/>
+        <text font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="3.5" fill="#fff">
+          <textPath href="#c3">NORTHBOUND · SHIPS ON TIME ·</textPath>
+        </text>
+        <text x="60" y="54" text-anchor="middle" font-size="20">🍁</text>
+        <text x="60" y="72" text-anchor="middle" font-family="Anton, sans-serif" font-size="13" fill="#fff">YYZ</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

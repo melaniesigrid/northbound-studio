@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing on AI Development & Software Delivery | Northbound Studio</title>
+<meta name="description" content="How we think about agentic AI, fixed-price software delivery, and building products that actually ship — published by Northbound Studio, Toronto.">
+<link rel="canonical" href="https://northboundsoftwarestudio.com/blog.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Northbound Software Studio">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://northboundsoftwarestudio.com/blog.html">
+<meta property="og:title" content="Writing on AI Development & Software Delivery | Northbound Studio">
+<meta property="og:description" content="How we think about agentic AI, fixed-price software delivery, and building products that actually ship. Published by Northbound Studio, Toronto.">
+<meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Northbound Studio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing on AI Development & Software Delivery | Northbound Studio">
+<meta name="twitter:description" content="How we think about agentic AI, fixed-price software delivery, and building products that actually ship.">
+<meta name="twitter:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://northboundsoftwarestudio.com/blog.html",
+    "name": "Northbound Studio Writing",
+    "description": "How we think about agentic AI, software delivery, and building products that actually ship.",
+    "url": "https://northboundsoftwarestudio.com/blog.html",
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization"
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "Why Agentic AI Changes What's Possible in a 30-Day Build",
+        "url": "https://northboundsoftwarestudio.com/blog-agentic-ai.html",
+        "datePublished": "2026-06-01",
+        "description": "Traditional agencies pad timelines against unknown unknowns. Agentic systems compress the routine work and surface edge cases early."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://northboundsoftwarestudio.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://northboundsoftwarestudio.com/blog.html"
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF0EC;
+  --paper-raise:#F7F8F5;
+  --ink:#14181F;
+  --ink-soft:#4A5160;
+  --cobalt:#2546F0;
+  --cobalt-deep:#1B34B8;
+  --hazard:#FFC629;
+  --line:2px solid var(--ink);
+  --font-display:'Anton',sans-serif;
+  --font-body:'Archivo',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--hazard);color:var(--ink)}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:28px;height:10px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px);}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:var(--line);animation:nav-enter .5s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes nav-enter{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.nav{display:flex;align-items:stretch;justify-content:space-between;height:64px;}
+.brand{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;display:flex;align-items:center;gap:12px;text-decoration:none;}
+.brand .dot{width:14px;height:14px;background:var(--cobalt);clip-path:polygon(50% 0,100% 100%,0 100%);}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.02em;border-bottom:2px solid transparent;padding:4px 0;transition:border-color .15s ease;}
+.nav-links a:hover,.nav-links a[aria-current]{border-bottom-color:var(--cobalt)}
+.nav-cta{display:flex;align-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:0 22px;margin:-1px -24px -1px 0;text-decoration:none;transition:background .15s ease;}
+.nav-cta:hover{background:var(--cobalt)}
+.nav-burger{display:none;background:none;border:none;border-left:var(--line);cursor:pointer;padding:0 18px;color:var(--ink);align-items:center;justify-content:center;flex-shrink:0;}
+@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}}
+.mobile-nav{display:none;flex-direction:column;position:sticky;top:64px;z-index:49;background:var(--paper);border-bottom:var(--line);}
+.mobile-nav.open{display:flex}
+.mobile-nav a{padding:16px 24px;border-bottom:1px solid #D8DACD;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .12s ease,padding-left .12s ease;}
+.mobile-nav a:hover{background:var(--paper-raise);padding-left:32px}
+.mobile-nav-cta{background:var(--ink);color:var(--paper);}
+.mobile-nav-cta:hover{background:var(--cobalt) !important;padding-left:24px !important;}
+
+/* ---------- ticker ---------- */
+.ticker{border-bottom:var(--line);background:var(--hazard);overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-flex;animation:ticker 28s linear infinite;}
+.ticker span{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:9px 0 9px 36px;}
+.ticker span::after{content:"▲";margin-left:36px;font-size:9px}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* ---------- blog hero ---------- */
+.blog-hero{border-bottom:var(--line);padding:64px 0 56px;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 10% 50%,rgba(37,70,240,.07),transparent 30%),
+             radial-gradient(circle at 90% 20%,rgba(255,198,41,.12),transparent 35%);}
+.blog-hero-inner{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;}
+.blog-hero h1{font-family:var(--font-display);font-size:clamp(64px,9vw,128px);text-transform:uppercase;line-height:.9;letter-spacing:.01em;}
+.blog-hero h1 em{color:var(--cobalt);font-style:normal;}
+.blog-hero-note{max-width:32ch;color:var(--ink-soft);font-size:16px;line-height:1.7;padding-bottom:6px;}
+@media(max-width:760px){.blog-hero-inner{grid-template-columns:1fr;}.blog-hero h1{font-size:clamp(52px,14vw,80px);}}
+
+/* ---------- article list ---------- */
+.articles-section{padding:0 0 96px;}
+.articles-header{display:flex;align-items:center;justify-content:space-between;padding:44px 0 28px;border-bottom:var(--line);}
+.articles-header h2{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);}
+.articles-header span{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+
+/* featured article card */
+.article-card-featured{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  border-bottom:var(--line);
+  transition:background .2s ease;
+  text-decoration:none;
+  color:var(--ink);
+}
+.article-card-featured:hover{background:var(--paper-raise);}
+.afc-label{
+  background:var(--cobalt);
+  color:#fff;
+  padding:40px 32px;
+  border-right:var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:16px;
+}
+.afc-label .eyebrow{color:rgba(255,255,255,.5);font-size:11px;}
+.afc-label .eyebrow::before{background:rgba(255,255,255,.3);}
+.afc-category{font-family:var(--font-display);font-size:30px;text-transform:uppercase;line-height:1.05;color:#fff;}
+.afc-date{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.afc-body{padding:40px 44px;display:flex;flex-direction:column;gap:16px;justify-content:center;}
+.afc-tag{display:inline-flex;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--hazard);padding:3px 10px;font-weight:600;align-self:flex-start;}
+.afc-body h3{font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em;}
+.afc-body p{color:var(--ink-soft);font-size:16px;line-height:1.75;max-width:58ch;}
+.afc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding-top:20px;border-top:1px solid #D8DACD;}
+.afc-read{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--cobalt);display:flex;align-items:center;gap:8px;transition:gap .15s ease;}
+.article-card-featured:hover .afc-read{gap:14px;}
+.afc-time{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+
+/* regular article cards */
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.article-card{
+  border-right:var(--line);
+  border-bottom:var(--line);
+  padding:32px 28px 28px;
+  text-decoration:none;
+  color:var(--ink);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:background .18s ease;
+}
+.article-card:nth-child(3n){border-right:none;}
+.article-card:hover{background:var(--paper-raise);}
+.ac-category{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);font-weight:600;}
+.ac-title{font-family:var(--font-display);font-size:22px;text-transform:uppercase;line-height:1.05;}
+.ac-excerpt{font-size:14px;color:var(--ink-soft);line-height:1.7;flex:1;}
+.ac-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px dashed #C6CAC2;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.ac-arrow{font-size:14px;color:var(--cobalt);transition:transform .15s ease;}
+.article-card:hover .ac-arrow{transform:translateX(4px);}
+
+/* coming soon placeholder */
+.article-card-soon{opacity:.45;cursor:default;}
+.article-card-soon:hover{background:transparent;}
+.ac-pill{display:inline-flex;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:3px 10px;}
+
+/* ---------- newsletter ---------- */
+.newsletter{border-top:var(--line);background:var(--ink);padding:72px 24px;}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1240px;margin:0 auto;}
+.newsletter h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);text-transform:uppercase;line-height:1;color:#fff;}
+.newsletter h2 em{color:var(--hazard);font-style:normal;}
+.newsletter p{color:#8B93A5;font-size:15px;line-height:1.75;margin-top:12px;}
+.newsletter-form{display:flex;flex-direction:column;gap:12px;}
+.newsletter-form input{
+  width:100%;border:1px solid #2A3140;border-radius:0;
+  background:rgba(255,255,255,.05);color:#D7DCE6;
+  padding:15px 18px;font-family:var(--font-body);font-size:15px;
+}
+.newsletter-form input::placeholder{color:#5D6577;}
+.newsletter-form input:focus{outline:none;border-color:var(--cobalt);}
+.newsletter-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5D6577;}
+
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:16px 26px;border:var(--line);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;box-shadow:4px 4px 0 var(--ink);background:var(--paper-raise);}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn-primary{background:var(--cobalt);color:#fff;border-color:var(--cobalt-deep);position:relative;overflow:hidden;}
+.btn-primary:hover{background:var(--cobalt-deep)}
+.btn-primary::before{content:'';position:absolute;top:-60%;left:-80%;width:55%;height:220%;background:rgba(255,255,255,.16);transform:skewX(-22deg);animation:btn-shine 4s ease-in-out 1.4s infinite;pointer-events:none;}
+@keyframes btn-shine{0%,100%{left:-80%}45%,55%{left:160%}}
+
+/* ---------- footer ---------- */
+footer{padding:28px 0 36px;border-top:var(--line);}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.foot a{text-decoration:none;}
+.foot a:hover{color:var(--cobalt)}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal:nth-child(2){transition-delay:.12s}
+.reveal:nth-child(3){transition-delay:.24s}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .article-card-featured{grid-template-columns:1fr;}
+  .afc-label{border-right:none;border-bottom:var(--line);padding:28px 28px;}
+  .afc-body{padding:28px 28px;}
+  .articles-grid{grid-template-columns:1fr 1fr;}
+  .article-card:nth-child(3n){border-right:var(--line);}
+  .article-card:nth-child(even){border-right:none;}
+  .newsletter-inner{grid-template-columns:1fr;gap:32px;}
+}
+@media(max-width:600px){
+  .articles-grid{grid-template-columns:1fr;}
+  .article-card{border-right:none;}
+  .article-card:nth-child(even){border-right:none;}
+}
+@media(max-width:480px){
+  .blog-hero{padding:48px 0 40px;}
+  .afc-body{padding:24px 20px;}
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#process">How we ship</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="blog.html" aria-current="page">Writing</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html#process">How we ship</a>
+  <a href="index.html#packages">Packages</a>
+  <a href="blog.html">Writing</a>
+  <a href="index.html#contact" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>AI-native process</span><span>Fixed scope</span><span>Built in public</span><span>Toronto 🍁</span><span>Agentic systems</span><span>Senior review on every line</span>
+    <span>AI-native process</span><span>Fixed scope</span><span>Built in public</span><span>Toronto 🍁</span><span>Agentic systems</span><span>Senior review on every line</span>
+  </div>
+</div>
+
+<main>
+
+<section class="blog-hero">
+  <div class="wrap">
+    <div class="blog-hero-inner">
+      <div>
+        <span class="eyebrow">Northbound Studio · Writing</span>
+        <h1>On the<br><em>record.</em></h1>
+      </div>
+      <p class="blog-hero-note">How we think about agentic AI, software delivery, and building products that actually ship. No filler. Published when it's worth reading.</p>
+    </div>
+  </div>
+</section>
+
+<section class="articles-section">
+  <div class="wrap">
+
+    <div class="articles-header">
+      <h2>All articles</h2>
+      <span>3 published</span>
+    </div>
+
+    <a class="article-card-featured reveal" href="blog-agentic-ai.html">
+      <div class="afc-label">
+        <span class="eyebrow">Deep Dive</span>
+        <span class="afc-category">Agentic AI</span>
+        <span class="afc-date">Jun 10, 2026</span>
+      </div>
+      <div class="afc-body">
+        <span class="afc-tag">New</span>
+        <h3>Why agentic AI changes what's possible in a 30-day build</h3>
+        <p>Traditional agencies pad timelines against unknown unknowns. Agentic systems compress the routine work and surface edge cases early — making fixed-scope delivery actually reliable, not just theoretically possible.</p>
+        <div class="afc-footer">
+          <span class="afc-read">Read article →</span>
+          <span class="afc-time">8 min read</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="articles-grid">
+      <a class="article-card reveal" href="blog-react-loop.html">
+        <span class="ac-category">Process</span>
+        <h3 class="ac-title">Inside the ReAct loop: how our agents think before they act</h3>
+        <p class="ac-excerpt">A walkthrough of the reason–act–observe loop that powers every Northbound build — with real examples from production code.</p>
+        <div class="ac-footer">
+          <span class="ac-arrow">→</span>
+          <span>7 min read</span>
+        </div>
+      </a>
+      <a class="article-card reveal" href="blog-meta-prompts.html">
+        <span class="ac-category">Prompting</span>
+        <h3 class="ac-title">Prompts you can steal: our fill-in-the-blank meta-prompts</h3>
+        <p class="ac-excerpt">The reusable prompt templates we use to scope features, design APIs, and catch edge cases before they become bugs.</p>
+        <div class="ac-footer">
+          <span class="ac-arrow">→</span>
+          <span>6 min read</span>
+        </div>
+      </a>
+      <a class="article-card article-card-soon reveal" href="#" tabindex="-1" aria-disabled="true">
+        <span class="ac-category">Case Study</span>
+        <h3 class="ac-title">What building a mobile app with AI agents actually looks like</h3>
+        <p class="ac-excerpt">Day-by-day account of a 30-day mobile MVP build: what the agent handled, what the human owned, and what surprised us.</p>
+        <div class="ac-footer">
+          <span class="ac-pill">Coming soon</span>
+          <span>~10 min</span>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>New pieces,<br><em>when they ship.</em></h2>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+    </div>
+    <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="Northbound blog subscription">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button class="btn btn-primary" type="submit" style="align-self:flex-start">Notify me →</button>
+      <span class="newsletter-note">No frequency promises. Unsubscribe any time.</span>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Northbound Studio · Toronto, CA 🍁</span>
+    <span>NB-MANIFEST-2026</span>
+    <span><a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+
+(function(){
+  function reveal(){
+    document.querySelectorAll('.reveal').forEach(function(el){
+      if(el.getBoundingClientRect().top < window.innerHeight - 60){
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', reveal, {passive:true});
+  window.addEventListener('load', reveal);
+})();
+</script>
+</body>
+</html>
