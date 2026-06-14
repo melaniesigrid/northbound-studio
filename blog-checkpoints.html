@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Checkpoint Model: Where AI Agents Stop and Humans Decide — Northbound Studio</title>
+<meta name="description" content="The three categories of decision that always stop the agent loop — architecture, security, taste — and why reading the agent's reasoning is more valuable than reviewing its code.">
+<link rel="canonical" href="https://northboundsoftwarestudio.com/blog-checkpoints.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Northbound Software Studio">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://northboundsoftwarestudio.com/blog-checkpoints.html">
+<meta property="og:title" content="The Checkpoint Model: Where AI Agents Stop and Humans Decide — Northbound Studio">
+<meta property="og:description" content="The three categories of decision that always stop the agent loop — architecture, security, taste — and why reading reasoning beats reviewing code.">
+<meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Northbound Studio">
+<meta property="article:published_time" content="2026-06-13T00:00:00+00:00">
+<meta property="article:author" content="Northbound Software Studio">
+<meta property="article:section" content="Technology">
+<meta property="article:tag" content="AI agents">
+<meta property="article:tag" content="code review">
+<meta property="article:tag" content="software quality">
+<meta property="article:tag" content="agentic AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Checkpoint Model: Where AI Agents Stop and Humans Decide">
+<meta name="twitter:description" content="The three categories of decision that always pause the agent loop — and why reading reasoning beats reviewing code.">
+<meta name="twitter:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://northboundsoftwarestudio.com/blog-checkpoints.html",
+    "headline": "The Checkpoint Model: Where AI Agents Stop and Humans Decide",
+    "description": "The three categories of decision that always stop the agent loop — architecture, security, taste — and why reading the agent's reasoning is more valuable than reviewing its code.",
+    "url": "https://northboundsoftwarestudio.com/blog-checkpoints.html",
+    "datePublished": "2026-06-13",
+    "dateModified": "2026-06-13",
+    "inLanguage": "en",
+    "keywords": ["AI agents", "code review", "software quality", "agentic AI", "checkpoints", "human oversight"],
+    "articleSection": "Technology",
+    "author": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://northboundsoftwarestudio.com/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://northboundsoftwarestudio.com/blog-checkpoints.html"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://northboundsoftwarestudio.com/og-image.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://northboundsoftwarestudio.com/blog.html",
+      "name": "Northbound Studio Writing"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://northboundsoftwarestudio.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://northboundsoftwarestudio.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "The Checkpoint Model: Where AI Agents Stop and Humans Decide",
+        "item": "https://northboundsoftwarestudio.com/blog-checkpoints.html"
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---------- article hero ---------- */
+.article-hero{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:80px 24px 68px;}
+.article-hero-inner{max-width:900px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.4);margin-bottom:36px;transition:color .15s ease;}
+.back-link:hover{color:var(--hazard)}
+.back-link::before{content:'←';font-size:14px;}
+.article-hero .eyebrow{color:rgba(255,255,255,.45);}
+.article-hero .eyebrow::before{background:rgba(255,255,255,.25);}
+.article-title{font-family:var(--font-display);font-size:clamp(38px,6.5vw,84px);text-transform:uppercase;line-height:.93;letter-spacing:.01em;margin:22px 0 32px;color:#fff;}
+.article-title em{color:var(--hazard);font-style:normal;}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B7585;border-top:1px solid #2A3140;padding-top:22px;}
+.article-meta span{display:flex;align-items:center;gap:8px;}
+.article-meta span::before{content:'';width:5px;height:5px;background:var(--hazard);border-radius:50%;flex-shrink:0;}
+
+/* ---------- article body ---------- */
+.article-body{max-width:720px;margin:0 auto;padding:68px 24px 88px;}
+.article-body > p{font-size:19px;line-height:1.82;color:var(--ink-soft);margin-bottom:26px;}
+.article-body > p:first-child{font-size:21px;color:var(--ink);line-height:1.72;font-weight:500;}
+.article-body p strong{color:var(--ink);}
+.article-body em{font-style:italic;color:var(--ink);}
+
+.section-block{margin:60px 0 0;}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--cobalt);}
+.section-block h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em;margin-bottom:22px;}
+.section-block p{font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:20px;}
+.section-block p strong{color:var(--ink);}
+.section-block p em{font-style:italic;}
+
+.pull-quote{border-left:4px solid var(--cobalt);padding:22px 30px;margin:44px 0;background:rgba(37,70,240,.05);}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);text-transform:uppercase;line-height:1.08;color:var(--ink);margin:0;}
+
+.callout{border:var(--line);background:var(--paper-raise);padding:28px 32px;margin:36px 0;}
+.callout h3{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);margin-bottom:18px;}
+.callout ul{list-style:none;}
+.callout li{padding:11px 0 11px 26px;border-bottom:1px dashed #C6CAC2;font-size:16px;position:relative;color:var(--ink-soft);}
+.callout li:last-child{border-bottom:none;padding-bottom:0;}
+.callout li::before{content:'▸';position:absolute;left:0;color:var(--cobalt);}
+.callout li strong{color:var(--ink);}
+
+.checkpoint-block{font-family:var(--font-mono);font-size:12.5px;background:var(--ink);color:#E8EAF0;padding:22px 24px;margin:32px 0;line-height:1.9;border-left:3px solid var(--cobalt);}
+.checkpoint-block .cp-header{color:var(--cobalt);font-weight:600;display:block;margin-bottom:14px;letter-spacing:.08em;}
+.checkpoint-block .cp-label{color:#5D6577;}
+.checkpoint-block .cp-value{color:#E8EAF0;}
+.checkpoint-block .cp-options{margin:10px 0 10px 20px;}
+.checkpoint-block .cp-option{display:block;margin:4px 0;}
+.checkpoint-block .cp-option .cp-key{color:var(--hazard);}
+.checkpoint-block .cp-chosen{color:#7EE0A3;}
+.checkpoint-block .cp-flag{color:#F4A261;}
+.checkpoint-block .cp-sep{display:block;height:1px;background:#2A3140;margin:14px 0;}
+
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-color,#D8DACD);border:var(--line);margin:32px 0;}
+.category-cell{background:var(--paper);padding:22px 20px;}
+.category-name{font-family:var(--font-display);font-size:18px;text-transform:uppercase;color:var(--ink);display:block;margin-bottom:8px;}
+.category-desc{font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.category-example{font-family:var(--font-mono);font-size:11px;color:var(--cobalt);margin-top:10px;display:block;}
+@media(max-width:660px){.category-grid{grid-template-columns:1fr;}}
+
+/* ---------- newsletter ---------- */
+.newsletter{border-top:var(--line);background:var(--ink);padding:72px 24px;}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1240px;margin:0 auto;}
+.newsletter h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);text-transform:uppercase;line-height:1;color:#fff;}
+.newsletter h2 em{color:var(--hazard);font-style:normal;}
+.newsletter p{color:#8B93A5;font-size:15px;line-height:1.75;margin-top:12px;}
+.newsletter-form{display:flex;flex-direction:column;gap:12px;}
+.newsletter-form input{width:100%;border:1px solid #2A3140;border-radius:0;background:rgba(255,255,255,.05);color:#D7DCE6;padding:15px 18px;font-family:var(--font-body);font-size:15px;}
+.newsletter-form input::placeholder{color:#5D6577;}
+.newsletter-form input:focus{outline:none;border-color:var(--cobalt);}
+.newsletter-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5D6577;}
+@media(max-width:760px){.newsletter-inner{grid-template-columns:1fr;gap:32px;}}
+
+/* ---------- CTA ---------- */
+.article-cta{border-top:var(--line);background:var(--ink);padding:80px 24px;text-align:center;}
+.article-cta .eyebrow{justify-content:center;color:rgba(255,255,255,.4);}
+.article-cta .eyebrow::before{background:rgba(255,255,255,.2);}
+.article-cta h2{font-family:var(--font-display);font-size:clamp(34px,5.5vw,72px);text-transform:uppercase;line-height:.95;color:#fff;margin:18px 0 16px;}
+.article-cta h2 em{color:var(--hazard);font-style:normal;}
+.article-cta p{color:#8B93A5;font-size:17px;max-width:44ch;margin:0 auto 32px;}
+
+/* ---------- responsive ---------- */
+@media(max-width:760px){
+  .article-hero{padding:52px 20px 44px;}
+  .article-body{padding:48px 20px 64px;}
+  .pull-quote{padding:16px 20px;margin:32px 0;}
+  .callout{padding:20px 22px;}
+  .checkpoint-block{font-size:11.5px;padding:16px 18px;}
+  .article-cta{padding:56px 20px;}
+}
+@media(max-width:480px){
+  .article-title{font-size:clamp(32px,10vw,48px);}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#process">How we ship</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="blog.html" aria-current="page">Writing</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html#process">How we ship</a>
+  <a href="index.html#packages">Packages</a>
+  <a href="blog.html">Writing</a>
+  <a href="index.html#contact" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<main>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <a class="back-link" href="blog.html">All writing</a>
+    <span class="eyebrow">Deep Dive · Jun 2026 · 9 min read</span>
+    <h1 class="article-title">The <em>checkpoint</em><br>model: where<br>agents stop and<br>humans decide</h1>
+    <div class="article-meta">
+      <span>Jun 13, 2026</span>
+      <span>9 min read</span>
+      <span>Northbound Studio</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-body">
+
+  <p>The most common failure mode in AI-assisted development isn't bad code. It's confident code — output that is technically correct, passes every test, and is wrong for the context it's running in. The agent didn't make a mistake. It made a judgment call that required information it didn't have. And nobody stopped it.</p>
+
+  <p>Checkpoints are the structure that prevents this. Not a vague "human in the loop" gesture — a specific gate model with defined trigger categories, a defined format for what the agent surfaces at each gate, and a defined meaning for what "approved" actually commits to. This is how that model works.</p>
+
+  <div class="section-block">
+    <div class="section-label">01 / What a Checkpoint Is Not</div>
+    <h2>Not a rubber stamp. Not a code review.</h2>
+    <p>A checkpoint is not a code review. Code review happens after the implementation exists. A checkpoint happens before — or at the decision point that shapes what the implementation will be. By the time you're reviewing code, you're catching bugs. At a checkpoint, you're catching decisions.</p>
+    <p>It's also not a "do you approve?" prompt bolted onto an agent that would rather keep running. Those exist. They're annoying and mostly useless — agents that ask for approval on every file write, every test run, every minor decision. That's not oversight. That's interruption.</p>
+    <p>A real checkpoint is triggered by the agent when it reaches a decision it genuinely cannot make well on its own — not because it lacks intelligence, but because the decision requires information that isn't in the codebase, the spec, or the brief. The agent knows what it doesn't know. That's the precondition for a checkpoint model that works.</p>
+    <p>And what the human does at a checkpoint is not click "approve." It's read the agent's reasoning, confirm or correct the framing, and authorize a direction. The agent shows its work. The developer evaluates the work, not just the conclusion. This distinction — reviewing reasoning versus reviewing output — is where most of the value lives.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">02 / The Three Categories</div>
+    <h2>What always triggers a stop</h2>
+    <p>Not every decision is a checkpoint. The agent runs most of its loop iterations without interruption: read a file, write a test, implement a route, run the suite, move on. Checkpoints are reserved for decisions that are expensive to reverse and that depend on context the agent doesn't have reliable access to.</p>
+    <p>Three categories always stop the loop.</p>
+
+    <div class="category-grid">
+      <div class="category-cell">
+        <span class="category-name">Architecture</span>
+        <span class="category-desc">Decisions that compound. Which auth pattern. Which data model. Which API contract shape. Queue vs synchronous. The agent can propose and reason through trade-offs. It cannot know which trade-off is right for this team's maintenance burden in 18 months.</span>
+        <span class="category-example">e.g. JWT vs session · SQL vs document · REST vs GraphQL</span>
+      </div>
+      <div class="category-cell">
+        <span class="category-name">Security</span>
+        <span class="category-desc">Anything touching auth, payments, permissions, or user data. Agents reason about the happy path. Security requires reasoning about the adversarial path — who will try to break this, and how. That mental model doesn't emerge from the codebase alone.</span>
+        <span class="category-example">e.g. token expiry · cross-tenant access · permission boundaries</span>
+      </div>
+      <div class="category-cell">
+        <span class="category-name">Taste</span>
+        <span class="category-desc">No technical definition, which is why it matters. Error messages a real user will read under stress. Information hierarchy a dispatcher will look at for eight hours. Names the team will maintain for three years. The agent has no taste — not a flaw, just a description of what the human covers.</span>
+        <span class="category-example">e.g. error copy · UI hierarchy · naming conventions</span>
+      </div>
+    </div>
+
+    <p>Everything else runs. The agent doesn't ask for approval to add an index, write a migration, scaffold a component, or fix a linting error. Those decisions are either reversible or fully deterministic from the spec. The checkpoint model is not about controlling the agent — it's about surfacing the specific category of decision where human context is load-bearing.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The agent knows what it doesn't know. That's the precondition for a checkpoint model that works."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">03 / What the Agent Shows</div>
+    <h2>Reasoning, not just conclusions</h2>
+    <p>When the agent hits a checkpoint, it doesn't just stop and wait. It surfaces a structured briefing: what it was trying to do, what options it considered, why it leaned toward one of them, what it's uncertain about, and what it will do next if the human clears it to proceed.</p>
+    <p>Here's what a real architecture checkpoint looks like, from the auth decision on the dispatch app described in an <a href="blog-mobile-app-ai.html">earlier article</a>:</p>
+
+    <div class="checkpoint-block">
+      <span class="cp-header">── CHECKPOINT REQUEST ── Architecture Decision</span>
+      <span class="cp-label">Attempting: </span><span class="cp-value">auth strategy for multi-role system (dispatchers, technicians, admins)</span>
+      <span class="cp-sep"></span>
+      <span class="cp-label">Options considered:</span>
+      <div class="cp-options">
+        <span class="cp-option"><span class="cp-key">A)</span> JWT with refresh rotation — stateless, horizontal scale, standard library support in React Native + Express</span>
+        <span class="cp-option"><span class="cp-key">B)</span> Session-based with server store — stateful, instant revocation on logout or deactivation, one DB round-trip per request</span>
+        <span class="cp-option"><span class="cp-key">C)</span> Hybrid — JWTs for mobile, sessions for web (two auth systems to maintain)</span>
+      </div>
+      <span class="cp-sep"></span>
+      <span class="cp-label">Leaning toward: </span><span class="cp-chosen">A (JWT)</span><br>
+      <span class="cp-label">Reasoning: </span><span class="cp-value">Brief does not mention revocation requirements. JWT is industry default for mobile + web hybrid. Session adds a required DB round-trip per authenticated request.</span>
+      <span class="cp-sep"></span>
+      <span class="cp-label">Flagging: </span><span class="cp-flag">Brief doesn't specify technician turnover rate. If accounts are frequently deactivated and immediate access termination matters, B is the right call — JWT tokens stay valid until expiry regardless of account status. Requesting human judgment on this constraint.</span>
+      <span class="cp-sep"></span>
+      <span class="cp-label">Next if approved: </span><span class="cp-value">Implement JWT middleware, refresh token rotation, role-based route guards. Est. 4 hrs.</span>
+    </div>
+
+    <p>The developer who reads this checkpoint isn't reading code. They're reading a decision brief. And the key thing — the thing the agent correctly flagged as uncertain — is the turnover rate question. The agent didn't know whether this was a stable team or a high-churn contractor operation. The developer did: high-churn, customer-facing work, instant revocation matters. Answer: B.</p>
+    <p>The agent's lean toward A was reasonable given what it knew. The developer's override was correct given what the agent didn't. Both pieces of that interaction are only possible if the agent shows its reasoning instead of just its conclusion. If the agent had just implemented JWT because that's the industry default, the right decision would have required reading the implementation, understanding the implications, and knowing to ask a question that wasn't obviously missing.</p>
+    <p>Reading a checkpoint brief takes five minutes. Catching the same issue in a code review takes longer and happens later, when more has been built on top of the wrong decision.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">04 / The Failure Mode</div>
+    <h2>Agents that never escalate</h2>
+    <p>The most dangerous AI development setup is not one where the agent is careless. It's one where the agent is confident and unchecked — where the loop runs to completion without a single escalation, and the output is a build full of judgment calls that the model made because no one told it otherwise.</p>
+    <p>A build with zero checkpoints is a build where every architecture decision, every security trade-off, and every user-facing string was written by a model that had no way to know what it didn't know. The code will likely be correct. Some of it will be wrong in ways that don't surface until a real user does the thing no one thought to specify.</p>
+    <p>We saw three of these in the mobile app build. Error messages written in database terminology that field technicians would have to decipher on a phone screen. A job sort order that made sense for the data model but not for how a dispatcher routes their day. A cross-tenant write path that passed every test because the tests were testing the happy path, not the adversarial one.</p>
+    <p>None of these were bugs in the traditional sense. The code ran. The tests passed. They were judgment calls — the kind that require knowing the user, the context, and the operational reality. Those things weren't in the spec. They wouldn't have surfaced without a human reading the output at the right moment with the right question.</p>
+    <p>An agent that never flags anything for human review is either working on genuinely trivial problems, or it's filling gaps silently. The escalations are where the quality lives. Zero escalations is not a sign of a capable agent. It's a sign of an unconstrained one.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Zero escalations is not a sign of a capable agent. It's a sign of an unconstrained one."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">05 / Scope Protection</div>
+    <h2>Checkpoints as the other fixed-scope guarantee</h2>
+    <p>There's a secondary function that checkpoints serve on a fixed-scope build, and it's worth naming explicitly: they're the mechanism that keeps scope from expanding silently.</p>
+    <p>When the agent reaches a feature boundary — a point where implementing X naturally leads toward implementing Y — it stops and asks. Not because it can't make the decision, but because that decision belongs to the manifest, not to the agent. "Implementing job status updates. The spec doesn't address behavior when a job is reassigned mid-day — the original technician's push notification state becomes ambiguous. Should I handle this now or mark it as a known gap?"</p>
+    <p>Without a checkpoint, the agent makes that call. If it adds the behavior, scope has expanded without a conversation. If it skips it, you find the gap at delivery. The checkpoint surfaces the decision at the moment it matters, with the person who can make it, before work is done in either direction.</p>
+    <p>This is why the checkpoint model and the manifest are the same system, not two separate ones. The manifest defines what ships and what doesn't. The checkpoints are what enforces that boundary during the build — not as a restriction on the agent, but as a signal that a human decision is required to proceed past a boundary the manifest didn't address.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">06 / What Signed Off Means</div>
+    <h2>Approving the reasoning, not the code</h2>
+    <p>When a developer signs off at a checkpoint, they're not approving the implementation. They're approving the framing — confirming that the agent understood the constraint correctly, is proposing the right approach for this context, and is cleared to proceed in that direction.</p>
+    <p>If the reasoning is wrong — if the agent misread the constraint, optimized for the wrong thing, or made an assumption that doesn't hold — you redirect before the implementation exists. You don't need to read a diff. You read a decision brief and correct it upstream.</p>
+    <p>If the reasoning is right but the implementation looks off when it arrives, that's a separate conversation — a normal code review, not a checkpoint. These are different activities. Conflating them is what makes checkpoint processes feel heavy. A checkpoint is fast precisely because it's scoped to the reasoning, not the output. An architectural decision brief reads in five minutes. A code review of the same decision surface reads in an hour and catches the problem later.</p>
+
+    <div class="callout">
+      <h3>Questions to ask any AI-native development shop</h3>
+      <ul>
+        <li><strong>What triggers a checkpoint on your builds?</strong> If they describe a category — architecture, security, taste — they have a model. If they say "whenever we feel like it," they don't.</li>
+        <li><strong>What does the agent show you at a checkpoint?</strong> If it's the code, they're doing code review. If it's the reasoning, they're doing oversight. These produce different outcomes.</li>
+        <li><strong>How many checkpoints did your last build have?</strong> Too few means unchecked judgment calls. Too many means interruption theater masquerading as safety.</li>
+        <li><strong>Can you show me a checkpoint log from a recent project?</strong> The decision trail is auditable if the process is real. If it doesn't exist, the checkpoints didn't happen.</li>
+      </ul>
+    </div>
+
+    <p>The checkpoint model is not overhead. It's the mechanism that makes a fixed-scope, fixed-price, fixed-date commitment credible — not just in theory, but on the specific decisions that actually determine whether software is right for the people who use it. The agent handles execution. The human handles judgment. The checkpoint is where those two things meet.</p>
+  </div>
+
+</div>
+</main>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>New pieces,<br><em>when they ship.</em></h2>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+    </div>
+    <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="Northbound blog subscription">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button class="btn btn-primary" type="submit" style="align-self:flex-start">Notify me →</button>
+      <span class="newsletter-note">No frequency promises. Unsubscribe any time.</span>
+    </form>
+  </div>
+</section>
+
+<section class="article-cta">
+  <div class="wrap">
+    <span class="eyebrow">Ready to ship?</span>
+    <h2>Your product.<br><em>Fixed scope, fixed price.</em></h2>
+    <p>20 minutes. We'll walk you through the manifest, the price, and the ship date. No padding. No hourly meters. No surprises.</p>
+    <a class="btn btn-primary" href="index.html#contact">Book a scope call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Northbound Studio · Toronto, CA 🍁</span>
+    <a href="blog.html">← All writing</a>
+    <span><a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+</script>
+</body>
+</html>

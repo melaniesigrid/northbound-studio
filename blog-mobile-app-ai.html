@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Building a Mobile App With AI Agents Actually Looks Like — Northbound Studio</title>
+<meta name="description" content="A day-by-day account of a 30-day React Native build: what the agent handled, what the human owned, three things that changed the architecture, and one security issue caught before it shipped.">
+<link rel="canonical" href="https://northboundsoftwarestudio.com/blog-mobile-app-ai.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Northbound Software Studio">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://northboundsoftwarestudio.com/blog-mobile-app-ai.html">
+<meta property="og:title" content="What Building a Mobile App With AI Agents Actually Looks Like — Northbound Studio">
+<meta property="og:description" content="A day-by-day account of a 30-day React Native build: what the agent handled, what the human owned, three things that changed the architecture, and one security issue caught before it shipped.">
+<meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Northbound Studio">
+<meta property="article:published_time" content="2026-06-13T00:00:00+00:00">
+<meta property="article:author" content="Northbound Software Studio">
+<meta property="article:section" content="Technology">
+<meta property="article:tag" content="mobile development">
+<meta property="article:tag" content="AI agents">
+<meta property="article:tag" content="React Native">
+<meta property="article:tag" content="agentic AI">
+<meta property="article:tag" content="case study">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Building a Mobile App With AI Agents Actually Looks Like">
+<meta name="twitter:description" content="A 30-day React Native build: what the agent handled, what the human owned, and what surprised us.">
+<meta name="twitter:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://northboundsoftwarestudio.com/blog-mobile-app-ai.html",
+    "headline": "What Building a Mobile App With AI Agents Actually Looks Like",
+    "description": "A day-by-day account of a 30-day React Native build: what the agent handled, what the human owned, three things that changed the architecture, and one security issue caught before it shipped.",
+    "url": "https://northboundsoftwarestudio.com/blog-mobile-app-ai.html",
+    "datePublished": "2026-06-13",
+    "dateModified": "2026-06-13",
+    "inLanguage": "en",
+    "keywords": ["mobile development", "AI agents", "React Native", "agentic AI", "software build", "case study", "fixed scope"],
+    "articleSection": "Technology",
+    "author": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://northboundsoftwarestudio.com/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://northboundsoftwarestudio.com/blog-mobile-app-ai.html"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://northboundsoftwarestudio.com/og-image.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://northboundsoftwarestudio.com/blog.html",
+      "name": "Northbound Studio Writing"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://northboundsoftwarestudio.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://northboundsoftwarestudio.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "What Building a Mobile App With AI Agents Actually Looks Like",
+        "item": "https://northboundsoftwarestudio.com/blog-mobile-app-ai.html"
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---------- article hero ---------- */
+.article-hero{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:80px 24px 68px;}
+.article-hero-inner{max-width:900px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.4);margin-bottom:36px;transition:color .15s ease;}
+.back-link:hover{color:var(--hazard)}
+.back-link::before{content:'←';font-size:14px;}
+.article-hero .eyebrow{color:rgba(255,255,255,.45);}
+.article-hero .eyebrow::before{background:rgba(255,255,255,.25);}
+.article-title{font-family:var(--font-display);font-size:clamp(38px,6.5vw,84px);text-transform:uppercase;line-height:.93;letter-spacing:.01em;margin:22px 0 32px;color:#fff;}
+.article-title em{color:var(--hazard);font-style:normal;}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B7585;border-top:1px solid #2A3140;padding-top:22px;}
+.article-meta span{display:flex;align-items:center;gap:8px;}
+.article-meta span::before{content:'';width:5px;height:5px;background:var(--hazard);border-radius:50%;flex-shrink:0;}
+
+/* ---------- article body ---------- */
+.article-body{max-width:720px;margin:0 auto;padding:68px 24px 88px;}
+.article-body > p{font-size:19px;line-height:1.82;color:var(--ink-soft);margin-bottom:26px;}
+.article-body > p:first-child{font-size:21px;color:var(--ink);line-height:1.72;font-weight:500;}
+.article-body p strong{color:var(--ink);}
+.article-body em{font-style:italic;color:var(--ink);}
+
+.section-block{margin:60px 0 0;}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--cobalt);}
+.section-block h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em;margin-bottom:22px;}
+.section-block p{font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:20px;}
+.section-block p strong{color:var(--ink);}
+.section-block p em{font-style:italic;}
+
+.pull-quote{border-left:4px solid var(--cobalt);padding:22px 30px;margin:44px 0;background:rgba(37,70,240,.05);}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);text-transform:uppercase;line-height:1.08;color:var(--ink);margin:0;}
+
+.callout{border:var(--line);background:var(--paper-raise);padding:28px 32px;margin:36px 0;}
+.callout h3{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);margin-bottom:18px;}
+.callout ul{list-style:none;}
+.callout li{padding:11px 0 11px 26px;border-bottom:1px dashed #C6CAC2;font-size:16px;position:relative;color:var(--ink-soft);}
+.callout li:last-child{border-bottom:none;padding-bottom:0;}
+.callout li::before{content:'▸';position:absolute;left:0;color:var(--cobalt);}
+.callout li strong{color:var(--ink);}
+
+.code-example{font-family:var(--font-mono);font-size:12.5px;background:var(--ink);color:#7EE0A3;padding:18px 22px;margin:26px 0;display:block;line-height:1.75;overflow-x:auto;border-left:3px solid var(--hazard);}
+.code-example .c-yellow{color:var(--hazard);}
+.code-example .c-blue{color:#9AA4F0;}
+.code-example .c-dim{color:#5D6577;}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-color,#D8DACD);border:var(--line);margin:36px 0;}
+.stat-cell{background:var(--paper);padding:24px 20px;}
+.stat-num{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);text-transform:uppercase;line-height:1;color:var(--ink);display:block;}
+.stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px;display:block;}
+@media(max-width:600px){.stat-row{grid-template-columns:1fr 1fr;}.stat-cell:last-child{grid-column:span 2;}}
+
+/* ---------- newsletter ---------- */
+.newsletter{border-top:var(--line);background:var(--ink);padding:72px 24px;}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1240px;margin:0 auto;}
+.newsletter h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);text-transform:uppercase;line-height:1;color:#fff;}
+.newsletter h2 em{color:var(--hazard);font-style:normal;}
+.newsletter p{color:#8B93A5;font-size:15px;line-height:1.75;margin-top:12px;}
+.newsletter-form{display:flex;flex-direction:column;gap:12px;}
+.newsletter-form input{width:100%;border:1px solid #2A3140;border-radius:0;background:rgba(255,255,255,.05);color:#D7DCE6;padding:15px 18px;font-family:var(--font-body);font-size:15px;}
+.newsletter-form input::placeholder{color:#5D6577;}
+.newsletter-form input:focus{outline:none;border-color:var(--cobalt);}
+.newsletter-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5D6577;}
+@media(max-width:760px){.newsletter-inner{grid-template-columns:1fr;gap:32px;}}
+
+/* ---------- CTA ---------- */
+.article-cta{border-top:var(--line);background:var(--ink);padding:80px 24px;text-align:center;}
+.article-cta .eyebrow{justify-content:center;color:rgba(255,255,255,.4);}
+.article-cta .eyebrow::before{background:rgba(255,255,255,.2);}
+.article-cta h2{font-family:var(--font-display);font-size:clamp(34px,5.5vw,72px);text-transform:uppercase;line-height:.95;color:#fff;margin:18px 0 16px;}
+.article-cta h2 em{color:var(--hazard);font-style:normal;}
+.article-cta p{color:#8B93A5;font-size:17px;max-width:44ch;margin:0 auto 32px;}
+
+/* ---------- responsive ---------- */
+@media(max-width:760px){
+  .article-hero{padding:52px 20px 44px;}
+  .article-body{padding:48px 20px 64px;}
+  .pull-quote{padding:16px 20px;margin:32px 0;}
+  .callout{padding:20px 22px;}
+  .code-example{font-size:11.5px;padding:14px 16px;}
+  .article-cta{padding:56px 20px;}
+}
+@media(max-width:480px){
+  .article-title{font-size:clamp(32px,10vw,48px);}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#process">How we ship</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="blog.html" aria-current="page">Writing</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html#process">How we ship</a>
+  <a href="index.html#packages">Packages</a>
+  <a href="blog.html">Writing</a>
+  <a href="index.html#contact" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<main>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <a class="back-link" href="blog.html">All writing</a>
+    <span class="eyebrow">Case Study · Jun 2026 · 10 min read</span>
+    <h1 class="article-title">What building a<br><em>mobile app</em><br>with AI agents<br>actually looks like</h1>
+    <div class="article-meta">
+      <span>Jun 13, 2026</span>
+      <span>10 min read</span>
+      <span>Northbound Studio</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-body">
+
+  <p>The brief was clean on the surface: a React Native app for field technicians and a web dashboard for the dispatcher. A home services company — plumbing, HVAC, electrical — with 14 technicians and a scheduling process that ran on a whiteboard and a group text thread. Thirty days. Fixed price.</p>
+
+  <p>What follows is an account of how that actually went: what the agent ran autonomously, where it stopped and flagged for a human, what changed mid-build, and what the senior developer had to fix before it shipped. No demo polish. This is the real sequence.</p>
+
+  <div class="section-block">
+    <div class="section-label">01 / Days 1–2</div>
+    <h2>The manifest before the first line of code</h2>
+    <p>The first thing the agent did was not write code. It read the brief, modeled the domain, and generated questions — the ones the client's two-page brief hadn't answered. This took about four hours of loop iterations and produced a structured list of decisions that needed to be made before implementation began.</p>
+    <p>Most of these were invisible to the client. They had described the happy path: dispatcher sees a list of jobs, assigns one to a technician, technician opens the app and sees their day. That description was accurate. It was also missing about a third of the system.</p>
+
+    <code class="code-example"><span class="c-dim">// Day 1 — initial scope analysis</span>
+<span class="c-yellow">Thought:</span>  Brief describes single-dispatcher workflow. What happens
+          with concurrent dispatchers during peak hours?
+<span class="c-blue">Action:</span>   analyze_brief("job_assignment_flow")
+Observation: No concurrent write handling in scope. Two dispatchers
+             could assign the same technician to overlapping jobs.
+<span class="c-yellow">Thought:</span>  This is a silent data corruption risk. Flag before proceeding.
+<span class="c-blue">Action:</span>   generate_question("Do dispatchers ever work simultaneously?")
+<span class="c-dim">→ Client confirms: yes, two dispatchers during the morning rush</span>
+<span class="c-yellow">Thought:</span>  Requires optimistic locking on job assignment. Add to manifest.
+<span class="c-blue">Action:</span>   update_manifest(item="concurrent_assignment_lock", priority="P0")</code>
+
+    <p>By the end of day two, the manifest had surfaced seven problems the brief hadn't addressed. Timezone handling — the client had two technicians who worked a neighboring time zone on extended routes, a fact buried in a casual mention that "sometimes we cover jobs across the border." Offline state — technicians work in basements and elevator shafts where cell signal doesn't reach, and the app needed to display their schedule whether or not they had a connection. A push notification state machine with six distinct states the brief had collapsed into one. And the difference between "job assigned" and "job accepted," which the client assumed were synonymous and which turned out to matter quite a lot for accountability tracking.</p>
+    <p>These questions went to the client on day two. They were answered on a 40-minute call. The manifest was locked by end of day. Not a single line of code had been written, and the project was already in better shape than it would have been after a month of the old way.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Seven problems the brief hadn't addressed. No code written. The project was already ahead."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">02 / Day 5</div>
+    <h2>The first checkpoint: an auth decision the agent got right and wrong at the same time</h2>
+    <p>The agent proposed JWT authentication with refresh token rotation. This is a technically correct, widely adopted approach. It's what most apps use. The agent's reasoning was sound: stateless tokens reduce database load, rotation limits exposure from leaked tokens, the pattern has excellent library support in React Native.</p>
+    <p>The senior developer rejected it.</p>
+    <p>The reason wasn't technical. This company cycles through contractors. Technicians are added and removed from the roster regularly — sometimes the same day. With JWT, revoking access requires either a token blacklist (adding the state you were trying to avoid) or waiting for the token to expire. A 15-minute expiry means a fired technician could still access the system for 15 minutes after termination. For a company dealing with access to customer addresses and home security systems, that's not a theoretical risk.</p>
+    <p>Session-based auth with server-side invalidation was the right call. When a technician is removed, their session is killed instantly. The agent's proposal was textbook. The override required knowing something the brief didn't say: this is a high-turnover workforce in a trust-sensitive context.</p>
+    <p>This is the category of decision that can't be delegated to an agent. The agent doesn't know what it doesn't know. The human's job is to know what questions to ask about the context the agent is reasoning from.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">03 / Days 6–18</div>
+    <h2>What the loop ran and what it didn't</h2>
+    <p>After the manifest and the auth decision, the agent had a clear runway. For 12 days it ran largely autonomously — reading existing files, writing new ones, running tests after each change, escalating when it hit something ambiguous. The senior developer reviewed progress every two to three days, not every day.</p>
+
+    <div class="callout">
+      <h3>What ran without human intervention</h3>
+      <ul>
+        <li><strong>The technician mobile screens.</strong> Job list, job detail, status update flow. React Native with Expo. The agent wrote these to spec, wrote tests, and caught two rendering edge cases on its own — a job with no assigned technician crashing the detail screen, and a status badge overflowing its container on long status strings.</li>
+        <li><strong>The dispatcher web dashboard.</strong> Job board, assignment panel, technician roster. The agent scaffolded and wired the full CRUD surface in about three days of loop time.</li>
+        <li><strong>The database schema and migrations.</strong> Jobs, technicians, assignments, status history, sessions. Clean foreign keys, proper indexes on the fields that would get queried at volume. The agent added a composite index on (technician_id, scheduled_date) without being asked, reasoning that the "jobs for today" query would hit this path on every app open.</li>
+        <li><strong>The push notification pipeline.</strong> Expo + Firebase Cloud Messaging. The agent implemented all six notification states from the manifest, including the one the client had overlooked: "job reassigned" — when a dispatcher moves a job mid-day, the original technician needs to know.</li>
+      </ul>
+    </div>
+
+    <p>Three things were escalated during this stretch. First, the offline sync strategy. The agent proposed optimistic UI updates with conflict resolution — when a technician marks a job complete offline, the app optimistically updates the local state and queues a sync. On reconnection, the server resolves any conflicts. This is a real pattern and the agent implemented it cleanly. The developer simplified it: offline means read-only. Technicians don't create or modify data in the field — they only consume their schedule and update job status. The conflict resolution logic was real complexity solving a hypothetical problem. Cut.</p>
+    <p>Second, the job status state machine. The agent modeled nine states based on the domain analysis: unassigned, assigned, acknowledged, en route, on site, paused, complete, incomplete, disputed. The developer reduced it to five: unassigned, assigned, in progress, complete, cancelled. The other four were real states that would matter eventually. They would not matter in the first 90 days, and building them now meant building UI and API surface the client didn't yet know how to use. Deferred to v2 with a clear upgrade path.</p>
+    <p>Third, proof-of-work photo uploads. The agent flagged this as a likely requirement — service businesses often need documentation that a job was completed. It was right. It was also not in scope. The feature was logged, the S3 infrastructure was not set up, and the conversation with the client was moved to a post-launch discussion about what phase two should include.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">04 / Day 20</div>
+    <h2>The checkpoint that changed the architecture</h2>
+    <p>The dispatcher web dashboard had been built with polling: every 30 seconds, the client made a GET request to check for job status updates. It worked. It was also visibly janky — the dashboard flickered on each poll cycle as React reconciled the incoming data against the existing UI state.</p>
+    <p>At the day-20 checkpoint, the senior developer flagged this. The right solution was WebSockets: a persistent connection that pushes updates to the dashboard the moment a technician changes a job status. No polling, no flicker, real-time updates.</p>
+    <p>The agent had not proposed WebSockets because the brief hadn't mentioned real-time requirements. It had solved the problem it was given.</p>
+    <p>The conversation that followed was the kind that doesn't fit in a prompt. WebSockets require a persistent server process — they don't work with serverless functions, which was the deployment model already in use. Migrating to WebSockets meant either changing the hosting architecture (adding a dedicated server on Railway or Fly.io, adding cost and operational overhead) or accepting a compromise.</p>
+    <p>The decision: polling at 10-second intervals instead of 30. Not elegant. Reduces the flicker by two-thirds without requiring any infrastructure change. The agent implemented the adjustment in about 20 minutes. The right call for a 30-day build going to a 14-person company that doesn't have an ops team.</p>
+    <p>This is what a checkpoint is for. Not rubber-stamping what the agent built — actually reading it, understanding it in context, and making the call the agent can't make because it doesn't know the deployment budget.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The agent had not proposed WebSockets because the brief hadn't mentioned real-time requirements. It had solved the problem it was given."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">05 / Day 30</div>
+    <h2>What the senior developer fixed before it shipped</h2>
+    <p>Three things required human rewriting before the build was released. They are worth describing in detail because they illustrate the category of work that agents don't do well, and probably won't for a while.</p>
+    <p><strong>Error messages.</strong> The agent wrote technically accurate error text throughout the API and the mobile client. "Assignment conflict detected at database layer." "Session token invalid or expired." "Technician record not found for provided ID." These messages are correct. A technician standing in a customer's driveway who loses their session would read "Session token invalid or expired" on their phone and have no idea what to do. Every user-facing error string was rewritten: what happened, in plain language, and what to do next. "You've been logged out — tap here to sign back in." "That job was already assigned to someone else — pull down to refresh your schedule." Eleven strings total. About two hours of work.</p>
+    <p><strong>The job list sort order.</strong> The agent sorted the dispatcher's job board by creation time — newest jobs at the top. This is a sensible default. The dispatcher's actual mental model was geographic: they wanted jobs sorted by proximity to where the previous job ended, so they could build routes without doing it manually. Four lines of code to change the sort. Zero chance the agent would have known to do this without being told. It requires understanding how a dispatcher thinks about their day, which is not in any spec.</p>
+    <p><strong>A security issue.</strong> The job update API endpoint validated that the request came from an authenticated dispatcher, but did not validate that the job being updated belonged to the dispatcher's company. A dispatcher at company A could, with a crafted request, update or reassign jobs belonging to company B. The agent had not built multi-tenant isolation into the write paths — it had built it into the read paths (every query was scoped to the authenticated user's company_id) but missed it on updates. This was caught in the pre-launch security review, not in production. The fix was three lines of middleware. The cost of finding this after launch would have been substantially higher.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">06 / What shipped</div>
+    <h2>The numbers, and what they mean</h2>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <span class="stat-num">28</span>
+        <span class="stat-label">API endpoints</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">54</span>
+        <span class="stat-label">Automated tests</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Human rewrites before launch</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Post-launch incidents (first 30 days)</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">3 hrs</span>
+        <span class="stat-label">Daily dispatch time before</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">25 min</span>
+        <span class="stat-label">Daily dispatch time after</span>
+      </div>
+    </div>
+
+    <p>The number that matters most is not any of these. It's the seven things the agent surfaced on day one that the brief hadn't captured — and the fact that they were resolved before a line of code was written instead of during QA three weeks in.</p>
+    <p>That's the actual shift. Not that the code was written faster, though it was. Not that the test coverage is higher than a typical agency handoff, though it is. The shift is that execution uncertainty — the thing that turns a 30-day project into a 60-day project — gets compressed into the first 48 hours. What used to be unknown at implementation time is known at scope time.</p>
+    <p>The three rewrites before launch were real. They were also the right three things: user experience, business logic, security. These are the categories where human judgment is genuinely irreplaceable — not because the agent couldn't have done them with more context, but because the context that makes them doable well is context that lives in the senior developer's head. That's not a bug in the model. It's a description of what the job actually is.</p>
+  </div>
+
+</div>
+</main>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>New pieces,<br><em>when they ship.</em></h2>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+    </div>
+    <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="Northbound blog subscription">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button class="btn btn-primary" type="submit" style="align-self:flex-start">Notify me →</button>
+      <span class="newsletter-note">No frequency promises. Unsubscribe any time.</span>
+    </form>
+  </div>
+</section>
+
+<section class="article-cta">
+  <div class="wrap">
+    <span class="eyebrow">Ready to ship?</span>
+    <h2>Your product.<br><em>Fixed scope, fixed price.</em></h2>
+    <p>20 minutes. We'll walk you through the manifest, the price, and the ship date. No padding. No hourly meters. No surprises.</p>
+    <a class="btn btn-primary" href="index.html#contact">Book a scope call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Northbound Studio · Toronto, CA 🍁</span>
+    <a href="blog.html">← All writing</a>
+    <span><a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+</script>
+</body>
+</html>

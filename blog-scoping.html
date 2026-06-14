@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How We Scope a Project in 20 Minutes — Northbound Studio</title>
+<meta name="description" content="Three questions, one page of output, a delivery date. The actual structure of a Northbound scope call — what we ask, why we ask it, and what it tells us before a line of code is written.">
+<link rel="canonical" href="https://northboundsoftwarestudio.com/blog-scoping.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Northbound Software Studio">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://northboundsoftwarestudio.com/blog-scoping.html">
+<meta property="og:title" content="How We Scope a Project in 20 Minutes — Northbound Studio">
+<meta property="og:description" content="Three questions, one page of output, a delivery date. The actual structure of a Northbound scope call.">
+<meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Northbound Studio">
+<meta property="article:published_time" content="2026-06-13T00:00:00+00:00">
+<meta property="article:author" content="Northbound Software Studio">
+<meta property="article:section" content="Technology">
+<meta property="article:tag" content="scoping">
+<meta property="article:tag" content="fixed scope">
+<meta property="article:tag" content="software delivery">
+<meta property="article:tag" content="product development">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How We Scope a Project in 20 Minutes">
+<meta name="twitter:description" content="Three questions, one page, a delivery date. The actual structure of a Northbound scope call.">
+<meta name="twitter:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://northboundsoftwarestudio.com/blog-scoping.html",
+    "headline": "How We Scope a Project in 20 Minutes",
+    "description": "Three questions, one page of output, a delivery date. The actual structure of a Northbound scope call — what we ask, why we ask it, and what it tells us before a line of code is written.",
+    "url": "https://northboundsoftwarestudio.com/blog-scoping.html",
+    "datePublished": "2026-06-13",
+    "dateModified": "2026-06-13",
+    "inLanguage": "en",
+    "keywords": ["scoping", "fixed scope", "software delivery", "product development", "manifest", "agency process"],
+    "articleSection": "Technology",
+    "author": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Northbound Software Studio",
+      "@id": "https://northboundsoftwarestudio.com/#organization",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://northboundsoftwarestudio.com/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://northboundsoftwarestudio.com/blog-scoping.html"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://northboundsoftwarestudio.com/og-image.jpg",
+      "width": 1200,
+      "height": 630
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "@id": "https://northboundsoftwarestudio.com/blog.html",
+      "name": "Northbound Studio Writing"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://northboundsoftwarestudio.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Writing",
+        "item": "https://northboundsoftwarestudio.com/blog.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How We Scope a Project in 20 Minutes",
+        "item": "https://northboundsoftwarestudio.com/blog-scoping.html"
+      }
+    ]
+  }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---------- article hero ---------- */
+.article-hero{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:80px 24px 68px;}
+.article-hero-inner{max-width:900px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.4);margin-bottom:36px;transition:color .15s ease;}
+.back-link:hover{color:var(--hazard)}
+.back-link::before{content:'←';font-size:14px;}
+.article-hero .eyebrow{color:rgba(255,255,255,.45);}
+.article-hero .eyebrow::before{background:rgba(255,255,255,.25);}
+.article-title{font-family:var(--font-display);font-size:clamp(38px,6.5vw,84px);text-transform:uppercase;line-height:.93;letter-spacing:.01em;margin:22px 0 32px;color:#fff;}
+.article-title em{color:var(--hazard);font-style:normal;}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B7585;border-top:1px solid #2A3140;padding-top:22px;}
+.article-meta span{display:flex;align-items:center;gap:8px;}
+.article-meta span::before{content:'';width:5px;height:5px;background:var(--hazard);border-radius:50%;flex-shrink:0;}
+
+/* ---------- article body ---------- */
+.article-body{max-width:720px;margin:0 auto;padding:68px 24px 88px;}
+.article-body > p{font-size:19px;line-height:1.82;color:var(--ink-soft);margin-bottom:26px;}
+.article-body > p:first-child{font-size:21px;color:var(--ink);line-height:1.72;font-weight:500;}
+.article-body p strong{color:var(--ink);}
+.article-body em{font-style:italic;color:var(--ink);}
+
+.section-block{margin:60px 0 0;}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--cobalt);}
+.section-block h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);text-transform:uppercase;line-height:1.02;letter-spacing:.01em;margin-bottom:22px;}
+.section-block p{font-size:17px;line-height:1.8;color:var(--ink-soft);margin-bottom:20px;}
+.section-block p strong{color:var(--ink);}
+.section-block p em{font-style:italic;}
+
+.pull-quote{border-left:4px solid var(--cobalt);padding:22px 30px;margin:44px 0;background:rgba(37,70,240,.05);}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);text-transform:uppercase;line-height:1.08;color:var(--ink);margin:0;}
+
+.callout{border:var(--line);background:var(--paper-raise);padding:28px 32px;margin:36px 0;}
+.callout h3{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);margin-bottom:18px;}
+.callout ul{list-style:none;}
+.callout li{padding:11px 0 11px 26px;border-bottom:1px dashed #C6CAC2;font-size:16px;position:relative;color:var(--ink-soft);}
+.callout li:last-child{border-bottom:none;padding-bottom:0;}
+.callout li::before{content:'▸';position:absolute;left:0;color:var(--cobalt);}
+.callout li strong{color:var(--ink);}
+
+.manifest-block{border:var(--line);margin:36px 0;}
+.manifest-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);padding:10px 20px;}
+.manifest-body{padding:24px 28px;}
+.manifest-section{margin-bottom:22px;}
+.manifest-section:last-child{margin-bottom:0;}
+.manifest-section h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cobalt);margin-bottom:10px;}
+.manifest-section ul{list-style:none;margin:0;padding:0;}
+.manifest-section li{font-size:15px;color:var(--ink-soft);padding:5px 0 5px 18px;position:relative;}
+.manifest-section li::before{content:'–';position:absolute;left:0;color:var(--ink-soft);}
+.manifest-section li strong{color:var(--ink);}
+.manifest-date{font-family:var(--font-display);font-size:22px;text-transform:uppercase;color:var(--ink);margin-top:20px;padding-top:20px;border-top:1px dashed #C6CAC2;}
+
+.question-block{border-left:4px solid var(--hazard);padding:20px 24px;margin:28px 0;background:rgba(255,193,7,.04);}
+.question-block .q-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--hazard);margin-bottom:8px;}
+.question-block .q-text{font-size:18px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:10px;}
+.question-block .q-why{font-size:14px;color:var(--ink-soft);line-height:1.7;}
+
+/* ---------- newsletter ---------- */
+.newsletter{border-top:var(--line);background:var(--ink);padding:72px 24px;}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1240px;margin:0 auto;}
+.newsletter h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);text-transform:uppercase;line-height:1;color:#fff;}
+.newsletter h2 em{color:var(--hazard);font-style:normal;}
+.newsletter p{color:#8B93A5;font-size:15px;line-height:1.75;margin-top:12px;}
+.newsletter-form{display:flex;flex-direction:column;gap:12px;}
+.newsletter-form input{width:100%;border:1px solid #2A3140;border-radius:0;background:rgba(255,255,255,.05);color:#D7DCE6;padding:15px 18px;font-family:var(--font-body);font-size:15px;}
+.newsletter-form input::placeholder{color:#5D6577;}
+.newsletter-form input:focus{outline:none;border-color:var(--cobalt);}
+.newsletter-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5D6577;}
+@media(max-width:760px){.newsletter-inner{grid-template-columns:1fr;gap:32px;}}
+
+/* ---------- CTA ---------- */
+.article-cta{border-top:var(--line);background:var(--ink);padding:80px 24px;text-align:center;}
+.article-cta .eyebrow{justify-content:center;color:rgba(255,255,255,.4);}
+.article-cta .eyebrow::before{background:rgba(255,255,255,.2);}
+.article-cta h2{font-family:var(--font-display);font-size:clamp(34px,5.5vw,72px);text-transform:uppercase;line-height:.95;color:#fff;margin:18px 0 16px;}
+.article-cta h2 em{color:var(--hazard);font-style:normal;}
+.article-cta p{color:#8B93A5;font-size:17px;max-width:44ch;margin:0 auto 32px;}
+
+/* ---------- responsive ---------- */
+@media(max-width:760px){
+  .article-hero{padding:52px 20px 44px;}
+  .article-body{padding:48px 20px 64px;}
+  .pull-quote{padding:16px 20px;margin:32px 0;}
+  .callout{padding:20px 22px;}
+  .manifest-body{padding:18px 20px;}
+  .question-block{padding:16px 18px;}
+  .article-cta{padding:56px 20px;}
+}
+@media(max-width:480px){
+  .article-title{font-size:clamp(32px,10vw,48px);}
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#process">How we ship</a></li>
+      <li><a href="index.html#packages">Packages</a></li>
+      <li><a href="blog.html" aria-current="page">Writing</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="index.html#contact">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="index.html#process">How we ship</a>
+  <a href="index.html#packages">Packages</a>
+  <a href="blog.html">Writing</a>
+  <a href="index.html#contact" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<main>
+
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <a class="back-link" href="blog.html">All writing</a>
+    <span class="eyebrow">Process · Jun 2026 · 8 min read</span>
+    <h1 class="article-title">How we scope<br>a project in<br><em>20 minutes</em></h1>
+    <div class="article-meta">
+      <span>Jun 13, 2026</span>
+      <span>8 min read</span>
+      <span>Northbound Studio</span>
+    </div>
+  </div>
+</section>
+
+<div class="article-body">
+
+  <p>Twenty minutes sounds implausibly short. Traditional agencies schedule two-week discovery sprints. Some charge for discovery before they quote. There are consultants who will spend a month just mapping your requirements.</p>
+
+  <p>The 20-minute call isn't doing what those processes do. It's not gathering requirements. It's answering a single question: <strong>is this project ready to be built on a fixed scope, at a fixed price, with a fixed delivery date?</strong> That question has a yes or no answer, and in most cases it surfaces within 20 minutes of structured conversation.</p>
+
+  <p>What follows is the actual call structure — what we ask, in what order, and what the answer tells us.</p>
+
+  <div class="section-block">
+    <div class="section-label">01 / Why Agencies Take Two Weeks</div>
+    <h2>Discovery is usually about the agency, not the project</h2>
+    <p>A two-week discovery sprint produces a requirements document. That document does two things: it tries to capture what needs to be built, and it creates a paper trail that protects the agency when the scope expands. Both are real goals. Neither of them has much to do with whether the project will ship on time.</p>
+    <p>The hedging happens through the document — padding the estimate against unknowns, writing "out of scope" clauses that cover everything the agency couldn't figure out. The discovery process is, in part, a legal exercise dressed up as a technical one.</p>
+    <p>Northbound's model doesn't need two weeks of discovery because unknowns are handled differently. The agent surfaces them in the first 24–48 hours of the build — not by guessing, but by reading the actual codebase, the actual schema, the actual brief, and asking the questions a senior developer would ask on day one. So we can scope faster at the front because the safety net is the manifest and the build process, not the discovery document.</p>
+    <p>What the 20-minute call does instead: it finds out whether you've made the decisions that make a fixed scope possible. If you have, we can price and start. If you haven't, we can tell you exactly which decisions are missing and what to do next.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">02 / The Three Questions</div>
+    <h2>What the call actually asks</h2>
+    <p>The call runs in three beats. Each question is doing different work. They aren't interchangeable and they're not asked casually — each one is looking for something specific in the answer.</p>
+
+    <div class="question-block">
+      <div class="q-label">Question 1</div>
+      <div class="q-text">"Describe what done looks like in the hands of a real user."</div>
+      <div class="q-why">Not "what are the features." Not "what problem does it solve." What does the person actually do, and what do they get? Describe the last step — the moment a user has what they came for. This question tests whether the product is defined or still being imagined.</div>
+    </div>
+
+    <p>The answers that signal readiness: "A customer opens the app, selects an appointment, pays, and gets a confirmation text within 10 seconds." "A dispatcher assigns a job from the web dashboard and the technician's phone updates in real time." These descriptions are testable. You can build them. You can know when you're done.</p>
+    <p>The answers that stop the call: "They can manage everything in one place." "It makes things easier for the team." "They'll be able to see what they need." These are product visions, not product definitions. They describe a feeling, not a behavior. A fixed-scope build can't start here — not because the goal is wrong, but because the question of what to build hasn't been answered yet.</p>
+
+    <div class="question-block">
+      <div class="q-label">Question 2</div>
+      <div class="q-text">"Name three things this is not."</div>
+      <div class="q-why">Out-of-scope definition is harder than in-scope definition, and it matters more. The things left unnamed at scoping become the scope creep conversations at week three. This question forces the cuts that make a fixed price possible.</div>
+    </div>
+
+    <p>Clients who can answer this question have been thinking about their product seriously. "This is not a marketplace — there's one company and one set of users." "This is not a mobile app — web only for v1." "This is not multi-language, multi-currency, or multi-tenant." These answers are not obvious; they require having thought through what you're building and deliberately chosen not to build the other thing.</p>
+    <p>Clients who can't answer this question are still in exploration mode. They haven't made the cuts. That's a legitimate place to be — but it's the right place for a design sprint or a few sessions of product definition, not a 30-day fixed-scope build. Starting a fixed-scope build with an undefined out-of-scope is how you get to week three with a client who says "I assumed that was included."</p>
+
+    <div class="question-block">
+      <div class="q-label">Question 3</div>
+      <div class="q-text">"What breaks if this ships in 45 days instead of 30?"</div>
+      <div class="q-why">This question separates real timelines from aspirational ones. Both are acceptable — but they produce different decisions about scope trade-offs, and it's better to know which you're working with before the build starts.</div>
+    </div>
+
+    <p>Real timelines have consequences: a product launch tied to a conference, a demo for a lead investor, a competitor who is visibly moving, a runway constraint that makes delay genuinely costly. When you ask "what breaks?" and the answer is specific, the timeline is real. We can use that constraint to make trade-off decisions clearly: this feature is in, that one is out, because we have a real ship date.</p>
+    <p>Aspirational timelines sound like: "We just want to move fast." "The sooner the better." "30 days feels right." These aren't wrong — speed is good — but they don't constrain scope the way a real deadline does. When the timeline is aspirational, the scope conversation is harder because there's no forcing function for the cuts. We can still work with aspirational timelines. We just name them as such and build the scope discipline into the process instead of relying on external pressure.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Out-of-scope definition is harder than in-scope definition. And it matters more."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">03 / Reading the Answers</div>
+    <h2>What "I don't know yet" actually means</h2>
+    <p>Three versions of this answer come up on scope calls. They mean different things.</p>
+    <p><strong>"I haven't decided yet."</strong> The client knows the question but hasn't chosen an answer. This is a design-incomplete project. It can become a fixed-scope build — it just needs a few more decisions made first. The call ends with a short list of open questions, owners for each, and a timeline for when they'll be resolved. Once they're answered, we can lock the manifest and start.</p>
+    <p>Example: "We haven't decided whether users log in with email or Google." That's a real decision with real implications (OAuth setup, email verification flow, account recovery), but it's answerable. We write it down, the client makes the call, and we incorporate it into the manifest.</p>
+    <p><strong>"I don't think about it at that level."</strong> The client is non-technical and the question is landing as jargon. Not a problem — a reframe usually unlocks it. "When someone forgets their password, should they get a reset email or a text?" Usually answerable in about ten seconds, once the abstraction is gone. This is the most common version and the easiest to work through.</p>
+    <p><strong>"I'll know it when I see it."</strong> This one stops the call. It means the product isn't defined — not in the sense that a decision is pending, but in the sense that the client's vision of the product still lives in their head as a feeling rather than a set of behaviors. This isn't a criticism. It's a common and early-stage place to be. But it's not a fixed-scope build yet.</p>
+    <p>When this comes up, we say it directly: this project needs product definition before it needs a developer. We recommend a design sprint — four or five sessions of structured product work to define the screens, the flows, and the edge cases — and then a scope call when that's done. The 20 minutes wasn't wasted; it found the blocker before it became a three-week rework conversation.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">04 / The Output</div>
+    <h2>The manifest: one page, four sections</h2>
+    <p>If the call goes well, the output is a manifest. Not a requirements document. Not a statement of work. Not a 40-page specification that no developer will read past page three.</p>
+    <p>One page. Four sections. That's it.</p>
+
+    <div class="manifest-block">
+      <div class="manifest-label">Example Manifest — Field Service Scheduling App</div>
+      <div class="manifest-body">
+        <div class="manifest-section">
+          <h4>Ships</h4>
+          <ul>
+            <li>React Native app for technicians: job list, job detail, status updates, push notifications</li>
+            <li>Web dashboard for dispatchers: job board, technician assignment, real-time status view</li>
+            <li>Session-based auth with instant revocation for technician accounts</li>
+            <li>Optimistic locking on job assignment to prevent double-booking</li>
+            <li>Offline read mode for technicians in low-signal environments</li>
+          </ul>
+        </div>
+        <div class="manifest-section">
+          <h4>Does Not Ship</h4>
+          <ul>
+            <li>Customer-facing booking or payment (v1 is internal tooling only)</li>
+            <li>Proof-of-work photo uploads (flagged for v2)</li>
+            <li>Route optimization or GPS tracking</li>
+            <li>Reporting or analytics dashboard</li>
+            <li>Multi-company / multi-tenant support</li>
+          </ul>
+        </div>
+        <div class="manifest-section">
+          <h4>Open Questions</h4>
+          <ul>
+            <li><strong>Timezone handling</strong> — confirm whether technicians ever cover cross-border routes (owner: client, due: before build starts)</li>
+            <li><strong>Job status states</strong> — confirm the 5-state model: unassigned → assigned → in progress → complete → cancelled (owner: client + Northbound, due: day 2)</li>
+            <li><strong>Push notification copy</strong> — final text for each notification type (owner: client, due: week 2)</li>
+          </ul>
+        </div>
+        <div class="manifest-date">Delivery: 30 days from build start</div>
+      </div>
+    </div>
+
+    <p>The discipline of one page is not a formatting preference. It's a constraint that forces decisions. If you can't describe what ships in a short list, the scope isn't tight enough. Every item on the "Does Not Ship" list is a conversation that won't happen at week three. Every open question is explicitly assigned an owner and a deadline — not left vague with "TBD."</p>
+    <p>The manifest is also the only document that matters for the build. The agent reads it. The developer references it at checkpoints. If a question comes up mid-build that the manifest doesn't answer, it becomes an open question in the same format, gets resolved with the client, and the build continues. No renegotiation. No change orders. Just a decision, made explicitly, by the right person.</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">05 / Why This Works</div>
+    <h2>The call is qualification, not discovery</h2>
+    <p>There's a distinction worth naming. Discovery finds out what the project is. Qualification finds out whether the project can be built as a fixed-scope engagement right now. These are different questions with different answers, and conflating them is where most scoping processes go wrong.</p>
+    <p>A two-week discovery process is trying to do both at once: understand the project well enough to scope it, while also creating a document detailed enough to hold up if the scope expands. The result is a lot of time spent on a document that's already obsolete by the time development starts, because the real questions only surface when the code exists.</p>
+    <p>The 20-minute call is only doing qualification. It's not trying to understand everything about the project. It's trying to answer one question: has this client made the decisions that make a fixed-scope build possible? If yes, the manifest captures those decisions and the build starts. If not, we say so specifically — not "we need more discovery," but "here are the three decisions you need to make before we can start."</p>
+    <p>The discovery, such as it is, happens in the first two days of the build. The agent reads the brief, models the domain, and generates the questions the scope call didn't reach. Those questions go to the client immediately, get answered, and get locked into the manifest before the first feature is implemented. That's a better use of 48 hours than a two-week requirements exercise, and it produces a better result — because the questions the agent asks are the ones that actually surface in production, not the ones an account manager guessed at in week one.</p>
+
+    <div class="callout">
+      <h3>If you're evaluating agencies, ask these questions</h3>
+      <ul>
+        <li><strong>What does your scoping process produce?</strong> A requirements document protects the agency. A manifest aligns the build.</li>
+        <li><strong>How do you handle unknowns that surface mid-build?</strong> Change orders are a symptom of a scoping process that didn't surface the unknowns early enough.</li>
+        <li><strong>Can you show me the manifest from a recent project?</strong> If they don't have one, they're scoping informally. Informal scope is how projects expand.</li>
+        <li><strong>Where does the human review happen?</strong> If they can't describe a checkpoint structure, they're not running agentic loops — they're using AI as autocomplete and calling it agentic.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"The difficulty of scoping a project is a reliable proxy for the difficulty of building it."</p>
+  </div>
+
+  <div class="section-block">
+    <div class="section-label">06 / One More Thing</div>
+    <h2>The projects that scope easily are the ones that ship</h2>
+    <p>This isn't a coincidence. A project that can be scoped in 20 minutes — with a clear done-state, three explicit non-features, and a real deadline — is a project where the decision-making has already happened. The client knows what they're building. They've made the cuts. They understand the constraints.</p>
+    <p>Projects that resist scoping usually resist shipping too. Not always. But the correlation is strong enough that we treat it as a signal. When a project can't be scoped in 20 minutes, it's usually not a scoping process problem. It's a product definition problem that will show up again at week two, at week four, and at the delivery call.</p>
+    <p>The 20-minute scope call is, ultimately, a test of whether the project is ready. Most projects that find Northbound are ready — or are one or two decisions away from being ready. When they're not, we say so, and we say exactly what would make them ready. That's more useful than two weeks of discovery that produces a document everyone signs and no one reads.</p>
+  </div>
+
+</div>
+</main>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>New pieces,<br><em>when they ship.</em></h2>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+    </div>
+    <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="Northbound blog subscription">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button class="btn btn-primary" type="submit" style="align-self:flex-start">Notify me →</button>
+      <span class="newsletter-note">No frequency promises. Unsubscribe any time.</span>
+    </form>
+  </div>
+</section>
+
+<section class="article-cta">
+  <div class="wrap">
+    <span class="eyebrow">Ready to scope?</span>
+    <h2>20 minutes.<br><em>Three questions.</em></h2>
+    <p>Walk away with a manifest, a price, and a ship date — or a clear description of what's missing. No commitment either way.</p>
+    <a class="btn btn-primary" href="index.html#contact">Book a scope call →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Northbound Studio · Toronto, CA 🍁</span>
+    <a href="blog.html">← All writing</a>
+    <span><a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -100,50 +100,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-:root{
-  --paper:#EEF0EC;
-  --paper-raise:#F7F8F5;
-  --ink:#14181F;
-  --ink-soft:#4A5160;
-  --cobalt:#2546F0;
-  --cobalt-deep:#1B34B8;
-  --hazard:#FFC629;
-  --line:2px solid var(--ink);
-  --font-display:'Anton',sans-serif;
-  --font-body:'Archivo',sans-serif;
-  --font-mono:'IBM Plex Mono',monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;}
-::selection{background:var(--hazard);color:var(--ink)}
-a{color:inherit}
-img{max-width:100%}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;}
-.eyebrow::before{content:"";width:28px;height:10px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px);}
-
-/* ---------- nav ---------- */
-header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:var(--line);animation:nav-enter .5s cubic-bezier(.2,.8,.2,1) both;}
-@keyframes nav-enter{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-.nav{display:flex;align-items:stretch;justify-content:space-between;height:64px;}
-.brand{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;display:flex;align-items:center;gap:12px;text-decoration:none;}
-.brand .dot{width:14px;height:14px;background:var(--cobalt);clip-path:polygon(50% 0,100% 100%,0 100%);}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.02em;border-bottom:2px solid transparent;padding:4px 0;transition:border-color .15s ease;}
-.nav-links a:hover,.nav-links a[aria-current]{border-bottom-color:var(--cobalt)}
-.nav-cta{display:flex;align-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:0 22px;margin:-1px -24px -1px 0;text-decoration:none;transition:background .15s ease;}
-.nav-cta:hover{background:var(--cobalt)}
-.nav-burger{display:none;background:none;border:none;border-left:var(--line);cursor:pointer;padding:0 18px;color:var(--ink);align-items:center;justify-content:center;flex-shrink:0;}
-@media(max-width:760px){.nav-links{display:none}.nav-burger{display:flex}}
-.mobile-nav{display:none;flex-direction:column;position:sticky;top:64px;z-index:49;background:var(--paper);border-bottom:var(--line);}
-.mobile-nav.open{display:flex}
-.mobile-nav a{padding:16px 24px;border-bottom:1px solid #D8DACD;font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .12s ease,padding-left .12s ease;}
-.mobile-nav a:hover{background:var(--paper-raise);padding-left:32px}
-.mobile-nav-cta{background:var(--ink);color:var(--paper);}
-.mobile-nav-cta:hover{background:var(--cobalt) !important;padding-left:24px !important;}
-
 /* ---------- article hero ---------- */
 .article-hero{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:80px 24px 68px;}
 .article-hero-inner{max-width:900px;margin:0 auto;}
@@ -190,6 +148,19 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:va
 .callout li::before{content:'▸';position:absolute;left:0;color:var(--cobalt);}
 .callout li strong{color:var(--ink);}
 
+/* ---------- newsletter ---------- */
+.newsletter{border-top:var(--line);background:var(--ink);padding:72px 24px;}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1240px;margin:0 auto;}
+.newsletter h2{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);text-transform:uppercase;line-height:1;color:#fff;}
+.newsletter h2 em{color:var(--hazard);font-style:normal;}
+.newsletter p{color:#8B93A5;font-size:15px;line-height:1.75;margin-top:12px;}
+.newsletter-form{display:flex;flex-direction:column;gap:12px;}
+.newsletter-form input{width:100%;border:1px solid #2A3140;border-radius:0;background:rgba(255,255,255,.05);color:#D7DCE6;padding:15px 18px;font-family:var(--font-body);font-size:15px;}
+.newsletter-form input::placeholder{color:#5D6577;}
+.newsletter-form input:focus{outline:none;border-color:var(--cobalt);}
+.newsletter-note{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5D6577;}
+@media(max-width:760px){.newsletter-inner{grid-template-columns:1fr;gap:32px;}}
+
 /* ---------- CTA ---------- */
 .article-cta{border-top:var(--line);background:var(--ink);padding:80px 24px;text-align:center;}
 .article-cta .eyebrow{justify-content:center;color:rgba(255,255,255,.4);}
@@ -198,19 +169,6 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:va
 .article-cta h2 em{color:var(--hazard);font-style:normal;}
 .article-cta p{color:#8B93A5;font-size:17px;max-width:44ch;margin:0 auto 32px;}
 
-.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:16px 26px;border:var(--line);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;box-shadow:4px 4px 0 var(--ink);background:var(--paper-raise);}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.btn-primary{background:var(--cobalt);color:#fff;border-color:var(--cobalt-deep);position:relative;overflow:hidden;}
-.btn-primary:hover{background:var(--cobalt-deep)}
-.btn-primary::before{content:'';position:absolute;top:-60%;left:-80%;width:55%;height:220%;background:rgba(255,255,255,.16);transform:skewX(-22deg);animation:btn-shine 4s ease-in-out 1.4s infinite;pointer-events:none;}
-@keyframes btn-shine{0%,100%{left:-80%}45%,55%{left:160%}}
-
-/* ---------- footer ---------- */
-footer{padding:28px 0 36px;border-top:var(--line);}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
-.foot a{text-decoration:none;}
-.foot a:hover{color:var(--cobalt)}
 
 /* ---------- responsive ---------- */
 @media(max-width:760px){
@@ -424,6 +382,21 @@ I want:
 
 </div>
 </main>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>New pieces,<br><em>when they ship.</em></h2>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+    </div>
+    <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="Northbound blog subscription">
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button class="btn btn-primary" type="submit" style="align-self:flex-start">Notify me →</button>
+      <span class="newsletter-note">No frequency promises. Unsubscribe any time.</span>
+    </form>
+  </div>
+</section>
 
 <section class="article-cta">
   <div class="wrap">

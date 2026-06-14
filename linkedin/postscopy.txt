@@ -17,6 +17,8 @@ Fixed scope. Fixed price. 30 days. No hourly meters, no surprise invoices, no re
 
 That isn't a premium ask. It's the floor.
 
+#WeAreNorthbound #NorthboundSoftware #AgenticAI #SoftwareDevelopmentAgency
+
 2. Traditional agencies quote 90 days because they don't know which 30 days of the 90 are actually the work. The other 60 are scope discovery, rework, and coordination tax. We removed that tax by removing the guesswork it was paying for.
 
 The mechanism is an agent loop with three stages:

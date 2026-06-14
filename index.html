@@ -67,7 +67,7 @@
           "@type": "Offer",
           "name": "Spark Package",
           "description": "Clean coded website — live on your domain. Ships in 3 days.",
-          "price": "1200",
+          "price": "1710",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -76,7 +76,7 @@
           "@type": "Offer",
           "name": "Launch Package",
           "description": "Custom-designed marketing site — deployed, fast, and SEO-ready. Ships in 7 days.",
-          "price": "2500",
+          "price": "3204",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -84,7 +84,7 @@
         {
           "@type": "Offer",
           "name": "Build Package",
-          "description": "Full web or mobile MVP — app, backend, auth, payments. Ships in 30 days.",
+          "description": "Full web or mobile app — app, backend, auth, payments. Ships in 30 days.",
           "price": "10000",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
@@ -94,7 +94,7 @@
           "@type": "Offer",
           "name": "Augment Package",
           "description": "AI feature added to your existing product — chat, search, summarization, or agents. Ships in 14 days.",
-          "price": "6500",
+          "price": "6696",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -103,7 +103,7 @@
           "@type": "Offer",
           "name": "Pulse — Social Media Management",
           "description": "Monthly social media management — content writing, branded graphics, scheduling, and posting. Cancel anytime.",
-          "price": "699",
+          "price": "792",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -120,7 +120,7 @@
         "name": "How long does a build actually take?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile MVP) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount."
+          "text": "Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount."
         }
       },
       {
@@ -136,7 +136,7 @@
         "name": "Can you add AI features to something we already have?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — that's the Augment package ($6,500 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff."
+          "text": "Yes — that's the Augment package ($6,696 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff."
         }
       },
       {
@@ -160,7 +160,7 @@
         "name": "What is Pulse and how does social media management work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pulse is a $699 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time."
+          "text": "Pulse is a $792 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time."
         }
       },
       {
@@ -179,124 +179,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="styles.css">
 <style>
-:root{
-  --paper:#EEF0EC;
-  --paper-raise:#F7F8F5;
-  --ink:#14181F;
-  --ink-soft:#4A5160;
-  --cobalt:#2546F0;
-  --cobalt-deep:#1B34B8;
-  --hazard:#FFC629;
-  --line:2px solid var(--ink);
-  --font-display:'Anton', sans-serif;
-  --font-body:'Archivo', sans-serif;
-  --font-mono:'IBM Plex Mono', monospace;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--font-body);
-  font-size:17px;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-::selection{background:var(--hazard);color:var(--ink)}
-a{color:inherit}
-img{max-width:100%}
-
 /* ---------- utility ---------- */
 .mono{font-family:var(--font-mono)}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
-.eyebrow{
-  font-family:var(--font-mono);
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-}
-.eyebrow::before{
-  content:"";
-  width:28px;height:10px;
-  background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px);
-}
-
-/* barcode decoration */
-.barcode{
-  height:34px;
-  background:
-    repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px),
-    repeating-linear-gradient(90deg,var(--ink) 0 4px,transparent 4px 11px);
-  background-blend-mode:multiply;
-}
-
-/* ---------- header ---------- */
-header{
-  position:sticky;top:0;z-index:50;
-  background:var(--paper);
-  border-bottom:var(--line);
-}
-.nav{
-  display:flex;align-items:stretch;justify-content:space-between;
-  height:64px;
-}
-.brand{
-  font-family:var(--font-display);
-  font-size:22px;
-  letter-spacing:.04em;
-  display:flex;align-items:center;gap:12px;
-  text-decoration:none;
-}
-.brand .dot{
-  width:14px;height:14px;background:var(--cobalt);
-  clip-path:polygon(50% 0,100% 100%,0 100%);
-}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{
-  text-decoration:none;font-weight:600;font-size:14px;
-  letter-spacing:.02em;
-  border-bottom:2px solid transparent;
-  padding:4px 0;
-}
-.nav-links a:hover,.nav-links a:focus-visible{border-bottom-color:var(--cobalt)}
-.nav-cta{
-  display:flex;align-items:center;
-  background:var(--ink);color:var(--paper);
-  font-family:var(--font-mono);font-size:13px;font-weight:600;
-  letter-spacing:.06em;text-transform:uppercase;
-  padding:0 22px;margin:-1px -24px -1px 0;
-  text-decoration:none;
-  transition:background .15s ease;
-}
-.nav-cta:hover,.nav-cta:focus-visible{background:var(--cobalt)}
-@media(max-width:760px){
-  .nav-links{display:none}
-  .nav-cta{margin-right:-24px}
-}
-
-/* ---------- ticker ---------- */
-.ticker{
-  border-bottom:var(--line);
-  background:var(--hazard);
-  overflow:hidden;
-  white-space:nowrap;
-}
-.ticker-track{
-  display:inline-flex;
-  animation:ticker 28s linear infinite;
-}
-.ticker span{
-  font-family:var(--font-mono);
-  font-size:12px;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:9px 0 9px 36px;
-}
-.ticker span::after{content:"▲";margin-left:36px;font-size:9px}
-@keyframes ticker{to{transform:translateX(-50%)}}
 
 /* ---------- hero ---------- */
 .hero{
@@ -310,7 +196,7 @@ header{
 .hero-grid{
   display:grid;
   grid-template-columns:1.15fr .85fr;
-  min-height:54vh;
+  min-height:72vh;
 }
 .hero-left{
   padding:48px 48px 40px 24px;
@@ -342,22 +228,8 @@ header{
   display:flex;gap:16px;flex-wrap:wrap;
   opacity:0;animation:rise .6s ease .68s forwards;
 }
-.btn{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--font-mono);font-size:14px;font-weight:600;
-  letter-spacing:.06em;text-transform:uppercase;
-  text-decoration:none;
-  padding:16px 26px;
-  border:var(--line);
-  transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
-  box-shadow:4px 4px 0 var(--ink);
-  background:var(--paper-raise);
-}
-.btn:hover,.btn:focus-visible{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.btn-primary{background:var(--cobalt);color:#fff;border-color:var(--ink);animation:cta-pulse 9s ease-in-out infinite;}
-.btn-primary:hover{background:var(--cobalt-deep)}
-
+/* index btn-primary override */
+.btn-primary{border-color:var(--ink);animation:cta-pulse 9s ease-in-out infinite;}
 @keyframes cta-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
 
 /* rotating stamp — wrapper handles float, svg handles spin so transforms don't conflict */
@@ -418,14 +290,20 @@ header{
 @keyframes blink{50%{opacity:.25}}
 .term-body{
   flex:1;
-  padding:22px 22px 26px;
+  min-height:0;
+  position:relative;
+  overflow:hidden;
+}
+#term{
+  position:absolute;
+  bottom:26px;
+  left:22px;
+  right:22px;
   font-family:var(--font-mono);
   font-size:13.5px;
   line-height:1.75;
-  overflow:hidden;
-  display:flex;flex-direction:column;justify-content:flex-end;
 }
-.term-line{white-space:pre-wrap;word-break:break-word;min-height:1.75em}
+.term-line{white-space:pre-wrap;word-break:break-word;}
 .t-thought{color:#9AA4BC}
 .t-thought b{color:#C9D2E6;font-weight:600}
 .t-action{color:var(--hazard)}
@@ -446,7 +324,7 @@ header{
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .hero-left{padding:56px 24px 40px}
-  .hero-right{border-left:none;border-top:var(--line)}
+  .hero-right{border-left:none;border-top:var(--line);height:65vh;overflow:hidden}
 }
 
 /* ---------- section shells ---------- */
@@ -736,10 +614,22 @@ section{border-bottom:var(--line)}
 .proof-list .mono{font-size:11px;color:var(--ink-soft);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;transition:transform .18s ease}
 @media(max-width:900px){.receipts{grid-template-columns:1fr}}
 
+/* ---------- dock + footer 100vh wrapper ---------- */
+.exit-section{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
 /* ---------- final CTA ---------- */
 .dock{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:96px 24px 104px;
+  padding:40px 24px 28px;
   position:relative;
   background:
     radial-gradient(circle at 12% 18%, rgba(37,70,240,.10), transparent 36%),
@@ -749,33 +639,33 @@ section{border-bottom:var(--line)}
 .dock .eyebrow{justify-content:center}
 .dock h2{
   font-family:var(--font-display);
-  font-size:clamp(52px,7.5vw,108px);
+  font-size:clamp(38px,5.2vw,80px);
   text-transform:uppercase;
   line-height:.95;
-  margin:18px 0 22px;
+  margin:14px 0 14px;
 }
 .dock h2 em{font-style:normal;color:var(--cobalt)}
-.dock p{max-width:52ch;margin:0 auto 36px;color:var(--ink-soft);font-size:18px}
+.dock p{max-width:52ch;margin:0 auto 0;color:var(--ink-soft);font-size:16px}
 .contact-form{
   display:grid;
-  gap:16px;
-  max-width:640px;
-  margin:32px auto 0;
-  padding:28px;
-  border-radius:24px;
+  gap:12px;
+  max-width:600px;
+  width:100%;
+  margin:18px auto 0;
+  padding:22px;
+  border-radius:20px;
   background:rgba(255,255,255,.96);
   border:1px solid #D8DBD7;
-  box-shadow:0 24px 50px rgba(20,24,31,.08);
+  box-shadow:0 16px 40px rgba(20,24,31,.08);
 }
-@media(max-width:760px){.contact-form{padding:22px;}}
 .contact-field{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:7px;
 }
 .contact-field label{
   font-family:var(--font-mono);
-  font-size:11px;
+  font-size:10px;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--ink-soft);
@@ -784,22 +674,22 @@ section{border-bottom:var(--line)}
 .contact-field textarea{
   width:100%;
   border:1px solid #C6CAC2;
-  border-radius:14px;
+  border-radius:10px;
   background:var(--paper);
   color:var(--ink);
-  padding:16px 18px;
+  padding:11px 14px;
   font-family:var(--font-body);
-  font-size:15px;
+  font-size:14px;
 }
-.contact-field textarea{min-height:140px;resize:vertical}
+.contact-field textarea{min-height:72px;resize:vertical}
 .form-submit{justify-self:start}
 .form-note{
-  margin-top:24px;
-  padding-top:18px;
+  margin-top:12px;
+  padding-top:12px;
   border-top:1px solid #E3E5E1;
   text-align:center;
   color:var(--ink-soft);
-  font-size:14px;
+  font-size:13px;
 }
 .form-note a{color:var(--cobalt);text-decoration:none}
 .form-note a:hover{color:var(--cobalt-deep)}
@@ -833,6 +723,106 @@ section{border-bottom:var(--line)}
 .compare-table-wrap,
 .sec-head{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal-visible{opacity:1;transform:translateY(0);}
+
+/* ---------- footer ---------- */
+footer{
+  background:var(--ink);
+  color:var(--paper);
+  border-top:none;
+  padding:0;
+}
+.foot-inner{
+  border-bottom:1px solid #2A3140;
+}
+.foot-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1.6fr;
+  gap:0;
+  padding:36px 0 32px;
+}
+.foot-brand{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding-right:36px;
+  border-right:1px solid #2A3140;
+}
+.foot-logo{
+  font-family:var(--font-display);
+  font-size:20px;
+  letter-spacing:.06em;
+  color:var(--paper);
+  display:flex;align-items:center;gap:4px;
+}
+.foot-logo .dot{color:var(--cobalt)}
+.foot-tagline{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#8B93A5;
+  margin-top:2px;
+}
+.foot-loc{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#5D6577;
+}
+.foot-col{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  padding-left:32px;
+}
+.foot-col+.foot-col{
+  border-left:1px solid #2A3140;
+}
+.foot-col-label{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#5D6577;
+  margin-bottom:3px;
+}
+.foot-col a{
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  letter-spacing:.04em;
+  text-decoration:none;
+  color:#8B93A5;
+  transition:color .14s ease;
+}
+.foot-col a:hover{color:var(--paper)}
+.foot-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 0;
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#5D6577;
+}
+.foot-bottom-badge{
+  background:var(--cobalt);
+  color:#fff;
+  padding:2px 8px;
+  font-size:10px;
+  letter-spacing:.1em;
+}
+@media(max-width:760px){
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .foot-brand{grid-column:1/-1;border-right:none;border-bottom:1px solid #2A3140;padding-right:0;padding-bottom:24px;margin-bottom:4px;}
+  .foot-col:first-of-type{padding-left:0;border-left:none;}
+}
+@media(max-width:480px){
+  .foot-grid{grid-template-columns:1fr;}
+  .foot-col{padding-left:0;border-left:none;border-top:1px solid #2A3140;padding-top:20px;}
+}
 
 /* ---------- stats strip ---------- */
 .stats-strip{border-bottom:var(--line);background:var(--hazard);}
@@ -935,9 +925,6 @@ section{border-bottom:var(--line)}
   .fa-label{border-right:none;border-bottom:var(--line);}
 }
 
-/* ---------- nav entrance ---------- */
-header{animation:nav-enter .55s cubic-bezier(.2,.8,.2,1) both}
-@keyframes nav-enter{from{transform:translateY(-100%)}to{transform:translateY(0)}}
 
 /* ---------- sec-title underline draw ---------- */
 .sec-title{display:inline-block;position:relative;}
@@ -975,22 +962,6 @@ header{animation:nav-enter .55s cubic-bezier(.2,.8,.2,1) both}
 }
 .featured-article.reveal-visible{opacity:1;transform:none;}
 
-/* ---------- button shimmer ---------- */
-.btn-primary{position:relative;overflow:hidden;}
-.btn-primary::before{
-  content:'';
-  position:absolute;
-  top:-60%;left:-80%;
-  width:55%;height:220%;
-  background:rgba(255,255,255,.16);
-  transform:skewX(-22deg);
-  animation:btn-shine 4s ease-in-out 1.4s infinite;
-  pointer-events:none;
-}
-@keyframes btn-shine{
-  0%,100%{left:-80%}
-  45%,55%{left:160%}
-}
 
 /* ---------- barcode scan ---------- */
 .barcode{position:relative;overflow:hidden;}
@@ -1004,42 +975,6 @@ header{animation:nav-enter .55s cubic-bezier(.2,.8,.2,1) both}
 }
 @keyframes barcode-scan{0%,100%{left:-50%}50%{left:120%}}
 
-/* ---------- mobile nav ---------- */
-.nav-burger{
-  display:none;
-  background:none;
-  border:none;
-  border-left:var(--line);
-  cursor:pointer;
-  padding:0 18px;
-  color:var(--ink);
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-}
-@media(max-width:760px){.nav-burger{display:flex;}}
-.mobile-nav{
-  display:none;
-  flex-direction:column;
-  position:sticky;
-  top:64px;
-  z-index:49;
-  background:var(--paper);
-  border-bottom:var(--line);
-  animation:nav-enter .25s ease both;
-}
-.mobile-nav.open{display:flex;}
-.mobile-nav a{
-  padding:16px 24px;
-  border-bottom:1px solid #D8DACD;
-  font-family:var(--font-mono);font-size:13px;
-  letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;font-weight:600;
-  transition:background .12s ease,padding-left .12s ease;
-}
-.mobile-nav a:hover{background:var(--paper-raise);padding-left:32px;}
-.mobile-nav-cta{background:var(--ink);color:var(--paper);}
-.mobile-nav-cta:hover{background:var(--cobalt) !important;padding-left:24px !important;}
 
 /* ---------- additional responsive ---------- */
 @media(max-width:480px){
@@ -1158,9 +1093,35 @@ header{animation:nav-enter .55s cubic-bezier(.2,.8,.2,1) both}
 }
 .compare-table tbody tr{border-bottom:1px solid #E0E3DB;}
 .compare-table tbody tr:last-child{border-bottom:none;}
+/* compare accordion — mobile only */
+.compare-accordion{display:none;margin-bottom:72px;}
+.ca-item{border:var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+.ca-hdr{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;
+  align-items:start;gap:12px;padding:16px;
+  background:var(--paper-raise);border:none;cursor:pointer;
+  text-align:left;font-family:inherit;font-size:inherit;
+}
+.ca-hdr:active{background:#e9eae5;}
+.ca-label{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;padding-top:3px;
+}
+.ca-nb{font-size:15px;font-weight:600;color:var(--ink);}
+.ca-toggle{font-size:11px;color:var(--ink-soft);transition:transform .2s;padding-top:3px;flex-shrink:0;}
+.ca-item.ca-open .ca-toggle{transform:rotate(180deg);}
+.ca-body{border-top:var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:12px;}
+.ca-body[hidden]{display:none;}
+.ca-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.ca-competitor{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-soft);flex-shrink:0;padding-top:2px;
+}
+.ca-val{font-size:14px;font-weight:500;text-align:right;}
 @media(max-width:700px){
-  .compare-table{min-width:580px;}
-  .compare-table-wrap{-webkit-overflow-scrolling:touch;}
+  .compare-table-wrap{border:none;overflow:visible;margin-bottom:0;}
+  .compare-table{display:none;}
+  .compare-accordion{display:block;}
 }
 
 /* ---------- faq ---------- */
@@ -1248,32 +1209,11 @@ header{animation:nav-enter .55s cubic-bezier(.2,.8,.2,1) both}
 .fa-label-title{transition:letter-spacing .25s ease;}
 .featured-article:hover .fa-label-title{letter-spacing:.02em;}
 
-/* Ticker — pause on hover */
-.ticker:hover .ticker-track{animation-play-state:paused;}
 
 /* Stamp — speed up on hover */
 .stamp-wrap:hover .stamp{animation-duration:3s;}
 
-/* ---------- footer ---------- */
-footer{
-  border-top:var(--line);
-  padding:28px 0 36px;
-}
-.foot{
-  display:flex;justify-content:space-between;align-items:center;gap:20px;
-  flex-wrap:wrap;
-  font-family:var(--font-mono);font-size:12px;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);
-}
-.foot-links{display:flex;gap:24px;flex-wrap:wrap;}
-.foot a{text-decoration:none;transition:color .15s ease;}
-.foot a:hover{color:var(--cobalt)}
-@media(max-width:600px){
-  .foot{flex-direction:column;align-items:flex-start;gap:12px;}
-}
-
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+@media(prefers-reduced-motion:reduce){
   .hero-h1 .row,.hero-sub,.hero-actions,.hero-left .eyebrow{opacity:1}
   .stamp-wrap{opacity:1}
 }
@@ -1354,7 +1294,7 @@ footer{
         <span>agent — build loop</span>
         <span class="live">Live</span>
       </div>
-      <div class="term-body" id="term"></div>
+      <div class="term-body"><div id="term"></div></div>
       <div class="term-foot">This is how we actually work. Reasoning loop, human review, ship.</div>
     </div>
   </div>
@@ -1438,7 +1378,7 @@ footer{
             </ul>
           </div>
         </div>
-        <div class="card-price">$1,200 <small>CAD · Fixed</small></div>
+        <div class="card-price">$1,710 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
         <a class="btn card-cta" href="#contact">Start Spark</a>
       </article>
@@ -1480,7 +1420,7 @@ footer{
             </ul>
           </div>
         </div>
-        <div class="card-price">$2,500 <small>CAD · Fixed</small></div>
+        <div class="card-price">$3,204 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
         <a class="btn card-cta" href="#contact">Start Launch</a>
       </article>
@@ -1489,7 +1429,7 @@ footer{
         <div class="card-top"><span>WAYBILL № NB-003</span><span class="pop">MOST BOOKED</span></div>
         <div class="card-main">
           <h3>Build</h3>
-          <div class="card-when">Web or mobile MVP · shipped in 30 days</div>
+          <div class="card-when">Full web or mobile app · shipped in 30 days</div>
           <ul>
             <li class="feat-item">
               <button class="feat-toggle" aria-expanded="false">Full product: app, backend, auth, payments<span class="feat-arrow" aria-hidden="true">+</span></button>
@@ -1556,7 +1496,7 @@ footer{
             </ul>
           </div>
         </div>
-        <div class="card-price">$6,500 <small>CAD · Fixed</small></div>
+        <div class="card-price">$6,696 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
         <a class="btn card-cta" href="#contact">Start Augment</a>
       </article>
@@ -1588,7 +1528,7 @@ footer{
         </div>
         <div class="sub-price-col">
           <div>
-            <div class="sub-price">$699 <small>CAD / month</small></div>
+            <div class="sub-price">$792 <small>CAD / month</small></div>
             <div class="sub-cancel">Cancel anytime</div>
           </div>
           <a class="btn" href="#contact">Start Pulse</a>
@@ -1709,7 +1649,7 @@ footer{
     <dl class="faq-list">
       <div class="faq-item">
         <dt class="faq-q">How long does a build actually take?</dt>
-        <dd class="faq-a">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile MVP) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount.</dd>
+        <dd class="faq-a">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q">What does fixed-price actually mean?</dt>
@@ -1717,7 +1657,7 @@ footer{
       </div>
       <div class="faq-item">
         <dt class="faq-q">Can you add AI features to something we already have?</dt>
-        <dd class="faq-a">Yes — that's the Augment package ($6,500 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.</dd>
+        <dd class="faq-a">Yes — that's the Augment package ($6,696 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q">What is AI-native development and why does it matter?</dt>
@@ -1729,7 +1669,7 @@ footer{
       </div>
       <div class="faq-item">
         <dt class="faq-q">What is Pulse and how does social media management work?</dt>
-        <dd class="faq-a">Pulse is a $699 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we'll align on your channels, voice, and content mix before the first post goes out.</dd>
+        <dd class="faq-a">Pulse is a $792 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we'll align on your channels, voice, and content mix before the first post goes out.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q">Where are you based, and do you work with teams outside Toronto?</dt>
@@ -1738,11 +1678,13 @@ footer{
     </dl>
   </div>
 </section>
+</main>
 
+<div class="exit-section">
 <section class="dock" id="contact">
   <span class="eyebrow">Next departure: this month</span>
   <h2>Your product,<br><em>on the dock</em>.</h2>
-  <p>Twenty minutes. You bring the idea, we bring the manifest. By the end of the call you'll know the scope, the price, and the ship date — whether you book us or not.</p>
+  <p>Twenty minutes. You bring the idea, we bring the manifest. By the end of the call you'll know the scope, the price, and the ship date.</p>
   <form class="contact-form" id="contact-form">
     <div class="contact-field">
       <label for="name">Your name</label>
@@ -1760,19 +1702,36 @@ footer{
   </form>
   <p class="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></p>
 </section>
-</main>
 
 <footer>
-  <div class="wrap foot">
-    <span>© 2026 Northbound Studio · Toronto, CA</span>
-    <span class="foot-links">
-      <a href="blog.html">Writing</a>
-      <a href="#faq">FAQ</a>
-      <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>
-    </span>
-    <span>NB-MANIFEST-2026</span>
+  <div class="foot-inner">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <span class="foot-logo">NORTHBOUND<span class="dot"> ▲</span></span>
+        <span class="foot-tagline">AI-native software studio</span>
+        <span class="foot-loc">YYZ · Toronto, Canada</span>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-label">Navigate</span>
+        <a href="#process">How we ship</a>
+        <a href="#packages">Packages</a>
+        <a href="#faq">FAQ</a>
+        <a href="blog.html">Writing</a>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-label">Say hello</span>
+        <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>
+        <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a scope call →</a>
+        <a href="#contact">Get a quote</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Northbound Studio</span>
+    <span class="foot-bottom-badge">NB-MANIFEST-2026</span>
   </div>
 </footer>
+</div>
 
 <script>
 (function(){
@@ -1875,7 +1834,7 @@ footer{
   ];
   var scenarioIdx = 0;
   var script = scenarios[scenarioIdx];
-  var MAXLINES = 9;
+  var MAXLINES = 60;
 
   function typeLine(item, done){
     var line = document.createElement('div');
@@ -1902,7 +1861,6 @@ footer{
   function run(idx){
     if(idx >= script.length){
       setTimeout(function(){
-        // brief pause, then loop with a divider
         var div = document.createElement('div');
         div.className = 'term-line t-thought';
         div.textContent = '— next shipment —';
@@ -2096,6 +2054,83 @@ document.querySelectorAll('.card-cta').forEach(function(a){
       form.appendChild(p);
     }
   });
+})();
+</script>
+<script>
+/* compare table → accordion on mobile */
+(function(){
+  var table = document.querySelector('.compare-table');
+  if(!table) return;
+  var wrap = table.closest('.compare-table-wrap');
+
+  var ths = table.querySelectorAll('thead th');
+  var cols = [];
+  ths.forEach(function(th, i){
+    if(i === 0) return;
+    var brand = th.querySelector('.compare-brand,.compare-brand-soft');
+    cols.push(brand ? brand.textContent.trim() : '');
+  });
+
+  var acc = document.createElement('div');
+  acc.className = 'compare-accordion';
+
+  function winClass(cell){
+    var c = cell.className;
+    return c.indexOf('compare-win') > -1 ? 'compare-win'
+         : c.indexOf('compare-lose') > -1 ? 'compare-lose'
+         : 'compare-neutral';
+  }
+
+  table.querySelectorAll('tbody tr').forEach(function(row, idx){
+    var cells = row.querySelectorAll('td');
+    var label = cells[0].textContent.trim();
+    var nbCell = cells[1];
+
+    var item = document.createElement('div');
+    item.className = 'ca-item' + (idx === 0 ? ' ca-open' : '');
+
+    var hdr = document.createElement('button');
+    hdr.className = 'ca-hdr';
+    hdr.setAttribute('type','button');
+    hdr.setAttribute('aria-expanded', idx === 0 ? 'true' : 'false');
+    hdr.innerHTML =
+      '<span class="ca-label">' + label + '</span>' +
+      '<span class="ca-nb ' + winClass(nbCell) + '">' + nbCell.innerHTML + '</span>' +
+      '<span class="ca-toggle" aria-hidden="true">▾</span>';
+
+    var body = document.createElement('div');
+    body.className = 'ca-body';
+    if(idx !== 0) body.setAttribute('hidden','');
+
+    for(var i = 2; i < cells.length; i++){
+      var div = document.createElement('div');
+      div.className = 'ca-row';
+      div.innerHTML =
+        '<span class="ca-competitor">' + cols[i - 1] + '</span>' +
+        '<span class="ca-val ' + winClass(cells[i]) + '">' + cells[i].innerHTML + '</span>';
+      body.appendChild(div);
+    }
+
+    hdr.addEventListener('click', function(){
+      var isOpen = item.classList.contains('ca-open');
+      acc.querySelectorAll('.ca-item').forEach(function(it){
+        it.classList.remove('ca-open');
+        it.querySelector('.ca-hdr').setAttribute('aria-expanded','false');
+        it.querySelector('.ca-body').setAttribute('hidden','');
+      });
+      if(!isOpen){
+        item.classList.add('ca-open');
+        hdr.setAttribute('aria-expanded','true');
+        body.removeAttribute('hidden');
+      }
+    });
+
+    item.appendChild(hdr);
+    item.appendChild(body);
+    acc.appendChild(item);
+  });
+
+  wrap.appendChild(acc);
 })();
 </script>
 </body>
