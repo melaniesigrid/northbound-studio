@@ -30,7 +30,7 @@ header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:va
 .brand{font-family:var(--font-display);font-size:22px;letter-spacing:.04em;display:flex;align-items:center;gap:12px;text-decoration:none;}
 .brand .dot{width:14px;height:14px;background:var(--cobalt);clip-path:polygon(50% 0,100% 100%,0 100%);}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.02em;border-bottom:2px solid transparent;padding:4px 0;transition:border-color .15s ease;}
+.nav-links a{text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.02em;border-bottom:2px solid transparent;padding:12px 0;transition:border-color .15s ease;}
 .nav-links a:hover,.nav-links a[aria-current],.nav-links a:focus-visible{border-bottom-color:var(--cobalt)}
 .nav-cta{display:flex;align-items:center;background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:0 22px;margin:-1px -24px -1px 0;text-decoration:none;transition:background .15s ease;}
 .nav-cta:hover,.nav-cta:focus-visible{background:var(--cobalt)}
