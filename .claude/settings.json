@@ -7,7 +7,10 @@
       "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse js *)",
       "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse reload *)",
       "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse viewport *)",
-      "Bash(~/.claude/skills/gstack/bin/gstack-timeline-log '{\"skill\":\"browse\",\"event\":\"completed\",\"branch\":\"main\",\"outcome\":\"success\",\"session\":\"verify-browse\"}')"
+      "Bash(~/.claude/skills/gstack/bin/gstack-timeline-log '{\"skill\":\"browse\",\"event\":\"completed\",\"branch\":\"main\",\"outcome\":\"success\",\"session\":\"verify-browse\"}')",
+      "Bash(git -C /Users/melaniesigrid/Desktop/aiprojects/northboundStudio status --short)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse snapshot *)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse click *)"
     ],
     "additionalDirectories": [
       "/Users/melaniesigrid/.gstack/projects/melaniesigrid-northbound-studio/designs/full-landing-page-20260616"

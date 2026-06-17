@@ -1553,6 +1553,41 @@ footer{
   .stamp-wrap{opacity:1}
 }
 
+/* ---------- lang toggle ---------- */
+.lang-segmented{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex-shrink:0;
+}
+.lang-sep{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--ink);
+  opacity:.3;
+  pointer-events:none;
+  user-select:none;
+  line-height:1;
+}
+.lang-opt{
+  font-family:var(--font-mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  background:none;
+  border:none;
+  padding:4px 2px;
+  min-height:44px;
+  cursor:pointer;
+  color:var(--ink);
+  opacity:.35;
+  transition:opacity .15s ease;
+  line-height:1;
+}
+.lang-opt[aria-pressed="true"]{opacity:1;}
+.lang-opt:hover:not([aria-pressed="true"]){opacity:.65;}
+
 /* ---------- hairies roster ---------- */
 #hairies-roster{background:var(--paper-raise);position:relative;overflow:hidden;}
 #hairies-roster::before{
@@ -1579,49 +1614,7 @@ footer{
   font-style:italic;
 }
 .hairies-origin strong{font-style:normal;color:var(--ink);}
-.hairy-roster-grid{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  border:var(--line);
-  border-right:none;
-  margin-bottom:80px;
-}
-.hairy-card{
-  border-right:var(--line);
-  background:var(--paper);
-  display:flex;flex-direction:column;align-items:center;
-  text-align:center;
-  padding:32px 16px 26px;
-  transition:background .18s ease;
-}
-.hairy-card:hover{background:rgba(37,70,240,.04);}
-.hairy-img{
-  width:140px;height:140px;
-  object-fit:contain;
-  margin-bottom:18px;
-  transition:transform .28s cubic-bezier(.2,.8,.2,1);
-  display:block;
-}
-.hairy-card:hover .hairy-img{transform:translateY(-10px) scale(1.07);}
-.hairy-name{
-  font-family:var(--font-display);
-  font-size:20px;text-transform:uppercase;
-  letter-spacing:.04em;line-height:1;
-  margin-bottom:8px;
-}
-.hairy-role{
-  font-family:var(--font-mono);font-size:10.5px;
-  letter-spacing:.06em;text-transform:uppercase;
-  color:var(--ink-soft);line-height:1.6;
-}
-@media(max-width:1080px){
-  .hairy-roster-grid{grid-template-columns:repeat(3,1fr);}
-  .hairy-roster-grid .hairy-card:nth-child(3n){border-right:none;}
-}
 @media(max-width:560px){
-  .hairy-roster-grid{grid-template-columns:repeat(2,1fr);}
-  .hairy-roster-grid .hairy-card:nth-child(2n){border-right:none;}
-  .hairy-roster-grid .hairy-card:nth-child(2n+1){border-right:var(--line);}
   .hairies-origin{padding:20px 22px;font-size:15px;}
 }
 
@@ -1658,23 +1651,28 @@ footer{
   <div class="wrap nav">
     <a class="brand" href="#top">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
     <ul class="nav-links">
-      <li><a href="#process">How we ship</a></li>
-      <li><a href="#packages">Packages</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="blog.html">Writing</a></li>
+      <li><a href="#process" data-i18n="nav-process">How we ship</a></li>
+      <li><a href="#packages" data-i18n="nav-packages">Packages</a></li>
+      <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
+      <li><a href="blog.html" data-i18n="nav-writing">Writing</a></li>
     </ul>
-    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <div class="lang-segmented" id="lang-toggle" role="group" aria-label="Language selection">
+      <button class="lang-opt" data-lang="en" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <button class="lang-opt" data-lang="fr" aria-pressed="false">FR</button>
+    </div>
+    <button class="nav-burger" id="nav-burger" data-i18n-aria="nav-burger-aria" aria-label="Open menu" aria-expanded="false">
       <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
     </button>
-    <a class="nav-cta" href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a call</a>
+    <a class="nav-cta" href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener" data-i18n="nav-cta">Book a call</a>
   </div>
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
-  <a href="#process">How we ship</a>
-  <a href="#packages">Packages</a>
-  <a href="#faq">FAQ</a>
-  <a href="blog.html">Writing</a>
-  <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener" class="mobile-nav-cta">Book a call →</a>
+  <a href="#process" data-i18n="nav-process">How we ship</a>
+  <a href="#packages" data-i18n="nav-packages">Packages</a>
+  <a href="#faq" data-i18n="nav-faq">FAQ</a>
+  <a href="blog.html" data-i18n="nav-writing">Writing</a>
+  <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener" class="mobile-nav-cta" data-i18n="nav-cta-mobile">Book a call →</a>
 </nav>
 
 <div class="ticker" aria-hidden="true">
@@ -1688,21 +1686,21 @@ footer{
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-left">
-      <span class="eyebrow">AI-native software development studio · Toronto 🍁</span>
+      <span class="eyebrow" data-i18n="hero-eyebrow">AI-native software development studio · Toronto 🍁</span>
       <div class="hero-pills">
         <span class="pill-badge">YYZ · Toronto</span>
-        <span class="pill-badge" style="color:var(--cobalt);border-color:var(--cobalt)">Woman-owned</span>
+        <span class="pill-badge" style="color:var(--cobalt);border-color:var(--cobalt)" data-i18n="hero-pill-woman">Woman-owned</span>
         <span class="pill-badge" style="background:var(--ink);color:var(--paper);border-color:var(--ink)">Est. 2026</span>
       </div>
       <h1 class="hero-h1">
-        <span class="row">We ship</span>
-        <span class="row">software.</span>
-        <span class="row">Fast.</span>
+        <span class="row" data-i18n="hero-h1-r1">We ship</span>
+        <span class="row" data-i18n="hero-h1-r2">software.</span>
+        <span class="row" data-i18n="hero-h1-r3">Fast.</span>
       </h1>
-      <p class="hero-sub">Northbound builds web, mobile, and AI-enabled products with agent-driven speed and senior craftsmanship. Fixed scope, fixed price, fixed timeline — no hourly meters, no surprise invoices. <strong>Founded by a senior engineer and AI practitioner based in Toronto.</strong></p>
+      <p class="hero-sub" data-i18n-html="hero-sub">Northbound builds web, mobile, and AI-enabled products with agent-driven speed and senior craftsmanship. Fixed scope, fixed price, fixed timeline — no hourly meters, no surprise invoices. <strong>Founded by a senior engineer and AI practitioner based in Toronto.</strong></p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#packages">See the packages →</a>
-        <a class="btn" href="#contact">Book a scope call →</a>
+        <a class="btn btn-primary" href="#packages" data-i18n="hero-cta-1">See the packages →</a>
+        <a class="btn" href="#contact" data-i18n="hero-cta-2">Book a scope call →</a>
       </div>
       <div class="stamp-wrap" id="stamp-wrap">
         <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
@@ -1720,48 +1718,48 @@ footer{
 
     <div class="hero-right" aria-label="Live demonstration of our AI agent workflow">
       <div class="term-bar">
-        <span>agent — build loop</span>
-        <span class="live">Live</span>
+        <span data-i18n="term-bar-left">agent — build loop</span>
+        <span class="live" data-i18n="term-bar-live">Live</span>
       </div>
       <div class="term-body"><div id="term"></div></div>
-      <div class="term-foot">This is how we actually work. Reasoning loop, human review, ship.</div>
+      <div class="term-foot" data-i18n="term-foot">This is how we actually work. Reasoning loop, human review, ship.</div>
     </div>
   </div>
 </section>
 
 <div class="stats-strip" aria-hidden="true">
   <div class="wrap stats-grid">
-    <div class="stat-item"><span class="stat-n" data-count="3">3</span><span class="stat-l">Day spark sprint</span></div>
-    <div class="stat-item"><span class="stat-n" data-count="100" data-suffix="%">100%</span><span class="stat-l">Fixed-price guarantee</span></div>
-    <div class="stat-item"><span class="stat-n" data-count="30" data-prefix="≤">≤30</span><span class="stat-l">Days to launch</span></div>
-    <div class="stat-item"><span class="stat-n" data-count="0" data-from="99" data-prefix="$">$0</span><span class="stat-l">Surprise invoices</span></div>
+    <div class="stat-item"><span class="stat-n" data-count="3">3</span><span class="stat-l" data-i18n="stat-l-1">Day spark sprint</span></div>
+    <div class="stat-item"><span class="stat-n" data-count="100" data-suffix="%">100%</span><span class="stat-l" data-i18n="stat-l-2">Fixed-price guarantee</span></div>
+    <div class="stat-item"><span class="stat-n" data-count="30" data-prefix="≤">≤30</span><span class="stat-l" data-i18n="stat-l-3">Days to launch</span></div>
+    <div class="stat-item"><span class="stat-n" data-count="0" data-from="99" data-prefix="$">$0</span><span class="stat-l" data-i18n="stat-l-4">Surprise invoices</span></div>
   </div>
 </div>
 
 <section id="process">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">How we build & ship software</h2>
-      <p class="sec-note">Agents handle the repetitive 70%. A senior developer designs, reviews, and signs every line that goes out the door.</p>
+      <h2 class="sec-title" data-i18n="process-title">How we build & ship software</h2>
+      <p class="sec-note" data-i18n="process-note">Agents handle the repetitive 70%. A senior developer designs, reviews, and signs every line that goes out the door.</p>
     </div>
     <div class="steps">
       <article class="step">
-        <span class="step-num">STEP 01 / SCOPE</span>
-        <span class="tag">DAY 0–2</span>
-        <h3>Scope it like cargo</h3>
-        <p>One call. We write the manifest together: exactly what ships, exactly when, exactly what it costs. You sign off before anything is built.</p>
+        <span class="step-num" data-i18n="step-1-num">STEP 01 / SCOPE</span>
+        <span class="tag" data-i18n="step-1-tag">DAY 0–2</span>
+        <h3 data-i18n="step-1-h">Scope it like cargo</h3>
+        <p data-i18n="step-1-p">One call. We write the manifest together: exactly what ships, exactly when, exactly what it costs. You sign off before anything is built.</p>
       </article>
       <article class="step">
-        <span class="step-num">STEP 02 / BUILD</span>
-        <span class="tag">THE SPRINT</span>
-        <h3>Agents + a human</h3>
-        <p>We run structured agent loops — plan, act, verify — to move at multiples of traditional agency speed. Every output is reviewed by a senior dev before it counts.</p>
+        <span class="step-num" data-i18n="step-2-num">STEP 02 / BUILD</span>
+        <span class="tag" data-i18n="step-2-tag">THE SPRINT</span>
+        <h3 data-i18n="step-2-h">Agents + a human</h3>
+        <p data-i18n="step-2-p">We run structured agent loops — plan, act, verify — to move at multiples of traditional agency speed. Every output is reviewed by a senior dev before it counts.</p>
       </article>
       <article class="step">
-        <span class="step-num">STEP 03 / SHIP</span>
-        <span class="tag">ON THE DATE</span>
-        <h3>Delivered, not drifted</h3>
-        <p>You get a deployed product, the source code, and a handoff doc a non-developer can read. If we miss the date, you get a discount. We don't miss.</p>
+        <span class="step-num" data-i18n="step-3-num">STEP 03 / SHIP</span>
+        <span class="tag" data-i18n="step-3-tag">ON THE DATE</span>
+        <h3 data-i18n="step-3-h">Delivered, not drifted</h3>
+        <p data-i18n="step-3-p">You get a deployed product, the source code, and a handoff doc a non-developer can read. If we miss the date, you get a discount. We don't miss.</p>
       </article>
     </div>
   </div>
@@ -1770,212 +1768,212 @@ footer{
 <section id="packages">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">The Manifest</h2>
-      <p class="sec-note">Four packages. Productized, priced, and timed. Pick one, book a call, we scope it on day zero.</p>
+      <h2 class="sec-title" data-i18n="packages-title">The Manifest</h2>
+      <p class="sec-note" data-i18n="packages-note">Four packages. Productized, priced, and timed. Pick one, book a call, we scope it on day zero.</p>
     </div>
     <div class="manifest">
       <article class="card">
         <div class="card-top"><span>WAYBILL № NB-001</span><span>3 DAYS</span></div>
         <div class="card-main">
           <h3>Spark</h3>
-          <div class="card-when">Website on your domain · 3 days</div>
+          <div class="card-when" data-i18n="spark-when">Website on your domain · 3 days</div>
           <ul>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Clean coded website — no page builders<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Loads faster than template builders, no monthly tool subscriptions, and you own every line of code.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="spark-f1">Clean coded website — no page builders</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="spark-f1-body">Loads faster than template builders, no monthly tool subscriptions, and you own every line of code.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Copy support &amp; mobile-ready layout<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>We help write or sharpen the words that sell you. Works perfectly on phones, tablets, and desktops.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="spark-f2">Copy support &amp; mobile-ready layout</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="spark-f2-body">We help write or sharpen the words that sell you. Works perfectly on phones, tablets, and desktops.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Live on your domain, same week<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Your real domain, not a subdomain or free-tier link — live and shareable within 3 days of signing off.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="spark-f3">Live on your domain, same week</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="spark-f3-body">Your real domain, not a subdomain or free-tier link — live and shareable within 3 days of signing off.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">You own the code, forever<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>No lock-in. Move hosts, edit it yourself, or hire anyone to update it later — no permission needed.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="spark-f4">You own the code, forever</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="spark-f4-body">No lock-in. Move hosts, edit it yourself, or hire anyone to update it later — no permission needed.</div>
             </li>
           </ul>
           <div class="card-for">
-            <span class="card-for-label">Who you are</span>
+            <span class="card-for-label" data-i18n="card-for-label">Who you are</span>
             <ul class="card-for-body">
-              <li>A restaurant owner who needs a website before the weekend rush</li>
-              <li>A photographer launching a portfolio before a busy season</li>
-              <li>A freelancer going independent who needs a page today</li>
-              <li>A pop-up or market vendor who needs a link in bio</li>
+              <li data-i18n="spark-for-1">A restaurant owner who needs a website before the weekend rush</li>
+              <li data-i18n="spark-for-2">A photographer launching a portfolio before a busy season</li>
+              <li data-i18n="spark-for-3">A freelancer going independent who needs a page today</li>
+              <li data-i18n="spark-for-4">A pop-up or market vendor who needs a link in bio</li>
             </ul>
           </div>
         </div>
         <div class="card-price">$1,500 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact">Start Spark →</a>
+        <a class="btn card-cta" href="#contact" data-i18n="spark-cta">Start Spark →</a>
       </article>
 
       <article class="card">
         <div class="card-top"><span>WAYBILL № NB-002</span><span>7 DAYS</span></div>
         <div class="card-main">
           <h3>Launch</h3>
-          <div class="card-when">Custom site + corrections · 7 days</div>
+          <div class="card-when" data-i18n="launch-when">Custom site + corrections · 7 days</div>
           <ul>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Custom-designed marketing site<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Built around your brand and audience — not a template someone else is using on fifty other sites.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="launch-f1">Custom-designed marketing site</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="launch-f1-body">Built around your brand and audience — not a template someone else is using on fifty other sites.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Copy support &amp; conversion-focused layout<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Layout designed to turn visitors into leads, with messaging that speaks directly to your customer.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="launch-f2">Copy support &amp; conversion-focused layout</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="launch-f2-body">Layout designed to turn visitors into leads, with messaging that speaks directly to your customer.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Three rounds of corrections after delivery<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Not just a single draft sign-off. Three full rounds to get the wording, layout, and feel exactly right.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="launch-f3">Three rounds of corrections after delivery</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="launch-f3-body">Not just a single draft sign-off. Three full rounds to get the wording, layout, and feel exactly right.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Deployed, fast, and SEO-ready<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Hosted on a fast CDN, optimized for Core Web Vitals, and structured so Google can find and rank it.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="launch-f4">Deployed, fast, and SEO-ready</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="launch-f4-body">Hosted on a fast CDN, optimized for Core Web Vitals, and structured so Google can find and rank it.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">You own everything<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Code, domain connection, all content — completely yours, no ongoing fees to us.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="launch-f5">You own everything</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="launch-f5-body">Code, domain connection, all content — completely yours, no ongoing fees to us.</div>
             </li>
           </ul>
           <div class="card-for">
-            <span class="card-for-label">Who you are</span>
+            <span class="card-for-label" data-i18n="card-for-label">Who you are</span>
             <ul class="card-for-body">
-              <li>A startup heading into investor meetings who needs a credible site</li>
-              <li>A consultant branching out on their own who needs a brand that converts</li>
-              <li>A product team launching a campaign this week</li>
-              <li>A small business ready to upgrade from a DIY site to something polished</li>
+              <li data-i18n="launch-for-1">A startup heading into investor meetings who needs a credible site</li>
+              <li data-i18n="launch-for-2">A consultant branching out on their own who needs a brand that converts</li>
+              <li data-i18n="launch-for-3">A product team launching a campaign this week</li>
+              <li data-i18n="launch-for-4">A small business ready to upgrade from a DIY site to something polished</li>
             </ul>
           </div>
         </div>
         <div class="card-price">$3,000 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact">Start Launch →</a>
+        <a class="btn card-cta" href="#contact" data-i18n="launch-cta">Start Launch →</a>
       </article>
 
       <article class="card flag">
-        <div class="card-top"><span>WAYBILL № NB-003</span><span class="pop">MOST BOOKED</span></div>
+        <div class="card-top"><span>WAYBILL № NB-003</span><span class="pop" data-i18n="build-badge">MOST BOOKED</span></div>
         <div class="card-main">
           <h3>Build</h3>
-          <div class="card-when">Full web or mobile app · shipped in 30 days</div>
+          <div class="card-when" data-i18n="build-when">Full web or mobile app · shipped in 30 days</div>
           <ul>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Full product: app, backend, auth, payments<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>One team, one bill — database, API, UI, and Stripe all wired up and working on day 30.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="build-f1">Full product: app, backend, auth, payments</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="build-f1-body">One team, one bill — database, API, UI, and Stripe all wired up and working on day 30.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Weekly demos — you see it grow<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>No surprise reveals at the end. You check in every week and steer the build as it happens.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="build-f2">Weekly demos — you see it grow</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="build-f2-body">No surprise reveals at the end. You check in every week and steer the build as it happens.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">App Store / Play Store submission included<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>We handle screenshots, metadata, and the submission process — you just approve and it goes live.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="build-f3">App Store / Play Store submission included</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="build-f3-body">We handle screenshots, metadata, and the submission process — you just approve and it goes live.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">30 days of post-launch fixes<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>The first month is always the wildest. We stay on it so bugs get squashed before they cost you users.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="build-f4">30 days of post-launch fixes</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="build-f4-body">The first month is always the wildest. We stay on it so bugs get squashed before they cost you users.</div>
             </li>
           </ul>
           <div class="card-for">
-            <span class="card-for-label">Who you are</span>
+            <span class="card-for-label" data-i18n="card-for-label">Who you are</span>
             <ul class="card-for-body">
-              <li>A founder with early users waiting who needs a real product to show</li>
-              <li>A service business ready to turn its workflow into a bookable app</li>
-              <li>A marketplace idea that needs a working version before the next funding conversation</li>
-              <li>A team that has been planning too long and needs to ship something</li>
+              <li data-i18n="build-for-1">A founder with early users waiting who needs a real product to show</li>
+              <li data-i18n="build-for-2">A service business ready to turn its workflow into a bookable app</li>
+              <li data-i18n="build-for-3">A marketplace idea that needs a working version before the next funding conversation</li>
+              <li data-i18n="build-for-4">A team that has been planning too long and needs to ship something</li>
             </ul>
           </div>
         </div>
         <div class="card-price">$10,000 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn btn-primary card-cta" href="#contact">Start Build →</a>
+        <a class="btn btn-primary card-cta" href="#contact" data-i18n="build-cta">Start Build →</a>
       </article>
 
       <article class="card">
         <div class="card-top"><span>WAYBILL № NB-004</span><span>14 DAYS</span></div>
         <div class="card-main">
           <h3>Augment</h3>
-          <div class="card-when">AI feature in your product · 14 days</div>
+          <div class="card-when" data-i18n="augment-when">AI feature in your product · 14 days</div>
           <ul>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Chat, search, summarization, or agents<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Whatever form of AI your product needs — we've shipped all four and know where each one fits best.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="augment-f1">Chat, search, summarization, or agents</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="augment-f1-body">Whatever form of AI your product needs — we've shipped all four and know where each one fits best.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Integrated into your existing codebase<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>No rebuild required. We work with your stack and add intelligence where it matters most.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="augment-f2">Integrated into your existing codebase</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="augment-f2-body">No rebuild required. We work with your stack and add intelligence where it matters most.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Prompt &amp; eval setup you can maintain<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>We don't just wire in an API. You get prompts and automated tests your team can improve without us.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="augment-f3">Prompt &amp; eval setup you can maintain</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="augment-f3-body">We don't just wire in an API. You get prompts and automated tests your team can improve without us.</div>
             </li>
             <li class="feat-item">
-              <button class="feat-toggle" aria-expanded="false">Team walkthrough on handoff<span class="feat-arrow" aria-hidden="true">+</span></button>
-              <div class="feat-body" hidden>Your engineers leave knowing why every decision was made and exactly how to extend it.</div>
+              <button class="feat-toggle" aria-expanded="false"><span data-i18n="augment-f4">Team walkthrough on handoff</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+              <div class="feat-body" hidden data-i18n="augment-f4-body">Your engineers leave knowing why every decision was made and exactly how to extend it.</div>
             </li>
           </ul>
           <div class="card-for">
-            <span class="card-for-label">Who you are</span>
+            <span class="card-for-label" data-i18n="card-for-label">Who you are</span>
             <ul class="card-for-body">
-              <li>A support team drowning in repeat tickets who wants AI to handle the first response</li>
-              <li>A SaaS product adding smart search before the next release</li>
-              <li>An e-commerce brand ready for AI-driven product recommendations</li>
-              <li>A team that built something great but needs to add intelligence to stay competitive</li>
+              <li data-i18n="augment-for-1">A support team drowning in repeat tickets who wants AI to handle the first response</li>
+              <li data-i18n="augment-for-2">A SaaS product adding smart search before the next release</li>
+              <li data-i18n="augment-for-3">An e-commerce brand ready for AI-driven product recommendations</li>
+              <li data-i18n="augment-for-4">A team that built something great but needs to add intelligence to stay competitive</li>
             </ul>
           </div>
         </div>
         <div class="card-price">$6,000 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact">Start Augment →</a>
+        <a class="btn card-cta" href="#contact" data-i18n="augment-cta">Start Augment →</a>
       </article>
     </div>
 
     <!-- Discovery Sprint — full-width card below the 4-up grid -->
     <article class="card discovery-strip" id="discovery">
-      <div class="card-top"><span>WAYBILL № NB-005</span><span class="pop">ADD-ON</span></div>
+      <div class="card-top"><span>WAYBILL № NB-005</span><span class="pop" data-i18n="disc-badge">ADD-ON</span></div>
       <div class="discovery-inner">
         <div class="discovery-left">
           <div class="card-main" style="padding-bottom:0">
             <h3>Discovery Sprint</h3>
-            <div class="card-when">Add-on to any package · +10 build days</div>
+            <div class="card-when" data-i18n="disc-when">Add-on to any package · +10 build days</div>
             <ul>
               <li class="feat-item">
-                <button class="feat-toggle" aria-expanded="false">CEO-level business evaluation<span class="feat-arrow" aria-hidden="true">+</span></button>
-                <div class="feat-body" hidden>We review your product, business model, competitive landscape, and user journey the way a founding-level product executive would — not just "what do you want us to build" but "what should you build and why."</div>
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="disc-f1">CEO-level business evaluation</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="disc-f1-body">We review your product, business model, competitive landscape, and user journey the way a founding-level product executive would — not just "what do you want us to build" but "what should you build and why."</div>
               </li>
               <li class="feat-item">
-                <button class="feat-toggle" aria-expanded="false">Feature design &amp; improvement roadmap<span class="feat-arrow" aria-hidden="true">+</span></button>
-                <div class="feat-body" hidden>We identify gaps and opportunities in your current product, design new features that would move the needle, and give you a prioritized roadmap with the reasoning behind every decision.</div>
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="disc-f2">Feature design &amp; improvement roadmap</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="disc-f2-body">We identify gaps and opportunities in your current product, design new features that would move the needle, and give you a prioritized roadmap with the reasoning behind every decision.</div>
               </li>
               <li class="feat-item">
-                <button class="feat-toggle" aria-expanded="false">+10 build days added to your project<span class="feat-arrow" aria-hidden="true">+</span></button>
-                <div class="feat-body" hidden>Not just a document — real code shipped on top of your existing Spark, Launch, Build, or Augment engagement. We build the highest-priority items from the roadmap so you end with working software, not a slide deck.</div>
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="disc-f3">+10 build days added to your project</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="disc-f3-body">Not just a document — real code shipped on top of your existing Spark, Launch, Build, or Augment engagement. We build the highest-priority items from the roadmap so you end with working software, not a slide deck.</div>
               </li>
               <li class="feat-item">
-                <button class="feat-toggle" aria-expanded="false">Three calls throughout the sprint<span class="feat-arrow" aria-hidden="true">+</span></button>
-                <div class="feat-body" hidden>Kick-off call on day one to align on goals, a mid-sprint check-in to steer the build, and a delivery call to walk through everything built and hand off the roadmap. You're never left waiting for a big reveal.</div>
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="disc-f4">Three calls throughout the sprint</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="disc-f4-body">Kick-off call on day one to align on goals, a mid-sprint check-in to steer the build, and a delivery call to walk through everything built and hand off the roadmap. You're never left waiting for a big reveal.</div>
               </li>
               <li class="feat-item">
-                <button class="feat-toggle" aria-expanded="false">Written product brief you keep forever<span class="feat-arrow" aria-hidden="true">+</span></button>
-                <div class="feat-body" hidden>A clear product brief, user stories, and roadmap in plain English — ready to hand to any developer, investor, or team member. No jargon, no fluff.</div>
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="disc-f5">Written product brief you keep forever</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="disc-f5-body">A clear product brief, user stories, and roadmap in plain English — ready to hand to any developer, investor, or team member. No jargon, no fluff.</div>
               </li>
             </ul>
           </div>
         </div>
         <div class="discovery-right">
           <div class="card-for" style="margin:0 0 18px">
-            <span class="card-for-label">Who you are</span>
+            <span class="card-for-label" data-i18n="card-for-label">Who you are</span>
             <ul class="card-for-body">
-              <li>Add onto Spark or Launch to get strategic direction alongside your new site</li>
-              <li>Add onto Build to align on features before the sprint starts</li>
-              <li>Add onto Augment to evaluate whether the AI feature you want is actually the right one</li>
-              <li>Anyone who wants CEO-level product thinking as part of their build</li>
+              <li data-i18n="disc-for-1">Add onto Spark or Launch to get strategic direction alongside your new site</li>
+              <li data-i18n="disc-for-2">Add onto Build to align on features before the sprint starts</li>
+              <li data-i18n="disc-for-3">Add onto Augment to evaluate whether the AI feature you want is actually the right one</li>
+              <li data-i18n="disc-for-4">Anyone who wants CEO-level product thinking as part of their build</li>
             </ul>
           </div>
           <div class="card-price">$1,000 <small>CAD · Fixed · Add to any package</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center">Start Discovery →</a>
+          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="disc-cta">Start Discovery →</a>
         </div>
       </div>
     </article>
@@ -1991,33 +1989,33 @@ footer{
     <div class="sub-strip">
       <div class="sub-inner">
         <div class="sub-label">
-          <span class="sub-badge">Subscription</span>
+          <span class="sub-badge" data-i18n="pulse-badge">Subscription</span>
           <div class="sub-name">Pulse</div>
-          <div class="sub-tagline">Social media · monthly</div>
+          <div class="sub-tagline" data-i18n="pulse-tagline">Social media · monthly</div>
         </div>
         <div class="sub-features-col">
           <ul class="sub-features">
-            <li>12–15 posts/month across your channels</li>
-            <li>Content writing + branded graphics</li>
-            <li>Scheduling &amp; posting handled for you</li>
-            <li>Monthly performance summary</li>
+            <li data-i18n="pulse-f1">12–15 posts/month across your channels</li>
+            <li data-i18n="pulse-f2">Content writing + branded graphics</li>
+            <li data-i18n="pulse-f3">Scheduling &amp; posting handled for you</li>
+            <li data-i18n="pulse-f4">Monthly performance summary</li>
           </ul>
         </div>
         <div class="sub-examples-col">
-          <span class="sub-examples-label">Who you are</span>
+          <span class="sub-examples-label" data-i18n="card-for-label">Who you are</span>
           <ul class="sub-who">
-            <li>A restaurant owner who needs weekly Instagram and Facebook posts</li>
-            <li>A boutique that wants to stay active on TikTok without hiring full-time</li>
-            <li>A coach or consultant building a consistent LinkedIn presence</li>
-            <li>Any local business that wants social handled so they can focus on serving customers</li>
+            <li data-i18n="pulse-for-1">A restaurant owner who needs weekly Instagram and Facebook posts</li>
+            <li data-i18n="pulse-for-2">A boutique that wants to stay active on TikTok without hiring full-time</li>
+            <li data-i18n="pulse-for-3">A coach or consultant building a consistent LinkedIn presence</li>
+            <li data-i18n="pulse-for-4">Any local business that wants social handled so they can focus on serving customers</li>
           </ul>
         </div>
         <div class="sub-price-col">
           <div>
             <div class="sub-price">$750 <small>CAD / month</small></div>
-            <div class="sub-cancel">Cancel anytime</div>
+            <div class="sub-cancel" data-i18n="pulse-cancel">Cancel anytime</div>
           </div>
-          <a class="btn" href="#contact">Start Pulse →</a>
+          <a class="btn" href="#contact" data-i18n="pulse-cta">Start Pulse →</a>
         </div>
       </div>
     </div>
@@ -2027,8 +2025,8 @@ footer{
 <section id="trust">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">How we Compare</h2>
-      <p class="sec-note">Three ways to get software built. Only one comes with a committed date and a fixed number at the bottom.</p>
+      <h2 class="sec-title" data-i18n="compare-title">How we Compare</h2>
+      <p class="sec-note" data-i18n="compare-note">Three ways to get software built. Only one comes with a committed date and a fixed number at the bottom.</p>
     </div>
     <div class="compare-table-wrap">
       <table class="compare-table" role="table">
@@ -2040,49 +2038,49 @@ footer{
               <span class="compare-tag">AI-native studio</span>
             </th>
             <th class="compare-col" scope="col">
-              <span class="compare-brand-soft">Traditional agency</span>
+              <span class="compare-brand-soft" data-i18n="compare-trad">Traditional agency</span>
             </th>
             <th class="compare-col" scope="col">
-              <span class="compare-brand-soft">Freelancer</span>
+              <span class="compare-brand-soft" data-i18n="compare-freelancer">Freelancer</span>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="compare-row-label">Timeline</td>
-            <td class="compare-col compare-col-nb compare-win">3–30 days <span class="compare-note">committed</span></td>
-            <td class="compare-col compare-lose">3–6 months <span class="compare-note">estimated</span></td>
-            <td class="compare-col compare-neutral">Variable <span class="compare-note">depends on queue</span></td>
+            <td class="compare-row-label" data-i18n="compare-row-timeline">Timeline</td>
+            <td class="compare-col compare-col-nb compare-win" data-i18n-html="compare-nb-timeline">3–30 days <span class="compare-note">committed</span></td>
+            <td class="compare-col compare-lose" data-i18n-html="compare-trad-timeline">3–6 months <span class="compare-note">estimated</span></td>
+            <td class="compare-col compare-neutral" data-i18n-html="compare-free-timeline">Variable <span class="compare-note">depends on queue</span></td>
           </tr>
           <tr>
-            <td class="compare-row-label">Pricing</td>
-            <td class="compare-col compare-col-nb compare-win">Fixed price <span class="compare-note">agreed on day zero</span></td>
-            <td class="compare-col compare-lose">Time &amp; materials <span class="compare-note">final bill unknown</span></td>
-            <td class="compare-col compare-lose">Hourly rate <span class="compare-note">scope creep risk</span></td>
+            <td class="compare-row-label" data-i18n="compare-row-pricing">Pricing</td>
+            <td class="compare-col compare-col-nb compare-win" data-i18n-html="compare-nb-pricing">Fixed price <span class="compare-note">agreed on day zero</span></td>
+            <td class="compare-col compare-lose" data-i18n-html="compare-trad-pricing">Time &amp; materials <span class="compare-note">final bill unknown</span></td>
+            <td class="compare-col compare-lose" data-i18n-html="compare-free-pricing">Hourly rate <span class="compare-note">scope creep risk</span></td>
           </tr>
           <tr>
-            <td class="compare-row-label">Scope creep</td>
-            <td class="compare-col compare-col-nb compare-win">Impossible by design</td>
-            <td class="compare-col compare-lose">Common</td>
-            <td class="compare-col compare-lose">Common</td>
+            <td class="compare-row-label" data-i18n="compare-row-scope">Scope creep</td>
+            <td class="compare-col compare-col-nb compare-win" data-i18n="compare-nb-scope">Impossible by design</td>
+            <td class="compare-col compare-lose" data-i18n="compare-trad-scope">Common</td>
+            <td class="compare-col compare-lose" data-i18n="compare-free-scope">Common</td>
           </tr>
           <tr>
-            <td class="compare-row-label">Code ownership</td>
-            <td class="compare-col compare-col-nb compare-win">100%, immediate</td>
-            <td class="compare-col compare-neutral">Often retainer lock-in</td>
-            <td class="compare-col compare-win">Yes</td>
+            <td class="compare-row-label" data-i18n="compare-row-ownership">Code ownership</td>
+            <td class="compare-col compare-col-nb compare-win" data-i18n="compare-nb-ownership">100%, immediate</td>
+            <td class="compare-col compare-neutral" data-i18n="compare-trad-ownership">Often retainer lock-in</td>
+            <td class="compare-col compare-win" data-i18n="compare-free-ownership">Yes</td>
           </tr>
           <tr>
-            <td class="compare-row-label">Post-launch support</td>
-            <td class="compare-col compare-col-nb compare-win">30 days included</td>
-            <td class="compare-col compare-lose">Retainer required</td>
-            <td class="compare-col compare-lose">Extra charge</td>
+            <td class="compare-row-label" data-i18n="compare-row-support">Post-launch support</td>
+            <td class="compare-col compare-col-nb compare-win" data-i18n="compare-nb-support">30 days included</td>
+            <td class="compare-col compare-lose" data-i18n="compare-trad-support">Retainer required</td>
+            <td class="compare-col compare-lose" data-i18n="compare-free-support">Extra charge</td>
           </tr>
           <tr>
-            <td class="compare-row-label">AI-native build</td>
-            <td class="compare-col compare-col-nb compare-win">Yes — every project</td>
-            <td class="compare-col compare-neutral">Rarely</td>
-            <td class="compare-col compare-neutral">Rarely</td>
+            <td class="compare-row-label" data-i18n="compare-row-ai">AI-native build</td>
+            <td class="compare-col compare-col-nb compare-win" data-i18n="compare-nb-ai">Yes — every project</td>
+            <td class="compare-col compare-neutral" data-i18n="compare-trad-ai">Rarely</td>
+            <td class="compare-col compare-neutral" data-i18n="compare-free-ai">Rarely</td>
           </tr>
         </tbody>
       </table>
@@ -2090,114 +2088,11 @@ footer{
   </div>
 </section>
 
-<section id="manifesto">
-
-  <!-- Mission -->
-  <div class="manifesto-mission">
-    <div class="wrap manifesto-mission-inner">
-      <div>
-        <span class="eyebrow">Mission</span>
-        <p class="manifesto-m-text">To accelerate the world's access to <em>great software.</em></p>
-      </div>
-      <div class="burst-wrap" aria-hidden="true">
-        <svg class="burst-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <filter id="burst-grain" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="2" result="edgeWarp"/>
-            <feDisplacementMap in="SourceGraphic" in2="edgeWarp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="rough"/>
-            <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" seed="5" result="grain"/>
-            <feColorMatrix type="saturate" values="0" in="grain" result="grayGrain"/>
-            <feComposite in="grayGrain" in2="rough" operator="in" result="clippedGrain"/>
-            <feBlend in="rough" in2="clippedGrain" mode="multiply"/>
-          </filter>
-          <polygon points="50,2 55.7,28.7 74,8.4 65.6,34.4 91.6,26 71.3,44.3 98,50 71.3,55.7 91.6,74 65.6,65.6 74,91.6 55.7,71.3 50,98 44.3,71.3 26,91.6 34.4,65.6 8.4,74 28.7,55.7 2,50 28.7,44.3 8.4,26 34.4,34.4 26,8.4 44.3,28.7" fill="#FF5F1F" filter="url(#burst-grain)"/>
-        </svg>
-        <span class="burst-text">Bang!</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Vision -->
-  <div class="manifesto-vision">
-    <div class="wrap manifesto-vision-inner">
-      <span class="eyebrow">Vision</span>
-      <p class="manifesto-v-text">A world where the gap between a great idea and a shipped product is measured in days. Not months. Not a second mortgage.</p>
-    </div>
-  </div>
-
-  <!-- Values -->
-  <div class="manifesto-values">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="sec-title">Values</h2>
-        <p class="sec-note">Three things we will not compromise on. For any client. At any price.</p>
-      </div>
-      <div class="values-grid">
-        <div class="value-card">
-          <span class="value-n mono">01</span>
-          <h3 class="value-title">Prompting is the craft.</h3>
-          <p class="value-body">Any studio can call itself AI-native. What separates a great website from AI slop is the quality of the prompts, the evaluations, and the human review behind every output. That is where we invest.</p>
-        </div>
-        <div class="value-card">
-          <span class="value-n mono">02</span>
-          <h3 class="value-title">Craft does not expire.</h3>
-          <p class="value-body">Every codebase we ship, we would be comfortable with another engineer opening six months later. Clean architecture, semantic markup, and zero hallucinated dependencies. Not optional at any timeline.</p>
-        </div>
-        <div class="value-card value-card-dark">
-          <span class="value-n mono">03</span>
-          <h3 class="value-title">Women built this.</h3>
-          <p class="value-body">Northbound is woman-owned and operated. We believe the industry changes when women do not just have a seat at the table. They own the studio.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<section id="hairies" class="hairies-section" aria-labelledby="hairies-title">
-  <div class="wrap hairies-grid">
-    <div class="hairies-copy">
-      <span class="eyebrow">Studio mascot</span>
-      <h2 id="hairies-title" class="hairies-title">Meet the <em>Hairies</em></h2>
-      <div class="hairies-body">
-        <p>My cousin used to hand-knit tiny wool creatures — she called them hairies. Five of them, all different, all slightly lopsided. We played with them for hours growing up. <strong>When I built Northbound, I came back to that image: small, expressive, and impossible to ignore.</strong> I turned them into our unofficial studio mascots. They show up in every sprint — five feelings any build team will recognize.</p>
-      </div>
-      <span class="hairies-note">Fuzzy ideas, shipped clean</span>
-    </div>
-      <img class="hairies-primary" src="mascots/Hairies-calm-nobg.png" alt="The calm Hairies mascot, a fuzzy wool-inspired figure with soft color around the edges" width="800" height="800" loading="lazy">
-
-  </div>
+<section class="manifesto-teaser" id="manifesto">
   <div class="wrap">
-    <div class="hairy-roster-grid">
-      <div class="hairy-card">
-        <img src="mascots/Hairies-spark-nobg.png" alt="Launch — excited hairy mascot" class="hairy-img" width="140" height="140">
-        <span class="hairy-name">Launch</span>
-        <span class="hairy-role">Lives for deploy day</span>
-      </div>
-      <div class="hairy-card">
-        <img src="mascots/Hairies-curious-nobg.png" alt="Scope — curious hairy mascot" class="hairy-img" width="140" height="140">
-        <span class="hairy-name">Scope</span>
-        <span class="hairy-role">Reacts to every brief<br>the same way</span>
-      </div>
-      <div class="hairy-card">
-        <img src="mascots/Hairies-worried-nobg.png" alt="Blocker — worried hairy mascot" class="hairy-img" width="140" height="140">
-        <span class="hairy-name">Blocker</span>
-        <span class="hairy-role">That face when CI<br>fails at 4pm</span>
-      </div>
-      <div class="hairy-card">
-        <img src="mascots/Hairies-sly-nobg.png" alt="Legacy — grumpy hairy mascot" class="hairy-img" width="140" height="140">
-        <span class="hairy-name">Legacy</span>
-        <span class="hairy-role">Has seen the codebase.<br>Unimpressed.</span>
-      </div>
-      <div class="hairy-card">
-        <img src="mascots/Hairies-calm-nobg.png" alt="Coda — calm hairy mascot" class="hairy-img" width="140" height="140">
-        <span class="hairy-name">Coda</span>
-        <span class="hairy-role">Ships. Then sleeps.</span>
-      </div>
-      <div class="hairy-card">
-        <img src="mascots/Hairies-done-nobg.png" alt="Done — satisfied hairy mascot" class="hairy-img" width="140" height="140">
-        <span class="hairy-name">Done</span>
-        <span class="hairy-role">That face when it<br>actually worked.</span>
-      </div>
+    <div class="sec-head">
+      <h2 class="sec-title" data-i18n="manifesto-title">Our Manifesto</h2>
+      <p class="sec-note" data-i18n-html="manifesto-note">Mission, values, and the studio mascots live on their own page now. <a href="/manifesto">Read the full manifesto →</a></p>
     </div>
   </div>
 </section>
@@ -2205,34 +2100,34 @@ footer{
 <section id="receipts">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">Receipts</h2>
-      <p class="sec-note">AI development writing & published thinking | We don't just say "AI-native." We publish how we work, in public, where anyone can check.</p>
+      <h2 class="sec-title" data-i18n="receipts-title">Receipts</h2>
+      <p class="sec-note" data-i18n="receipts-note">We don't just say "AI-native." We publish how we work, in public, where anyone can check.</p>
     </div>
     <article class="featured-article">
       <div class="fa-label">
-        <span class="eyebrow">Deep Dive</span>
-        <span class="fa-label-title">Agentic AI &amp; the 30-day build</span>
+        <span class="eyebrow" data-i18n="fa-eyebrow">Deep Dive</span>
+        <span class="fa-label-title" data-i18n="fa-title">Agentic AI &amp; the 30-day build</span>
         <span class="fa-label-date">Jun 2026</span>
       </div>
       <div class="fa-body">
-        <h3>Why agentic AI changes what's possible in a fixed-scope sprint</h3>
-        <p>Traditional shops quote 90 days because they're padding for unknown unknowns. Agentic systems — models that loop through plan, act, and verify steps autonomously — compress the routine work that accounts for most of that time. What used to take a sprint now takes a session.</p>
-        <p>The more interesting shift isn't speed. It's scope confidence. Agents surface edge cases before a line of implementation code exists, run test suites in real time, and maintain consistent style across a large codebase without drift. That's what makes fixed-scope, fixed-price delivery viable at a quality bar that used to require a large team.</p>
-        <a href="blog-agentic-ai.html" class="btn" rel="noopener">Read full article →</a>
+        <h3 data-i18n="fa-h3">Why agentic AI changes what's possible in a fixed-scope sprint</h3>
+        <p data-i18n="fa-p1">Traditional shops quote 90 days because they're padding for unknown unknowns. Agentic systems — models that loop through plan, act, and verify steps autonomously — compress the routine work that accounts for most of that time. What used to take a sprint now takes a session.</p>
+        <p data-i18n="fa-p2">The more interesting shift isn't speed. It's scope confidence. Agents surface edge cases before a line of implementation code exists, run test suites in real time, and maintain consistent style across a large codebase without drift. That's what makes fixed-scope, fixed-price delivery viable at a quality bar that used to require a large team.</p>
+        <a href="blog-agentic-ai.html" class="btn" rel="noopener" data-i18n="fa-btn">Read full article →</a>
       </div>
     </article>
 
     <div class="receipts">
       <div class="receipt-copy">
-        <p><strong>Most agencies bolted "AI" onto their homepage last year.</strong> We've been building with agents, structured prompting, and reasoning loops since before it was a headline — and writing about it the whole time.</p>
-        <p>That matters for one reason: when your project hits a hard problem, you want the team that understands <strong>why</strong> the tools work, not the one that's improvising with them for the first time on your invoice.</p>
-        <p>Read the writing. Judge the thinking. Then book the call.</p>
+        <p data-i18n-html="receipt-p1"><strong>Most agencies bolted "AI" onto their homepage last year.</strong> We've been building with agents, structured prompting, and reasoning loops since before it was a headline — and writing about it the whole time.</p>
+        <p data-i18n-html="receipt-p2">That matters for one reason: when your project hits a hard problem, you want the team that understands <strong>why</strong> the tools work, not the one that's improvising with them for the first time on your invoice.</p>
+        <p data-i18n="receipt-p3">Read the writing. Judge the thinking. Then book the call.</p>
       </div>
       <ul class="proof-list">
-        <li><a href="blog-react-loop.html" rel="noopener">Inside the ReAct loop: how our agents think before they act <span class="mono">Article ↗</span></a></li>
-        <li><a href="blog-agentic-ai.html" rel="noopener">Why agentic AI changes what's possible in a 30-day build <span class="mono">Article ↗</span></a></li>
-        <li><a href="blog-meta-prompts.html" rel="noopener">Prompts you can steal: our fill-in-the-blank meta-prompts <span class="mono">Article ↗</span></a></li>
-        <li><a href="blog.html" rel="noopener">Full writing archive <span class="mono">Blog ↗</span></a></li>
+        <li><a href="blog-react-loop.html" rel="noopener" data-i18n-html="proof-1">Inside the ReAct loop: how our agents think before they act <span class="mono">Article ↗</span></a></li>
+        <li><a href="blog-agentic-ai.html" rel="noopener" data-i18n-html="proof-2">Why agentic AI changes what's possible in a 30-day build <span class="mono">Article ↗</span></a></li>
+        <li><a href="blog-meta-prompts.html" rel="noopener" data-i18n-html="proof-3">Prompts you can steal: our fill-in-the-blank meta-prompts <span class="mono">Article ↗</span></a></li>
+        <li><a href="blog.html" rel="noopener" data-i18n-html="proof-4">Full writing archive <span class="mono">Blog ↗</span></a></li>
       </ul>
     </div>
   </div>
@@ -2241,45 +2136,45 @@ footer{
 <section id="faq">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">Common questions</h2>
-      <p class="sec-note">Answers to the things founders ask before they book a call.</p>
+      <h2 class="sec-title" data-i18n="faq-title">Common questions</h2>
+      <p class="sec-note" data-i18n="faq-note">Answers to the things founders ask before they book a call.</p>
     </div>
     <dl class="faq-list">
       <div class="faq-item">
-        <dt class="faq-q">How long does a build actually take?</dt>
-        <dd class="faq-a">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount.</dd>
+        <dt class="faq-q" data-i18n="faq-q1">How long does a build actually take?</dt>
+        <dd class="faq-a" data-i18n="faq-a1">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">What is the Discovery Sprint and do I need it?</dt>
-        <dd class="faq-a">The Discovery Sprint ($1,000 CAD) is an add-on to any of our packages — Spark, Launch, Build, or Augment. When you add it to your project, we layer in CEO-level business evaluation alongside the build: reviewing your competitive landscape, user journey, and product direction to design the features that will actually move the needle. It adds 10 build days to your engagement and includes three dedicated calls (kick-off, mid-sprint, delivery) so there's real strategic alignment throughout. You also get a written product brief and roadmap to keep. If you're not sure what to build next, or want outside perspective before we start coding, this is the add-on for that.</dd>
+        <dt class="faq-q" data-i18n="faq-q2">What is the Discovery Sprint and do I need it?</dt>
+        <dd class="faq-a" data-i18n="faq-a2">The Discovery Sprint ($1,000 CAD) is an add-on to any of our packages — Spark, Launch, Build, or Augment. When you add it to your project, we layer in CEO-level business evaluation alongside the build: reviewing your competitive landscape, user journey, and product direction to design the features that will actually move the needle. It adds 10 build days to your engagement and includes three dedicated calls (kick-off, mid-sprint, delivery) so there's real strategic alignment throughout. You also get a written product brief and roadmap to keep. If you're not sure what to build next, or want outside perspective before we start coding, this is the add-on for that.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">What does fixed-price actually mean?</dt>
-        <dd class="faq-a">It means the number you see is the number you pay — no hourly billing, no scope-creep invoices, no surprise charges. Launch includes three rounds of corrections after delivery. If we discover something harder than expected mid-build, that's our problem to solve. If you want to add something new, it becomes a new waybill at a new fixed price.</dd>
+        <dt class="faq-q" data-i18n="faq-q3">What does fixed-price actually mean?</dt>
+        <dd class="faq-a" data-i18n="faq-a3">It means the number you see is the number you pay — no hourly billing, no scope-creep invoices, no surprise charges. Launch includes three rounds of corrections after delivery. If we discover something harder than expected mid-build, that's our problem to solve. If you want to add something new, it becomes a new waybill at a new fixed price.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">Can you add AI features to something we already have?</dt>
-        <dd class="faq-a">Yes — that's the Augment package ($6,000 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.</dd>
+        <dt class="faq-q" data-i18n="faq-q4">Can you add AI features to something we already have?</dt>
+        <dd class="faq-a" data-i18n="faq-a4">Yes — that's the Augment package ($6,000 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">What is AI-native development and why does it matter?</dt>
-        <dd class="faq-a">AI-native development uses agentic systems — models that plan, act, and verify autonomously — to compress the repetitive 70% of any build. Agents surface edge cases before a line of code is written, run tests in real time, and hold style consistent across a large codebase. A senior engineer designs and reviews everything before it ships. The result: faster builds, lower cost, and fewer post-launch surprises than a traditional shop.</dd>
+        <dt class="faq-q" data-i18n="faq-q5">What is AI-native development and why does it matter?</dt>
+        <dd class="faq-a" data-i18n="faq-a5">AI-native development uses agentic systems — models that plan, act, and verify autonomously — to compress the repetitive 70% of any build. Agents surface edge cases before a line of code is written, run tests in real time, and hold style consistent across a large codebase. A senior engineer designs and reviews everything before it ships. The result: faster builds, lower cost, and fewer post-launch surprises than a traditional shop.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">What do I get at the end?</dt>
-        <dd class="faq-a">A deployed, production-ready product — not a staging link. Plus the full source code (you own it, forever), and a handoff doc a non-developer can actually read. There are no retainer strings attached.</dd>
+        <dt class="faq-q" data-i18n="faq-q6">What do I get at the end?</dt>
+        <dd class="faq-a" data-i18n="faq-a6">A deployed, production-ready product — not a staging link. Plus the full source code (you own it, forever), and a handoff doc a non-developer can actually read. There are no retainer strings attached.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">What is Pulse and how does social media management work?</dt>
-        <dd class="faq-a">Pulse is a $750 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we'll align on your channels, voice, and content mix before the first post goes out.</dd>
+        <dt class="faq-q" data-i18n="faq-q7">What is Pulse and how does social media management work?</dt>
+        <dd class="faq-a" data-i18n="faq-a7">Pulse is a $750 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we'll align on your channels, voice, and content mix before the first post goes out.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">Why don't you have a chatbot on your site?</dt>
-        <dd class="faq-a">Because we think it would make your experience worse, not better. A chatbot on a contact page is one of the most common ways companies apply AI without thinking through whether it actually helps — and in most cases it adds friction, gives generic answers, and makes people feel like they're being fobbed off. We believe in using AI where it genuinely improves an outcome: faster builds, better code quality, tighter scope. For a conversation about your project, a real email or a 20-minute call beats any widget. That's why the CTA on this page is a call, not a chat window.</dd>
+        <dt class="faq-q" data-i18n="faq-q8">Why don't you have a chatbot on your site?</dt>
+        <dd class="faq-a" data-i18n="faq-a8">Because we think it would make your experience worse, not better. A chatbot on a contact page is one of the most common ways companies apply AI without thinking through whether it actually helps — and in most cases it adds friction, gives generic answers, and makes people feel like they're being fobbed off. We believe in using AI where it genuinely improves an outcome: faster builds, better code quality, tighter scope. For a conversation about your project, a real email or a 20-minute call beats any widget. That's why the CTA on this page is a call, not a chat window.</dd>
       </div>
       <div class="faq-item">
-        <dt class="faq-q">Where are you based, and do you work with teams outside Toronto?</dt>
-        <dd class="faq-a">We're based in Toronto (YYZ) and work with founders and product teams worldwide. Remote-first from day zero — the scoping call, weekly demos, and handoff are all async-friendly.</dd>
+        <dt class="faq-q" data-i18n="faq-q9">Where are you based, and do you work with teams outside Toronto?</dt>
+        <dd class="faq-a" data-i18n="faq-a9">We're based in Toronto (YYZ) and work with founders and product teams worldwide. Remote-first from day zero — the scoping call, weekly demos, and handoff are all async-friendly.</dd>
       </div>
     </dl>
   </div>
@@ -2288,25 +2183,25 @@ footer{
 
 <div class="exit-section">
 <section class="dock" id="contact">
-  <span class="eyebrow">Next departure: this month</span>
-  <h2>Your product,<br><em>on the dock</em>.</h2>
-  <p>Twenty minutes. You bring the idea, we bring the manifest. By the end of the call you'll know the scope, the price, and the ship date.</p>
+  <span class="eyebrow" data-i18n="dock-eyebrow">Next departure: this month</span>
+  <h2 data-i18n-html="dock-h2">Your product,<br><em>on the dock</em>.</h2>
+  <p data-i18n="dock-p">Twenty minutes. You bring the idea, we bring the manifest. By the end of the call you'll know the scope, the price, and the ship date.</p>
   <form class="contact-form" id="contact-form">
     <div class="contact-field">
-      <label for="name">Your name</label>
-      <input id="name" name="name" type="text" placeholder="Founder, product lead, or CEO" required>
+      <label for="name" data-i18n="form-name-label">Your name</label>
+      <input id="name" name="name" type="text" placeholder="Founder, product lead, or CEO" data-i18n-ph="form-name-ph" required>
     </div>
     <div class="contact-field">
-      <label for="email">Email</label>
+      <label for="email" data-i18n="form-email-label">Email</label>
       <input id="email" name="email" type="email" placeholder="you@company.com" required>
     </div>
     <div class="contact-field">
-      <label for="project">What you need</label>
-      <textarea id="project" name="message" placeholder="Short summary of the product or AI feature" required></textarea>
+      <label for="project" data-i18n="form-project-label">What you need</label>
+      <textarea id="project" name="message" placeholder="Short summary of the product or AI feature" data-i18n-ph="form-project-ph" required></textarea>
     </div>
-    <button class="btn btn-primary form-submit" type="submit">Book a scope call →</button>
+    <button class="btn btn-primary form-submit" type="submit" data-i18n="form-submit">Book a scope call →</button>
   </form>
-  <p class="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></p>
+  <p class="form-note" data-i18n-html="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></p>
 </section>
 
 <footer>
@@ -2314,33 +2209,35 @@ footer{
     <div class="wrap foot-grid">
       <div class="foot-brand">
         <span class="foot-logo">NORTHBOUND<span class="dot"> ▲</span></span>
-        <span class="foot-tagline">AI-native software studio</span>
+        <span class="foot-tagline" data-i18n="foot-tagline">AI-native software studio</span>
         <span class="foot-loc">YYZ · Toronto, Canada</span>
-        <span class="foot-owned">Woman-Owned Business</span>
+        <span class="foot-owned" data-i18n="foot-owned">Woman-Owned Business</span>
       </div>
       <div class="foot-col">
-        <span class="foot-col-label">Navigate</span>
-        <a href="#process">How we ship</a>
-        <a href="#packages">Packages</a>
-        <a href="#manifesto">Manifesto</a>
-        <a href="#faq">FAQ</a>
-        <a href="blog.html">Writing</a>
+        <span class="foot-col-label" data-i18n="foot-nav-label">Navigate</span>
+        <a href="#process" data-i18n="foot-nav-process">How we ship</a>
+        <a href="#packages" data-i18n="foot-nav-packages">Packages</a>
+        <a href="/manifesto" data-i18n="foot-nav-manifesto">Manifesto</a>
+        <a href="#faq" data-i18n="nav-faq">FAQ</a>
+        <a href="blog.html" data-i18n="foot-nav-writing">Writing</a>
       </div>
       <div class="foot-col foot-col-hello">
-        <span class="foot-col-label">Say hello</span>
+        <span class="foot-col-label" data-i18n="foot-hello-label">Say hello</span>
         <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>
-        <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a scope call →</a>
-        <a href="#contact">Get a quote</a>
+        <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener" data-i18n="foot-hello-cta">Book a scope call →</a>
+        <a href="#contact" data-i18n="foot-hello-quote">Get a quote</a>
+        <a href="https://www.linkedin.com/company/northbound-software/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/northboundsoftware/" target="_blank" rel="noopener">Instagram</a>
       </div>
       <div class="foot-col">
-        <span class="foot-col-label">Legal</span>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Use</a>
+        <span class="foot-col-label" data-i18n="foot-legal-label">Legal</span>
+        <a href="/privacy" data-i18n="foot-privacy">Privacy Policy</a>
+        <a href="/terms" data-i18n="foot-terms">Terms of Use</a>
       </div>
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada</span>
+    <span data-i18n="foot-copyright">© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada</span>
     <span class="foot-bottom-badge">NB-MANIFEST-2026</span>
   </div>
 </footer>
@@ -2744,6 +2641,211 @@ document.querySelectorAll('.card-cta').forEach(function(a){
   });
 
   wrap.appendChild(acc);
+})();
+</script>
+
+<script>
+/* ===== FR/EN LANGUAGE TOGGLE ===== */
+(function(){
+var T = {
+en:{
+'nav-process':'How we ship','nav-packages':'Packages','nav-faq':'FAQ','nav-writing':'Writing','nav-cta':'Book a call','nav-cta-mobile':'Book a call →','nav-burger-aria':'Open menu',
+'hero-eyebrow':'AI-native software development studio · Toronto 🍁','hero-pill-woman':'Woman-owned','hero-h1-r1':'We ship','hero-h1-r2':'software.','hero-h1-r3':'Fast.',
+'hero-sub':'Northbound builds web, mobile, and AI-enabled products with agent-driven speed and senior craftsmanship. Fixed scope, fixed price, fixed timeline — no hourly meters, no surprise invoices. <strong>Founded by a senior engineer and AI practitioner based in Toronto.</strong>',
+'hero-cta-1':'See the packages →','hero-cta-2':'Book a scope call →',
+'term-bar-left':'agent — build loop','term-bar-live':'Live','term-foot':'This is how we actually work. Reasoning loop, human review, ship.',
+'stat-l-1':'Day spark sprint','stat-l-2':'Fixed-price guarantee','stat-l-3':'Days to launch','stat-l-4':'Surprise invoices',
+'process-title':'How we build & ship software','process-note':'Agents handle the repetitive 70%. A senior developer designs, reviews, and signs every line that goes out the door.',
+'step-1-num':'STEP 01 / SCOPE','step-1-tag':'DAY 0–2','step-1-h':'Scope it like cargo','step-1-p':'One call. We write the manifest together: exactly what ships, exactly when, exactly what it costs. You sign off before anything is built.',
+'step-2-num':'STEP 02 / BUILD','step-2-tag':'THE SPRINT','step-2-h':'Agents + a human','step-2-p':'We run structured agent loops — plan, act, verify — to move at multiples of traditional agency speed. Every output is reviewed by a senior dev before it counts.',
+'step-3-num':'STEP 03 / SHIP','step-3-tag':'ON THE DATE','step-3-h':'Delivered, not drifted','step-3-p':'You get a deployed product, the source code, and a handoff doc a non-developer can read. If we miss the date, you get a discount. We don\'t miss.',
+'packages-title':'The Manifest','packages-note':'Four packages. Productized, priced, and timed. Pick one, book a call, we scope it on day zero.',
+'card-for-label':'Who you are',
+'spark-when':'Website on your domain · 3 days','spark-f1':'Clean coded website — no page builders','spark-f1-body':'Loads faster than template builders, no monthly tool subscriptions, and you own every line of code.','spark-f2':'Copy support & mobile-ready layout','spark-f2-body':'We help write or sharpen the words that sell you. Works perfectly on phones, tablets, and desktops.','spark-f3':'Live on your domain, same week','spark-f3-body':'Your real domain, not a subdomain or free-tier link — live and shareable within 3 days of signing off.','spark-f4':'You own the code, forever','spark-f4-body':'No lock-in. Move hosts, edit it yourself, or hire anyone to update it later — no permission needed.','spark-for-1':'A restaurant owner who needs a website before the weekend rush','spark-for-2':'A photographer launching a portfolio before a busy season','spark-for-3':'A freelancer going independent who needs a page today','spark-for-4':'A pop-up or market vendor who needs a link in bio','spark-cta':'Start Spark →',
+'launch-when':'Custom site + corrections · 7 days','launch-f1':'Custom-designed marketing site','launch-f1-body':'Built around your brand and audience — not a template someone else is using on fifty other sites.','launch-f2':'Copy support & conversion-focused layout','launch-f2-body':'Layout designed to turn visitors into leads, with messaging that speaks directly to your customer.','launch-f3':'Three rounds of corrections after delivery','launch-f3-body':'Not just a single draft sign-off. Three full rounds to get the wording, layout, and feel exactly right.','launch-f4':'Deployed, fast, and SEO-ready','launch-f4-body':'Hosted on a fast CDN, optimized for Core Web Vitals, and structured so Google can find and rank it.','launch-f5':'You own everything','launch-f5-body':'Code, domain connection, all content — completely yours, no ongoing fees to us.','launch-for-1':'A startup heading into investor meetings who needs a credible site','launch-for-2':'A consultant branching out on their own who needs a brand that converts','launch-for-3':'A product team launching a campaign this week','launch-for-4':'A small business ready to upgrade from a DIY site to something polished','launch-cta':'Start Launch →',
+'build-badge':'MOST BOOKED','build-when':'Full web or mobile app · shipped in 30 days','build-f1':'Full product: app, backend, auth, payments','build-f1-body':'One team, one bill — database, API, UI, and Stripe all wired up and working on day 30.','build-f2':'Weekly demos — you see it grow','build-f2-body':'No surprise reveals at the end. You check in every week and steer the build as it happens.','build-f3':'App Store / Play Store submission included','build-f3-body':'We handle screenshots, metadata, and the submission process — you just approve and it goes live.','build-f4':'30 days of post-launch fixes','build-f4-body':'The first month is always the wildest. We stay on it so bugs get squashed before they cost you users.','build-for-1':'A founder with early users waiting who needs a real product to show','build-for-2':'A service business ready to turn its workflow into a bookable app','build-for-3':'A marketplace idea that needs a working version before the next funding conversation','build-for-4':'A team that has been planning too long and needs to ship something','build-cta':'Start Build →',
+'augment-when':'AI feature in your product · 14 days','augment-f1':'Chat, search, summarization, or agents','augment-f1-body':'Whatever form of AI your product needs — we\'ve shipped all four and know where each one fits best.','augment-f2':'Integrated into your existing codebase','augment-f2-body':'No rebuild required. We work with your stack and add intelligence where it matters most.','augment-f3':'Prompt & eval setup you can maintain','augment-f3-body':'We don\'t just wire in an API. You get prompts and automated tests your team can improve without us.','augment-f4':'Team walkthrough on handoff','augment-f4-body':'Your engineers leave knowing why every decision was made and exactly how to extend it.','augment-for-1':'A support team drowning in repeat tickets who wants AI to handle the first response','augment-for-2':'A SaaS product adding smart search before the next release','augment-for-3':'An e-commerce brand ready for AI-driven product recommendations','augment-for-4':'A team that built something great but needs to add intelligence to stay competitive','augment-cta':'Start Augment →',
+'disc-badge':'ADD-ON','disc-when':'Add-on to any package · +10 build days','disc-f1':'CEO-level business evaluation','disc-f1-body':'We review your product, business model, competitive landscape, and user journey the way a founding-level product executive would — not just "what do you want us to build" but "what should you build and why."','disc-f2':'Feature design & improvement roadmap','disc-f2-body':'We identify gaps and opportunities in your current product, design new features that would move the needle, and give you a prioritized roadmap with the reasoning behind every decision.','disc-f3':'+10 build days added to your project','disc-f3-body':'Not just a document — real code shipped on top of your existing Spark, Launch, Build, or Augment engagement. We build the highest-priority items from the roadmap so you end with working software, not a slide deck.','disc-f4':'Three calls throughout the sprint','disc-f4-body':'Kick-off call on day one to align on goals, a mid-sprint check-in to steer the build, and a delivery call to walk through everything built and hand off the roadmap. You\'re never left waiting for a big reveal.','disc-f5':'Written product brief you keep forever','disc-f5-body':'A clear product brief, user stories, and roadmap in plain English — ready to hand to any developer, investor, or team member. No jargon, no fluff.','disc-for-1':'Add onto Spark or Launch to get strategic direction alongside your new site','disc-for-2':'Add onto Build to align on features before the sprint starts','disc-for-3':'Add onto Augment to evaluate whether the AI feature you want is actually the right one','disc-for-4':'Anyone who wants CEO-level product thinking as part of their build','disc-cta':'Start Discovery →',
+'pulse-badge':'Subscription','pulse-tagline':'Social media · monthly','pulse-f1':'12–15 posts/month across your channels','pulse-f2':'Content writing + branded graphics','pulse-f3':'Scheduling & posting handled for you','pulse-f4':'Monthly performance summary','pulse-for-1':'A restaurant owner who needs weekly Instagram and Facebook posts','pulse-for-2':'A boutique that wants to stay active on TikTok without hiring full-time','pulse-for-3':'A coach or consultant building a consistent LinkedIn presence','pulse-for-4':'Any local business that wants social handled so they can focus on serving customers','pulse-cancel':'Cancel anytime','pulse-cta':'Start Pulse →',
+'compare-title':'How we Compare','compare-note':'Three ways to get software built. Only one comes with a committed date and a fixed number at the bottom.',
+'compare-trad':'Traditional agency','compare-freelancer':'Freelancer','compare-row-timeline':'Timeline','compare-row-pricing':'Pricing','compare-row-scope':'Scope creep','compare-row-ownership':'Code ownership','compare-row-support':'Post-launch support','compare-row-ai':'AI-native build',
+'compare-nb-timeline':'3–30 days <span class="compare-note">committed</span>','compare-trad-timeline':'3–6 months <span class="compare-note">estimated</span>','compare-free-timeline':'Variable <span class="compare-note">depends on queue</span>',
+'compare-nb-pricing':'Fixed price <span class="compare-note">agreed on day zero</span>','compare-trad-pricing':'Time &amp; materials <span class="compare-note">final bill unknown</span>','compare-free-pricing':'Hourly rate <span class="compare-note">scope creep risk</span>',
+'compare-nb-scope':'Impossible by design','compare-trad-scope':'Common','compare-free-scope':'Common',
+'compare-nb-ownership':'100%, immediate','compare-trad-ownership':'Often retainer lock-in','compare-free-ownership':'Yes',
+'compare-nb-support':'30 days included','compare-trad-support':'Retainer required','compare-free-support':'Extra charge',
+'compare-nb-ai':'Yes — every project','compare-trad-ai':'Rarely','compare-free-ai':'Rarely',
+'manifesto-title':'Our Manifesto','manifesto-note':'Mission, values, and the studio mascots live on their own page now. <a href="/manifesto">Read the full manifesto →</a>',
+'receipts-title':'Receipts','receipts-note':'We don\'t just say "AI-native." We publish how we work, in public, where anyone can check.',
+'fa-eyebrow':'Deep Dive','fa-title':'Agentic AI &amp; the 30-day build','fa-h3':'Why agentic AI changes what\'s possible in a fixed-scope sprint',
+'fa-p1':'Traditional shops quote 90 days because they\'re padding for unknown unknowns. Agentic systems — models that loop through plan, act, and verify steps autonomously — compress the routine work that accounts for most of that time. What used to take a sprint now takes a session.',
+'fa-p2':'The more interesting shift isn\'t speed. It\'s scope confidence. Agents surface edge cases before a line of implementation code exists, run test suites in real time, and maintain consistent style across a large codebase without drift. That\'s what makes fixed-scope, fixed-price delivery viable at a quality bar that used to require a large team.',
+'fa-btn':'Read full article →',
+'receipt-p1':'<strong>Most agencies bolted "AI" onto their homepage last year.</strong> We\'ve been building with agents, structured prompting, and reasoning loops since before it was a headline — and writing about it the whole time.',
+'receipt-p2':'That matters for one reason: when your project hits a hard problem, you want the team that understands <strong>why</strong> the tools work, not the one that\'s improvising with them for the first time on your invoice.',
+'receipt-p3':'Read the writing. Judge the thinking. Then book the call.',
+'proof-1':'Inside the ReAct loop: how our agents think before they act <span class="mono">Article ↗</span>',
+'proof-2':'Why agentic AI changes what\'s possible in a 30-day build <span class="mono">Article ↗</span>',
+'proof-3':'Prompts you can steal: our fill-in-the-blank meta-prompts <span class="mono">Article ↗</span>',
+'proof-4':'Full writing archive <span class="mono">Blog ↗</span>',
+'faq-title':'Common questions','faq-note':'Answers to the things founders ask before they book a call.',
+'faq-q1':'How long does a build actually take?','faq-a1':'Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount.',
+'faq-q2':'What is the Discovery Sprint and do I need it?','faq-a2':'The Discovery Sprint ($1,000 CAD) is an add-on to any of our packages — Spark, Launch, Build, or Augment. When you add it to your project, we layer in CEO-level business evaluation alongside the build: reviewing your competitive landscape, user journey, and product direction to design the features that will actually move the needle. It adds 10 build days to your engagement and includes three dedicated calls (kick-off, mid-sprint, delivery) so there\'s real strategic alignment throughout. You also get a written product brief and roadmap to keep. If you\'re not sure what to build next, or want outside perspective before we start coding, this is the add-on for that.',
+'faq-q3':'What does fixed-price actually mean?','faq-a3':'It means the number you see is the number you pay — no hourly billing, no scope-creep invoices, no surprise charges. Launch includes three rounds of corrections after delivery. If we discover something harder than expected mid-build, that\'s our problem to solve. If you want to add something new, it becomes a new waybill at a new fixed price.',
+'faq-q4':'Can you add AI features to something we already have?','faq-a4':'Yes — that\'s the Augment package ($6,000 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.',
+'faq-q5':'What is AI-native development and why does it matter?','faq-a5':'AI-native development uses agentic systems — models that plan, act, and verify autonomously — to compress the repetitive 70% of any build. Agents surface edge cases before a line of code is written, run tests in real time, and hold style consistent across a large codebase. A senior engineer designs and reviews everything before it ships. The result: faster builds, lower cost, and fewer post-launch surprises than a traditional shop.',
+'faq-q6':'What do I get at the end?','faq-a6':'A deployed, production-ready product — not a staging link. Plus the full source code (you own it, forever), and a handoff doc a non-developer can actually read. There are no retainer strings attached.',
+'faq-q7':'What is Pulse and how does social media management work?','faq-a7':'Pulse is a $750 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It\'s built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we\'ll align on your channels, voice, and content mix before the first post goes out.',
+'faq-q8':'Why don\'t you have a chatbot on your site?','faq-a8':'Because we think it would make your experience worse, not better. A chatbot on a contact page is one of the most common ways companies apply AI without thinking through whether it actually helps — and in most cases it adds friction, gives generic answers, and makes people feel like they\'re being fobbed off. We believe in using AI where it genuinely improves an outcome: faster builds, better code quality, tighter scope. For a conversation about your project, a real email or a 20-minute call beats any widget. That\'s why the CTA on this page is a call, not a chat window.',
+'faq-q9':'Where are you based, and do you work with teams outside Toronto?','faq-a9':'We\'re based in Toronto (YYZ) and work with founders and product teams worldwide. Remote-first from day zero — the scoping call, weekly demos, and handoff are all async-friendly.',
+'dock-eyebrow':'Next departure: this month','dock-h2':'Your product,<br><em>on the dock</em>.','dock-p':'Twenty minutes. You bring the idea, we bring the manifest. By the end of the call you\'ll know the scope, the price, and the ship date.',
+'form-name-label':'Your name','form-name-ph':'Founder, product lead, or CEO','form-email-label':'Email','form-project-label':'What you need','form-project-ph':'Short summary of the product or AI feature','form-submit':'Book a scope call →',
+'form-note':'Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>',
+'foot-tagline':'AI-native software studio','foot-owned':'Woman-Owned Business','foot-nav-label':'Navigate','foot-nav-process':'How we ship','foot-nav-packages':'Packages','foot-nav-manifesto':'Manifesto','foot-nav-writing':'Writing','foot-hello-label':'Say hello','foot-hello-cta':'Book a scope call →','foot-hello-quote':'Get a quote','foot-legal-label':'Legal','foot-privacy':'Privacy Policy','foot-terms':'Terms of Use',
+'foot-copyright':'© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada'
+},
+fr:{
+'nav-process':'Comment on livre','nav-packages':'Forfaits','nav-faq':'FAQ','nav-writing':'Blogue','nav-cta':'Réserver un appel','nav-cta-mobile':'Réserver un appel →','nav-burger-aria':'Ouvrir le menu',
+'hero-eyebrow':'Studio de développement logiciel IA · Toronto 🍁','hero-pill-woman':'Entreprise féminine','hero-h1-r1':'On livre','hero-h1-r2':'du logiciel.','hero-h1-r3':'Vite.',
+'hero-sub':'Northbound conçoit des produits web, mobiles et IA avec la vitesse des agents et le savoir-faire d\'une équipe senior. Portée fixe, prix fixe, délai fixe — pas de tarif horaire, pas de surprises. <strong>Fondé par une ingénieure senior et praticienne en IA, basée à Toronto.</strong>',
+'hero-cta-1':'Voir les forfaits →','hero-cta-2':'Réserver un appel →',
+'term-bar-left':'agent — boucle de build','term-bar-live':'En direct','term-foot':'C\'est vraiment comme ça qu\'on travaille. Boucle de raisonnement, revue humaine, livraison.',
+'stat-l-1':'Jours sprint Spark','stat-l-2':'Garantie prix fixe','stat-l-3':'Jours pour livrer','stat-l-4':'Factures surprises',
+'process-title':'Comment on construit et livre','process-note':'Les agents gèrent les 70 % répétitifs. Une développeuse senior conçoit, révise et valide chaque ligne qui sort.',
+'step-1-num':'ÉTAPE 01 / CADRAGE','step-1-tag':'JOUR 0–2','step-1-h':'Cadrer comme un manifeste','step-1-p':'Un appel. On écrit le manifeste ensemble : exactement ce qui est livré, exactement quand, exactement combien. Vous signez avant qu\'on commence.',
+'step-2-num':'ÉTAPE 02 / BUILD','step-2-tag':'LE SPRINT','step-2-h':'Agents + un humain','step-2-p':'On exécute des boucles d\'agents structurées — planifier, agir, vérifier — pour avancer plusieurs fois plus vite qu\'une agence traditionnelle. Chaque sortie est révisée par une dev senior avant de compter.',
+'step-3-num':'ÉTAPE 03 / LIVRAISON','step-3-tag':'À LA DATE','step-3-h':'Livré, pas dérivé','step-3-p':'Vous recevez un produit déployé, le code source, et un doc de transfert qu\'un non-développeur peut lire. Si on rate la date, vous obtenez un rabais. On ne rate pas.',
+'packages-title':'Le Manifeste','packages-note':'Quatre forfaits. Productisés, tarifés et délimités dans le temps. Choisissez-en un, réservez un appel, on cadre le tout le premier jour.',
+'card-for-label':'C\'est pour vous si',
+'spark-when':'Site sur votre domaine · 3 jours','spark-f1':'Site codé proprement — sans constructeur de pages','spark-f1-body':'Plus rapide que les outils de gabarits, aucun abonnement mensuel, et vous possédez chaque ligne de code.','spark-f2':'Aide à la rédaction et mise en page mobile','spark-f2-body':'On aide à rédiger ou affiner les mots qui vous vendent. Parfait sur téléphone, tablette et bureau.','spark-f3':'En ligne sur votre domaine la même semaine','spark-f3-body':'Votre vrai domaine, pas un sous-domaine ou un lien gratuit — en ligne et partageable dans les 3 jours suivant la validation.','spark-f4':'Vous possédez le code, pour toujours','spark-f4-body':'Pas d\'enfermement. Changez d\'hébergeur, modifiez-le vous-même, ou embauchez n\'importe qui plus tard — aucune permission requise.','spark-for-1':'Vous êtes restaurateur·rice et avez besoin d\'un site avant l\'achalandage du week-end','spark-for-2':'Vous êtes photographe et lancez un portfolio avant une saison chargée','spark-for-3':'Vous devenez travailleur·euse autonome et avez besoin d\'une page dès aujourd\'hui','spark-for-4':'Vous avez un pop-up ou un kiosque de marché et avez besoin d\'un lien en bio','spark-cta':'Démarrer Spark →',
+'launch-when':'Site personnalisé + corrections · 7 jours','launch-f1':'Site marketing conçu sur mesure','launch-f1-body':'Construit autour de votre marque et de votre public — pas un gabarit que cinquante autres utilisent.','launch-f2':'Aide à la rédaction et mise en page axée conversion','launch-f2-body':'Mise en page conçue pour transformer les visiteurs en prospects, avec un message qui s\'adresse directement à votre client.','launch-f3':'Trois rondes de corrections après livraison','launch-f3-body':'Pas juste une approbation de premier jet. Trois rondes complètes pour que les mots, la mise en page et le ton soient exactement bons.','launch-f4':'Déployé, rapide et optimisé SEO','launch-f4-body':'Hébergé sur un CDN rapide, optimisé pour les Core Web Vitals et structuré pour que Google puisse le trouver.','launch-f5':'Vous possédez tout','launch-f5-body':'Code, connexion de domaine, tout le contenu — entièrement à vous, sans frais récurrents envers nous.','launch-for-1':'Vous êtes une startup qui va en réunion d\'investisseurs et avez besoin d\'un site crédible','launch-for-2':'Vous êtes consultant·e qui se lance seul·e et avez besoin d\'une marque qui convertit','launch-for-3':'Votre équipe produit lance une campagne cette semaine','launch-for-4':'Vous êtes une PME prête à upgrader d\'un site DIY vers quelque chose de peaufiné','launch-cta':'Démarrer Launch →',
+'build-badge':'PLUS POPULAIRE','build-when':'App web ou mobile complète · livré en 30 jours','build-f1':'Produit complet : app, backend, auth, paiements','build-f1-body':'Une équipe, une facture — base de données, API, UI et Stripe branchés et fonctionnels au jour 30.','build-f2':'Démos hebdomadaires — vous le voyez grandir','build-f2-body':'Pas de grande révélation à la fin. Vous faites le point chaque semaine et orientez le build en temps réel.','build-f3':'Soumission App Store / Play Store incluse','build-f3-body':'On s\'occupe des captures d\'écran, métadonnées et du processus de soumission — vous approuvez et ça va en ligne.','build-f4':'30 jours de corrections post-lancement','build-f4-body':'Le premier mois est toujours le plus agité. On reste dessus pour que les bogues soient réglés avant de vous coûter des utilisateurs.','build-for-1':'Vous êtes fondateur·rice avec des utilisateurs en attente qui ont besoin d\'un vrai produit','build-for-2':'Vous avez une entreprise de services prête à transformer son flux de travail en app réservable','build-for-3':'Vous avez une idée de place de marché qui nécessite une version fonctionnelle avant la prochaine conversation de financement','build-for-4':'Vous avez une équipe qui planifie depuis trop longtemps et qui doit livrer quelque chose','build-cta':'Démarrer Build →',
+'augment-when':'Fonctionnalité IA dans votre produit · 14 jours','augment-f1':'Chat, recherche, résumé ou agents','augment-f1-body':'Quelle que soit la forme d\'IA dont votre produit a besoin — on a livré les quatre et on sait où chacune s\'intègre le mieux.','augment-f2':'Intégré dans votre base de code existante','augment-f2-body':'Pas de refonte nécessaire. On travaille avec votre stack et ajoute de l\'intelligence là où ça compte le plus.','augment-f3':'Configuration des prompts et évaluations que vous pouvez maintenir','augment-f3-body':'On ne branche pas juste une API. Vous obtenez des prompts et des tests automatisés que votre équipe peut améliorer sans nous.','augment-f4':'Présentation à l\'équipe lors du transfert','augment-f4-body':'Vos ingénieur·es repartent en sachant pourquoi chaque décision a été prise et exactement comment l\'étendre.','augment-for-1':'Vous avez une équipe support noyée dans les billets répétitifs qui veut que l\'IA gère la première réponse','augment-for-2':'Vous avez un produit SaaS qui ajoute une recherche intelligente avant la prochaine version','augment-for-3':'Vous avez une marque e-commerce prête pour des recommandations produit pilotées par IA','augment-for-4':'Vous avez construit quelque chose de bien mais devez ajouter de l\'intelligence pour rester compétitif','augment-cta':'Démarrer Augment →',
+'disc-badge':'ADD-ON','disc-when':'Add-on à tout forfait · +10 jours de build','disc-f1':'Évaluation business au niveau CEO','disc-f1-body':'On examine votre produit, modèle d\'affaires, paysage concurrentiel et parcours utilisateur comme le ferait un directeur produit fondateur — pas juste « qu\'est-ce que vous voulez qu\'on construise » mais « qu\'est-ce que vous devriez construire et pourquoi ».','disc-f2':'Design de fonctionnalités et feuille de route d\'amélioration','disc-f2-body':'On identifie les lacunes et opportunités dans votre produit actuel, conçoit de nouvelles fonctionnalités qui feront avancer les choses, et vous remet une feuille de route priorisée avec le raisonnement derrière chaque décision.','disc-f3':'+10 jours de build ajoutés à votre projet','disc-f3-body':'Pas juste un document — du vrai code livré en plus de votre engagement Spark, Launch, Build ou Augment existant. On construit les éléments les plus prioritaires de la feuille de route pour que vous repartiez avec du logiciel fonctionnel, pas des diapositives.','disc-f4':'Trois appels tout au long du sprint','disc-f4-body':'Appel de lancement le premier jour pour aligner les objectifs, point de mi-sprint pour orienter le build, et appel de livraison pour passer en revue tout ce qui a été construit et transférer la feuille de route. Vous n\'attendez jamais une grande révélation.','disc-f5':'Brief produit écrit que vous gardez pour toujours','disc-f5-body':'Un brief produit clair, des user stories et une feuille de route en langage simple — prêt à remettre à n\'importe quel développeur, investisseur ou membre d\'équipe. Pas de jargon, pas de remplissage.','disc-for-1':'Ajouter à Spark ou Launch pour obtenir une direction stratégique avec votre nouveau site','disc-for-2':'Ajouter à Build pour s\'aligner sur les fonctionnalités avant le début du sprint','disc-for-3':'Ajouter à Augment pour évaluer si la fonctionnalité IA que vous voulez est vraiment la bonne','disc-for-4':'Quiconque veut une réflexion produit au niveau CEO dans le cadre de son build','disc-cta':'Démarrer Discovery →',
+'pulse-badge':'Abonnement','pulse-tagline':'Médias sociaux · mensuel','pulse-f1':'12–15 publications/mois sur vos réseaux','pulse-f2':'Rédaction de contenu + visuels de marque','pulse-f3':'Planification et publication gérées pour vous','pulse-f4':'Bilan de performance mensuel','pulse-for-1':'Vous êtes restaurateur·rice et avez besoin de publications hebdomadaires sur Instagram et Facebook','pulse-for-2':'Vous avez une boutique qui veut rester active sur TikTok sans embaucher à temps plein','pulse-for-3':'Vous êtes coach ou consultant·e qui construit une présence LinkedIn constante','pulse-for-4':'Vous avez une entreprise locale qui veut les réseaux gérés pour se concentrer sur ses clients','pulse-cancel':'Résiliez en tout temps','pulse-cta':'Démarrer Pulse →',
+'compare-title':'Comment on se compare','compare-note':'Trois façons de faire construire un logiciel. Une seule vient avec une date engagée et un chiffre fixe au bas.',
+'compare-trad':'Agence traditionnelle','compare-freelancer':'Pigiste','compare-row-timeline':'Délai','compare-row-pricing':'Tarification','compare-row-scope':'Dérive de portée','compare-row-ownership':'Propriété du code','compare-row-support':'Support post-lancement','compare-row-ai':'Build IA-natif',
+'compare-nb-timeline':'3–30 jours <span class="compare-note">engagés</span>','compare-trad-timeline':'3–6 mois <span class="compare-note">estimés</span>','compare-free-timeline':'Variable <span class="compare-note">selon la file d\'attente</span>',
+'compare-nb-pricing':'Prix fixe <span class="compare-note">convenu le premier jour</span>','compare-trad-pricing':'Temps &amp; matériaux <span class="compare-note">facture finale inconnue</span>','compare-free-pricing':'Taux horaire <span class="compare-note">risque de dérive</span>',
+'compare-nb-scope':'Impossible par conception','compare-trad-scope':'Fréquent','compare-free-scope':'Fréquent',
+'compare-nb-ownership':'100 %, immédiat','compare-trad-ownership':'Souvent lié à un retainer','compare-free-ownership':'Oui',
+'compare-nb-support':'30 jours inclus','compare-trad-support':'Retainer requis','compare-free-support':'Frais supplémentaires',
+'compare-nb-ai':'Oui — chaque projet','compare-trad-ai':'Rarement','compare-free-ai':'Rarement',
+'manifesto-title':'Notre Manifeste','manifesto-note':'Mission, valeurs et les mascottes du studio ont maintenant leur propre page. <a href="/manifesto">Lire le manifeste complet →</a>',
+'receipts-title':'Preuves','receipts-note':'On ne dit pas juste « IA-natif ». On publie comment on travaille, publiquement, là où tout le monde peut vérifier.',
+'fa-eyebrow':'Analyse approfondie','fa-title':'L\'IA agentique et le build de 30 jours','fa-h3':'Pourquoi l\'IA agentique change ce qui est possible dans un sprint à portée fixe',
+'fa-p1':'Les agences traditionnelles citent 90 jours parce qu\'elles ajoutent un coussin pour les imprévus. Les systèmes agentiques — des modèles qui bouclent à travers des étapes planifier, agir et vérifier de manière autonome — compriment le travail routinier qui représente la plupart de ce temps. Ce qui prenait un sprint prend maintenant une session.',
+'fa-p2':'Le changement le plus intéressant n\'est pas la vitesse. C\'est la confiance dans la portée. Les agents font remonter les cas limites avant qu\'une ligne de code d\'implémentation existe, exécutent des suites de tests en temps réel et maintiennent un style cohérent sur une grande base de code sans dérive. C\'est ce qui rend la livraison à portée fixe et prix fixe viable à un niveau de qualité qui nécessitait autrefois une grande équipe.',
+'fa-btn':'Lire l\'article complet →',
+'receipt-p1':'<strong>La plupart des agences ont ajouté « IA » sur leur page d\'accueil l\'an dernier.</strong> On construit avec des agents, des prompts structurés et des boucles de raisonnement depuis avant que ça fasse la une — et on écrit dessus tout ce temps.',
+'receipt-p2':'Ça compte pour une raison : quand votre projet rencontre un problème difficile, vous voulez l\'équipe qui comprend <strong>pourquoi</strong> les outils fonctionnent, pas celle qui improvise avec eux pour la première fois sur votre facture.',
+'receipt-p3':'Lisez les articles. Jugez la réflexion. Puis réservez l\'appel.',
+'proof-1':'Dans la boucle ReAct : comment nos agents pensent avant d\'agir <span class="mono">Article ↗</span>',
+'proof-2':'Pourquoi l\'IA agentique change ce qui est possible dans un build de 30 jours <span class="mono">Article ↗</span>',
+'proof-3':'Des prompts à voler : nos méta-prompts à remplir <span class="mono">Article ↗</span>',
+'proof-4':'Archive complète <span class="mono">Blogue ↗</span>',
+'faq-title':'Questions fréquentes','faq-note':'Les réponses aux questions que les fondateurs posent avant de réserver un appel.',
+'faq-q1':'Combien de temps prend vraiment un build ?','faq-a1':'Northbound livre en 3 à 30 jours selon le forfait. Spark (page d\'atterrissage) en 3 jours, Launch (site marketing sur mesure) en 7 jours, Augment (fonctionnalité IA dans votre produit) en 14 jours, et Build (app web ou mobile complète) en 30 jours. Pulse est un abonnement mensuel continu sans date de fin fixe. Les délais du Build sont des dates engagées, pas des estimations — si on rate, vous obtenez un rabais.',
+'faq-q2':'Qu\'est-ce que le Sprint Découverte et en avez-vous besoin ?','faq-a2':'Le Sprint Découverte (1 000 $ CAD) est un add-on à n\'importe lequel de nos forfaits — Spark, Launch, Build ou Augment. Quand vous l\'ajoutez à votre projet, on intègre une évaluation business au niveau CEO parallèlement au build : on examine votre paysage concurrentiel, le parcours utilisateur et la direction produit pour concevoir les fonctionnalités qui feront vraiment avancer les choses. Ça ajoute 10 jours de build à votre engagement et comprend trois appels dédiés (lancement, mi-sprint, livraison). Vous obtenez également un brief produit écrit et une feuille de route à conserver. Si vous n\'êtes pas sûr·e de quoi construire ensuite, ou voulez un regard extérieur avant qu\'on commence à coder, c\'est l\'add-on pour ça.',
+'faq-q3':'Que signifie vraiment prix fixe ?','faq-a3':'Ça signifie que le chiffre que vous voyez est le chiffre que vous payez — pas de facturation horaire, pas de factures de dérive de portée, pas de frais surprises. Launch inclut trois rondes de corrections après livraison. Si on découvre quelque chose de plus difficile que prévu en cours de build, c\'est notre problème à résoudre. Si vous voulez ajouter quelque chose de nouveau, ça devient un nouveau bordereau à un nouveau prix fixe.',
+'faq-q4':'Pouvez-vous ajouter des fonctionnalités IA à quelque chose qu\'on a déjà ?','faq-a4':'Oui — c\'est le forfait Augment (6 000 $ CAD, 14 jours). On intègre du chat, de la recherche, de la résumé ou des flux d\'agents dans votre base de code existante, on conçoit les prompts, on configure des évaluations pour que vous puissiez mesurer la qualité, et on guide votre équipe à travers tout lors du transfert.',
+'faq-q5':'Qu\'est-ce que le développement IA-natif et pourquoi est-ce important ?','faq-a5':'Le développement IA-natif utilise des systèmes agentiques — des modèles qui planifient, agissent et vérifient de manière autonome — pour comprimer les 70 % répétitifs de tout build. Les agents font remonter les cas limites avant qu\'une ligne de code soit écrite, exécutent des tests en temps réel et maintiennent la cohérence de style sur une grande base de code. Une ingénieure senior conçoit et révise tout avant que ça soit livré. Résultat : builds plus rapides, coût moindre et moins de surprises post-lancement qu\'une boutique traditionnelle.',
+'faq-q6':'Qu\'est-ce que je reçois à la fin ?','faq-a6':'Un produit déployé et prêt pour la production — pas un lien de staging. Plus le code source complet (vous le possédez, pour toujours), et un doc de transfert qu\'un non-développeur peut vraiment lire. Aucune condition de retainer attachée.',
+'faq-q7':'Qu\'est-ce que Pulse et comment fonctionne la gestion des médias sociaux ?','faq-a7':'Pulse est un abonnement à 750 $ CAD/mois pour la gestion des médias sociaux — pas de contrat fixe, résiliez en tout temps. On gère 12 à 15 publications par mois sur vos réseaux : rédaction de contenu, visuels de marque, planification et publication. C\'est conçu pour les restaurateurs, boutiques, coachs, consultants et toute entreprise locale qui veut une présence constante sans embaucher à temps plein. Réservez un appel et on s\'alignera sur vos réseaux, votre ton et votre mix de contenu avant la première publication.',
+'faq-q8':'Pourquoi n\'avez-vous pas de chatbot sur votre site ?','faq-a8':'Parce qu\'on pense que ça rendrait votre expérience pire, pas meilleure. Un chatbot sur une page de contact est l\'une des façons les plus courantes dont les entreprises appliquent l\'IA sans réfléchir à si ça aide vraiment — dans la plupart des cas ça ajoute de la friction, donne des réponses génériques et donne aux gens l\'impression d\'être évincés. On croit en l\'IA là où elle améliore vraiment un résultat : builds plus rapides, meilleure qualité de code, portée plus serrée. Pour une conversation sur votre projet, un vrai courriel ou un appel de 20 minutes bat n\'importe quel widget. C\'est pourquoi le CTA sur cette page est un appel, pas une fenêtre de chat.',
+'faq-q9':'Où êtes-vous basés et travaillez-vous avec des équipes hors de Toronto ?','faq-a9':'On est basés à Toronto (YYZ) et on travaille avec des fondateurs et des équipes produit partout dans le monde. Distanciel d\'abord depuis le premier jour — l\'appel de cadrage, les démos hebdomadaires et le transfert sont tous compatibles avec l\'asynchrone.',
+'dock-eyebrow':'Prochain départ : ce mois-ci','dock-h2':'Votre produit,<br><em>sur le quai</em>.','dock-p':'Vingt minutes. Vous apportez l\'idée, on apporte le manifeste. À la fin de l\'appel, vous connaîtrez la portée, le prix et la date de livraison.',
+'form-name-label':'Votre nom','form-name-ph':'Fondateur·rice, responsable produit ou PDG','form-email-label':'Courriel','form-project-label':'Ce dont vous avez besoin','form-project-ph':'Bref résumé du produit ou de la fonctionnalité IA','form-submit':'Réserver un appel de cadrage →',
+'form-note':'Préférez-vous le courriel ? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>',
+'foot-tagline':'Studio logiciel IA-natif','foot-owned':'Entreprise féminine','foot-nav-label':'Navigation','foot-nav-process':'Comment on livre','foot-nav-packages':'Forfaits','foot-nav-manifesto':'Manifeste','foot-nav-writing':'Blogue','foot-hello-label':'Nous contacter','foot-hello-cta':'Réserver un appel →','foot-hello-quote':'Obtenir une soumission','foot-legal-label':'Légal','foot-privacy':'Politique de confidentialité','foot-terms':'Conditions d\'utilisation',
+'foot-copyright':'© 2026 Northbound Studio · Entreprise féminine · Toronto, Canada'
+}
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(T[lang] && T[lang][k] !== undefined) el.textContent = T[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-html');
+    if(T[lang] && T[lang][k] !== undefined) el.innerHTML = T[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-ph');
+    if(T[lang] && T[lang][k] !== undefined) el.placeholder = T[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+    var k = el.getAttribute('data-i18n-aria');
+    if(T[lang] && T[lang][k] !== undefined) el.setAttribute('aria-label', T[lang][k]);
+  });
+  document.querySelectorAll('.lang-opt').forEach(function(btn){
+    btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+  });
+  /* rebuild mobile compare accordion from translated table */
+  var acc = document.querySelector('.compare-accordion');
+  if(acc) rebuildAccordion(acc);
+  localStorage.setItem('nb-lang', lang);
+}
+
+function rebuildAccordion(acc){
+  var table = document.querySelector('.compare-table');
+  if(!table) return;
+  acc.innerHTML = '';
+  var ths = table.querySelectorAll('thead th');
+  var cols = [];
+  ths.forEach(function(th, i){
+    if(i === 0) return;
+    var brand = th.querySelector('.compare-brand,.compare-brand-soft');
+    cols.push(brand ? brand.textContent.trim() : '');
+  });
+  function winClass(cell){
+    var c = cell.className;
+    return c.indexOf('compare-win') > -1 ? 'compare-win' : c.indexOf('compare-lose') > -1 ? 'compare-lose' : 'compare-neutral';
+  }
+  table.querySelectorAll('tbody tr').forEach(function(row, idx){
+    var cells = row.querySelectorAll('td');
+    var label = cells[0].textContent.trim();
+    var nbCell = cells[1];
+    var item = document.createElement('div');
+    item.className = 'ca-item' + (idx === 0 ? ' ca-open' : '');
+    var hdr = document.createElement('button');
+    hdr.className = 'ca-hdr';
+    hdr.setAttribute('type','button');
+    hdr.setAttribute('aria-expanded', idx === 0 ? 'true' : 'false');
+    hdr.innerHTML = '<span class="ca-label">'+label+'</span><span class="ca-nb '+winClass(nbCell)+'">'+nbCell.innerHTML+'</span><span class="ca-toggle" aria-hidden="true">▾</span>';
+    var body = document.createElement('div');
+    body.className = 'ca-body';
+    if(idx !== 0) body.setAttribute('hidden','');
+    for(var i = 2; i < cells.length; i++){
+      var div = document.createElement('div');
+      div.className = 'ca-row';
+      div.innerHTML = '<span class="ca-competitor">'+cols[i-1]+'</span><span class="ca-val '+winClass(cells[i])+'">'+cells[i].innerHTML+'</span>';
+      body.appendChild(div);
+    }
+    hdr.addEventListener('click', function(){
+      var isOpen = item.classList.contains('ca-open');
+      acc.querySelectorAll('.ca-item').forEach(function(it){
+        it.classList.remove('ca-open');
+        it.querySelector('.ca-hdr').setAttribute('aria-expanded','false');
+        it.querySelector('.ca-body').setAttribute('hidden','');
+      });
+      if(!isOpen){ item.classList.add('ca-open'); hdr.setAttribute('aria-expanded','true'); body.removeAttribute('hidden'); }
+    });
+    item.appendChild(hdr);
+    item.appendChild(body);
+    acc.appendChild(item);
+  });
+}
+
+var saved = localStorage.getItem('nb-lang');
+if(saved === 'fr' || saved === 'en'){
+  setLang(saved);
+}
+document.querySelectorAll('.lang-opt').forEach(function(btn){
+  btn.addEventListener('click', function(){ setLang(this.dataset.lang); });
+});
 })();
 </script>
 

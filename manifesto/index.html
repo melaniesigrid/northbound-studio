@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manifesto — Mission, Values & Mascots | Northbound Studio</title>
+  <meta name="description" content="Northbound Studio manifesto: mission, vision, values, and our mascots (the Hairies).">
+  <link rel="canonical" href="https://northboundsoftwarestudio.com/manifesto">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+/* Manifesto section styles */
+#manifesto{border-bottom:var(--line);padding:0}
+.manifesto-mission{background:var(--ink);color:var(--paper);border-bottom:var(--line);padding:72px 0 88px}
+.manifesto-mission .eyebrow{color:var(--hazard)}
+.manifesto-mission .eyebrow::before{background:var(--hazard)}
+.manifesto-mission-inner{display:flex;align-items:center;justify-content:space-between;gap:48px}
+.manifesto-m-text{font-family:var(--font-display);font-size:clamp(40px,6.8vw,96px);line-height:.94;letter-spacing:.01em;text-transform:uppercase;max-width:17ch;margin-top:30px}
+.manifesto-m-text em{color:var(--cobalt);font-style:normal}
+.burst-wrap{flex-shrink:0;position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center;transform:rotate(-10deg);animation:burst-pop 4s ease-in-out infinite}
+.burst-svg{position:absolute;inset:0;width:100%;height:100%}
+.burst-text{position:relative;z-index:1;font-family:var(--font-display);font-size:46px;letter-spacing:.03em;color:var(--ink);text-transform:uppercase;transform:rotate(10deg)}
+@keyframes burst-pop{0%,100%{transform:rotate(-10deg) scale(1)}50%{transform:rotate(-4deg) scale(1.14)}}
+.manifesto-vision{border-bottom:var(--line);padding:64px 0 68px;background:var(--paper-raise)}
+.manifesto-vision-inner{display:grid;grid-template-columns:160px 1fr;gap:48px;align-items:start}
+.manifesto-v-text{font-size:clamp(22px,3vw,34px);line-height:1.3;font-weight:600;max-width:28ch}
+.manifesto-values{padding:0 0 72px}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:var(--line);border-left:var(--line)}
+.value-card{border-right:var(--line);border-bottom:var(--line);padding:36px 32px 44px;display:flex;flex-direction:column;gap:14px}
+.value-card-dark{background:var(--ink);color:var(--paper)}
+.value-n{font-size:11px;letter-spacing:.14em;color:var(--ink-soft);font-weight:600}
+.value-card-dark .value-n{color:var(--hazard)}
+.value-title{font-family:var(--font-display);font-size:clamp(19px,2.1vw,26px);text-transform:uppercase;letter-spacing:.02em;line-height:1.08}
+.value-body{font-size:15px;line-height:1.65;color:var(--ink-soft)}
+.value-card-dark .value-body{color:rgba(238,240,236,.62)}
+@media(max-width:900px){.manifesto-vision-inner{grid-template-columns:1fr;gap:20px}.burst-wrap{width:190px;height:190px}.burst-text{font-size:30px}}
+@media(max-width:620px){.values-grid{grid-template-columns:1fr}.manifesto-mission-inner{flex-direction:column;gap:28px;align-items:flex-start}.burst-wrap{width:160px;height:160px;align-self:flex-end}.burst-text{font-size:26px}.manifesto-m-text{font-size:clamp(36px,10vw,64px)}}
+
+/* Hairies section styles */
+.hairies-section{background:var(--paper-raise);position:relative;overflow:hidden}
+.hairies-section::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(20,24,31,.06) 1px,transparent 1px),linear-gradient(180deg,rgba(20,24,31,.06) 1px,transparent 1px);background-size:42px 42px;opacity:.45}
+.hairies-grid{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;padding:72px 24px 78px}
+.hairies-copy{max-width:560px}
+.hairies-title{font-family:var(--font-display);font-size:clamp(46px,6.4vw,92px);line-height:.94;letter-spacing:.01em;text-transform:uppercase;margin:18px 0 20px}
+.hairies-title em{color:var(--cobalt);font-style:normal}
+.hairies-body{display:grid;gap:16px;color:var(--ink-soft);font-size:17px;line-height:1.75}
+.hairies-body strong{color:var(--ink)}
+.hairies-note{margin-top:24px;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cobalt)}
+.hairies-note::before{content:'';width:32px;height:10px;background:repeating-linear-gradient(90deg,var(--cobalt) 0 2px,transparent 2px 5px)}
+.hairies-primary{position:relative;z-index:2;width:min(430px,78vw);height:auto;filter:drop-shadow(9px 18px 0 rgba(20,24,31,.14));animation:hairies-float 7s ease-in-out infinite}
+@keyframes hairies-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1.5deg)}}
+@media(max-width:900px){.hairies-grid{grid-template-columns:1fr;padding-top:56px;gap:30px}.hairies-copy{max-width:680px}}
+@media(max-width:520px){.hairies-grid{padding:46px 20px 58px}.hairies-title{font-size:clamp(42px,17vw,66px)}}
+
+/* Rich footer (dark) */
+footer{background:var(--ink);color:var(--paper);border-top:none;padding:0;}
+.foot-inner{border-bottom:1px solid #2A3140;}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:0;padding:36px 0 32px;}
+.foot-brand{display:flex;flex-direction:column;gap:8px;padding-right:36px;border-right:1px solid #2A3140;}
+.foot-logo{font-family:var(--font-display);font-size:20px;letter-spacing:.06em;color:var(--paper);display:flex;align-items:center;gap:4px;}
+.foot-logo .dot{color:var(--cobalt)}
+.foot-tagline{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8B93A5;margin-top:2px;}
+.foot-loc{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#5D6577;}
+.foot-owned{display:inline-block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--hazard);border:1px solid var(--hazard);padding:3px 8px;margin-top:10px;align-self:flex-start;}
+.foot-col{display:flex;flex-direction:column;gap:9px;padding-left:32px;}
+.foot-col+.foot-col{border-left:1px solid #2A3140;}
+.foot-col-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#5D6577;margin-bottom:3px;}
+.foot-col a{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;text-decoration:none;color:#8B93A5;transition:color .14s ease;}
+.foot-col a:hover{color:var(--paper)}
+.foot-col-hello{padding-right:32px}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5D6577;}
+.foot-bottom-badge{background:var(--cobalt);color:#fff;padding:2px 8px;font-size:10px;letter-spacing:.1em;}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;}.foot-brand{grid-column:1/-1;border-right:none;border-bottom:1px solid #2A3140;padding-right:0;padding-bottom:24px;margin-bottom:4px;}.foot-col:first-of-type{padding-left:0;border-left:none;}}
+@media(max-width:480px){.foot-grid{grid-template-columns:1fr;}.foot-col{padding-left:0;border-left:none;border-top:1px solid #2A3140;padding-top:20px;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
+    <ul class="nav-links">
+      <li><a href="/#process">How we ship</a></li>
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog.html">Writing</a></li>
+    </ul>
+    <div class="lang-segmented" role="group" aria-label="Language selection">
+      <button class="lang-opt" aria-pressed="true">EN</button>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <button class="lang-opt" aria-pressed="false" disabled title="French version not available on this page">FR</button>
+    </div>
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
+    </button>
+    <a class="nav-cta" href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a call</a>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <a href="/#process">How we ship</a>
+  <a href="/#packages">Packages</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/blog.html">Writing</a>
+  <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener" class="mobile-nav-cta">Book a call →</a>
+</nav>
+
+<main>
+  <section id="manifesto">
+
+    <!-- Mission -->
+    <div class="manifesto-mission">
+      <div class="wrap manifesto-mission-inner">
+        <div>
+          <span class="eyebrow">Mission</span>
+          <p class="manifesto-m-text">To accelerate the world's access to <em>great software.</em></p>
+        </div>
+        <div class="burst-wrap" aria-hidden="true">
+          <svg class="burst-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <filter id="burst-grain" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="2" result="edgeWarp"/>
+              <feDisplacementMap in="SourceGraphic" in2="edgeWarp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+              <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" seed="5" result="grain"/>
+              <feColorMatrix type="saturate" values="0" in="grain" result="grayGrain"/>
+              <feComposite in="grayGrain" in2="rough" operator="in" result="clippedGrain"/>
+              <feBlend in="rough" in2="clippedGrain" mode="multiply"/>
+            </filter>
+            <polygon points="50,2 55.7,28.7 74,8.4 65.6,34.4 91.6,26 71.3,44.3 98,50 71.3,55.7 91.6,74 65.6,65.6 74,91.6 55.7,71.3 50,98 44.3,71.3 26,91.6 34.4,65.6 8.4,74 28.7,55.7 2,50 28.7,44.3 8.4,26 34.4,34.4 26,8.4 44.3,28.7" fill="#FF5F1F" filter="url(#burst-grain)"/>
+          </svg>
+          <span class="burst-text">Bang!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vision -->
+    <div class="manifesto-vision">
+      <div class="wrap manifesto-vision-inner">
+        <span class="eyebrow">Vision</span>
+        <p class="manifesto-v-text">A world where the gap between a great idea and a shipped product is measured in days. Not months. Not a second mortgage.</p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="manifesto-values">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title">Values</h2>
+          <p class="sec-note">Three things we will not compromise on. For any client. At any price.</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <span class="value-n mono">01</span>
+            <h3 class="value-title">Prompting is the craft.</h3>
+            <p class="value-body">Any studio can call itself AI-native. What separates a great website from AI slop is the quality of the prompts, the evaluations, and the human review behind every output. That is where we invest.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-n mono">02</span>
+            <h3 class="value-title">Craft does not expire.</h3>
+            <p class="value-body">Every codebase we ship, we would be comfortable with another engineer opening six months later. Clean architecture, semantic markup, and zero hallucinated dependencies. Not optional at any timeline.</p>
+          </div>
+          <div class="value-card value-card-dark">
+            <span class="value-n mono">03</span>
+            <h3 class="value-title">Women built this.</h3>
+            <p class="value-body">Northbound is woman-owned and operated. We believe the industry changes when women do not just have a seat at the table. They own the studio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="hairies" class="hairies-section" aria-labelledby="hairies-title">
+    <div class="wrap hairies-grid">
+      <div class="hairies-copy">
+        <span class="eyebrow">Studio mascot</span>
+        <h2 id="hairies-title" class="hairies-title">Meet the <em>Hairies</em></h2>
+        <div class="hairies-body">
+          <p>My cousin used to hand-knit tiny wool creatures — she called them hairies. Five of them, all different, all slightly lopsided. We played with them for hours growing up. <strong>When I built Northbound, I came back to that image: small, expressive, and impossible to ignore.</strong> I turned them into our unofficial studio mascots. They show up in every sprint — five feelings any build team will recognize.</p>
+        </div>
+        <span class="hairies-note">Fuzzy ideas, shipped clean</span>
+      </div>
+      <img class="hairies-primary" src="/mascots/Hairies-calm-nobg.png" alt="The calm Hairies mascot, a fuzzy wool-inspired figure with soft color around the edges" width="800" height="800" loading="lazy">
+    </div>
+    <div class="wrap">
+      <div class="hairy-roster-grid">
+        <div class="hairy-card">
+          <img src="/mascots/Hairies-spark-nobg.png" alt="Launch — excited hairy mascot" class="hairy-img" width="140" height="140">
+          <span class="hairy-name">Launch</span>
+          <span class="hairy-role">Lives for deploy day</span>
+        </div>
+        <div class="hairy-card">
+          <img src="/mascots/Hairies-curious-nobg.png" alt="Scope — curious hairy mascot" class="hairy-img" width="140" height="140">
+          <span class="hairy-name">Scope</span>
+          <span class="hairy-role">Reacts to every brief<br>the same way</span>
+        </div>
+        <div class="hairy-card">
+          <img src="/mascots/Hairies-worried-nobg.png" alt="Blocker — worried hairy mascot" class="hairy-img" width="140" height="140">
+          <span class="hairy-name">Blocker</span>
+          <span class="hairy-role">That face when CI<br>fails at 4pm</span>
+        </div>
+        <div class="hairy-card">
+          <img src="/mascots/Hairies-sly-nobg.png" alt="Legacy — grumpy hairy mascot" class="hairy-img" width="140" height="140">
+          <span class="hairy-name">Legacy</span>
+          <span class="hairy-role">Has seen the codebase.<br>Unimpressed.</span>
+        </div>
+        <div class="hairy-card">
+          <img src="/mascots/Hairies-calm-nobg.png" alt="Coda — calm hairy mascot" class="hairy-img" width="140" height="140">
+          <span class="hairy-name">Coda</span>
+          <span class="hairy-role">Ships. Then sleeps.</span>
+        </div>
+        <div class="hairy-card">
+          <img src="/mascots/Hairies-done-nobg.png" alt="Done — satisfied hairy mascot" class="hairy-img" width="140" height="140">
+          <span class="hairy-name">Done</span>
+          <span class="hairy-role">That face when it<br>actually worked.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <span class="foot-logo">NORTHBOUND<span class="dot"> ▲</span></span>
+        <span class="foot-tagline">AI-native software studio</span>
+        <span class="foot-loc">YYZ · Toronto, Canada</span>
+        <span class="foot-owned">Woman-Owned Business</span>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-label">Navigate</span>
+        <a href="/#process">How we ship</a>
+        <a href="/#packages">Packages</a>
+        <a href="/manifesto">Manifesto</a>
+        <a href="/#faq">FAQ</a>
+        <a href="/blog.html">Writing</a>
+      </div>
+      <div class="foot-col foot-col-hello">
+        <span class="foot-col-label">Say hello</span>
+        <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>
+        <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a scope call →</a>
+        <a href="/#contact">Get a quote</a>
+        <a href="https://www.linkedin.com/company/northbound-software/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/northboundsoftware/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="foot-col">
+        <span class="foot-col-label">Legal</span>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada</span>
+    <span class="foot-bottom-badge">NB-MANIFEST-2026</span>
+  </div>
+</footer>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4RDLFH174"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W4RDLFH174');
+</script>
+<script>
+(function(){
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if(!burger || !mobileNav) return;
+  burger.addEventListener('click', function(){
+    var open = mobileNav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+    mobileNav.setAttribute('aria-hidden', String(!open));
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileNav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      mobileNav.setAttribute('aria-hidden','true');
+    });
+  });
+})();
+</script>
+</body>
+</html>
