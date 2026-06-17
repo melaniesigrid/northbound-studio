@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse goto *)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse screenshot *)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse is *)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse js *)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse reload *)",
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse viewport *)",
+      "Bash(~/.claude/skills/gstack/bin/gstack-timeline-log '{\"skill\":\"browse\",\"event\":\"completed\",\"branch\":\"main\",\"outcome\":\"success\",\"session\":\"verify-browse\"}')"
+    ],
+    "additionalDirectories": [
+      "/Users/melaniesigrid/.gstack/projects/melaniesigrid-northbound-studio/designs/full-landing-page-20260616"
+    ]
+  }
+}

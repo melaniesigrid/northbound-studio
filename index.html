@@ -67,7 +67,7 @@
           "@type": "Offer",
           "name": "Spark Package",
           "description": "Clean coded website — live on your domain. Ships in 3 days.",
-          "price": "1710",
+          "price": "1500",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -76,7 +76,7 @@
           "@type": "Offer",
           "name": "Launch Package",
           "description": "Custom-designed marketing site — deployed, fast, and SEO-ready. Ships in 7 days.",
-          "price": "3204",
+          "price": "3000",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -94,16 +94,25 @@
           "@type": "Offer",
           "name": "Augment Package",
           "description": "AI feature added to your existing product — chat, search, summarization, or agents. Ships in 14 days.",
-          "price": "6696",
+          "price": "6000",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
         },
         {
           "@type": "Offer",
+          "name": "Discovery Sprint",
+          "description": "Add-on to any package. CEO-level business evaluation, feature design recommendations, +10 build days of implementation, three check-in calls, and a written product brief.",
+          "price": "1000",
+          "priceCurrency": "CAD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://northboundsoftwarestudio.com/#discovery"
+        },
+        {
+          "@type": "Offer",
           "name": "Pulse — Social Media Management",
           "description": "Monthly social media management — content writing, branded graphics, scheduling, and posting. Cancel anytime.",
-          "price": "792",
+          "price": "750",
           "priceCurrency": "CAD",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
@@ -136,7 +145,7 @@
         "name": "Can you add AI features to something we already have?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — that's the Augment package ($6,696 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff."
+          "text": "Yes — that's the Augment package ($6,000 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff."
         }
       },
       {
@@ -160,7 +169,15 @@
         "name": "What is Pulse and how does social media management work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pulse is a $792 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time."
+          "text": "Pulse is a $750 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why don't you have a chatbot on your site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because we think it would make your experience worse, not better. A chatbot on a contact page is one of the most common ways companies apply AI without thinking through whether it actually helps. We believe in using AI where it genuinely improves an outcome: faster builds, better code quality, tighter scope. For a conversation about your project, a real email or a 20-minute call beats any widget."
         }
       },
       {
@@ -191,6 +208,27 @@ h1,h2,h3,h4{text-wrap:balance;}
 /* ---------- scroll-margin: offset sticky nav (66px) ---------- */
 section[id],[id]{scroll-margin-top:80px;}
 
+/* ---------- pill badges (Dopple-inspired oval label) ---------- */
+.pill-badge{
+  display:inline-flex;
+  align-items:center;
+  border:1.5px solid currentColor;
+  border-radius:100px;
+  padding:5px 14px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  line-height:1;
+}
+.hero-pills{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:rise .6s ease .3s forwards;
+}
+
 /* ---------- hero ---------- */
 .hero{
   border-bottom:var(--line);
@@ -206,9 +244,9 @@ section[id],[id]{scroll-margin-top:80px;}
   min-height:72vh;
 }
 .hero-left{
-  padding:48px 48px 40px 24px;
+  padding:28px 48px 24px 24px;
   display:flex;flex-direction:column;justify-content:flex-start;
-  gap:28px;
+  gap:18px;
   position:relative;
 }
 .hero-left .eyebrow{opacity:0;animation:rise .6s ease .1s forwards}
@@ -332,8 +370,8 @@ section[id],[id]{scroll-margin-top:80px;}
 }
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
-  .hero-left{padding:56px 24px 40px}
-  .hero-right{border-left:none;border-top:var(--line);height:65vh;overflow:hidden}
+  .hero-left{padding:28px 24px 24px}
+  .hero-right{border-left:none;border-top:var(--line);height:42vh;overflow:hidden}
 }
 
 /* ---------- section shells ---------- */
@@ -729,11 +767,124 @@ section{border-bottom:var(--line)}
 .receipt-copy,
 .proof-list li,
 .dock,
+.hairies-copy,
+.hairies-showcase,
 .hero-left,
 .faq-item,
 .compare-table-wrap,
 .sec-head{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal-visible{opacity:1;transform:translateY(0);}
+
+.hero-grid{position:relative;z-index:2;}
+
+/* ---------- manifesto: mission · vision · values ---------- */
+#manifesto{border-bottom:var(--line);padding:0}
+.manifesto-mission{
+  background:var(--ink);
+  color:var(--paper);
+  border-bottom:var(--line);
+  padding:72px 0 88px;
+}
+.manifesto-mission .eyebrow{color:var(--hazard)}
+.manifesto-mission .eyebrow::before{background:var(--hazard)}
+.manifesto-mission-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:48px;
+}
+.manifesto-m-text{
+  font-family:var(--font-display);
+  font-size:clamp(40px,6.8vw,96px);
+  line-height:.94;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  max-width:17ch;
+  margin-top:30px;
+}
+.manifesto-m-text em{color:var(--cobalt);font-style:normal}
+.burst-wrap{
+  flex-shrink:0;
+  position:relative;
+  width:280px;
+  height:280px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:rotate(-10deg);
+  animation:burst-pop 4s ease-in-out infinite;
+}
+.burst-svg{position:absolute;inset:0;width:100%;height:100%}
+.burst-text{
+  position:relative;
+  z-index:1;
+  font-family:var(--font-display);
+  font-size:46px;
+  letter-spacing:.03em;
+  color:var(--ink);
+  text-transform:uppercase;
+  transform:rotate(10deg);
+}
+@keyframes burst-pop{
+  0%,100%{transform:rotate(-10deg) scale(1)}
+  50%{transform:rotate(-4deg) scale(1.14)}
+}
+.manifesto-vision{
+  border-bottom:var(--line);
+  padding:64px 0 68px;
+  background:var(--paper-raise);
+}
+.manifesto-vision-inner{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:48px;
+  align-items:start;
+}
+.manifesto-v-text{
+  font-size:clamp(22px,3vw,34px);
+  line-height:1.3;
+  font-weight:600;
+  max-width:28ch;
+}
+.manifesto-values{padding:0 0 72px}
+.values-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:var(--line);
+  border-left:var(--line);
+}
+.value-card{
+  border-right:var(--line);
+  border-bottom:var(--line);
+  padding:36px 32px 44px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.value-card-dark{background:var(--ink);color:var(--paper)}
+.value-n{font-size:11px;letter-spacing:.14em;color:var(--ink-soft);font-weight:600}
+.value-card-dark .value-n{color:var(--hazard)}
+.value-title{
+  font-family:var(--font-display);
+  font-size:clamp(19px,2.1vw,26px);
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1.08;
+}
+.value-body{font-size:15px;line-height:1.65;color:var(--ink-soft)}
+.value-card-dark .value-body{color:rgba(238,240,236,.62)}
+@media(max-width:900px){
+  .manifesto-vision-inner{grid-template-columns:1fr;gap:20px}
+  .burst-wrap{width:190px;height:190px}
+  .burst-text{font-size:30px}
+}
+@media(max-width:620px){
+  .values-grid{grid-template-columns:1fr}
+  .manifesto-mission-inner{flex-direction:column;gap:28px;align-items:flex-start}
+  .burst-wrap{width:160px;height:160px;align-self:flex-end}
+  .burst-text{font-size:26px}
+  .manifesto-m-text{font-size:clamp(36px,10vw,64px)}
+}
 
 /* ---------- footer ---------- */
 footer{
@@ -747,7 +898,7 @@ footer{
 }
 .foot-grid{
   display:grid;
-  grid-template-columns:1.4fr 1fr 1.6fr;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
   gap:0;
   padding:36px 0 32px;
 }
@@ -781,6 +932,18 @@ footer{
   text-transform:uppercase;
   color:#5D6577;
 }
+.foot-owned{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:9.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--hazard);
+  border:1px solid var(--hazard);
+  padding:3px 8px;
+  margin-top:10px;
+  align-self:flex-start;
+}
 .foot-col{
   display:flex;
   flex-direction:column;
@@ -807,6 +970,7 @@ footer{
   transition:color .14s ease;
 }
 .foot-col a:hover{color:var(--paper)}
+.foot-col-hello{padding-right:32px}
 .foot-bottom{
   display:flex;
   justify-content:space-between;
@@ -825,7 +989,7 @@ footer{
   font-size:10px;
   letter-spacing:.1em;
 }
-@media(max-width:760px){
+@media(max-width:860px){
   .foot-grid{grid-template-columns:1fr 1fr;}
   .foot-brand{grid-column:1/-1;border-right:none;border-bottom:1px solid #2A3140;padding-right:0;padding-bottom:24px;margin-bottom:4px;}
   .foot-col:first-of-type{padding-left:0;border-left:none;}
@@ -836,11 +1000,19 @@ footer{
 }
 
 /* ---------- stats strip ---------- */
-.stats-strip{border-bottom:var(--line);background:var(--hazard);}
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+.stats-strip{border-bottom:var(--line);background:var(--hazard);position:relative;overflow:hidden;}
+.stats-strip::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='ns'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23ns)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  mix-blend-mode:multiply;
+  opacity:.14;
 }
+.stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);}
 .stat-item{
   padding:26px 28px;
   border-right:var(--line);
@@ -866,7 +1038,154 @@ footer{
 @media(max-width:760px){
   .stats-grid{grid-template-columns:repeat(2,1fr);}
   .stat-item:nth-child(even){border-right:none;}
-  .stat-item:nth-child(3),.stat-item:nth-child(4){border-top:var(--line);}
+.stat-item:nth-child(3),.stat-item:nth-child(4){border-top:var(--line);}
+}
+
+/* ---------- Hairies mascot ---------- */
+.hairies-section{
+  background:var(--paper-raise);
+  position:relative;
+  overflow:hidden;
+}
+.hairies-section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(20,24,31,.06) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(20,24,31,.06) 1px,transparent 1px);
+  background-size:42px 42px;
+  opacity:.45;
+}
+.hairies-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:48px;
+  align-items:center;
+  padding:72px 24px 78px;
+}
+.hairies-copy{
+  max-width:560px;
+}
+.hairies-title{
+  font-family:var(--font-display);
+  font-size:clamp(46px,6.4vw,92px);
+  line-height:.94;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+  margin:18px 0 20px;
+}
+.hairies-title em{
+  color:var(--cobalt);
+  font-style:normal;
+}
+.hairies-body{
+  display:grid;
+  gap:16px;
+  color:var(--ink-soft);
+  font-size:17px;
+  line-height:1.75;
+}
+.hairies-body strong{color:var(--ink)}
+.hairies-note{
+  margin-top:24px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--cobalt);
+}
+.hairies-note::before{
+  content:'';
+  width:32px;
+  height:10px;
+  background:repeating-linear-gradient(90deg,var(--cobalt) 0 2px,transparent 2px 5px);
+}
+.hairies-showcase{
+  min-height:448px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px 16px 104px;
+}
+.hairies-showcase::before{
+  content:'';
+  position:absolute;
+  inset:34px 26px 68px;
+  background:var(--hazard);
+  border:var(--line);
+  transform:rotate(-2.5deg);
+  box-shadow:8px 8px 0 var(--ink);
+}
+.hairies-showcase::after{
+  content:'';
+  position:absolute;
+  width:74%;
+  height:34px;
+  left:13%;
+  bottom:70px;
+  background:rgba(20,24,31,.16);
+  filter:blur(18px);
+  border-radius:50%;
+}
+.hairies-primary{
+  position:relative;
+  z-index:2;
+  width:min(430px,78vw);
+  height:auto;
+  filter:drop-shadow(9px 18px 0 rgba(20,24,31,.14));
+  animation:hairies-float 7s ease-in-out infinite;
+}
+.hairies-friends{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:6px;
+  transform:translateX(-50%);
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  width:min(520px,92%);
+}
+.hairies-friends img{
+  width:clamp(64px,8vw,92px);
+  aspect-ratio:1;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 0 rgba(20,24,31,.18));
+}
+.hairies-friends img:nth-child(1){transform:rotate(-7deg)}
+.hairies-friends img:nth-child(2){transform:translateY(10px) rotate(4deg)}
+.hairies-friends img:nth-child(3){transform:translateY(3px) rotate(-3deg)}
+.hairies-friends img:nth-child(4){transform:rotate(6deg)}
+@keyframes hairies-float{
+  0%,100%{transform:translateY(0) rotate(-1deg)}
+  50%{transform:translateY(-12px) rotate(1.5deg)}
+}
+@media(max-width:900px){
+  .hairies-grid{grid-template-columns:1fr;padding-top:56px;gap:30px}
+  .hairies-copy{max-width:680px}
+  .hairies-showcase{min-height:388px;padding-bottom:92px}
+}
+@media(max-width:520px){
+  .hairies-grid{padding:46px 20px 58px}
+  .hairies-title{font-size:clamp(42px,17vw,66px)}
+  .hairies-showcase{
+    min-height:346px;
+    margin-top:18px;
+    padding:8px 0 72px;
+    flex-direction:row;
+  }
+  .hairies-showcase::before{inset:26px 2px 48px;box-shadow:5px 5px 0 var(--ink)}
+  .hairies-showcase::after{bottom:48px}
+  .hairies-primary{width:min(310px,86vw)}
+  .hairies-friends{display:none}
 }
 
 /* ---------- trust card decoration ---------- */
@@ -1139,7 +1458,7 @@ footer{
 .faq-list{margin-bottom:72px;}
 .faq-item{
   border-top:var(--line);
-  padding:28px 0;
+  padding:28px 24px;
 }
 .faq-item:last-child{border-bottom:var(--line);}
 .faq-q{
@@ -1173,7 +1492,12 @@ footer{
   padding-top:16px;
   display:none;
 }
-.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-a{
+  display:block;
+  padding-left:20px;
+  padding-right:20px;
+  border-left:3px solid var(--cobalt);
+}
 
 /* ---------- hover enhancements ---------- */
 
@@ -1228,6 +1552,79 @@ footer{
   .hero-h1 .row,.hero-sub,.hero-actions,.hero-left .eyebrow{opacity:1}
   .stamp-wrap{opacity:1}
 }
+
+/* ---------- hairies roster ---------- */
+#hairies-roster{background:var(--paper-raise);position:relative;overflow:hidden;}
+#hairies-roster::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(20,24,31,.06) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(20,24,31,.06) 1px,transparent 1px);
+  background-size:42px 42px;
+  opacity:.45;
+}
+#hairies-roster .wrap{position:relative;z-index:1;}
+.hairies-origin{
+  max-width:62ch;
+  padding:28px 32px;
+  border-left:4px solid var(--cobalt);
+  background:var(--paper);
+  font-size:17px;
+  line-height:1.85;
+  color:var(--ink-soft);
+  margin-bottom:56px;
+  font-style:italic;
+}
+.hairies-origin strong{font-style:normal;color:var(--ink);}
+.hairy-roster-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  border:var(--line);
+  border-right:none;
+  margin-bottom:80px;
+}
+.hairy-card{
+  border-right:var(--line);
+  background:var(--paper);
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  padding:32px 16px 26px;
+  transition:background .18s ease;
+}
+.hairy-card:hover{background:rgba(37,70,240,.04);}
+.hairy-img{
+  width:140px;height:140px;
+  object-fit:contain;
+  margin-bottom:18px;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  display:block;
+}
+.hairy-card:hover .hairy-img{transform:translateY(-10px) scale(1.07);}
+.hairy-name{
+  font-family:var(--font-display);
+  font-size:20px;text-transform:uppercase;
+  letter-spacing:.04em;line-height:1;
+  margin-bottom:8px;
+}
+.hairy-role{
+  font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-soft);line-height:1.6;
+}
+@media(max-width:1080px){
+  .hairy-roster-grid{grid-template-columns:repeat(3,1fr);}
+  .hairy-roster-grid .hairy-card:nth-child(3n){border-right:none;}
+}
+@media(max-width:560px){
+  .hairy-roster-grid{grid-template-columns:repeat(2,1fr);}
+  .hairy-roster-grid .hairy-card:nth-child(2n){border-right:none;}
+  .hairy-roster-grid .hairy-card:nth-child(2n+1){border-right:var(--line);}
+  .hairies-origin{padding:20px 22px;font-size:15px;}
+}
+
 </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -1240,6 +1637,22 @@ footer{
   gtag('config', 'G-W4RDLFH174');
 </script>
 <body>
+
+<!-- SVG filter defs — letterpress displacement for hero h1 -->
+<svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <filter id="press-filter" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="8" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="fast-grain" x="-2%" y="-5%" width="104%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.25 0.15" numOctaves="4" seed="4" result="noise"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  6 0 0 0 -3" in="noise" result="whitePatch"/>
+      <feComposite in="whitePatch" in2="SourceGraphic" operator="in" result="clipped"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="clipped"/></feMerge>
+    </filter>
+  </defs>
+</svg>
 
 <header>
   <div class="wrap nav">
@@ -1276,6 +1689,11 @@ footer{
   <div class="hero-grid">
     <div class="hero-left">
       <span class="eyebrow">AI-native software development studio · Toronto 🍁</span>
+      <div class="hero-pills">
+        <span class="pill-badge">YYZ · Toronto</span>
+        <span class="pill-badge" style="color:var(--cobalt);border-color:var(--cobalt)">Woman-owned</span>
+        <span class="pill-badge" style="background:var(--ink);color:var(--paper);border-color:var(--ink)">Est. 2026</span>
+      </div>
       <h1 class="hero-h1">
         <span class="row">We ship</span>
         <span class="row">software.</span>
@@ -1284,7 +1702,7 @@ footer{
       <p class="hero-sub">Northbound builds web, mobile, and AI-enabled products with agent-driven speed and senior craftsmanship. Fixed scope, fixed price, fixed timeline — no hourly meters, no surprise invoices. <strong>Founded by a senior engineer and AI practitioner based in Toronto.</strong></p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#packages">See the packages →</a>
-        <a class="btn" href="#contact">Book a scope call</a>
+        <a class="btn" href="#contact">Book a scope call →</a>
       </div>
       <div class="stamp-wrap" id="stamp-wrap">
         <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
@@ -1389,9 +1807,9 @@ footer{
             </ul>
           </div>
         </div>
-        <div class="card-price">$1,710 <small>CAD · Fixed</small></div>
+        <div class="card-price">$1,500 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact">Start Spark</a>
+        <a class="btn card-cta" href="#contact">Start Spark →</a>
       </article>
 
       <article class="card">
@@ -1431,9 +1849,9 @@ footer{
             </ul>
           </div>
         </div>
-        <div class="card-price">$3,204 <small>CAD · Fixed</small></div>
+        <div class="card-price">$3,000 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact">Start Launch</a>
+        <a class="btn card-cta" href="#contact">Start Launch →</a>
       </article>
 
       <article class="card flag">
@@ -1471,7 +1889,7 @@ footer{
         </div>
         <div class="card-price">$10,000 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn btn-primary card-cta" href="#contact">Start Build</a>
+        <a class="btn btn-primary card-cta" href="#contact">Start Build →</a>
       </article>
 
       <article class="card">
@@ -1507,11 +1925,68 @@ footer{
             </ul>
           </div>
         </div>
-        <div class="card-price">$6,696 <small>CAD · Fixed</small></div>
+        <div class="card-price">$6,000 <small>CAD · Fixed</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact">Start Augment</a>
+        <a class="btn card-cta" href="#contact">Start Augment →</a>
       </article>
     </div>
+
+    <!-- Discovery Sprint — full-width card below the 4-up grid -->
+    <article class="card discovery-strip" id="discovery">
+      <div class="card-top"><span>WAYBILL № NB-005</span><span class="pop">ADD-ON</span></div>
+      <div class="discovery-inner">
+        <div class="discovery-left">
+          <div class="card-main" style="padding-bottom:0">
+            <h3>Discovery Sprint</h3>
+            <div class="card-when">Add-on to any package · +10 build days</div>
+            <ul>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false">CEO-level business evaluation<span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden>We review your product, business model, competitive landscape, and user journey the way a founding-level product executive would — not just "what do you want us to build" but "what should you build and why."</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false">Feature design &amp; improvement roadmap<span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden>We identify gaps and opportunities in your current product, design new features that would move the needle, and give you a prioritized roadmap with the reasoning behind every decision.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false">+10 build days added to your project<span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden>Not just a document — real code shipped on top of your existing Spark, Launch, Build, or Augment engagement. We build the highest-priority items from the roadmap so you end with working software, not a slide deck.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false">Three calls throughout the sprint<span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden>Kick-off call on day one to align on goals, a mid-sprint check-in to steer the build, and a delivery call to walk through everything built and hand off the roadmap. You're never left waiting for a big reveal.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false">Written product brief you keep forever<span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden>A clear product brief, user stories, and roadmap in plain English — ready to hand to any developer, investor, or team member. No jargon, no fluff.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="discovery-right">
+          <div class="card-for" style="margin:0 0 18px">
+            <span class="card-for-label">Who you are</span>
+            <ul class="card-for-body">
+              <li>Add onto Spark or Launch to get strategic direction alongside your new site</li>
+              <li>Add onto Build to align on features before the sprint starts</li>
+              <li>Add onto Augment to evaluate whether the AI feature you want is actually the right one</li>
+              <li>Anyone who wants CEO-level product thinking as part of their build</li>
+            </ul>
+          </div>
+          <div class="card-price">$1,000 <small>CAD · Fixed · Add to any package</small></div>
+          <div class="barcode" aria-hidden="true"></div>
+          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center">Start Discovery →</a>
+        </div>
+      </div>
+    </article>
+    <style>
+    .discovery-strip{margin-bottom:24px;box-shadow:6px 6px 0 var(--cobalt);}
+    .discovery-strip:hover{box-shadow:10px 10px 0 var(--cobalt);}
+    .discovery-inner{display:grid;grid-template-columns:1.4fr 1fr;gap:0;}
+    .discovery-left{border-right:var(--line);}
+    .discovery-right{padding:24px 22px 0;display:flex;flex-direction:column;justify-content:space-between;}
+    @media(max-width:760px){.discovery-inner{grid-template-columns:1fr;}.discovery-left{border-right:none;border-bottom:var(--line);}}
+    </style>
 
     <div class="sub-strip">
       <div class="sub-inner">
@@ -1539,10 +2014,10 @@ footer{
         </div>
         <div class="sub-price-col">
           <div>
-            <div class="sub-price">$792 <small>CAD / month</small></div>
+            <div class="sub-price">$750 <small>CAD / month</small></div>
             <div class="sub-cancel">Cancel anytime</div>
           </div>
-          <a class="btn" href="#contact">Start Pulse</a>
+          <a class="btn" href="#contact">Start Pulse →</a>
         </div>
       </div>
     </div>
@@ -1615,6 +2090,118 @@ footer{
   </div>
 </section>
 
+<section id="manifesto">
+
+  <!-- Mission -->
+  <div class="manifesto-mission">
+    <div class="wrap manifesto-mission-inner">
+      <div>
+        <span class="eyebrow">Mission</span>
+        <p class="manifesto-m-text">To accelerate the world's access to <em>great software.</em></p>
+      </div>
+      <div class="burst-wrap" aria-hidden="true">
+        <svg class="burst-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <filter id="burst-grain" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="2" result="edgeWarp"/>
+            <feDisplacementMap in="SourceGraphic" in2="edgeWarp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="rough"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" seed="5" result="grain"/>
+            <feColorMatrix type="saturate" values="0" in="grain" result="grayGrain"/>
+            <feComposite in="grayGrain" in2="rough" operator="in" result="clippedGrain"/>
+            <feBlend in="rough" in2="clippedGrain" mode="multiply"/>
+          </filter>
+          <polygon points="50,2 55.7,28.7 74,8.4 65.6,34.4 91.6,26 71.3,44.3 98,50 71.3,55.7 91.6,74 65.6,65.6 74,91.6 55.7,71.3 50,98 44.3,71.3 26,91.6 34.4,65.6 8.4,74 28.7,55.7 2,50 28.7,44.3 8.4,26 34.4,34.4 26,8.4 44.3,28.7" fill="#FF5F1F" filter="url(#burst-grain)"/>
+        </svg>
+        <span class="burst-text">Bang!</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vision -->
+  <div class="manifesto-vision">
+    <div class="wrap manifesto-vision-inner">
+      <span class="eyebrow">Vision</span>
+      <p class="manifesto-v-text">A world where the gap between a great idea and a shipped product is measured in days. Not months. Not a second mortgage.</p>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="manifesto-values">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title">Values</h2>
+        <p class="sec-note">Three things we will not compromise on. For any client. At any price.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-n mono">01</span>
+          <h3 class="value-title">Prompting is the craft.</h3>
+          <p class="value-body">Any studio can call itself AI-native. What separates a great website from AI slop is the quality of the prompts, the evaluations, and the human review behind every output. That is where we invest.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-n mono">02</span>
+          <h3 class="value-title">Craft does not expire.</h3>
+          <p class="value-body">Every codebase we ship, we would be comfortable with another engineer opening six months later. Clean architecture, semantic markup, and zero hallucinated dependencies. Not optional at any timeline.</p>
+        </div>
+        <div class="value-card value-card-dark">
+          <span class="value-n mono">03</span>
+          <h3 class="value-title">Women built this.</h3>
+          <p class="value-body">Northbound is woman-owned and operated. We believe the industry changes when women do not just have a seat at the table. They own the studio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="hairies" class="hairies-section" aria-labelledby="hairies-title">
+  <div class="wrap hairies-grid">
+    <div class="hairies-copy">
+      <span class="eyebrow">Studio mascot</span>
+      <h2 id="hairies-title" class="hairies-title">Meet the <em>Hairies</em></h2>
+      <div class="hairies-body">
+        <p>My cousin used to hand-knit tiny wool creatures — she called them hairies. Five of them, all different, all slightly lopsided. We played with them for hours growing up. <strong>When I built Northbound, I came back to that image: small, expressive, and impossible to ignore.</strong> I turned them into our unofficial studio mascots. They show up in every sprint — five feelings any build team will recognize.</p>
+      </div>
+      <span class="hairies-note">Fuzzy ideas, shipped clean</span>
+    </div>
+      <img class="hairies-primary" src="mascots/Hairies-calm-nobg.png" alt="The calm Hairies mascot, a fuzzy wool-inspired figure with soft color around the edges" width="800" height="800" loading="lazy">
+
+  </div>
+  <div class="wrap">
+    <div class="hairy-roster-grid">
+      <div class="hairy-card">
+        <img src="mascots/Hairies-spark-nobg.png" alt="Launch — excited hairy mascot" class="hairy-img" width="140" height="140">
+        <span class="hairy-name">Launch</span>
+        <span class="hairy-role">Lives for deploy day</span>
+      </div>
+      <div class="hairy-card">
+        <img src="mascots/Hairies-curious-nobg.png" alt="Scope — curious hairy mascot" class="hairy-img" width="140" height="140">
+        <span class="hairy-name">Scope</span>
+        <span class="hairy-role">Reacts to every brief<br>the same way</span>
+      </div>
+      <div class="hairy-card">
+        <img src="mascots/Hairies-worried-nobg.png" alt="Blocker — worried hairy mascot" class="hairy-img" width="140" height="140">
+        <span class="hairy-name">Blocker</span>
+        <span class="hairy-role">That face when CI<br>fails at 4pm</span>
+      </div>
+      <div class="hairy-card">
+        <img src="mascots/Hairies-sly-nobg.png" alt="Legacy — grumpy hairy mascot" class="hairy-img" width="140" height="140">
+        <span class="hairy-name">Legacy</span>
+        <span class="hairy-role">Has seen the codebase.<br>Unimpressed.</span>
+      </div>
+      <div class="hairy-card">
+        <img src="mascots/Hairies-calm-nobg.png" alt="Coda — calm hairy mascot" class="hairy-img" width="140" height="140">
+        <span class="hairy-name">Coda</span>
+        <span class="hairy-role">Ships. Then sleeps.</span>
+      </div>
+      <div class="hairy-card">
+        <img src="mascots/Hairies-done-nobg.png" alt="Done — satisfied hairy mascot" class="hairy-img" width="140" height="140">
+        <span class="hairy-name">Done</span>
+        <span class="hairy-role">That face when it<br>actually worked.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="receipts">
   <div class="wrap">
     <div class="sec-head">
@@ -1663,12 +2250,16 @@ footer{
         <dd class="faq-a">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates — if we miss, you get a discount.</dd>
       </div>
       <div class="faq-item">
+        <dt class="faq-q">What is the Discovery Sprint and do I need it?</dt>
+        <dd class="faq-a">The Discovery Sprint ($1,000 CAD) is an add-on to any of our packages — Spark, Launch, Build, or Augment. When you add it to your project, we layer in CEO-level business evaluation alongside the build: reviewing your competitive landscape, user journey, and product direction to design the features that will actually move the needle. It adds 10 build days to your engagement and includes three dedicated calls (kick-off, mid-sprint, delivery) so there's real strategic alignment throughout. You also get a written product brief and roadmap to keep. If you're not sure what to build next, or want outside perspective before we start coding, this is the add-on for that.</dd>
+      </div>
+      <div class="faq-item">
         <dt class="faq-q">What does fixed-price actually mean?</dt>
         <dd class="faq-a">It means the number you see is the number you pay — no hourly billing, no scope-creep invoices, no surprise charges. Launch includes three rounds of corrections after delivery. If we discover something harder than expected mid-build, that's our problem to solve. If you want to add something new, it becomes a new waybill at a new fixed price.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q">Can you add AI features to something we already have?</dt>
-        <dd class="faq-a">Yes — that's the Augment package ($6,696 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.</dd>
+        <dd class="faq-a">Yes — that's the Augment package ($6,000 CAD, 14 days). We integrate chat, search, summarization, or agent workflows into your existing codebase, design the prompts, set up evals so you can measure quality, and walk your team through everything on handoff.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q">What is AI-native development and why does it matter?</dt>
@@ -1680,7 +2271,11 @@ footer{
       </div>
       <div class="faq-item">
         <dt class="faq-q">What is Pulse and how does social media management work?</dt>
-        <dd class="faq-a">Pulse is a $792 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we'll align on your channels, voice, and content mix before the first post goes out.</dd>
+        <dd class="faq-a">Pulse is a $750 CAD/month subscription for social media management — no fixed contract, cancel anytime. We handle 12–15 posts per month across your channels: content writing, branded graphics, scheduling, and posting. It's built for restaurant owners, boutiques, coaches, consultants, and any local business that wants a consistent presence without hiring someone full-time. Book a scope call and we'll align on your channels, voice, and content mix before the first post goes out.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q">Why don't you have a chatbot on your site?</dt>
+        <dd class="faq-a">Because we think it would make your experience worse, not better. A chatbot on a contact page is one of the most common ways companies apply AI without thinking through whether it actually helps — and in most cases it adds friction, gives generic answers, and makes people feel like they're being fobbed off. We believe in using AI where it genuinely improves an outcome: faster builds, better code quality, tighter scope. For a conversation about your project, a real email or a 20-minute call beats any widget. That's why the CTA on this page is a call, not a chat window.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q">Where are you based, and do you work with teams outside Toronto?</dt>
@@ -1721,24 +2316,31 @@ footer{
         <span class="foot-logo">NORTHBOUND<span class="dot"> ▲</span></span>
         <span class="foot-tagline">AI-native software studio</span>
         <span class="foot-loc">YYZ · Toronto, Canada</span>
+        <span class="foot-owned">Woman-Owned Business</span>
       </div>
       <div class="foot-col">
         <span class="foot-col-label">Navigate</span>
         <a href="#process">How we ship</a>
         <a href="#packages">Packages</a>
+        <a href="#manifesto">Manifesto</a>
         <a href="#faq">FAQ</a>
         <a href="blog.html">Writing</a>
       </div>
-      <div class="foot-col">
+      <div class="foot-col foot-col-hello">
         <span class="foot-col-label">Say hello</span>
         <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>
         <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a scope call →</a>
         <a href="#contact">Get a quote</a>
       </div>
+      <div class="foot-col">
+        <span class="foot-col-label">Legal</span>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© 2026 Northbound Studio</span>
+    <span>© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada</span>
     <span class="foot-bottom-badge">NB-MANIFEST-2026</span>
   </div>
 </footer>
@@ -1894,7 +2496,7 @@ footer{
 (function(){
   var prefs = window.matchMedia('(prefers-reduced-motion: reduce)');
   function reveal(){
-    document.querySelectorAll('.step, .card, .receipt-copy, .proof-list li, .dock, .hero-left, .compare-table-wrap, .sec-head, .featured-article, .faq-item, .sub-strip').forEach(function(el){
+    document.querySelectorAll('.step, .card, .receipt-copy, .proof-list li, .dock, .hairies-copy, .hairies-showcase, .hero-left, .compare-table-wrap, .sec-head, .featured-article, .faq-item, .sub-strip').forEach(function(el){
       var rect = el.getBoundingClientRect();
       if(rect.top < window.innerHeight - 80){
         el.classList.add('reveal-visible');
@@ -1906,7 +2508,7 @@ footer{
     window.addEventListener('load', reveal);
     reveal();
   } else {
-    document.querySelectorAll('.step, .card, .receipt-copy, .proof-list li, .dock, .hero-left, .hero-right, .sec-head').forEach(function(el){
+    document.querySelectorAll('.step, .card, .receipt-copy, .proof-list li, .dock, .hairies-copy, .hairies-showcase, .hero-left, .hero-right, .sec-head').forEach(function(el){
       el.classList.add('reveal-visible');
     });
   }
@@ -2144,5 +2746,6 @@ document.querySelectorAll('.card-cta').forEach(function(a){
   wrap.appendChild(acc);
 })();
 </script>
+
 </body>
 </html>
