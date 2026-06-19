@@ -10,7 +10,13 @@
       "Bash(~/.claude/skills/gstack/bin/gstack-timeline-log '{\"skill\":\"browse\",\"event\":\"completed\",\"branch\":\"main\",\"outcome\":\"success\",\"session\":\"verify-browse\"}')",
       "Bash(git -C /Users/melaniesigrid/Desktop/aiprojects/northboundStudio status --short)",
       "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse snapshot *)",
-      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse click *)"
+      "Bash(/Users/melaniesigrid/.claude/skills/gstack/browse/dist/browse click *)",
+      "Bash(lsof -iTCP -sTCP:LISTEN -P)",
+      "Bash(python3 -m http.server 9876)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:9876/manifesto/)",
+      "Bash(grep -oP '\"[^\"]*\"$')",
+      "Bash(python3 -c ' *)"
     ],
     "additionalDirectories": [
       "/Users/melaniesigrid/.gstack/projects/melaniesigrid-northbound-studio/designs/full-landing-page-20260616"
