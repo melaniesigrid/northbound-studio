@@ -1,6 +1,7 @@
 .vercel
 .gstack/
 docs/
+northbound-scope/
 
 # macOS
 .DS_Store
