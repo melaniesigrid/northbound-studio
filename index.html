@@ -733,6 +733,7 @@ section{border-bottom:var(--line)}
 }
 .form-note a{color:var(--cobalt);text-decoration:none}
 .form-note a:hover{color:var(--cobalt-deep)}
+.form-note-sep{color:#C7CBC4;margin:0 6px;display:inline-block}
 .form-success{
   padding:24px;
   border-radius:14px;
@@ -2112,7 +2113,7 @@ footer{
       <div class="receipt-copy">
         <p data-i18n-html="receipt-p1"><strong>Most agencies bolted "AI" onto their homepage last year.</strong> We've been building with agents, structured prompting, and reasoning loops since before it was a headline — and writing about it the whole time.</p>
         <p data-i18n-html="receipt-p2">That matters for one reason: when your project hits a hard problem, you want the team that understands <strong>why</strong> the tools work, not the one that's improvising with them for the first time on your invoice.</p>
-        <p data-i18n="receipt-p3">Read the writing. Judge the thinking. Then book the call.</p>
+        <p data-i18n="receipt-p3">Read the writing. Judge the thinking. Then start the conversation.</p>
       </div>
       <ul class="proof-list">
         <li><a href="blog-react-loop.html" rel="noopener" data-i18n-html="proof-1">Inside the ReAct loop: how our agents think before they act <span class="mono">Article ↗</span></a></li>
@@ -2193,7 +2194,7 @@ footer{
     <input class="nb-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
     <button class="btn btn-primary form-submit" type="submit" data-i18n="form-submit">Send it →</button>
   </form>
-  <p class="form-note" data-i18n-html="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></p>
+  <p class="form-note" data-i18n-html="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a> <span class="form-note-sep">·</span> Rather talk it through? <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a 20-minute scope call</a></p>
 </section>
 
 <footer>
@@ -2677,7 +2678,7 @@ en:{
 'fa-btn':'Read full article →',
 'receipt-p1':'<strong>Most agencies bolted "AI" onto their homepage last year.</strong> We\'ve been building with agents, structured prompting, and reasoning loops since before it was a headline — and writing about it the whole time.',
 'receipt-p2':'That matters for one reason: when your project hits a hard problem, you want the team that understands <strong>why</strong> the tools work, not the one that\'s improvising with them for the first time on your invoice.',
-'receipt-p3':'Read the writing. Judge the thinking. Then book the call.',
+'receipt-p3':'Read the writing. Judge the thinking. Then start the conversation.',
 'proof-1':'Inside the ReAct loop: how our agents think before they act <span class="mono">Article ↗</span>',
 'proof-2':'Why agentic AI changes what\'s possible in a 30-day build <span class="mono">Article ↗</span>',
 'proof-3':'Prompts you can steal: our fill-in-the-blank meta-prompts <span class="mono">Article ↗</span>',
@@ -2694,7 +2695,7 @@ en:{
 'faq-q9':'Where are you based, and do you work with teams outside Toronto?','faq-a9':'We\'re based in Toronto (YYZ) and work with founders and product teams worldwide. Remote-first from day zero — scoping, weekly demos, and handoff are all async-friendly.',
 'dock-eyebrow':'Next departure: this month','dock-h2':'Your product,<br><em>on the dock</em>.','dock-p':'One email. You bring the idea, we bring the manifest. In our reply you\'ll know the scope, the price, and the ship date.',
 'form-name-label':'Your name','form-name-ph':'Founder, product lead, or CEO','form-email-label':'Email','form-project-label':'What you need','form-project-ph':'Short summary of the product or AI feature','form-submit':'Send it →',
-'form-note':'Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>',
+'form-note':'Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a> <span class="form-note-sep">·</span> Rather talk it through? <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a 20-minute scope call</a>',
 'foot-tagline':'AI-native software studio','foot-owned':'Woman-Owned Business','foot-nav-label':'Navigate','foot-nav-process':'How we ship','foot-nav-packages':'Packages','foot-nav-manifesto':'Manifesto','foot-nav-writing':'Writing','foot-hello-label':'Say hello','foot-hello-quote':'Get a quote','foot-legal-label':'Legal','foot-privacy':'Privacy Policy','foot-terms':'Terms of Use',
 'foot-copyright':'© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada',
 'ticker-1':'Now accepting Q3 builds','ticker-2':'Fixed scope','ticker-3':'Fixed price','ticker-4':'Fixed timeline','ticker-5':'Toronto · Remote-friendly','ticker-6':'Web · Mobile · AI',
@@ -2737,7 +2738,7 @@ fr:{
 'fa-btn':'Lire l\'article complet →',
 'receipt-p1':'<strong>La plupart des agences ont ajouté « IA » sur leur page d\'accueil l\'an dernier.</strong> On construit avec des agents, des prompts structurés et des boucles de raisonnement depuis avant que ça fasse la une — et on écrit dessus tout ce temps.',
 'receipt-p2':'Ça compte pour une raison : quand votre projet rencontre un problème difficile, vous voulez l\'équipe qui comprend <strong>pourquoi</strong> les outils fonctionnent, pas celle qui improvise avec eux pour la première fois sur votre facture.',
-'receipt-p3':'Lisez les articles. Jugez la réflexion. Puis réservez l\'appel.',
+'receipt-p3':'Lisez les articles. Jugez la réflexion. Puis entamez la conversation.',
 'proof-1':'Dans la boucle ReAct : comment nos agents pensent avant d\'agir <span class="mono">Article ↗</span>',
 'proof-2':'Pourquoi l\'IA agentique change ce qui est possible dans un build de 30 jours <span class="mono">Article ↗</span>',
 'proof-3':'Des prompts à voler : nos méta-prompts à remplir <span class="mono">Article ↗</span>',
@@ -2754,7 +2755,7 @@ fr:{
 'faq-q9':'Où êtes-vous basés et travaillez-vous avec des équipes hors de Toronto ?','faq-a9':'On est basés à Toronto (YYZ) et on travaille avec des fondateurs et des équipes produit partout dans le monde. Distanciel d\'abord depuis le premier jour — le cadrage, les démos hebdomadaires et le transfert sont tous compatibles avec l\'asynchrone.',
 'dock-eyebrow':'Prochain départ : ce mois-ci','dock-h2':'Votre produit,<br><em>sur le quai</em>.','dock-p':'Un courriel. Vous apportez l\'idée, on apporte le manifeste. Dans notre réponse, vous connaîtrez la portée, le prix et la date de livraison.',
 'form-name-label':'Votre nom','form-name-ph':'Fondateur·rice, responsable produit ou PDG','form-email-label':'Courriel','form-project-label':'Ce dont vous avez besoin','form-project-ph':'Bref résumé du produit ou de la fonctionnalité IA','form-submit':'Envoyer →',
-'form-note':'Préférez-vous le courriel ? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>',
+'form-note':'Préférez-vous le courriel ? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a> <span class="form-note-sep">·</span> Vous préférez en parler ? <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Réservez un appel de cadrage de 20 minutes</a>',
 'foot-tagline':'Studio logiciel IA-natif','foot-owned':'Entreprise féminine','foot-nav-label':'Navigation','foot-nav-process':'Comment on livre','foot-nav-packages':'Forfaits','foot-nav-manifesto':'Manifeste','foot-nav-writing':'Blogue','foot-hello-label':'Nous contacter','foot-hello-quote':'Obtenir une soumission','foot-legal-label':'Légal','foot-privacy':'Politique de confidentialité','foot-terms':'Conditions d\'utilisation',
 'foot-copyright':'© 2026 Northbound Studio · Entreprise féminine · Toronto, Canada',
 'ticker-1':'Maintenant disponible pour Q3','ticker-2':'Portée fixe','ticker-3':'Prix fixe','ticker-4':'Délai fixe','ticker-5':'Toronto · Télétravail possible','ticker-6':'Web · Mobile · IA',
