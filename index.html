@@ -2190,6 +2190,7 @@ footer{
       <label for="project" data-i18n="form-project-label">What you need</label>
       <textarea id="project" name="message" placeholder="Short summary of the product or AI feature" data-i18n-ph="form-project-ph" required></textarea>
     </div>
+    <input class="nb-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
     <button class="btn btn-primary form-submit" type="submit" data-i18n="form-submit">Send it →</button>
   </form>
   <p class="form-note" data-i18n-html="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></p>
@@ -2515,12 +2516,15 @@ document.querySelectorAll('.card-cta').forEach(function(a){
   var form = document.getElementById('contact-form');
   if(!form) return;
   var btn = form.querySelector('.form-submit');
+  var openedAt = Date.now();
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var data = {
       name: form.querySelector('[name="name"]').value,
       email: form.querySelector('[name="email"]').value,
-      message: form.querySelector('[name="message"]').value
+      message: form.querySelector('[name="message"]').value,
+      company_website: (form.querySelector('[name="company_website"]') || {}).value || '',
+      elapsed: Date.now() - openedAt
     };
     var orig = btn.textContent;
     btn.textContent = 'Sending…';

@@ -1,3 +1,5 @@
+const { clientIp, rateLimit, str, isEmail, looksAutomated, accepted } = require('./_guard');
+
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -6,19 +8,45 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+const MAX = { name: 120, email: 254, message: 5000 };
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, message } = req.body || {};
+  const body = req.body || {};
+
+  // Silent accept, before any work. See api/_guard.js for why 200 and not 403.
+  const automated = looksAutomated({
+    honeypot: body.company_website,
+    elapsedMs: body.elapsed,
+  });
+  if (automated) {
+    console.log('[contact] dropped', { reason: automated, ip: clientIp(req) });
+    return accepted(res);
+  }
+
+  if (!rateLimit(`contact:${clientIp(req)}`, { limit: 5 })) {
+    return res.status(429).json({
+      ok: false,
+      error: 'Too many messages from this address. Email hello@northboundsoftwarestudio.com directly.',
+    });
+  }
+
+  const name = str(body.name, MAX.name);
+  const email = str(body.email, MAX.email);
+  const message = str(body.message, MAX.message);
 
   if (!name || !email || !message) {
     return res.status(400).json({ ok: false, error: 'Missing required fields' });
   }
+  if (!isEmail(email)) {
+    return res.status(400).json({ ok: false, error: 'That email address does not look right' });
+  }
 
-  const safeName    = escapeHtml(name);
-  const safeEmail   = escapeHtml(email);
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
   try {

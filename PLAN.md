@@ -135,27 +135,43 @@ failure modes it fixes, not the features it adds.
 - **`_dev/` is publicly reachable.** `_dev/theme-compare.html` still contains the
   old price list and is served at a guessable URL. Added `.vercelignore` so it
   stops deploying; the file stays in the repo as a working reference.
-- **`vercel.json` is `{}`.** It should carry security headers
-  (`X-Content-Type-Options`, `Referrer-Policy`, a CSP) before this site is doing
-  real lead volume.
-- **`api/contact.js` has no rate limit and no spam trap.** It is now the only
-  funnel, so it is now the only thing between us and an inbox full of bots. Add a
-  honeypot field and a per-IP limit before promoting the site anywhere.
+- **`vercel.json` was `{}`.** Now carries `X-Content-Type-Options`,
+  `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS and a CSP
+  built from the origins the pages actually reference — Google Fonts, gtag,
+  GA collect endpoints, Vercel vitals. **The CSP allows `'unsafe-inline'` for
+  scripts** and cannot do otherwise while the page carries dozens of inline
+  `<script>` blocks and six inline event handlers. It still blocks every external
+  script origin we did not name, which is the attack this actually prevents.
+  Tightening to a nonce means extracting the inline JS first.
+- **`api/contact.js` had no rate limit and no spam trap.** Fixed: honeypot,
+  dwell-time check, per-IP limit, length caps and email validation, all in
+  `api/_guard.js`. The rate limit is in-memory and therefore per warm instance —
+  honest about it in the module comment. It stops the naive loop, not a flood.
+- **Seven dead newsletter forms.** Every blog page posted to
+  `https://formspree.io/f/YOUR_FORM_ID` — the literal placeholder. Every
+  subscription since the blog launched hit a Formspree 404 and no address was
+  ever recorded. They now post to `api/subscribe.js`, which mails the address to
+  hello@ through the same Resend path as the contact form. **It is not a mailing
+  list** — no storage, no double opt-in, no unsubscribe, because there is no list
+  yet. CASL needs a recorded consent basis and a working unsubscribe before the
+  first campaign, not after it.
 
 ---
 
 ## 6. Sequence
 
-1. `.vercelignore`, README rewrite, this plan. **Done today.**
-2. Honeypot + rate limit on `api/contact.js`. One evening. Do this next — the
-   funnel is now single-threaded through it.
-3. First case study: ZipQuarry, using the numbers the design-partner run
+1. ~~`.vercelignore`, README rewrite, this plan.~~ **Done 2026-08-28.**
+2. ~~Honeypot + rate limit on `api/contact.js`.~~ **Done 2026-08-28**, and the
+   seven dead newsletter forms found and fixed in the same pass.
+3. ~~Security headers in `vercel.json`.~~ **Done 2026-08-28.**
+4. First case study: ZipQuarry, using the numbers the design-partner run
    produces. Panorama format, three real metrics, no invented figures.
-4. Stats strip rebuilt from earned numbers.
-5. Augment package rewritten around named AI failure modes.
-6. Case studies two through four as Quotefront, Windward and ReconAI produce
+5. Stats strip rebuilt from earned numbers.
+6. Augment package rewritten around named AI failure modes.
+7. Case studies two through four as Quotefront, Windward and ReconAI produce
    measurable results.
-7. Security headers in `vercel.json`.
 
-Items 3–6 are the ones that change conversion. Items 1, 2 and 7 are the ones that
-stop something breaking.
+Items 4–7 are the ones that change conversion, and every one of them is now
+waiting on a measured number rather than on an evening of work. Item 6 is the
+exception — it needs no data, only the decision about which AI failure modes to
+name, and it is the next thing to write.

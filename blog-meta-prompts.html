@@ -394,9 +394,9 @@ I want:
       <h2>New pieces,<br><em>when they ship.</em></h2>
       <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
     </div>
-    <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="hidden" name="_subject" value="Northbound blog subscription">
+    <form class="newsletter-form" action="/api/subscribe" method="POST" data-newsletter>
       <input type="email" name="email" placeholder="you@company.com" required>
+      <input class="nb-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
       <button class="btn btn-primary" type="submit" style="align-self:flex-start">Notify me →</button>
       <span class="newsletter-note">No frequency promises. Unsubscribe any time.</span>
     </form>
@@ -560,5 +560,6 @@ I want:
      Both 404 harmlessly until enabled on the project in the Vercel dashboard. -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+<script defer src="/newsletter.js"></script>
 </body>
 </html>
