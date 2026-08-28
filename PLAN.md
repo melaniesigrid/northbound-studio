@@ -106,10 +106,30 @@ therefore credible — retrieval, context engineering, LLM cost optimization, da
 strategy, post-training. Each names a failure mode a reader recognizes from their
 own product.
 
-We have equally specific ground to stand on and don't say any of it: per-tenant
-token cost caps, output-schema validation, hallucination containment, evals on
-structured output, multi-tenant isolation. The Augment package should list the
-failure modes it fixes, not the features it adds.
+We have equally specific ground to stand on and were not saying any of it:
+per-tenant token cost caps, output-schema validation, hallucination containment,
+evals on structured output, multi-tenant isolation.
+
+**Done 2026-08-28.** The Augment card no longer lists features. It lists the four
+things that go wrong once a model is in production, and what we do about each:
+
+| Was | Now |
+|---|---|
+| Chat, search, summarization, or agents | It makes things up and nobody catches it |
+| Integrated into your existing codebase | The inference bill outgrows the usage |
+| Prompt & eval setup you can maintain | Nobody can tell whether a change helped |
+| Team walkthrough on handoff | Your team cannot maintain it after we leave |
+
+"Who you are" moved the same way — from job titles to symptoms: *you shipped an
+AI feature and cannot say what it costs per customer*, *it worked in the demo and
+misses in production and nobody can name which change broke it*.
+
+Every claim on that card is something already shipped in the products next door,
+which is the test any replacement has to pass. The spend cap is not aspirational:
+ZipQuarry reserves budget **before** the external call rather than counting after
+it, capped per customer, so a runaway loop cannot spend a month of revenue in an
+afternoon. If a claim on this card ever stops being true of our own code, it
+comes off the card.
 
 ---
 
@@ -164,14 +184,15 @@ failure modes it fixes, not the features it adds.
 2. ~~Honeypot + rate limit on `api/contact.js`.~~ **Done 2026-08-28**, and the
    seven dead newsletter forms found and fixed in the same pass.
 3. ~~Security headers in `vercel.json`.~~ **Done 2026-08-28.**
-4. First case study: ZipQuarry, using the numbers the design-partner run
+4. ~~Augment package rewritten around named AI failure modes.~~ **Done
+   2026-08-28.**
+5. First case study: ZipQuarry, using the numbers the design-partner run
    produces. Panorama format, three real metrics, no invented figures.
-5. Stats strip rebuilt from earned numbers.
-6. Augment package rewritten around named AI failure modes.
+6. Stats strip rebuilt from earned numbers.
 7. Case studies two through four as Quotefront, Windward and ReconAI produce
    measurable results.
 
-Items 4–7 are the ones that change conversion, and every one of them is now
-waiting on a measured number rather than on an evening of work. Item 6 is the
-exception — it needs no data, only the decision about which AI failure modes to
-name, and it is the next thing to write.
+Items 5–7 are the ones that change conversion, and every one of them is now
+waiting on a **measured number**, not on an evening of work. Nothing else on this
+plan can be written without data, which makes the design-partner run the only
+thing standing between this site and the proof it is missing.
