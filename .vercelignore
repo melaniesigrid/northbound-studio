@@ -1,0 +1,6 @@
+# Internal working files — never served from northboundsoftwarestudio.com.
+# _dev/ holds design scratch pages, one of which still carries the old price
+# list. Keep them in the repo, keep them off the public site.
+_dev/
+design-audit/
+inspo/

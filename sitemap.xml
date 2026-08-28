@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://northboundsoftwarestudio.com/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -49,45 +49,27 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://northboundsoftwarestudio.com/manifesto.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <loc>https://northboundsoftwarestudio.com/manifesto/</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://northboundsoftwarestudio.com/privacy.html</loc>
+    <loc>https://northboundsoftwarestudio.com/privacy/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://northboundsoftwarestudio.com/terms.html</loc>
+    <loc>https://northboundsoftwarestudio.com/terms/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://northboundsoftwarestudio.com/cookie-policy.html</loc>
+    <loc>https://northboundsoftwarestudio.com/cookie-policy/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://northboundsoftwarestudio.com/theme-compare.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://northboundsoftwarestudio.com/data-table-designs.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://northboundsoftwarestudio.com/og-image-template.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>
