@@ -1,6 +1,9 @@
 # Northbound improvement plan
 
 Status: working plan, 2026-08-28. Supersedes nothing — this is the first one.
+Updated 2026-08-29: see **[OFFERINGS.md](OFFERINGS.md)** for the Indai evaluation
+and the two packages it added. Nothing in this plan is superseded — §1 (case
+studies) is still the highest-leverage item and is still blocked on measured data.
 
 The trigger was evaluating **Panorama** (SF, a16z speedrun-backed applied-AI
 consultancy) as a competitor. Read that as the benchmark throughout: they sell
@@ -23,6 +26,14 @@ Both already applied to `index.html` and `manifesto/index.html`:
   mobile nav, hero, footer, and the manifesto page. The contact form
   (`api/contact.js` → Resend → `hello@`) is now the single funnel. GA4 CTA
   tracking was repointed from `a[href*="cal.com"]` to the contact/mailto links.
+
+  **Correction, 2026-08-29:** "every" was not true. Three `cal.com` references
+  survived this pass — the contact form note and both language dictionaries — and
+  shipped live for a day. They are gone now, and `_dev/check-copy.js` fails the
+  build-equivalent check if one ever comes back. The lesson worth keeping: a
+  string that lives in three places is not removed until all three are grepped,
+  and this file claimed completion without running the check the README already
+  documented.
 
 Both language dictionaries (231 EN keys, 231 FR) were updated in step — there is
 no English string left with a price and no French string still offering a call.
