@@ -1,0 +1,786 @@
+<title>Northbound Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --ground:     #f7f5f1;
+    --card:       #ffffff;
+    --sunk:       #edeae4;
+    --ink:        #171a1c;
+    --ink-soft:   #4b5257;
+    --ink-faint:  #7b8288;
+    --rule:       #dcd8d1;
+    --rule-firm:  #c2bdb4;
+
+    /* One hue per product, each taken from that product's own brand. */
+    --p1: #28407a;   /* Windward   — navy      */
+    --p2: #4b32d4;   /* ZipQuarry  — indigo    */
+    --p3: #c2551a;   /* Quotefront — hi-vis orange */
+    --p4: #a5750f;   /* ReconAI    — ledger ochre  */
+    --p5: #2b6559;   /* Shipshape  — sea       */
+
+    --f-head: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+    --f-body: 'Public Sans', -apple-system, 'Segoe UI', Arial, sans-serif;
+    --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:     #101315;
+      --card:       #191d20;
+      --sunk:       #14181a;
+      --ink:        #eef1f2;
+      --ink-soft:   #aab2b7;
+      --ink-faint:  #7f878c;
+      --rule:       #2a3034;
+      --rule-firm:  #3b4247;
+
+      --p1: #7d9ade;
+      --p2: #a99aff;
+      --p3: #ff8b4d;
+      --p4: #dfae4e;
+      --p5: #64bda9;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:     #101315;
+    --card:       #191d20;
+    --sunk:       #14181a;
+    --ink:        #eef1f2;
+    --ink-soft:   #aab2b7;
+    --ink-faint:  #7f878c;
+    --rule:       #2a3034;
+    --rule-firm:  #3b4247;
+
+    --p1: #7d9ade;
+    --p2: #a99aff;
+    --p3: #ff8b4d;
+    --p4: #dfae4e;
+    --p5: #64bda9;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: clamp(1.75rem, 5vw, 3.5rem) clamp(1.1rem, 4vw, 2.5rem) 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  :focus-visible { outline: 3px solid var(--p2); outline-offset: 3px; border-radius: 3px; }
+
+  /* ---- Hero ------------------------------------------------------------ */
+
+  .hero { display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+
+  h1 {
+    font-family: var(--f-head);
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0;
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+
+  .rainbow { display: flex; height: 6px; border-radius: 3px; overflow: hidden; }
+  .rainbow span { flex: 1; }
+
+  .lede {
+    margin: 0;
+    font-size: clamp(1.0625rem, 2.4vw, 1.1875rem);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 46rem;
+  }
+  .lede b { color: var(--ink); font-weight: 600; }
+
+  .role {
+    font-family: var(--f-mono);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--ink-faint);
+    margin: 0;
+    max-width: none;
+  }
+
+  /* ---- Sections -------------------------------------------------------- */
+
+  section { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  h2 {
+    font-family: var(--f-head);
+    font-weight: 700;
+    font-size: 1.4375rem;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  p { margin: 0; max-width: 44rem; }
+  .plain { font-size: 1.0313rem; line-height: 1.65; color: var(--ink-soft); }
+  .plain b { color: var(--ink); font-weight: 600; }
+
+  /* ---- Aggregate stats ------------------------------------------------- */
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.9rem; }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--c);
+    border-radius: 6px;
+    padding: 1rem 1rem 1.05rem;
+  }
+  .stat b {
+    display: block;
+    font-family: var(--f-head);
+    font-size: 1.9375rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--c);
+  }
+  .stat span { display: block; margin-top: 0.4rem; font-size: 0.8125rem; color: var(--ink-soft); line-height: 1.35; }
+  .stats .stat:nth-child(5n+1) { --c: var(--p1); }
+  .stats .stat:nth-child(5n+2) { --c: var(--p2); }
+  .stats .stat:nth-child(5n+3) { --c: var(--p3); }
+  .stats .stat:nth-child(5n+4) { --c: var(--p4); }
+  .stats .stat:nth-child(5n+5) { --c: var(--p5); }
+
+  /* ---- Diagrams -------------------------------------------------------- */
+
+  figure {
+    background: var(--card);
+    border: 1px solid var(--rule-firm);
+    border-radius: 6px;
+    padding: 1.4rem 1.2rem 1.2rem;
+    margin: 0;
+    overflow-x: auto;
+  }
+  figure svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  figcaption {
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+    text-align: center;
+    max-width: 44rem;
+    margin-inline: auto;
+    line-height: 1.55;
+  }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  /* ---- Project cards --------------------------------------------------- */
+
+  .projects { display: flex; flex-direction: column; gap: 1rem; }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--c);
+    border-radius: 6px;
+    padding: 1.25rem 1.35rem 1.4rem;
+  }
+  .projects .project:nth-child(5n+1) { --c: var(--p1); }
+  .projects .project:nth-child(5n+2) { --c: var(--p2); }
+  .projects .project:nth-child(5n+3) { --c: var(--p3); }
+  .projects .project:nth-child(5n+4) { --c: var(--p4); }
+  .projects .project:nth-child(5n+5) { --c: var(--p5); }
+
+  .project__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.85rem; }
+  .project__head h3 {
+    font-family: var(--f-head);
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--c);
+  }
+  .status {
+    font-family: var(--f-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+  .status--live { color: var(--p5); }
+  .status--local { color: var(--ink-faint); }
+
+  .project__what { font-size: 1rem; line-height: 1.6; color: var(--ink-soft); max-width: 46rem; }
+  .project__what b { color: var(--ink); font-weight: 600; }
+
+  .project dl {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.4rem 1rem;
+    margin: 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .project dt {
+    font-family: var(--f-mono);
+    font-size: 0.6563rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .project dd { margin: 0; font-size: 0.9375rem; color: var(--ink-soft); line-height: 1.55; }
+  .project dd a { color: var(--c); font-weight: 500; font-family: var(--f-mono); font-size: 0.875rem; overflow-wrap: anywhere; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tags span {
+    font-family: var(--f-mono);
+    font-size: 0.6875rem;
+    padding: 0.22rem 0.5rem;
+    border-radius: 3px;
+    background: var(--sunk);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+
+  .readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--f-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--c);
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 1px;
+    align-self: start;
+  }
+  .readmore:hover { opacity: 0.75; }
+
+  /* ---- Skills ---------------------------------------------------------- */
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+  .skillgroup {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--c);
+    border-radius: 6px;
+    padding: 1.05rem 1.1rem 1.2rem;
+  }
+  .skills .skillgroup:nth-child(5n+1) { --c: var(--p1); }
+  .skills .skillgroup:nth-child(5n+2) { --c: var(--p2); }
+  .skills .skillgroup:nth-child(5n+3) { --c: var(--p3); }
+  .skills .skillgroup:nth-child(5n+4) { --c: var(--p4); }
+  .skills .skillgroup:nth-child(5n+5) { --c: var(--p5); }
+  .skillgroup h3 {
+    font-family: var(--f-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--c);
+    margin: 0 0 0.65rem;
+  }
+  .skillgroup p { font-size: 0.9063rem; line-height: 1.7; color: var(--ink-soft); max-width: none; }
+
+  .keywords {
+    background: var(--sunk);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.15rem 1.25rem;
+  }
+  .keywords h3 {
+    font-family: var(--f-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 0.6rem;
+    font-weight: 500;
+  }
+  .keywords p { font-family: var(--f-mono); font-size: 0.8125rem; line-height: 1.85; color: var(--ink-soft); max-width: none; }
+
+  footer {
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 36rem) {
+    .project dl { grid-template-columns: 1fr; }
+    .project dt { margin-top: 0.35rem; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="hero">
+    <p class="eyebrow">Northbound Software Studio · Sole engineer</p>
+    <h1>The projects I've been working on as of late</h1>
+    <div class="rainbow">
+      <span style="background:var(--p1)"></span>
+      <span style="background:var(--p2)"></span>
+      <span style="background:var(--p3)"></span>
+      <span style="background:var(--p4)"></span>
+      <span style="background:var(--p5)"></span>
+    </div>
+    <p class="lede">
+      Five products, built end to end by one person — the database, the API, the interface, the
+      tests and the deployment. Four of them price, score or judge something a business acts on,
+      which is why <b>three of the five draw an explicit line between what an AI model is allowed to
+      decide and what plain code must compute.</b> Each has its own page below.
+    </p>
+    <p class="role">
+      Full-Stack Software Engineer · TypeScript · JavaScript · Ruby · Python · React · Next.js ·
+      Node.js · Rails · PostgreSQL · LLM integration · AWS-free serverless · Sole engineer
+    </p>
+  </header>
+
+  <section>
+    <h2>Across all five</h2>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>Products built end to end</span></div>
+      <div class="stat"><b>4</b><span>Languages shipped in production</span></div>
+      <div class="stat"><b>~95k</b><span>Lines of code written</span></div>
+      <div class="stat"><b>650+</b><span>Automated tests</span></div>
+      <div class="stat"><b>51</b><span>Database tables designed</span></div>
+    </div>
+    <p class="plain">
+      The line counts and table counts are measured against each repository's main branch, not
+      estimated. Where a page says a test suite passes, <b>it was run</b>.
+    </p>
+  </section>
+
+  <section>
+    <h2>What is used where</h2>
+    <figure>
+      <svg viewBox="0 0 641 374" width="100%" role="img" aria-label="Coverage matrix: which of the twelve technologies each of the five products uses. React and automated tests appear in all five; Ruby and Python appear only in Windward; LLM integration appears in ZipQuarry, Quotefront and ReconAI.">
+        <rect x="152" y="6" width="93" height="32" rx="3" fill="color-mix(in srgb, var(--p1) 14%, var(--card))" stroke="var(--p1)" stroke-width="1.4"/>
+        <text x="198.5" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="500" fill="var(--p1)">Windward</text>
+        <rect x="249" y="6" width="93" height="32" rx="3" fill="color-mix(in srgb, var(--p2) 14%, var(--card))" stroke="var(--p2)" stroke-width="1.4"/>
+        <text x="295.5" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="500" fill="var(--p2)">ZipQuarry</text>
+        <rect x="346" y="6" width="93" height="32" rx="3" fill="color-mix(in srgb, var(--p3) 14%, var(--card))" stroke="var(--p3)" stroke-width="1.4"/>
+        <text x="392.5" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="500" fill="var(--p3)">Quotefront</text>
+        <rect x="443" y="6" width="93" height="32" rx="3" fill="color-mix(in srgb, var(--p4) 14%, var(--card))" stroke="var(--p4)" stroke-width="1.4"/>
+        <text x="489.5" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="500" fill="var(--p4)">ReconAI</text>
+        <rect x="540" y="6" width="93" height="32" rx="3" fill="color-mix(in srgb, var(--p5) 14%, var(--card))" stroke="var(--p5)" stroke-width="1.4"/>
+        <text x="586.5" y="28" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="500" fill="var(--p5)">Shipshape</text>
+        <text x="138" y="62" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">TypeScript</text>
+        <rect x="152" y="48" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 57.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="289.5" y1="57.5" x2="301.5" y2="57.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="346" y="48" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 57.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="443" y="48" width="93" height="19" rx="3" fill="var(--p4)"/>
+        <path d="M483.5 57.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="540" y="48" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 57.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="0" y="71" width="641" height="27" fill="var(--sunk)"/>
+        <text x="138" y="89" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">JavaScript</text>
+        <line x1="192.5" y1="84.5" x2="204.5" y2="84.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="249" y="75" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 84.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="386.5" y1="84.5" x2="398.5" y2="84.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="483.5" y1="84.5" x2="495.5" y2="84.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="540" y="75" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 84.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="138" y="116" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">Ruby</text>
+        <rect x="152" y="102" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 111.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="289.5" y1="111.5" x2="301.5" y2="111.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="386.5" y1="111.5" x2="398.5" y2="111.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="483.5" y1="111.5" x2="495.5" y2="111.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="580.5" y1="111.5" x2="592.5" y2="111.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="0" y="125" width="641" height="27" fill="var(--sunk)"/>
+        <text x="138" y="143" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">Python</text>
+        <rect x="152" y="129" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 138.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="289.5" y1="138.5" x2="301.5" y2="138.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="386.5" y1="138.5" x2="398.5" y2="138.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="483.5" y1="138.5" x2="495.5" y2="138.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="580.5" y1="138.5" x2="592.5" y2="138.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <text x="138" y="170" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">SQL</text>
+        <rect x="152" y="156" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 165.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="249" y="156" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 165.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="156" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 165.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="483.5" y1="165.5" x2="495.5" y2="165.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="540" y="156" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 165.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="0" y="179" width="641" height="27" fill="var(--sunk)"/>
+        <text x="138" y="197" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">React</text>
+        <rect x="152" y="183" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 192.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="249" y="183" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 192.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="183" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 192.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="443" y="183" width="93" height="19" rx="3" fill="var(--p4)"/>
+        <path d="M483.5 192.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="540" y="183" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 192.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="138" y="224" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">Next.js</text>
+        <line x1="192.5" y1="219.5" x2="204.5" y2="219.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <line x1="289.5" y1="219.5" x2="301.5" y2="219.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="346" y="210" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 219.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="443" y="210" width="93" height="19" rx="3" fill="var(--p4)"/>
+        <path d="M483.5 219.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="540" y="210" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 219.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="0" y="233" width="641" height="27" fill="var(--sunk)"/>
+        <text x="138" y="251" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">PostgreSQL</text>
+        <rect x="152" y="237" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 246.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="249" y="237" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 246.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="237" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 246.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="483.5" y1="246.5" x2="495.5" y2="246.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="540" y="237" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 246.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="138" y="278" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">LLM integration</text>
+        <line x1="192.5" y1="273.5" x2="204.5" y2="273.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="249" y="264" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 273.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="264" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 273.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="443" y="264" width="93" height="19" rx="3" fill="var(--p4)"/>
+        <path d="M483.5 273.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="580.5" y1="273.5" x2="592.5" y2="273.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="0" y="287" width="641" height="27" fill="var(--sunk)"/>
+        <text x="138" y="305" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">Auth &amp; sessions</text>
+        <rect x="152" y="291" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 300.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="249" y="291" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 300.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="291" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 300.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="483.5" y1="300.5" x2="495.5" y2="300.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="540" y="291" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 300.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="138" y="332" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">Multi-tenant</text>
+        <line x1="192.5" y1="327.5" x2="204.5" y2="327.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="249" y="318" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 327.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="318" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 327.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <line x1="483.5" y1="327.5" x2="495.5" y2="327.5" stroke="var(--ink-faint)" stroke-width="1.6" stroke-linecap="round" opacity="0.45"/>
+        <rect x="540" y="318" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 327.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="0" y="341" width="641" height="27" fill="var(--sunk)"/>
+        <text x="138" y="359" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink-soft)">Automated tests</text>
+        <rect x="152" y="345" width="93" height="19" rx="3" fill="var(--p1)"/>
+        <path d="M192.5 354.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="249" y="345" width="93" height="19" rx="3" fill="var(--p2)"/>
+        <path d="M289.5 354.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="346" y="345" width="93" height="19" rx="3" fill="var(--p3)"/>
+        <path d="M386.5 354.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="443" y="345" width="93" height="19" rx="3" fill="var(--p4)"/>
+        <path d="M483.5 354.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="540" y="345" width="93" height="19" rx="3" fill="var(--p5)"/>
+        <path d="M580.5 354.5 l4 4 l8 -9" stroke="var(--card)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <figcaption>
+        Read down a column for one product's stack, or across a row to see how often a skill was
+        actually exercised. <b>React and automated testing appear in all five; Ruby and Python
+        appear in exactly one.</b> The gaps are as informative as the ticks — ReconAI has no
+        database on purpose, and ZipQuarry is the one codebase written in JavaScript rather than
+        TypeScript.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>The five</h2>
+    <div class="projects">
+
+      <article class="project">
+        <div class="project__head">
+          <h3>Windward</h3>
+          <span class="status status--live">Live demo</span>
+        </div>
+        <p class="project__what">
+          A <b>report card for investment portfolios</b>. You say what you own; it grades you A to F
+          on five measures against fifteen years of real market history, and explains in plain
+          English what is dragging you down.
+        </p>
+        <div class="tags">
+          <span>Ruby on Rails 8</span><span>Python · FastAPI</span><span>React 19</span>
+          <span>PostgreSQL</span><span>Docker</span><span>600+ tests</span>
+        </div>
+        <dl>
+          <dt>Getting in</dt>
+          <dd>Email and password on the demo deployment — the Rails API issues the session.</dd>
+          <dt>Notable</dt>
+          <dd>Three separate services in three languages, and five market-data providers behind one interface.</dd>
+        </dl>
+        <a class="readmore" href="https://claude.ai/code/artifact/3411b4e0-d8fa-42aa-b738-b4df8e062cf8">Windward at a glance →</a>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3>ZipQuarry</h3>
+          <span class="status status--live">Live · app.zipquarry.com</span>
+        </div>
+        <p class="project__what">
+          A <b>metal detector for salespeople</b>. Draw a circle on a map; it finds every local
+          business inside it that looks like it needs what you sell, scores them, and writes each
+          one a first email that mentions something real about them.
+        </p>
+        <div class="tags">
+          <span>JavaScript</span><span>React 18 · Vite</span><span>Node serverless</span>
+          <span>PostgreSQL · 30 tables</span><span>Claude</span><span>Stripe</span><span>Google OAuth</span>
+        </div>
+        <dl>
+          <dt>Getting in</dt>
+          <dd>Continue with Google at <a href="https://app.zipquarry.com">app.zipquarry.com</a>. Invite-only during beta; the waitlist is on <a href="https://zipquarry.com">zipquarry.com</a>.</dd>
+          <dt>Notable</dt>
+          <dd>The unsubscribe path was built before the send path — cold email is regulated on both sides of the border.</dd>
+        </dl>
+        <a class="readmore" href="https://claude.ai/code/artifact/3938cfcc-c496-4354-b068-15124246c0e6">ZipQuarry at a glance →</a>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3>Quotefront</h3>
+          <span class="status status--live">Live · no sign-in needed</span>
+        </div>
+        <p class="project__what">
+          A customer photographs a job on their phone and has <b>a real price in about a minute</b>,
+          worked out from that contractor's own rates with every line of the arithmetic shown. The
+          easiest of the five to try — the customer half needs no account at all.
+        </p>
+        <div class="tags">
+          <span>TypeScript</span><span>Next.js 16 · React 19</span><span>Drizzle · Neon</span>
+          <span>Claude vision</span><span>Multi-tenant</span><span>Turborepo</span>
+        </div>
+        <dl>
+          <dt>Getting in</dt>
+          <dd>No account: <a href="https://quotefront-platform.vercel.app/q/apex-roofing">/q/apex-roofing</a> and <a href="https://quotefront-platform.vercel.app/q/cedar-line-fencing">/q/cedar-line-fencing</a>. The contractor dashboard is a passwordless link, invite-only.</dd>
+          <dt>Notable</dt>
+          <dd>The model never prices anything. It describes the photos; a pure, tested function does every sum.</dd>
+        </dl>
+        <a class="readmore" href="https://claude.ai/code/artifact/5508943b-c770-4fec-9af8-e3ec91a0dc5d">Quotefront at a glance →</a>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3>ReconAI</h3>
+          <span class="status status--local">Runs locally</span>
+        </div>
+        <p class="project__what">
+          A supplier sends a bill. ReconAI checks it against <b>what was actually ordered</b> — every
+          line, every sum — and returns approve, hold or reject, with each disagreement named and
+          priced. The job an accounts-payable clerk does by hand.
+        </p>
+        <div class="tags">
+          <span>TypeScript</span><span>Next.js 16 · React 19</span><span>Claude</span>
+          <span>Tool-forced JSON</span><span>Stateless</span><span>No database</span>
+        </div>
+        <dl>
+          <dt>Getting in</dt>
+          <dd>No sign-in exists — no account, no database, nothing stored. Clone, add an API key, <span style="font-family:var(--f-mono)">npm run dev</span>. Or press <b>Preview sample output</b> and the real engine runs with no key at all.</dd>
+          <dt>Notable</dt>
+          <dd>376 lines decide whether a company pays a bill, and they contain no AI call and no network.</dd>
+        </dl>
+        <a class="readmore" href="https://claude.ai/code/artifact/6c26bc0b-3c14-4a3b-8630-a0f4d7cd197f">ReconAI at a glance →</a>
+      </article>
+
+      <article class="project">
+        <div class="project__head">
+          <h3>Shipshape</h3>
+          <span class="status status--local">Runs locally · brand page live</span>
+        </div>
+        <p class="project__what">
+          Most tools track what you are doing. Shipshape also tracks <b>what "done" is supposed to
+          mean</b> — written once, applied to every project you own — and turns whatever falls short
+          into cards on that project's board.
+        </p>
+        <div class="tags">
+          <span>TypeScript</span><span>Next.js</span><span>Drizzle · Neon</span>
+          <span>14 tables</span><span>49 tests passing</span><span>pnpm · Turborepo</span>
+        </div>
+        <dl>
+          <dt>Getting in</dt>
+          <dd>Brand page is public: <a href="https://melaniesigrid.github.io/shipshape-brand/">shipshape-brand</a>. The app runs locally; sign-in is a passwordless link printed to the terminal.</dd>
+          <dt>Notable</dt>
+          <dd>One nullable foreign key — a card knowing which criterion it satisfies — is what stops the standard decaying into a document nobody opens.</dd>
+        </dl>
+        <a class="readmore" href="https://claude.ai/code/artifact/df514550-54bc-467e-a4bf-7ef27250feb7">Shipshape at a glance →</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>The shape they share</h2>
+    <figure>
+      <svg viewBox="0 0 660 260" width="100%" role="img" aria-label="Diagram: the recurring architecture across the five products — a browser talks to an API, which owns the database and every outside key, and in three of the five a dashed boundary separates what a model may describe from what plain code must compute.">
+        <defs>
+          <marker id="hub-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-faint)"/>
+          </marker>
+          <marker id="hub-arrow-p2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--p2)"/>
+          </marker>
+        </defs>
+
+        <!-- browser -->
+        <rect x="14" y="86" width="122" height="62" rx="6" fill="var(--card)" stroke="var(--ink-faint)" stroke-width="1.8"/>
+        <text x="75" y="112" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Browser</text>
+        <text x="75" y="129" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">holds no keys</text>
+
+        <line x1="140" y1="117" x2="182" y2="117" stroke="var(--ink-faint)" stroke-width="2" marker-end="url(#hub-arrow)"/>
+
+        <!-- api -->
+        <rect x="188" y="74" width="146" height="86" rx="6" fill="color-mix(in srgb, var(--p2) 12%, var(--card))" stroke="var(--p2)" stroke-width="2.5"/>
+        <text x="261" y="102" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="14" font-weight="700" fill="var(--ink)">The API</text>
+        <text x="261" y="120" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">who you are ·</text>
+        <text x="261" y="134" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">whose data this is ·</text>
+        <text x="261" y="148" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">every outside key</text>
+
+        <!-- db -->
+        <line x1="261" y1="164" x2="261" y2="192" stroke="var(--ink-faint)" stroke-width="2" marker-end="url(#hub-arrow)"/>
+        <ellipse cx="261" cy="204" rx="56" ry="8" fill="var(--card)" stroke="var(--p5)" stroke-width="2"/>
+        <path d="M205 204 v24 a56 8 0 0 0 112 0 v-24" fill="var(--card)" stroke="var(--p5)" stroke-width="2"/>
+        <text x="261" y="223" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--ink-soft)">PostgreSQL</text>
+        <text x="261" y="248" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--ink-faint)">4 of 5</text>
+
+        <!-- boundary -->
+        <line x1="372" y1="18" x2="372" y2="242" stroke="var(--p3)" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="380" y="30" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="500" fill="var(--p3)">the boundary, in 3 of the 5</text>
+
+        <line x1="338" y1="100" x2="404" y2="70" stroke="var(--ink-faint)" stroke-width="1.8" marker-end="url(#hub-arrow)"/>
+        <line x1="338" y1="134" x2="404" y2="176" stroke="var(--p2)" stroke-width="2" marker-end="url(#hub-arrow-p2)"/>
+
+        <!-- model -->
+        <rect x="410" y="44" width="236" height="58" rx="6" fill="var(--card)" stroke="var(--p4)" stroke-width="2"/>
+        <text x="528" y="68" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">The model may describe</text>
+        <text x="528" y="83" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">read a photo · pair two lines ·</text>
+        <text x="528" y="95" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">draft a sentence</text>
+
+        <!-- code -->
+        <rect x="410" y="150" width="236" height="58" rx="6" fill="color-mix(in srgb, var(--p5) 12%, var(--card))" stroke="var(--p5)" stroke-width="2.5"/>
+        <text x="528" y="174" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-size="13" font-weight="700" fill="var(--ink)">Plain code must decide</text>
+        <text x="528" y="193" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="var(--ink-faint)">every price · every score · every verdict</text>
+
+        <line x1="528" y1="106" x2="528" y2="146" stroke="var(--ink-faint)" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#hub-arrow)"/>
+        <text x="536" y="130" font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--ink-faint)">findings only</text>
+      </svg>
+      <figcaption>
+        The same skeleton under all five, and the same rule: <b>the browser never holds a key, and
+        the API is the one place that knows who you are and whose data this is.</b> Where a product
+        shows a number someone will act on — a price, a grade, a payment verdict — the model is
+        allowed to describe what it sees and nothing more. Every figure is computed by code you can
+        point at, because "usually right" is not a property you can build a bill on.
+      </figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills">
+
+      <div class="skillgroup">
+        <h3>Languages</h3>
+        <p>TypeScript · JavaScript (ES2022) · Ruby · Python · SQL · HTML5 · CSS3</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>Frameworks &amp; Libraries</h3>
+        <p>React 18 / 19 · Next.js 16 · Ruby on Rails 8 · FastAPI · Vite · Express-style Node handlers · Drizzle ORM · Active Record · TanStack Query · Tailwind CSS · Radix UI · NumPy · pandas · SciPy</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>Databases &amp; Data</h3>
+        <p>PostgreSQL · Neon · Schema design · Hand-written migrations · Multi-tenant isolation · Query optimisation · Integer-cent money · Audit trails</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Anthropic Claude · LLM integration · Prompt engineering · Tool use / forced JSON · Structured output · Vision models · Semantic matching · Confidence scoring · Hallucination containment · Prompt evaluation · Model fallback chains</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>Cloud, DevOps &amp; Tooling</h3>
+        <p>Vercel · Cloudflare Pages · GitHub Actions · CI/CD · Docker · Docker Compose · Git · pnpm · npm · Turborepo · Monorepos · Sentry · Linux</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>Security &amp; Compliance</h3>
+        <p>OAuth 2.0 · Google OAuth verification · Passwordless / magic-link auth · Server-side sessions · Rate limiting · PII handling · Private blob storage · CASL · CAN-SPAM · Stripe billing &amp; webhooks</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>Testing &amp; Quality</h3>
+        <p>RSpec · pytest · Vitest · node:test · Regression testing · Unit testing · Test-driven development · FactoryBot · WebMock · Playwright · ESLint · RuboCop · Ruff</p>
+      </div>
+
+      <div class="skillgroup">
+        <h3>Design &amp; Frontend Craft</h3>
+        <p>Design systems · Design tokens · Light and dark theming · Colour maths &amp; contrast floors · Responsive design · Mobile-first · WCAG accessibility · SVG · Data visualisation · Reduced-motion support</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="keywords">
+    <h3>Skills &amp; Keywords</h3>
+    <p>
+      Full-stack development · Software engineer · TypeScript · JavaScript · Ruby · Ruby on Rails ·
+      Rails 8 · Python · Python 3.11 · SQL · React · React 18 · React 19 · Next.js · Next.js 16 ·
+      App Router · Server Components · Vite · Node.js · FastAPI · Active Record · Drizzle ORM ·
+      TanStack Query · React Router · Tailwind CSS · Radix UI · shadcn/ui · Framer Motion ·
+      HTML5 · CSS3 · SVG · Responsive design · Mobile-first · WCAG · Web accessibility ·
+      Design systems · Design tokens · PostgreSQL · Neon · Database design · Schema design ·
+      Database migrations · Multi-tenant architecture · Tenant isolation · REST API · API design ·
+      Microservices · Service-oriented architecture · Serverless · Vercel · Cloudflare ·
+      Docker · Docker Compose · GitHub Actions · CI/CD · Git · GitHub · Linux · Monorepo ·
+      Turborepo · pnpm · npm · Anthropic Claude · LLM integration · Prompt engineering ·
+      Structured output · Tool use · Vision models · AI evaluation · Hallucination containment ·
+      OAuth 2.0 · Google OAuth · Passwordless authentication · Magic links · JWT · bcrypt ·
+      Session management · Rate limiting · Caching · Background jobs · Webhooks · Stripe ·
+      Billing · Third-party API integration · Google Places API · Gmail API · Sentry ·
+      Error monitoring · RSpec · pytest · Vitest · node:test · Playwright · ESLint · RuboCop ·
+      Ruff · Test-driven development · Unit testing · Regression testing · Domain-driven design ·
+      Pure functions · Deterministic computation · Audit trails · PII handling · CASL · CAN-SPAM ·
+      FinTech · SaaS · Construction tech · Data visualisation · Sole engineer · Startup founder
+    </p>
+  </section>
+
+  <footer>Northbound Software Studio · Five products, one engineer · Updated September 2026</footer>
+
+</div>
