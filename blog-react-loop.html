@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inside the ReAct Loop: How Our Agents Think Before They Act — Northbound Studio</title>
+<title>Inside the ReAct Loop: How Our Agents Think Before They Act · Northbound Studio</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#2546F0">
-<meta name="description" content="ReAct isn't a buzzword — it's a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.">
+<meta name="description" content="ReAct isn't a buzzword. It's a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.">
 <link rel="canonical" href="https://northboundsoftwarestudio.com/blog-react-loop.html">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Northbound Software Studio">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://northboundsoftwarestudio.com/blog-react-loop.html">
-<meta property="og:title" content="Inside the ReAct Loop: How Our Agents Think Before They Act — Northbound Studio">
+<meta property="og:title" content="Inside the ReAct Loop: How Our Agents Think Before They Act · Northbound Studio">
 <meta property="og:description" content="ReAct is a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.">
 <meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -39,7 +39,7 @@
     "@type": "Article",
     "@id": "https://northboundsoftwarestudio.com/blog-react-loop.html",
     "headline": "Inside the ReAct Loop: How Our Agents Think Before They Act",
-    "description": "ReAct isn't a buzzword — it's a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.",
+    "description": "ReAct isn't a buzzword. It's a specific loop: Reason, then Act, then Observe. Understanding it tells you exactly why AI-native development is different from pasting code out of ChatGPT.",
     "url": "https://northboundsoftwarestudio.com/blog-react-loop.html",
     "datePublished": "2026-06-10",
     "dateModified": "2026-06-10",
@@ -236,13 +236,13 @@
 
 <div class="article-body">
 
-  <p>Most software teams that say they "use AI" mean they paste code from ChatGPT into their editor and fix the errors manually. That's a tool. What we run is a loop — a structured reasoning cycle that thinks about the problem, acts on it, observes what happened, and updates its understanding before doing anything else. That distinction is why the output is different.</p>
+  <p>Most software teams that say they "use AI" mean they paste code from ChatGPT into their editor and fix the errors manually. That's a tool. What we run is a loop: a structured reasoning cycle that thinks about the problem, acts on it, observes what happened, and updates its understanding before doing anything else. That distinction is why the output is different.</p>
 
   <div class="section-block">
     <div class="section-label">01 / The Name</div>
     <h2>What ReAct actually means</h2>
-    <p>ReAct is a research pattern from a 2022 paper (Yao et al.) that showed language models produce significantly better results when they interleave <strong>reasoning</strong> and <strong>acting</strong> — rather than generating all their reasoning up front and then taking action, or acting without reasoning at all.</p>
-    <p>The insight was simple: an agent that can observe the result of each action — a test failing, an API returning unexpected data, a file that doesn't exist yet — and reason about what to do next is fundamentally more reliable than one that commits to a multi-step plan without feedback.</p>
+    <p>ReAct is a research pattern from a 2022 paper (Yao et al.) that showed language models produce significantly better results when they interleave <strong>reasoning</strong> and <strong>acting</strong>, rather than generating all their reasoning up front and then taking action, or acting without reasoning at all.</p>
+    <p>The insight was simple: an agent that can observe the result of each action (a test failing, an API returning unexpected data, a file that doesn't exist yet) and reason about what to do next is fundamentally more reliable than one that commits to a multi-step plan without feedback.</p>
     <p>In practice, it looks like this:</p>
 
     <code class="code-example"><span class="c-dim">// payment integration, day 2</span>
@@ -264,27 +264,27 @@ Observation: Tests passing. No regressions in billing suite.</code>
     <div class="section-label">02 / Why It Matters</div>
     <h2>The difference between a loop and a prompt</h2>
     <p>A single prompt is a straight line: input → output. It can generate good code in a narrow, well-defined context. But real software development isn't narrow. It involves reading existing code, understanding dependencies, discovering that the database schema doesn't match the API contract, finding that the third-party service changed its response format last week.</p>
-    <p>A ReAct loop treats each of those discoveries as new input. The agent doesn't finish its plan and then hand it off — it adjusts the plan in response to what it finds. That's what makes it suitable for real codebases, not just greenfield toy projects.</p>
+    <p>A ReAct loop treats each of those discoveries as new input. The agent doesn't finish its plan and then hand it off. It adjusts the plan in response to what it finds. That's what makes it suitable for real codebases, not just greenfield toy projects.</p>
 
     <div class="callout">
       <h3>What a loop can do that a prompt cannot</h3>
       <ul>
         <li><strong>Read before writing.</strong> The agent inspects existing code, not just the description of it. It sees what's actually there.</li>
         <li><strong>Test as it goes.</strong> Each action can include running the test suite. Failures are observations, not surprises.</li>
-        <li><strong>Escalate intelligently.</strong> When the agent hits something that requires product context or a judgment call, it flags it — instead of guessing.</li>
+        <li><strong>Escalate intelligently.</strong> When the agent hits something that requires product context or a judgment call, it flags it: instead of guessing.</li>
         <li><strong>Update its own plan.</strong> New information changes what the agent does next. The plan isn't locked before the first line of code.</li>
       </ul>
     </div>
   </div>
 
   <div class="pull-quote">
-    <p>"The agent doesn't finish its plan and then hand it off — it adjusts in response to what it finds."</p>
+    <p>"The agent doesn't finish its plan and then hand it off. It adjusts in response to what it finds."</p>
   </div>
 
   <div class="section-block">
     <div class="section-label">03 / The Human Role</div>
     <h2>Where the loop stops and judgment starts</h2>
-    <p>The loop has hard stops. Not soft suggestions — actual gates where execution pauses until a senior developer reviews what happened and decides what comes next.</p>
+    <p>The loop has hard stops. Not soft suggestions: actual gates where execution pauses until a senior developer reviews what happened and decides what comes next.</p>
     <p>These checkpoints exist at predictable places: <strong>architectural decisions</strong> (which database pattern, which API contract, which trade-off between simplicity and extensibility), <strong>security-sensitive changes</strong> (auth, payments, permissions), and anywhere the agent's confidence is flagged below a threshold we set at project start.</p>
     <p>What happens at those checkpoints isn't a rubber stamp. The developer reads the reasoning, not just the output. They check whether the agent understood the constraint correctly, whether the approach is the right one for this team's future maintainability, whether there's a simpler path the agent missed because it was optimizing for the wrong thing.</p>
     <p>The agent is fast and consistent. The developer is the one with taste, product context, and accountability. Both are required. <strong>Neither works alone.</strong></p>
@@ -293,9 +293,9 @@ Observation: Tests passing. No regressions in billing suite.</code>
   <div class="section-block">
     <div class="section-label">04 / What It Looks Like Live</div>
     <h2>A real build loop, step by step</h2>
-    <p>On a typical Build package, the agent runs thousands of loop iterations over 30 days. Most of them are unremarkable — read a file, write a test, make a change, run the suite, move on. But the pattern of those iterations produces something a purely manual build rarely does: <strong>a codebase where every edge case was considered before it became a bug.</strong></p>
+    <p>On a typical Build package, the agent runs thousands of loop iterations over 30 days. Most of them are unremarkable: read a file, write a test, make a change, run the suite, move on. But the pattern of those iterations produces something a purely manual build rarely does: <strong>a codebase where every edge case was considered before it became a bug.</strong></p>
 
-    <code class="code-example"><span class="c-dim">// day 1 — scoping loop, before any code is written</span>
+    <code class="code-example"><span class="c-dim">// day 1: scoping loop, before any code is written</span>
 <span class="c-yellow">Thought:</span>  Analyzing project brief. What are the likely edge cases
           in the booking flow given this schema?
 <span class="c-blue">Action:</span>   analyze_schema("bookings", "users", "availability")
@@ -305,13 +305,13 @@ Observation: 3 potential race conditions in slot reservation.
 <span class="c-blue">Action:</span>   generate_questions(scope="race conditions, timezone handling")
 <span class="c-dim">→ questions sent to client, answered on scope call</span>
 
-<span class="c-dim">// day 3 — implementation loop</span>
+<span class="c-dim">// day 3: implementation loop</span>
 <span class="c-yellow">Thought:</span>  Implement slot reservation with optimistic locking.
 <span class="c-blue">Action:</span>   write_file("db/migrations/add_reservation_lock.sql")
 <span class="c-blue">Action:</span>   run_tests(suite="reservations", include_concurrency=true)
 Observation: All passing. Race condition simulated and handled.</code>
 
-    <p>The edge cases that used to surface at QA — three weeks in, when fixing them is expensive — surface on day one, when they're just questions on a scope call.</p>
+    <p>The edge cases that used to surface at QA (three weeks in, when fixing them is expensive) surface on day one, when they're just questions on a scope call.</p>
   </div>
 
   <div class="section-block">
@@ -321,7 +321,7 @@ Observation: All passing. Race condition simulated and handled.</code>
     <p><strong>Do they have structured checkpoints?</strong> Where does the agent stop and a human review? If they can't describe it precisely, the human is reviewing outputs, not the reasoning.</p>
     <p><strong>Can they show you a real loop trace?</strong> The thought-action-observation sequence is visible if you're actually running it. If they can't show you what the agent was thinking, they're not running a reasoning loop.</p>
     <p><strong>What does the agent escalate?</strong> An agent that never flags anything for human review is either working on trivial problems or not actually checking. The escalations are where the quality lives.</p>
-    <p>We show this on scope calls — not as a demo, but as the actual loop from a recent project. If you want to see it, book one.</p>
+    <p>We show this on scope calls, not as a demo, but as the actual loop from a recent project. If you want to see it, book one.</p>
   </div>
 
 </div>
@@ -331,7 +331,7 @@ Observation: All passing. Race condition simulated and handled.</code>
   <div class="newsletter-inner">
     <div>
       <h2>New pieces,<br><em>when they ship.</em></h2>
-      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading. You'll get an email when it does.</p>
     </div>
     <form class="newsletter-form" action="/api/subscribe" method="POST" data-newsletter>
       <input type="email" name="email" placeholder="you@company.com" required>
@@ -409,7 +409,7 @@ Observation: All passing. Race condition simulated and handled.</code>
 
     // Load gtag.js only when configured, and only if some other block on the
     // page has not already loaded it (the portfolio and Northbound have their
-    // own loader — this module then just adds the event layer on top).
+    // own loader. This module then just adds the event layer on top).
     if (READY && !document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
       var s = document.createElement('script');
       s.async = true;

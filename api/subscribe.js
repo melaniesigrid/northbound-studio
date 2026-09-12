@@ -1,14 +1,14 @@
 /**
  * Blog newsletter signups.
  *
- * The seven blog pages posted to `https://formspree.io/f/YOUR_FORM_ID` — the
+ * The seven blog pages posted to `https://formspree.io/f/YOUR_FORM_ID`: the
  * literal placeholder. Every subscription since the blog launched went to a
  * Formspree 404 and nobody's address was ever recorded. This endpoint replaces
  * it with the same Resend path the contact form already uses, so a signup
  * reaches a human.
  *
  * It is not a mailing list. There is no storage, no double opt-in and no
- * unsubscribe link, because there is no list to be on yet — the address arrives
+ * unsubscribe link, because there is no list to be on yet: the address arrives
  * as mail and gets added by hand. Do not point a "subscribe" button at this and
  * then send bulk mail to what it collects: CASL needs a recorded consent basis
  * and a working unsubscribe before the first campaign, not after it.

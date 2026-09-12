@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts — Northbound Studio</title>
+<title>Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts · Northbound Studio</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <meta name="author" content="Northbound Software Studio">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://northboundsoftwarestudio.com/blog-meta-prompts.html">
-<meta property="og:title" content="Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts — Northbound Studio">
+<meta property="og:title" content="Prompts You Can Steal: Our Fill-in-the-Blank Meta-Prompts · Northbound Studio">
 <meta property="og:description" content="The prompts we actually use to scope features, design APIs, write specs, and catch edge cases before they become bugs. Take them, use them, adapt them.">
 <meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -237,13 +237,13 @@
 
 <div class="article-body">
 
-  <p>A meta-prompt is a prompt template with blanks. Fill in your specific context and it produces consistent, high-quality output — whether you're scoping a feature, designing an API, writing a technical spec, or hunting for edge cases before they become production bugs. These are the ones we actually use.</p>
+  <p>A meta-prompt is a prompt template with blanks. Fill in your specific context and it produces consistent, high-quality output: whether you're scoping a feature, designing an API, writing a technical spec, or hunting for edge cases before they become production bugs. These are the ones we actually use.</p>
 
   <div class="section-block">
     <div class="section-label">01 / Why Templates Beat One-Offs</div>
     <h2>The problem with prompting from scratch</h2>
-    <p>Most developers prompt like they're having a conversation: they describe what they want, get something back, iterate. That works fine for simple tasks. It breaks down on complex ones — because the quality of the output depends almost entirely on what context you remembered to include, and humans are inconsistent about what they remember to say.</p>
-    <p>A meta-prompt is a solved version of that problem. Someone — ideally someone who has run the task dozens of times and knows what the model needs — sat down and wrote out every piece of context that produces a good result. Now you fill in the blanks and get that result every time, not just when you remember to say the right things.</p>
+    <p>Most developers prompt like they're having a conversation: they describe what they want, get something back, iterate. That works fine for simple tasks. It breaks down on complex ones: because the quality of the output depends almost entirely on what context you remembered to include, and humans are inconsistent about what they remember to say.</p>
+    <p>A meta-prompt is a solved version of that problem. Someone (ideally someone who has run the task dozens of times and knows what the model needs) sat down and wrote out every piece of context that produces a good result. Now you fill in the blanks and get that result every time, not just when you remember to say the right things.</p>
     <p>The templates below are structured around the tasks that matter most in a real software build. <strong>Take them. Adapt them. Run them on your own projects.</strong></p>
   </div>
 
@@ -254,10 +254,10 @@
   <div class="section-block">
     <div class="section-label">02 / Scope a Feature</div>
     <h2>The edge-case hunter</h2>
-    <p>Use this before writing any implementation code. It surfaces the ambiguities and edge cases you'll hit anyway — at day one instead of day twenty.</p>
+    <p>Use this before writing any implementation code. It surfaces the ambiguities and edge cases you'll hit anyway: at day one instead of day twenty.</p>
 
     <div class="prompt-block">
-      <div class="prompt-label">Template — Feature Scoping</div>
+      <div class="prompt-label">Template: Feature Scoping</div>
       <div class="prompt-text">I'm building <span class="fill">[FEATURE NAME]</span> for a <span class="fill">[TYPE OF APP]</span>.
 
 Here is the intended behaviour:
@@ -285,7 +285,7 @@ Your job:
     <p>API contracts written well at the start save weeks of rework. This prompt produces an opinionated first draft you can argue with, which is faster than starting from a blank page.</p>
 
     <div class="prompt-block">
-      <div class="prompt-label">Template — API Design</div>
+      <div class="prompt-label">Template: API Design</div>
       <div class="prompt-text">I need to design a REST API for <span class="fill">[RESOURCE OR FEATURE]</span>.
 
 Context:
@@ -310,10 +310,10 @@ Design the API:
   <div class="section-block">
     <div class="section-label">04 / Write a Technical Spec</div>
     <h2>The spec generator</h2>
-    <p>Technical specs that actually get read are short, structured, and decision-focused. This template produces one — not a document, a tool.</p>
+    <p>Technical specs that actually get read are short, structured, and decision-focused. This template produces one, not a document, a tool.</p>
 
     <div class="prompt-block">
-      <div class="prompt-label">Template — Technical Spec</div>
+      <div class="prompt-label">Template: Technical Spec</div>
       <div class="prompt-text">Write a technical spec for the following feature.
 
 Feature: <span class="fill">[FEATURE NAME]</span>
@@ -329,7 +329,7 @@ Format the spec with these sections only:
 4. Open questions (decisions that need to be made before work starts)
 5. Risks (what could go wrong, and what we'll do about it)
 
-Keep it under 400 words. If you can't, the feature isn't scoped tightly enough — tell me why.</div>
+Keep it under 400 words. If you can't, the feature isn't scoped tightly enough: tell me why.</div>
       <div class="prompt-note">The last instruction catches scope creep before it starts. If the model can't write it in 400 words, neither can you ship it in 7 days.</div>
     </div>
   </div>
@@ -340,7 +340,7 @@ Keep it under 400 words. If you can't, the feature isn't scoped tightly enough �
     <p>Debugging prompts fail when they're just "why is this broken." The model needs the full context of what you expected, what you observed, and what you've already tried.</p>
 
     <div class="prompt-block">
-      <div class="prompt-label">Template — Root Cause Analysis</div>
+      <div class="prompt-label">Template: Root Cause Analysis</div>
       <div class="prompt-text">I have a bug. Help me find the root cause.
 
 What I expected:
@@ -350,7 +350,7 @@ What actually happened:
 <span class="fill">[describe the observed behaviour, include error messages verbatim]</span>
 
 Relevant code:
-<span class="fill">[paste the specific function, route, or component — not the whole file]</span>
+<span class="fill">[paste the specific function, route, or component, not the whole file]</span>
 
 What I've already tried:
 <span class="fill">[list 2–3 things you ruled out and why]</span>
@@ -370,12 +370,12 @@ I want:
   <div class="section-block">
     <div class="section-label">06 / Using These Well</div>
     <h2>One rule that makes all of them better</h2>
-    <p>Every template above has a gap where you're asked to paste something real — a schema, a code block, an error message. That gap is where most people get lazy and write a vague description instead.</p>
+    <p>Every template above has a gap where you're asked to paste something real: a schema, a code block, an error message. That gap is where most people get lazy and write a vague description instead.</p>
     <p>Don't. <strong>Paste the actual thing.</strong> The difference between "my database has a bookings table with some columns" and pasting the actual schema is the difference between a generic answer and a specific one. Generic answers look useful and aren't. Specific answers are what you can build on.</p>
     <p>The other thing worth knowing: these templates are starting points, not final forms. If a section consistently produces bad output for your use case, remove it. If you find yourself always adding the same context, bake it in. The best prompt template for your team is the one your team has adapted for how you actually work.</p>
 
     <div class="callout">
-      <h3>Quick reference — when to use each</h3>
+      <h3>Quick reference: when to use each</h3>
       <ul>
         <li><strong>Edge-case hunter.</strong> Before writing implementation code for any non-trivial feature.</li>
         <li><strong>Contract drafter.</strong> When designing an API that will have more than one consumer.</li>
@@ -392,7 +392,7 @@ I want:
   <div class="newsletter-inner">
     <div>
       <h2>New pieces,<br><em>when they ship.</em></h2>
-      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading. You'll get an email when it does.</p>
     </div>
     <form class="newsletter-form" action="/api/subscribe" method="POST" data-newsletter>
       <input type="email" name="email" placeholder="you@company.com" required>
@@ -470,7 +470,7 @@ I want:
 
     // Load gtag.js only when configured, and only if some other block on the
     // page has not already loaded it (the portfolio and Northbound have their
-    // own loader — this module then just adds the event layer on top).
+    // own loader. This module then just adds the event layer on top).
     if (READY && !document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
       var s = document.createElement('script');
       s.async = true;

@@ -37,7 +37,7 @@
         .then(function (res) {
           if (res && res.ok) {
             form.innerHTML = '<p class="newsletter-note" style="color:inherit">' +
-              'Got it — you\'ll hear from us when something ships.</p>';
+              'Got it. You\'ll hear from us when something ships.</p>';
             if (typeof gtag === 'function') {
               gtag('event', 'generate_lead', { event_category: 'newsletter', event_label: 'blog' });
             }
@@ -51,7 +51,7 @@
         if (btn) { btn.textContent = original; btn.disabled = false; }
         if (note) {
           note.textContent = msg ||
-            'Something went wrong — email hello@northboundsoftwarestudio.com';
+            'Something went wrong: email hello@northboundsoftwarestudio.com';
         }
       }
     });

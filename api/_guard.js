@@ -4,8 +4,8 @@
  * Files under api/ whose name starts with `_` are not routed by Vercel, so this
  * is a module rather than a function.
  *
- * WHAT THIS IS AND IS NOT. The contact form is now the site's only funnel — the
- * booking link is gone — so it is also the only thing between us and an inbox
+ * WHAT THIS IS AND IS NOT. The contact form is now the site's only funnel (the
+ * booking link is gone) so it is also the only thing between us and an inbox
  * of bots. Three cheap layers, in order of how much they actually catch:
  *
  *   1. HONEYPOT. A field a human never sees and never fills. Catches almost
@@ -46,7 +46,7 @@ function clientIp(req) {
 /**
  * Allow this key another request, or not.
  * Prunes as it goes so the Map cannot grow without bound on a long-lived
- * instance — there is no eviction thread in a serverless runtime.
+ * instance. There is no eviction thread in a serverless runtime.
  */
 function rateLimit(key, { limit = 5, windowMs = HOUR_MS } = {}) {
   const now = Date.now();
@@ -86,7 +86,7 @@ function isEmail(value) {
  * True when the submission looks automated.
  *
  * Returns a reason rather than a boolean so the caller can log which layer
- * fired — if dwell time starts rejecting real people, that shows up here before
+ * fired: if dwell time starts rejecting real people, that shows up here before
  * it shows up as a missing lead.
  */
 function looksAutomated({ honeypot, elapsedMs, minDwellMs = 2000 }) {

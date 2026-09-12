@@ -1,11 +1,11 @@
 # Northbound improvement plan
 
-Status: working plan, 2026-08-28. Supersedes nothing — this is the first one.
+Status: working plan, 2026-08-28. Supersedes nothing. This is the first one.
 
 The trigger was evaluating **Panorama** (SF, a16z speedrun-backed applied-AI
 consultancy) as a competitor. Read that as the benchmark throughout: they sell
 into the same "we need AI shipped properly" budget, and their site does two
-things ours does not — it publishes no prices, and every claim on it is a number
+things ours does not. It publishes no prices, and every claim on it is a number
 with a mechanism attached.
 
 ---
@@ -16,7 +16,7 @@ Both already applied to `index.html` and `manifesto/index.html`:
 
 - **No prices anywhere.** Six dollar figures removed from the package cards, the
   Pulse strip, the FAQ (visible and JSON-LD), the schema.org `OfferCatalog`, and
-  `priceRange`. Cards now read **By quote — fixed price, agreed on day zero**.
+  `priceRange`. Cards now read **By quote: fixed price, agreed on day zero**.
   The *promise* of a fixed price stays; the number is not the first thing a
   stranger learns about us.
 - **Email is the only entry point.** Every `cal.com` link is gone from the nav,
@@ -24,7 +24,7 @@ Both already applied to `index.html` and `manifesto/index.html`:
   (`api/contact.js` → Resend → `hello@`) is now the single funnel. GA4 CTA
   tracking was repointed from `a[href*="cal.com"]` to the contact/mailto links.
 
-Both language dictionaries (231 EN keys, 231 FR) were updated in step — there is
+Both language dictionaries (231 EN keys, 231 FR) were updated in step. There is
 no English string left with a price and no French string still offering a call.
 
 ### Why remove the prices
@@ -42,7 +42,7 @@ no English string left with a price and no French string still offering a call.
 
 Removing `Offer.price` weakens rich-result eligibility for the package pages, and
 the title tag still reads *Fixed-Price Software Development Studio Toronto*. That
-term is still accurate — "fixed price" is a delivery model, not a price list — so
+term is still accurate ("fixed price" is a delivery model, not a price list) so
 keep the tag. Watch Search Console impressions for `#packages` over the next
 month; if they fall, the fix is content (case studies) not a restored number.
 
@@ -52,8 +52,8 @@ month; if they fall, the fix is content (case studies) not a restored number.
 
 Panorama's page carries five case studies, each one sentence of problem, one
 paragraph of mechanism, three hard numbers. Northbound's page carries zero. Every
-claim on it is a promise about the future — *we ship fast, we don't surprise
-you, agents do 70%* — and a stranger has no way to check any of it.
+claim on it is a promise about the future (*we ship fast, we don't surprise
+you, agents do 70%*) and a stranger has no way to check any of it.
 
 This is the highest-leverage change available, and it costs nothing to make,
 because the proof already exists and is sitting unshipped in the four sibling
@@ -65,14 +65,14 @@ Four shipped products, all ours, all real:
 
 | Product | The one-sentence problem | Numbers to pull |
 |---|---|---|
-| **ZipQuarry** | Owner-led service businesses lose evenings to prospecting. | Time-to-first-useful-lead, draft-edit rate, cost per reviewed lead, replies per 10 sent. Being measured now under the design-partner run — see `zipquarry-platform/docs/CEO-DECISION.md`. |
+| **ZipQuarry** | Owner-led service businesses lose evenings to prospecting. | Time-to-first-useful-lead, draft-edit rate, cost per reviewed lead, replies per 10 sent. Being measured now under the design-partner run: see `zipquarry-platform/docs/CEO-DECISION.md`. |
 | **Quotefront** | Quoting from site photos is a manual estimator's afternoon. | Photo-to-findings turnaround, findings per photo, per-quote model cost. |
 | **Windward** | Portfolio grading requires an analyst you don't have. | Pillars computed, tickers covered, time to a graded portfolio. |
 | **ReconAI** | Invoice/PO matching is human tedium at scale. | Match rate, exceptions surfaced, minutes per hundred documents. |
 
 **Do not ship a case study with an invented number.** One honest metric beats
 three plausible ones, and the whole point of the format is that it is checkable.
-ZipQuarry is closest to having real figures — start there, ship one, and let the
+ZipQuarry is closest to having real figures: start there, ship one, and let the
 other three follow as their numbers land.
 
 ### The format to copy
@@ -95,14 +95,14 @@ The stats strip currently reads *3 day spark sprint · 100% fixed-price guarante
 · ≤30 days to launch · $0 surprise invoices*. Three of those four are restatements
 of the packages, and "100%" of a promise we have made to ourselves is not a
 statistic. Once the first case study lands, this strip should hold measured
-numbers — products shipped, days to first deploy, an actual cost or time delta.
+numbers: products shipped, days to first deploy, an actual cost or time delta.
 
 ---
 
 ## 3. Sharpen the AI-native claim
 
 Ours is generic: *agents handle the repetitive 70%*. Panorama's is specific and
-therefore credible — retrieval, context engineering, LLM cost optimization, data
+therefore credible: retrieval, context engineering, LLM cost optimization, data
 strategy, post-training. Each names a failure mode a reader recognizes from their
 own product.
 
@@ -120,7 +120,7 @@ things that go wrong once a model is in production, and what we do about each:
 | Prompt & eval setup you can maintain | Nobody can tell whether a change helped |
 | Team walkthrough on handoff | Your team cannot maintain it after we leave |
 
-"Who you are" moved the same way — from job titles to symptoms: *you shipped an
+"Who you are" moved the same way: from job titles to symptoms: *you shipped an
 AI feature and cannot say what it costs per customer*, *it worked in the demo and
 misses in production and nobody can name which change broke it*.
 
@@ -136,20 +136,20 @@ comes off the card.
 ## 4. What we are explicitly not copying
 
 - **The credential wall.** Ex-Google/Twitter/Berkeley, SOC 2 Type II, CASA Tier 3,
-  "the Navy SEALs AI eng team" — that sells to a CTO running vendor diligence.
+  "the Navy SEALs AI eng team". That sells to a CTO running vendor diligence.
   Aimed at a restaurant owner buying Spark it reads as talking past them.
   Northbound's package range spans both buyers; the voice has to hold both.
 - **Product Hunt rank and upvote counts.** Vanity, and it points the site at an
   audience that does not buy builds.
 - **A services-only future.** Panorama's a16z backing says services now, product
-  later. Northbound already has the products. That is the asset — the studio site
+  later. Northbound already has the products. That is the asset: the studio site
   should point at them, not hide them.
 
 ---
 
 ## 5. Site hygiene
 
-- **`README.md` was stale** — it described `northbound.html`, `business-plan.md`,
+- **`README.md` was stale**. It described `northbound.html`, `business-plan.md`,
   `todo.md`, `offer-sheet.md` and four other files that do not exist in this repo.
   Rewritten today.
 - **`_dev/` is publicly reachable.** `_dev/theme-compare.html` still contains the
@@ -157,7 +157,7 @@ comes off the card.
   stops deploying; the file stays in the repo as a working reference.
 - **`vercel.json` was `{}`.** Now carries `X-Content-Type-Options`,
   `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS and a CSP
-  built from the origins the pages actually reference — Google Fonts, gtag,
+  built from the origins the pages actually reference: Google Fonts, gtag,
   GA collect endpoints, Vercel vitals. **The CSP allows `'unsafe-inline'` for
   scripts** and cannot do otherwise while the page carries dozens of inline
   `<script>` blocks and six inline event handlers. It still blocks every external
@@ -165,14 +165,13 @@ comes off the card.
   Tightening to a nonce means extracting the inline JS first.
 - **`api/contact.js` had no rate limit and no spam trap.** Fixed: honeypot,
   dwell-time check, per-IP limit, length caps and email validation, all in
-  `api/_guard.js`. The rate limit is in-memory and therefore per warm instance —
-  honest about it in the module comment. It stops the naive loop, not a flood.
+  `api/_guard.js`. The rate limit is in-memory and therefore per warm instance, and honest about it in the module comment. It stops the naive loop, not a flood.
 - **Seven dead newsletter forms.** Every blog page posted to
-  `https://formspree.io/f/YOUR_FORM_ID` — the literal placeholder. Every
+  `https://formspree.io/f/YOUR_FORM_ID`: the literal placeholder. Every
   subscription since the blog launched hit a Formspree 404 and no address was
   ever recorded. They now post to `api/subscribe.js`, which mails the address to
   hello@ through the same Resend path as the contact form. **It is not a mailing
-  list** — no storage, no double opt-in, no unsubscribe, because there is no list
+  list**, no storage, no double opt-in, no unsubscribe, because there is no list
   yet. CASL needs a recorded consent basis and a working unsubscribe before the
   first campaign, not after it.
 

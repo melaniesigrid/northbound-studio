@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Building a Mobile App With AI Agents Actually Looks Like — Northbound Studio</title>
+<title>What Building a Mobile App With AI Agents Actually Looks Like · Northbound Studio</title>
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <meta name="author" content="Northbound Software Studio">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://northboundsoftwarestudio.com/blog-mobile-app-ai.html">
-<meta property="og:title" content="What Building a Mobile App With AI Agents Actually Looks Like — Northbound Studio">
+<meta property="og:title" content="What Building a Mobile App With AI Agents Actually Looks Like · Northbound Studio">
 <meta property="og:description" content="A day-by-day account of a 30-day React Native build: what the agent handled, what the human owned, three things that changed the architecture, and one security issue caught before it shipped.">
 <meta property="og:image" content="https://northboundsoftwarestudio.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -242,17 +242,17 @@
 
 <div class="article-body">
 
-  <p>The brief was clean on the surface: a React Native app for field technicians and a web dashboard for the dispatcher. A home services company — plumbing, HVAC, electrical — with 14 technicians and a scheduling process that ran on a whiteboard and a group text thread. Thirty days. Fixed price.</p>
+  <p>The brief was clean on the surface: a React Native app for field technicians and a web dashboard for the dispatcher. A home services company (plumbing, HVAC, electrical) with 14 technicians and a scheduling process that ran on a whiteboard and a group text thread. Thirty days. Fixed price.</p>
 
   <p>What follows is an account of how that actually went: what the agent ran autonomously, where it stopped and flagged for a human, what changed mid-build, and what the senior developer had to fix before it shipped. No demo polish. This is the real sequence.</p>
 
   <div class="section-block">
     <div class="section-label">01 / Days 1–2</div>
     <h2>The manifest before the first line of code</h2>
-    <p>The first thing the agent did was not write code. It read the brief, modeled the domain, and generated questions — the ones the client's two-page brief hadn't answered. This took about four hours of loop iterations and produced a structured list of decisions that needed to be made before implementation began.</p>
+    <p>The first thing the agent did was not write code. It read the brief, modeled the domain, and generated questions: the ones the client's two-page brief hadn't answered. This took about four hours of loop iterations and produced a structured list of decisions that needed to be made before implementation began.</p>
     <p>Most of these were invisible to the client. They had described the happy path: dispatcher sees a list of jobs, assigns one to a technician, technician opens the app and sees their day. That description was accurate. It was also missing about a third of the system.</p>
 
-    <code class="code-example"><span class="c-dim">// Day 1 — initial scope analysis</span>
+    <code class="code-example"><span class="c-dim">// Day 1: initial scope analysis</span>
 <span class="c-yellow">Thought:</span>  Brief describes single-dispatcher workflow. What happens
           with concurrent dispatchers during peak hours?
 <span class="c-blue">Action:</span>   analyze_brief("job_assignment_flow")
@@ -264,7 +264,7 @@ Observation: No concurrent write handling in scope. Two dispatchers
 <span class="c-yellow">Thought:</span>  Requires optimistic locking on job assignment. Add to manifest.
 <span class="c-blue">Action:</span>   update_manifest(item="concurrent_assignment_lock", priority="P0")</code>
 
-    <p>By the end of day two, the manifest had surfaced seven problems the brief hadn't addressed. Timezone handling — the client had two technicians who worked a neighboring time zone on extended routes, a fact buried in a casual mention that "sometimes we cover jobs across the border." Offline state — technicians work in basements and elevator shafts where cell signal doesn't reach, and the app needed to display their schedule whether or not they had a connection. A push notification state machine with six distinct states the brief had collapsed into one. And the difference between "job assigned" and "job accepted," which the client assumed were synonymous and which turned out to matter quite a lot for accountability tracking.</p>
+    <p>By the end of day two, the manifest had surfaced seven problems the brief hadn't addressed. Timezone handling: the client had two technicians who worked a neighboring time zone on extended routes, a fact buried in a casual mention that "sometimes we cover jobs across the border." Offline state: technicians work in basements and elevator shafts where cell signal doesn't reach, and the app needed to display their schedule whether or not they had a connection. A push notification state machine with six distinct states the brief had collapsed into one. And the difference between "job assigned" and "job accepted," which the client assumed were synonymous and which turned out to matter quite a lot for accountability tracking.</p>
     <p>These questions went to the client on day two. They were answered on a 40-minute call. The manifest was locked by end of day. Not a single line of code had been written, and the project was already in better shape than it would have been after a month of the old way.</p>
   </div>
 
@@ -277,7 +277,7 @@ Observation: No concurrent write handling in scope. Two dispatchers
     <h2>The first checkpoint: an auth decision the agent got right and wrong at the same time</h2>
     <p>The agent proposed JWT authentication with refresh token rotation. This is a technically correct, widely adopted approach. It's what most apps use. The agent's reasoning was sound: stateless tokens reduce database load, rotation limits exposure from leaked tokens, the pattern has excellent library support in React Native.</p>
     <p>The senior developer rejected it.</p>
-    <p>The reason wasn't technical. This company cycles through contractors. Technicians are added and removed from the roster regularly — sometimes the same day. With JWT, revoking access requires either a token blacklist (adding the state you were trying to avoid) or waiting for the token to expire. A 15-minute expiry means a fired technician could still access the system for 15 minutes after termination. For a company dealing with access to customer addresses and home security systems, that's not a theoretical risk.</p>
+    <p>The reason wasn't technical. This company cycles through contractors. Technicians are added and removed from the roster regularly: sometimes the same day. With JWT, revoking access requires either a token blacklist (adding the state you were trying to avoid) or waiting for the token to expire. A 15-minute expiry means a fired technician could still access the system for 15 minutes after termination. For a company dealing with access to customer addresses and home security systems, that's not a theoretical risk.</p>
     <p>Session-based auth with server-side invalidation was the right call. When a technician is removed, their session is killed instantly. The agent's proposal was textbook. The override required knowing something the brief didn't say: this is a high-turnover workforce in a trust-sensitive context.</p>
     <p>This is the category of decision that can't be delegated to an agent. The agent doesn't know what it doesn't know. The human's job is to know what questions to ask about the context the agent is reasoning from.</p>
   </div>
@@ -285,32 +285,32 @@ Observation: No concurrent write handling in scope. Two dispatchers
   <div class="section-block">
     <div class="section-label">03 / Days 6–18</div>
     <h2>What the loop ran and what it didn't</h2>
-    <p>After the manifest and the auth decision, the agent had a clear runway. For 12 days it ran largely autonomously — reading existing files, writing new ones, running tests after each change, escalating when it hit something ambiguous. The senior developer reviewed progress every two to three days, not every day.</p>
+    <p>After the manifest and the auth decision, the agent had a clear runway. For 12 days it ran largely autonomously: reading existing files, writing new ones, running tests after each change, escalating when it hit something ambiguous. The senior developer reviewed progress every two to three days, not every day.</p>
 
     <div class="callout">
       <h3>What ran without human intervention</h3>
       <ul>
-        <li><strong>The technician mobile screens.</strong> Job list, job detail, status update flow. React Native with Expo. The agent wrote these to spec, wrote tests, and caught two rendering edge cases on its own — a job with no assigned technician crashing the detail screen, and a status badge overflowing its container on long status strings.</li>
+        <li><strong>The technician mobile screens.</strong> Job list, job detail, status update flow. React Native with Expo. The agent wrote these to spec, wrote tests, and caught two rendering edge cases on its own: a job with no assigned technician crashing the detail screen, and a status badge overflowing its container on long status strings.</li>
         <li><strong>The dispatcher web dashboard.</strong> Job board, assignment panel, technician roster. The agent scaffolded and wired the full CRUD surface in about three days of loop time.</li>
         <li><strong>The database schema and migrations.</strong> Jobs, technicians, assignments, status history, sessions. Clean foreign keys, proper indexes on the fields that would get queried at volume. The agent added a composite index on (technician_id, scheduled_date) without being asked, reasoning that the "jobs for today" query would hit this path on every app open.</li>
-        <li><strong>The push notification pipeline.</strong> Expo + Firebase Cloud Messaging. The agent implemented all six notification states from the manifest, including the one the client had overlooked: "job reassigned" — when a dispatcher moves a job mid-day, the original technician needs to know.</li>
+        <li><strong>The push notification pipeline.</strong> Expo + Firebase Cloud Messaging. The agent implemented all six notification states from the manifest, including the one the client had overlooked: "job reassigned": when a dispatcher moves a job mid-day, the original technician needs to know.</li>
       </ul>
     </div>
 
-    <p>Three things were escalated during this stretch. First, the offline sync strategy. The agent proposed optimistic UI updates with conflict resolution — when a technician marks a job complete offline, the app optimistically updates the local state and queues a sync. On reconnection, the server resolves any conflicts. This is a real pattern and the agent implemented it cleanly. The developer simplified it: offline means read-only. Technicians don't create or modify data in the field — they only consume their schedule and update job status. The conflict resolution logic was real complexity solving a hypothetical problem. Cut.</p>
+    <p>Three things were escalated during this stretch. First, the offline sync strategy. The agent proposed optimistic UI updates with conflict resolution: when a technician marks a job complete offline, the app optimistically updates the local state and queues a sync. On reconnection, the server resolves any conflicts. This is a real pattern and the agent implemented it cleanly. The developer simplified it: offline means read-only. Technicians don't create or modify data in the field. They only consume their schedule and update job status. The conflict resolution logic was real complexity solving a hypothetical problem. Cut.</p>
     <p>Second, the job status state machine. The agent modeled nine states based on the domain analysis: unassigned, assigned, acknowledged, en route, on site, paused, complete, incomplete, disputed. The developer reduced it to five: unassigned, assigned, in progress, complete, cancelled. The other four were real states that would matter eventually. They would not matter in the first 90 days, and building them now meant building UI and API surface the client didn't yet know how to use. Deferred to v2 with a clear upgrade path.</p>
-    <p>Third, proof-of-work photo uploads. The agent flagged this as a likely requirement — service businesses often need documentation that a job was completed. It was right. It was also not in scope. The feature was logged, the S3 infrastructure was not set up, and the conversation with the client was moved to a post-launch discussion about what phase two should include.</p>
+    <p>Third, proof-of-work photo uploads. The agent flagged this as a likely requirement: service businesses often need documentation that a job was completed. It was right. It was also not in scope. The feature was logged, the S3 infrastructure was not set up, and the conversation with the client was moved to a post-launch discussion about what phase two should include.</p>
   </div>
 
   <div class="section-block">
     <div class="section-label">04 / Day 20</div>
     <h2>The checkpoint that changed the architecture</h2>
-    <p>The dispatcher web dashboard had been built with polling: every 30 seconds, the client made a GET request to check for job status updates. It worked. It was also visibly janky — the dashboard flickered on each poll cycle as React reconciled the incoming data against the existing UI state.</p>
+    <p>The dispatcher web dashboard had been built with polling: every 30 seconds, the client made a GET request to check for job status updates. It worked. It was also visibly janky: the dashboard flickered on each poll cycle as React reconciled the incoming data against the existing UI state.</p>
     <p>At the day-20 checkpoint, the senior developer flagged this. The right solution was WebSockets: a persistent connection that pushes updates to the dashboard the moment a technician changes a job status. No polling, no flicker, real-time updates.</p>
     <p>The agent had not proposed WebSockets because the brief hadn't mentioned real-time requirements. It had solved the problem it was given.</p>
-    <p>The conversation that followed was the kind that doesn't fit in a prompt. WebSockets require a persistent server process — they don't work with serverless functions, which was the deployment model already in use. Migrating to WebSockets meant either changing the hosting architecture (adding a dedicated server on Railway or Fly.io, adding cost and operational overhead) or accepting a compromise.</p>
+    <p>The conversation that followed was the kind that doesn't fit in a prompt. WebSockets require a persistent server process. They don't work with serverless functions, which was the deployment model already in use. Migrating to WebSockets meant either changing the hosting architecture (adding a dedicated server on Railway or Fly.io, adding cost and operational overhead) or accepting a compromise.</p>
     <p>The decision: polling at 10-second intervals instead of 30. Not elegant. Reduces the flicker by two-thirds without requiring any infrastructure change. The agent implemented the adjustment in about 20 minutes. The right call for a 30-day build going to a 14-person company that doesn't have an ops team.</p>
-    <p>This is what a checkpoint is for. Not rubber-stamping what the agent built — actually reading it, understanding it in context, and making the call the agent can't make because it doesn't know the deployment budget.</p>
+    <p>This is what a checkpoint is for. Not rubber-stamping what the agent built: actually reading it, understanding it in context, and making the call the agent can't make because it doesn't know the deployment budget.</p>
   </div>
 
   <div class="pull-quote">
@@ -321,9 +321,9 @@ Observation: No concurrent write handling in scope. Two dispatchers
     <div class="section-label">05 / Day 30</div>
     <h2>What the senior developer fixed before it shipped</h2>
     <p>Three things required human rewriting before the build was released. They are worth describing in detail because they illustrate the category of work that agents don't do well, and probably won't for a while.</p>
-    <p><strong>Error messages.</strong> The agent wrote technically accurate error text throughout the API and the mobile client. "Assignment conflict detected at database layer." "Session token invalid or expired." "Technician record not found for provided ID." These messages are correct. A technician standing in a customer's driveway who loses their session would read "Session token invalid or expired" on their phone and have no idea what to do. Every user-facing error string was rewritten: what happened, in plain language, and what to do next. "You've been logged out — tap here to sign back in." "That job was already assigned to someone else — pull down to refresh your schedule." Eleven strings total. About two hours of work.</p>
-    <p><strong>The job list sort order.</strong> The agent sorted the dispatcher's job board by creation time — newest jobs at the top. This is a sensible default. The dispatcher's actual mental model was geographic: they wanted jobs sorted by proximity to where the previous job ended, so they could build routes without doing it manually. Four lines of code to change the sort. Zero chance the agent would have known to do this without being told. It requires understanding how a dispatcher thinks about their day, which is not in any spec.</p>
-    <p><strong>A security issue.</strong> The job update API endpoint validated that the request came from an authenticated dispatcher, but did not validate that the job being updated belonged to the dispatcher's company. A dispatcher at company A could, with a crafted request, update or reassign jobs belonging to company B. The agent had not built multi-tenant isolation into the write paths — it had built it into the read paths (every query was scoped to the authenticated user's company_id) but missed it on updates. This was caught in the pre-launch security review, not in production. The fix was three lines of middleware. The cost of finding this after launch would have been substantially higher.</p>
+    <p><strong>Error messages.</strong> The agent wrote technically accurate error text throughout the API and the mobile client. "Assignment conflict detected at database layer." "Session token invalid or expired." "Technician record not found for provided ID." These messages are correct. A technician standing in a customer's driveway who loses their session would read "Session token invalid or expired" on their phone and have no idea what to do. Every user-facing error string was rewritten: what happened, in plain language, and what to do next. "You've been logged out (tap here to sign back in." "That job was already assigned to someone else) pull down to refresh your schedule." Eleven strings total. About two hours of work.</p>
+    <p><strong>The job list sort order.</strong> The agent sorted the dispatcher's job board by creation time: newest jobs at the top. This is a sensible default. The dispatcher's actual mental model was geographic: they wanted jobs sorted by proximity to where the previous job ended, so they could build routes without doing it manually. Four lines of code to change the sort. Zero chance the agent would have known to do this without being told. It requires understanding how a dispatcher thinks about their day, which is not in any spec.</p>
+    <p><strong>A security issue.</strong> The job update API endpoint validated that the request came from an authenticated dispatcher, but did not validate that the job being updated belonged to the dispatcher's company. A dispatcher at company A could, with a crafted request, update or reassign jobs belonging to company B. The agent had not built multi-tenant isolation into the write paths. It had built it into the read paths (every query was scoped to the authenticated user's company_id) but missed it on updates. This was caught in the pre-launch security review, not in production. The fix was three lines of middleware. The cost of finding this after launch would have been substantially higher.</p>
   </div>
 
   <div class="section-block">
@@ -357,9 +357,9 @@ Observation: No concurrent write handling in scope. Two dispatchers
       </div>
     </div>
 
-    <p>The number that matters most is not any of these. It's the seven things the agent surfaced on day one that the brief hadn't captured — and the fact that they were resolved before a line of code was written instead of during QA three weeks in.</p>
-    <p>That's the actual shift. Not that the code was written faster, though it was. Not that the test coverage is higher than a typical agency handoff, though it is. The shift is that execution uncertainty — the thing that turns a 30-day project into a 60-day project — gets compressed into the first 48 hours. What used to be unknown at implementation time is known at scope time.</p>
-    <p>The three rewrites before launch were real. They were also the right three things: user experience, business logic, security. These are the categories where human judgment is genuinely irreplaceable — not because the agent couldn't have done them with more context, but because the context that makes them doable well is context that lives in the senior developer's head. That's not a bug in the model. It's a description of what the job actually is.</p>
+    <p>The number that matters most is not any of these. It's the seven things the agent surfaced on day one that the brief hadn't captured, and the fact that they were resolved before a line of code was written instead of during QA three weeks in.</p>
+    <p>That's the actual shift. Not that the code was written faster, though it was. Not that the test coverage is higher than a typical agency handoff, though it is. The shift is that execution uncertainty (the thing that turns a 30-day project into a 60-day project) gets compressed into the first 48 hours. What used to be unknown at implementation time is known at scope time.</p>
+    <p>The three rewrites before launch were real. They were also the right three things: user experience, business logic, security. These are the categories where human judgment is genuinely irreplaceable, not because the agent couldn't have done them with more context, but because the context that makes them doable well is context that lives in the senior developer's head. That's not a bug in the model. It's a description of what the job actually is.</p>
   </div>
 
 </div>
@@ -369,7 +369,7 @@ Observation: No concurrent write handling in scope. Two dispatchers
   <div class="newsletter-inner">
     <div>
       <h2>New pieces,<br><em>when they ship.</em></h2>
-      <p>No newsletter cadence. No filler. We publish when something is worth reading — you'll get an email when it does.</p>
+      <p>No newsletter cadence. No filler. We publish when something is worth reading. You'll get an email when it does.</p>
     </div>
     <form class="newsletter-form" action="/api/subscribe" method="POST" data-newsletter>
       <input type="email" name="email" placeholder="you@company.com" required>
@@ -447,7 +447,7 @@ Observation: No concurrent write handling in scope. Two dispatchers
 
     // Load gtag.js only when configured, and only if some other block on the
     // page has not already loaded it (the portfolio and Northbound have their
-    // own loader — this module then just adds the event layer on top).
+    // own loader. This module then just adds the event layer on top).
     if (READY && !document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
       var s = document.createElement('script');
       s.async = true;
