@@ -42,9 +42,11 @@ before adding or removing a package. Between them they record what changed on
 1. **No prices on this site.** Not in the cards, not in the FAQ, not in the
    schema.org `OfferCatalog`, not in `priceRange`. The fixed-price *promise*
    stays; the number is quoted by email. PLAN.md §0 has the reasoning.
-2. **Email is the only entry point.** There is no booking link. Every CTA points
-   at `#contact`, which posts to `api/contact.js`. Do not reintroduce a calendar
-   widget without reading PLAN.md §0 first.
+2. **Booking a call is the primary entry point** (since 2026-09-30, Melanie's call).
+   Every "Book" and package button opens our own booking calendar (NBBooking in
+   `index.html`). It reads open times from `api/slots.js` and books through
+   `api/book.js`, both proxying Cal.com's public API with no key. Nothing from
+   Cal.com loads in the page. The email form stays below it as the alternative.
 
 ## Layout
 
@@ -56,6 +58,8 @@ manifesto/          the manifesto page
 blog.html           blog index; blog-*.html are the six posts
 privacy/ terms/ cookie-policy/
 api/contact.js      Vercel function: contact form → Resend → hello@
+api/slots.js        Vercel function: open call times from Cal.com (public, no key)
+api/book.js         Vercel function: books the 20-minute call through Cal.com
 mascots/ logo/ social/ linkedin/   assets (mascots are referenced by manifesto)
 _dev/ design-audit/ inspo/         internal scratch, excluded by .vercelignore
 ```

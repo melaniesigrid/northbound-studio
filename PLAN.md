@@ -15,6 +15,13 @@ with a mechanism attached.
 
 ---
 
+## Update 2026-09-30: booking is the way in
+
+Melanie reversed the email-only entry point described in §0. Every "Book" and
+package button now opens a booking calendar built into the page (our own UI,
+Cal.com's public API behind `api/slots.js` and `api/book.js`), and the email
+form stays as the alternative. The no-prices rule is unchanged.
+
 ## 0. What changed today
 
 Both already applied to `index.html` and `manifesto/index.html`:

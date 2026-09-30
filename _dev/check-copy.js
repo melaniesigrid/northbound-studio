@@ -1,6 +1,6 @@
 // Validates northbound-studio/index.html: JSON-LD, i18n dictionary, key parity,
-// markup-key resolution, and the two repo invariants: no prices, and exactly one
-// scope-call link (3 cal.com strings: the form note and its EN/FR entries).
+// markup-key resolution, and the two repo invariants: no prices, and booking
+// wired up (the #book calendar, and every package button opening it).
 const fs = require('fs');
 const file = process.argv[2] || 'index.html';
 const h = fs.readFileSync(file, 'utf8');
@@ -51,8 +51,11 @@ if (T) {
 const allowed = /\$0\b|\$51,700|\$26\.50/;
 const prices = [...h.matchAll(/.{0,40}\$[0-9].{0,40}/g)].map(m => m[0]).filter(s => !allowed.test(s));
 prices.length ? fail('price figures found: ' + prices.join(' | ')) : ok('no price figures');
-const cal = (h.match(/cal\.com/g) || []).length;
-cal === 3 ? ok('scope-call link present 3 times') : fail('cal.com appears ' + cal + ' times, expected 3');
+const pkgs = (h.match(/data-pkg="[^"]+"/g) || []).length;
+const booked = (h.match(/data-pkg="[^"]+"[^>]*data-book/g) || []).length;
+/id="book"/.test(h) && /data-bk-inline/.test(h) && /\/api\/book/.test(h)
+  ? ok('booking section and /api/book wired') : fail('booking section or /api/book missing');
+pkgs && booked === pkgs ? ok('all ' + pkgs + ' package buttons open booking') : fail(booked + ' of ' + pkgs + ' package buttons open booking');
 
 console.log(bad ? '\n' + bad + ' check(s) failed' : '\nall checks passed');
 process.exit(bad ? 1 : 0);
