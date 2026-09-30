@@ -1930,6 +1930,63 @@ footer{
 .faq-item[hidden]{display:none}
 .faq-q:focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
 
+
+/* ---------- case studies ---------- */
+.cs-list{display:flex;flex-direction:column;gap:28px;margin-bottom:80px}
+.cs{--cs-bg:var(--ink);--cs-fg:var(--paper);display:grid;grid-template-columns:minmax(220px,300px) 1fr;border:var(--line);background:var(--paper-raise);box-shadow:6px 6px 0 var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+.cs:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--ink)}
+.cs-cobalt{--cs-bg:var(--cobalt);--cs-fg:#fff}
+.cs-hazard{--cs-bg:var(--hazard);--cs-fg:var(--ink)}
+.cs-art{position:relative;background:var(--cs-bg);color:var(--cs-fg);border-right:var(--line);padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.cs-num{position:absolute;right:14px;top:4px;font-family:var(--font-display);font-size:88px;line-height:1;opacity:.14}
+.cs-icon{width:112px;height:112px;margin:6px 0 12px}
+.cs-icon svg{width:100%;height:100%;overflow:visible}
+.cs-name{font-family:var(--font-display);font-size:38px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.cs-kind{font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.cs-open{margin-top:auto;padding-top:18px;align-self:flex-start;font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:2px solid currentColor}
+.cs-open:hover{opacity:.8}
+.cs-body{padding:30px 32px 28px;display:flex;flex-direction:column;gap:16px}
+.cs-body h3{font-family:var(--font-display);font-size:clamp(26px,2.8vw,38px);line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
+.cs-body>p{font-size:17.5px;color:var(--ink-soft);max-width:72ch;line-height:1.6}
+.cs-stats{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border:var(--line);margin:4px 0}
+.cs-stats li{padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.cs-stats li+li{border-left:var(--line)}
+.cs-n{font-family:var(--font-display);font-size:clamp(34px,3.4vw,48px);line-height:1;color:var(--cobalt);font-variant-numeric:tabular-nums}
+.cs-l{font-size:15px;line-height:1.4;color:var(--ink-soft)}
+.cs-means{font-size:16.5px;border-left:4px solid var(--hazard);padding:4px 0 4px 14px}
+.cs-means strong{font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px;color:var(--ink)}
+@media(max-width:860px){
+  .cs{grid-template-columns:1fr}
+  .cs-num{display:none}
+  .cs-art{border-right:none;border-bottom:var(--line);display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:center}
+  .cs-icon{width:84px;height:84px;margin:0;grid-row:span 3}
+  .cs-open{margin-top:6px;padding-top:0}
+  .cs-body{padding:22px 20px}
+}
+@media(max-width:620px){
+  .cs-stats{grid-template-columns:1fr}
+  .cs-stats li+li{border-left:none;border-top:var(--line)}
+  .cs-stats li{flex-direction:row;align-items:baseline;gap:14px}
+  .cs-n{min-width:4.4ch;flex-shrink:0}
+}
+/* animation: the icon draws itself, stones drop in, the card rises */
+.cs .draw{stroke-dasharray:1;transition:stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) var(--d,0s)}
+.cs .pop{transform-box:fill-box;transform-origin:center;transition:transform .45s cubic-bezier(.34,1.56,.64,1) var(--d,0s)}
+.cs{transition:opacity .6s ease,translate .6s cubic-bezier(.2,.8,.2,1),transform .25s ease,box-shadow .25s ease}
+/* hidden starting states apply only once the script has run (.cs-ready) */
+.cs-ready .cs:not(.in){opacity:0;translate:0 28px}
+.cs-ready .cs:not(.in) .draw{stroke-dashoffset:1}
+.cs-ready .cs:not(.in) .pop{transform:scale(0)}
+.cs.in:hover .cs-icon svg{animation:cs-bob 1.6s ease-in-out infinite}
+@keyframes cs-bob{50%{transform:translateY(-4px) rotate(-2deg)}}
+/* the dashed radius keeps its dashes: it fades in instead of drawing */
+.cs .dash{transition:opacity .8s ease}
+.cs-ready .cs:not(.in) .dash{opacity:0}
+@media(prefers-reduced-motion:reduce){
+  .cs,.cs .draw,.cs .pop{transition:none}
+  .cs.in:hover .cs-icon svg{animation:none}
+}
+
 </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -1966,7 +2023,7 @@ footer{
     <ul class="nav-links">
       <li><a href="#who" data-i18n="nav-who">Who we help</a></li>
       <li><a href="#process" data-i18n="nav-process">How it works</a></li>
-      <li><a href="#work" data-i18n="nav-work">Our work</a></li>
+      <li><a href="#cases" data-i18n="nav-work">Our work</a></li>
       <li><a href="#automate" data-i18n="nav-automate">Automate</a></li>
       <li><a href="#packages" data-i18n="nav-packages">Packages</a></li>
       <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
@@ -1985,7 +2042,7 @@ footer{
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
   <a href="#who" data-i18n="nav-who">Who we help</a>
   <a href="#process" data-i18n="nav-process">How it works</a>
-  <a href="#work" data-i18n="nav-work">Our work</a>
+  <a href="#cases" data-i18n="nav-work">Our work</a>
   <a href="#automate" data-i18n="nav-automate">Automate</a>
   <a href="#packages" data-i18n="nav-packages">Packages</a>
   <a href="#faq" data-i18n="nav-faq">FAQ</a>
@@ -2220,6 +2277,99 @@ footer{
      leads because it is the one exhibit that shows taste and rigour at once,
      and every number on its card is checkable against the source in one click:
      50 families in fonts/, 44 looks in looks.js, 12 articles in articles.js. -->
+<!-- Case studies. Problem as the title, the mechanism in the body, three
+     numbers with units. Sources for every figure are listed in the commit
+     that added this section. -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-i18n="cs-eyebrow">Case studies</span>
+        <h2 class="sec-title" data-i18n="cs-title">How we build, shown on our own products</h2>
+      </div>
+      <p class="sec-note" data-i18n="cs-note">Each one starts with a real problem, shows how we solved it, and gives three numbers you can check in the code.</p>
+    </div>
+    <div class="cs-list">
+      <article class="cs cs-ink" id="case-joseki">
+        <div class="cs-art">
+          <span class="cs-num" aria-hidden="true">01</span>
+          <div class="cs-icon"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <rect x="18" y="18" width="84" height="84" rx="4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw"/>
+    <path d="M18 46 H102 M18 74 H102 M46 18 V102 M74 18 V102" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.25s"/>
+    <circle cx="46" cy="46" r="11" fill="currentColor" class="pop" style="--d:.9s"/>
+    <circle cx="74" cy="74" r="11" fill="var(--cs-bg)" stroke="currentColor" stroke-width="4" class="pop" style="--d:1.1s"/>
+  </svg></div>
+          <div class="cs-name">Joseki</div>
+          <div class="cs-kind" data-i18n="cs1-kind">Online game · built in 3 days</div>
+          <a class="cs-open" href="https://joseki.online" target="_blank" rel="noopener" data-i18n="cs-open">Open it ↗</a>
+        </div>
+        <div class="cs-body">
+          <h3 data-i18n="cs1-h">A game server has to be right about every single move</h3>
+          <p data-i18n="cs1-p">Joseki is a place to play the board game Go online. One rules engine on the server checks every move, so no game can ever reach an illegal position. The computer opponents run a real AI model right in your browser, and a test fails if what the website says about that AI stops matching what it actually does.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-n" data-to="3" data-dec="0" data-pre="" data-suf="" data-from="0">3</span><span class="cs-l" data-i18n="cs1-n1">days from the first line of code to joseki.online</span></li>
+            <li><span class="cs-n" data-to="2700" data-dec="0" data-pre="" data-suf="+" data-from="0">2,700+</span><span class="cs-l" data-i18n="cs1-n2">automated tests that run on every change</span></li>
+            <li><span class="cs-n" data-to="92" data-dec="0" data-pre="31→" data-suf="%" data-from="31">31→92%</span><span class="cs-l" data-i18n="cs1-n3">how sure the AI gets about the same move, from beginner to expert level</span></li>
+          </ul>
+          <p class="cs-means"><strong data-i18n="cs-means">What it means for you</strong> <span data-i18n="cs1-means">The rules of your business live in one place, and tests catch mistakes before your customers do.</span></p>
+        </div>
+      </article>
+      <article class="cs cs-cobalt" id="case-zipquarry">
+        <div class="cs-art">
+          <span class="cs-num" aria-hidden="true">02</span>
+          <div class="cs-icon"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <circle cx="52" cy="58" r="40" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 9" class="dash"/>
+    <path d="M52 78 C40 62 34 54 34 44 a18 18 0 0 1 36 0 c0 10 -6 18 -18 34 z" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.3s"/>
+    <circle cx="52" cy="44" r="6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.7s"/>
+    <rect x="74" y="74" width="34" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.9s"/>
+    <path d="M74 76 L91 88 L108 76" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:1.1s"/>
+  </svg></div>
+          <div class="cs-name">ZipQuarry</div>
+          <div class="cs-kind" data-i18n="cs2-kind">Sales tool · for small businesses</div>
+          <a class="cs-open" href="https://zipquarry.com" target="_blank" rel="noopener" data-i18n="cs-open">Open it ↗</a>
+        </div>
+        <div class="cs-body">
+          <h3 data-i18n="cs2-h">Owners lose their evenings looking for new customers</h3>
+          <p data-i18n="cs2-p">ZipQuarry finds businesses within a set distance of any ZIP or postal code. It reads each business's own website for a contact email, then drafts a first message for a person to review. Every address is saved with the page it came from and the date, so you can always check where it came from.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-n" data-to="3.6" data-dec="1" data-pre="" data-suf="s" data-from="0">3.6s</span><span class="cs-l" data-i18n="cs2-n1">seconds to find 200 local businesses, on the first real run</span></li>
+            <li><span class="cs-n" data-to="58" data-dec="0" data-pre="" data-suf="%" data-from="0">58%</span><span class="cs-l" data-i18n="cs2-n2">of businesses found have a public email (1,021 of 1,770)</span></li>
+            <li><span class="cs-n" data-to="67" data-dec="0" data-pre="" data-suf="" data-from="0">67</span><span class="cs-l" data-i18n="cs2-n3">groups of automated tests</span></li>
+          </ul>
+          <p class="cs-means"><strong data-i18n="cs-means">What it means for you</strong> <span data-i18n="cs2-means">Honest numbers, even when they aren't flattering. When 42% of businesses have no public email, the app says so instead of guessing.</span></p>
+        </div>
+      </article>
+      <article class="cs cs-hazard" id="case-quotefront">
+        <div class="cs-art">
+          <span class="cs-num" aria-hidden="true">03</span>
+          <div class="cs-icon"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <rect x="10" y="30" width="44" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw"/>
+    <circle cx="32" cy="47" r="9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.2s"/>
+    <path d="M22 30 l4 -7 h12 l4 7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.35s"/>
+    <path d="M58 47 H70 M64 41 L70 47 L64 53" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.6s"/>
+    <path d="M76 20 H108 V100 L102 95 L96 100 L90 95 L84 100 L78 95 L76 97 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.8s"/>
+    <path d="M84 36 H100 M84 50 H100 M84 64 H94" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:1.1s"/>
+    <path d="M84 78 H100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:1.3s;stroke-width:6"/>
+  </svg></div>
+          <div class="cs-name">Quotefront</div>
+          <div class="cs-kind" data-i18n="cs3-kind">Quoting app · for contractors</div>
+          <a class="cs-open" href="https://melaniesigrid.github.io/quoteFront/" target="_blank" rel="noopener" data-i18n="cs-open">Open it ↗</a>
+        </div>
+        <div class="cs-body">
+          <h3 data-i18n="cs3-h">Contractors write quotes at night from job photos</h3>
+          <p data-i18n="cs3-p">A customer sends photos and measurements. AI looks at the photos and describes what it sees. Then plain code, not the AI, turns that into a price range using the contractor's own rates, with line items that add up exactly. If the photo check fails, the request is still saved and flagged, so no customer is lost.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-n" data-to="0" data-dec="0" data-pre="" data-suf="" data-from="0">0</span><span class="cs-l" data-i18n="cs3-n1">prices made up by the AI. Code does all the math.</span></li>
+            <li><span class="cs-n" data-to="6" data-dec="0" data-pre="" data-suf="" data-from="0">6</span><span class="cs-l" data-i18n="cs3-n2">trades supported, from roofing to paving</span></li>
+            <li><span class="cs-n" data-to="3.2" data-dec="1" data-pre="" data-suf="×" data-from="0">3.2×</span><span class="cs-l" data-i18n="cs3-n3">the most the top of a price range can be over the bottom, enforced by a test</span></li>
+          </ul>
+          <p class="cs-means"><strong data-i18n="cs-means">What it means for you</strong> <span data-i18n="cs3-means">AI where it helps, plain code where it has to be exact. That is how we add AI to your product.</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
@@ -3872,7 +4022,33 @@ en:{
 "faq-f-price":"Price & timing",
 "faq-f-biz":"Small business",
 "faq-f-ai":"AI",
-"faq-f-care":"After launch"
+"faq-f-care":"After launch",
+"cs-eyebrow":"Case studies",
+"cs-title":"How we build, shown on our own products",
+"cs-note":"Each one starts with a real problem, shows how we solved it, and gives three numbers you can check in the code.",
+"cs-means":"What it means for you",
+"cs-open":"Open it ↗",
+"cs1-kind":"Online game · built in 3 days",
+"cs1-h":"A game server has to be right about every single move",
+"cs1-p":"Joseki is a place to play the board game Go online. One rules engine on the server checks every move, so no game can ever reach an illegal position. The computer opponents run a real AI model right in your browser, and a test fails if what the website says about that AI stops matching what it actually does.",
+"cs1-n1":"days from the first line of code to joseki.online",
+"cs1-n2":"automated tests that run on every change",
+"cs1-n3":"how sure the AI gets about the same move, from beginner to expert level",
+"cs1-means":"The rules of your business live in one place, and tests catch mistakes before your customers do.",
+"cs2-kind":"Sales tool · for small businesses",
+"cs2-h":"Owners lose their evenings looking for new customers",
+"cs2-p":"ZipQuarry finds businesses within a set distance of any ZIP or postal code. It reads each business's own website for a contact email, then drafts a first message for a person to review. Every address is saved with the page it came from and the date, so you can always check where it came from.",
+"cs2-n1":"seconds to find 200 local businesses, on the first real run",
+"cs2-n2":"of businesses found have a public email (1,021 of 1,770)",
+"cs2-n3":"groups of automated tests",
+"cs2-means":"Honest numbers, even when they aren't flattering. When 42% of businesses have no public email, the app says so instead of guessing.",
+"cs3-kind":"Quoting app · for contractors",
+"cs3-h":"Contractors write quotes at night from job photos",
+"cs3-p":"A customer sends photos and measurements. AI looks at the photos and describes what it sees. Then plain code, not the AI, turns that into a price range using the contractor's own rates, with line items that add up exactly. If the photo check fails, the request is still saved and flagged, so no customer is lost.",
+"cs3-n1":"prices made up by the AI. Code does all the math.",
+"cs3-n2":"trades supported, from roofing to paving",
+"cs3-n3":"the most the top of a price range can be over the bottom, enforced by a test",
+"cs3-means":"AI where it helps, plain code where it has to be exact. That is how we add AI to your product."
 },
 fr:{
 "nav-process":"Comment ça marche",
@@ -4295,7 +4471,33 @@ fr:{
 "faq-f-price":"Prix et délais",
 "faq-f-biz":"Petites entreprises",
 "faq-f-ai":"IA",
-"faq-f-care":"Après le lancement"
+"faq-f-care":"Après le lancement",
+"cs-eyebrow":"Études de cas",
+"cs-title":"Notre façon de créer, montrée sur nos propres produits",
+"cs-note":"Chacune part d'un vrai problème, montre comment nous l'avons réglé, et donne trois chiffres vérifiables dans le code.",
+"cs-means":"Ce que ça veut dire pour vous",
+"cs-open":"L'ouvrir ↗",
+"cs1-kind":"Jeu en ligne · créé en 3 jours",
+"cs1-h":"Un serveur de jeu doit avoir raison à chaque coup",
+"cs1-p":"Joseki est un endroit pour jouer au go en ligne. Un seul moteur de règles sur le serveur vérifie chaque coup, pour qu'aucune partie n'atteigne jamais une position illégale. Les adversaires virtuels font tourner un vrai modèle d'IA dans votre navigateur, et un test échoue si ce que le site dit de cette IA ne correspond plus à ce qu'elle fait vraiment.",
+"cs1-n1":"jours entre la première ligne de code et joseki.online",
+"cs1-n2":"tests automatisés lancés à chaque changement",
+"cs1-n3":"la certitude de l'IA sur un même coup, du niveau débutant à expert",
+"cs1-means":"Les règles de votre entreprise vivent à un seul endroit, et les tests attrapent les erreurs avant vos clients.",
+"cs2-kind":"Outil de vente · pour petites entreprises",
+"cs2-h":"Les propriétaires perdent leurs soirées à chercher des clients",
+"cs2-p":"ZipQuarry trouve des entreprises dans un rayon donné autour d'un code postal. Il lit le site de chaque entreprise pour trouver un courriel de contact, puis rédige un premier message qu'une personne relit. Chaque adresse est enregistrée avec la page d'où elle vient et la date, pour toujours pouvoir vérifier sa source.",
+"cs2-n1":"secondes pour trouver 200 entreprises locales, au premier vrai essai",
+"cs2-n2":"des entreprises trouvées ont un courriel public (1 021 sur 1 770)",
+"cs2-n3":"groupes de tests automatisés",
+"cs2-means":"Des chiffres honnêtes, même quand ils ne sont pas flatteurs. Quand 42 % des entreprises n'ont pas de courriel public, l'appli le dit au lieu de deviner.",
+"cs3-kind":"Appli de soumission · pour entrepreneurs",
+"cs3-h":"Les entrepreneurs rédigent leurs soumissions le soir, à partir de photos",
+"cs3-p":"Un client envoie des photos et des mesures. L'IA regarde les photos et décrit ce qu'elle voit. Puis du code simple, pas l'IA, en fait une fourchette de prix avec les tarifs de l'entrepreneur, et des lignes qui s'additionnent exactement. Si l'analyse des photos échoue, la demande est quand même enregistrée et signalée, pour ne perdre aucun client.",
+"cs3-n1":"prix inventé par l'IA. Le code fait tous les calculs.",
+"cs3-n2":"métiers pris en charge, de la toiture au pavage",
+"cs3-n3":"l'écart maximal entre le haut et le bas d'une fourchette, garanti par un test",
+"cs3-means":"L'IA là où elle aide, du code simple là où il faut être exact. C'est ainsi que nous ajoutons l'IA à votre produit."
 }
 };
 
@@ -4586,6 +4788,44 @@ document.querySelectorAll('.lang-opt').forEach(function(btn){
       });
     });
   });
+})();
+</script>
+<script>
+/* ===== case studies: reveal, draw icons, count up ===== */
+(function(){
+  var cards = document.querySelectorAll('.cs');
+  if (!cards.length) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* French puts a comma in decimals and a narrow space before % and units. */
+  function show(v, el){
+    var d = +el.dataset.dec, fr = document.documentElement.lang === 'fr';
+    var suf = el.dataset.suf, spaced = fr && suf && suf !== '+' ? '\u202F' + suf : suf;
+    el.textContent = el.dataset.pre + v.toLocaleString(fr ? 'fr-CA' : 'en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) + spaced;
+  }
+  document.addEventListener('nb:lang', function(){
+    document.querySelectorAll('.cs-n').forEach(function(el){ if (!el.dataset.running) show(+el.dataset.to, el); });
+  });
+  function count(el){
+    var to = +el.dataset.to, from = +el.dataset.from, t0 = null, dur = 1400;
+    function step(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      show(from + (to - from) * e, el);
+      if (p < 1) requestAnimationFrame(step); else { delete el.dataset.running; show(to, el); }
+    }
+    el.dataset.running = 1; show(from, el); requestAnimationFrame(step);
+  }
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.querySelector('.cs-list').classList.add('cs-ready');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      en.target.querySelectorAll('.cs-n').forEach(function(n, i){ setTimeout(function(){ count(n); }, 250 + i * 150); });
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.25 });
+  cards.forEach(function(c){ io.observe(c); });
 })();
 </script>
 </body>
