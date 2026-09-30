@@ -96,6 +96,13 @@
         },
         {
           "@type": "Offer",
+          "name": "Automate Package",
+          "description": "Business automation for firms and service businesses: the manual work is timed in days 1 to 10, the workflows that pay back fastest are automated inside the tools you already use, and the system is handed over running by day 60. If the numbers do not justify a build, the engagement stops on day 10.",
+          "availability": "https://schema.org/InStock",
+          "url": "https://northboundsoftwarestudio.com/#automate"
+        },
+        {
+          "@type": "Offer",
           "name": "Discovery Sprint",
           "description": "Add-on to any package. CEO-level business evaluation, feature design recommendations, +10 build days of implementation, three check-in calls, and a written product brief.",
           "availability": "https://schema.org/InStock",
@@ -115,12 +122,28 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Automate actually automate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The repetitive work between your tools: intake, quoting, reminders, document chasing, data entry, reporting and first drafts of routine emails. We start by timing how it is done today, so the scope is chosen by the numbers, not by a demo. When a task needs judgment, the automation prepares it and a person decides."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if automation is not worth it for us?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Then we tell you on day 10. The diagnostic is the only thing you pay for, and you keep the process map and the measurements. We only build when the measured hours say the build will pay for itself."
+      }
+    },
       {
         "@type": "Question",
         "name": "How long does a build actually take?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates. If we miss, you get a discount."
+          "text": "Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Automate runs to a committed handover by day 60, with a go or no-go decision on day 10. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates. If we miss, you get a discount."
         }
       },
       {
@@ -993,6 +1016,61 @@ footer{
   .foot-col{padding-left:0;border-left:none;border-top:1px solid #2A3140;padding-top:20px;}
 }
 
+/* ---------- automate (NB-006) ---------- */
+#automate .sec-head .eyebrow{display:block;margin-bottom:14px}
+.auto-label{
+  display:block;
+  font-family:var(--font-mono);font-size:12px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);
+  margin:0 0 14px;
+}
+.auto-inds{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:var(--line);margin-bottom:40px;background:var(--paper-raise);
+}
+.auto-ind{padding:24px 22px 26px;display:flex;flex-direction:column;gap:12px}
+.auto-ind+.auto-ind{border-left:var(--line)}
+.auto-ind h3{
+  font-family:var(--font-display);font-size:22px;line-height:1.1;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+.auto-ind ul{list-style:none;display:flex;flex-direction:column;gap:8px;flex:1}
+.auto-ind li{position:relative;padding-left:16px;font-size:15px;color:var(--ink-soft)}
+.auto-ind li::before{content:"×";position:absolute;left:0;color:var(--cobalt);font-weight:700}
+.auto-ind-proof{border-top:1px dashed #C6CAC2;padding-top:12px;font-size:14px}
+.auto-steps{margin-bottom:28px}
+.auto-exit{
+  border:var(--line);border-left:6px solid var(--hazard);
+  background:var(--paper-raise);padding:22px 24px;margin-bottom:40px;
+}
+.auto-exit .auto-label{margin-bottom:8px}
+.auto-exit p{max-width:72ch}
+.auto-vs{display:grid;grid-template-columns:1fr 1fr;border:var(--line)}
+.auto-vs-col{padding:26px 24px;background:var(--paper-raise)}
+.auto-vs-col+.auto-vs-col{border-left:var(--line)}
+.auto-vs-us{background:var(--ink);color:var(--paper)}
+.auto-vs-col h3{font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.auto-vs-n{margin:10px 0 14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.auto-vs-n span{font-family:var(--font-display);font-size:clamp(34px,4vw,48px);line-height:1}
+.auto-vs-us .auto-vs-n span{color:var(--hazard)}
+.auto-vs-n small{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.auto-vs-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.auto-vs-col li{padding-left:16px;position:relative;font-size:15px}
+.auto-vs-col li::before{content:"·";position:absolute;left:4px;font-weight:700}
+.auto-src{font-size:13px;color:var(--ink-soft);margin:12px 0 40px;max-width:90ch}
+.auto-src a{color:var(--cobalt)}
+.auto-card{margin-bottom:72px}
+.auto-founder{font-size:14.5px;border-left:3px solid var(--cobalt);padding-left:14px;margin:0 22px 16px}
+@media(max-width:980px){
+  .auto-inds{grid-template-columns:1fr 1fr}
+  .auto-ind:nth-child(3){border-left:none}
+  .auto-ind:nth-child(n+3){border-top:var(--line)}
+}
+@media(max-width:620px){
+  .auto-inds,.auto-vs{grid-template-columns:1fr}
+  .auto-ind+.auto-ind,.auto-vs-col+.auto-vs-col{border-left:none;border-top:var(--line)}
+}
+
 /* ---------- stats strip ---------- */
 .stats-strip{border-bottom:var(--line);background:var(--hazard);position:relative;overflow:hidden;}
 .stats-strip::after{
@@ -1696,6 +1774,7 @@ footer{
     <ul class="nav-links">
       <li><a href="#process" data-i18n="nav-process">How we ship</a></li>
       <li><a href="#work" data-i18n="nav-work">The work</a></li>
+      <li><a href="#automate" data-i18n="nav-automate">Automate</a></li>
       <li><a href="#packages" data-i18n="nav-packages">Packages</a></li>
       <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
       <li><a href="blog.html" data-i18n="nav-writing">Writing</a></li>
@@ -1714,6 +1793,7 @@ footer{
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
   <a href="#process" data-i18n="nav-process">How we ship</a>
   <a href="#work" data-i18n="nav-work">The work</a>
+  <a href="#automate" data-i18n="nav-automate">Automate</a>
   <a href="#packages" data-i18n="nav-packages">Packages</a>
   <a href="#faq" data-i18n="nav-faq">FAQ</a>
   <a href="blog.html" data-i18n="nav-writing">Writing</a>
@@ -1722,8 +1802,8 @@ footer{
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span data-i18n="ticker-1">Now accepting Q3 builds</span><span data-i18n="ticker-2">Fixed scope</span><span data-i18n="ticker-3">Fixed price</span><span data-i18n="ticker-4">Fixed timeline</span><span data-i18n="ticker-5">Toronto · Remote-friendly</span><span data-i18n="ticker-6">Web · Mobile · AI</span>
-    <span data-i18n="ticker-1">Now accepting Q3 builds</span><span data-i18n="ticker-2">Fixed scope</span><span data-i18n="ticker-3">Fixed price</span><span data-i18n="ticker-4">Fixed timeline</span><span data-i18n="ticker-5">Toronto · Remote-friendly</span><span data-i18n="ticker-6">Web · Mobile · AI</span>
+    <span data-i18n="ticker-1">Now accepting Q4 builds</span><span data-i18n="ticker-2">Fixed scope</span><span data-i18n="ticker-3">Fixed price</span><span data-i18n="ticker-4">Fixed timeline</span><span data-i18n="ticker-5">Toronto · Remote-friendly</span><span data-i18n="ticker-6">Web · Mobile · AI · Automation</span>
+    <span data-i18n="ticker-1">Now accepting Q4 builds</span><span data-i18n="ticker-2">Fixed scope</span><span data-i18n="ticker-3">Fixed price</span><span data-i18n="ticker-4">Fixed timeline</span><span data-i18n="ticker-5">Toronto · Remote-friendly</span><span data-i18n="ticker-6">Web · Mobile · AI · Automation</span>
   </div>
 </div>
 
@@ -1742,7 +1822,7 @@ footer{
         <span class="row" data-i18n="hero-h1-r2">you can</span>
         <span class="row" data-i18n="hero-h1-r3">check first.</span>
       </h1>
-      <p class="hero-sub" data-i18n-html="hero-sub">Northbound builds web, mobile and AI products on a fixed scope, a fixed price and a committed date. <strong>Two doors:</strong> a site or a store-ready app delivered on the date we name, or an AI feature in your product that stops inventing answers and stops outgrowing its budget. <strong>Everything we claim below opens in a browser.</strong></p>
+      <p class="hero-sub" data-i18n-html="hero-sub">Northbound builds web, mobile and AI products on a fixed scope, a fixed price and a committed date. <strong>Three doors:</strong> a site or a store-ready app delivered on the date we name, an AI feature in your product that stops inventing answers and stops outgrowing its budget, or the repetitive admin in your business, measured and automated. <strong>Everything we claim below opens in a browser.</strong></p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#packages" data-i18n="hero-cta-1">See the packages →</a>
         <a class="btn" href="#contact" data-i18n="hero-cta-2">Tell us what you need →</a>
@@ -1856,6 +1936,160 @@ footer{
         <li><a href="https://melaniesigrid.github.io/millwright/" target="_blank" rel="noopener" data-i18n-html="shipped-5">Millwright: custom apps, workflows and AI agents, built around a business that already works <span class="mono">Site ↗</span></a></li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- Automate (NB-006). The business-automation offer: measure, build, hand
+     over. Sits before the build packages because it is the highest-value door
+     and the one a firm owner is most likely to be shopping for. The day-10 exit
+     is the guarantee; the hire comparison is sourced (Job Bank, NOC 13110). -->
+<section id="automate">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-i18n="auto-eyebrow">New · Waybill № NB-006</span>
+        <h2 class="sec-title" data-i18n="auto-title">Stop doing it twice</h2>
+      </div>
+      <p class="sec-note" data-i18n="auto-note">Most firms do not need new software. They need the copying, chasing and re-typing to stop. We time where the hours go, automate the worst of it inside the tools you already use, and hand it over running within 60 days.</p>
+    </div>
+
+    <span class="auto-label" data-i18n="auto-ind-label">Where the hours go</span>
+    <div class="auto-inds">
+      <article class="auto-ind">
+        <h3 data-i18n="auto-ind1-name">Trades &amp; home services</h3>
+        <ul>
+          <li data-i18n="auto-ind1-1">Quotes written at night from site photos</li>
+          <li data-i18n="auto-ind1-2">Chasing deposits, confirmations and reviews</li>
+          <li data-i18n="auto-ind1-3">Job details typed again into invoicing</li>
+        </ul>
+        <p class="auto-ind-proof" data-i18n-html="auto-ind1-proof">We run this ourselves: <strong>Quotefront</strong> turns site photos into an estimate range.</p>
+      </article>
+      <article class="auto-ind">
+        <h3 data-i18n="auto-ind2-name">Bookkeeping &amp; accounting</h3>
+        <ul>
+          <li data-i18n="auto-ind2-1">Chasing the same client documents every month</li>
+          <li data-i18n="auto-ind2-2">Deadlines tracked in a spreadsheet and in memory</li>
+          <li data-i18n="auto-ind2-3">Recurring work set up again by hand</li>
+        </ul>
+        <p class="auto-ind-proof" data-i18n-html="auto-ind2-proof">We run this ourselves: <strong>Duebook</strong> handles recurring work, document chasing and deadlines for a whole firm.</p>
+      </article>
+      <article class="auto-ind">
+        <h3 data-i18n="auto-ind3-name">Agencies &amp; consultancies</h3>
+        <ul>
+          <li data-i18n="auto-ind3-1">Finding and qualifying prospects by hand</li>
+          <li data-i18n="auto-ind3-2">First drafts of outreach and proposals</li>
+          <li data-i18n="auto-ind3-3">Status reports assembled from five tools</li>
+        </ul>
+        <p class="auto-ind-proof" data-i18n-html="auto-ind3-proof">We run this ourselves: <strong>ZipQuarry</strong> finds local prospects and drafts the first email.</p>
+      </article>
+      <article class="auto-ind">
+        <h3 data-i18n="auto-ind4-name">Clinics &amp; professional offices</h3>
+        <ul>
+          <li data-i18n="auto-ind4-1">Intake forms typed again into the system</li>
+          <li data-i18n="auto-ind4-2">Reminders and no-show follow-up done by phone</li>
+          <li data-i18n="auto-ind4-3">The same questions answered by email all week</li>
+        </ul>
+        <p class="auto-ind-proof" data-i18n-html="auto-ind4-proof">What we would build: <strong>one intake</strong>, reminders that send themselves, and first-draft replies a person approves.</p>
+      </article>
+    </div>
+
+    <div class="steps auto-steps">
+      <article class="step">
+        <span class="step-num" data-i18n="auto-s1-num">PHASE 01 / MEASURE</span>
+        <span class="tag" data-i18n="auto-s1-tag">DAYS 1–10</span>
+        <h3 data-i18n="auto-s1-h">We time it before we touch it</h3>
+        <p data-i18n="auto-s1-p">We sit with the people doing the work and time it: minutes per task, times per week, who does it. You get a map of where the hours go and a business case in hours and dollars.</p>
+      </article>
+      <article class="step">
+        <span class="step-num" data-i18n="auto-s2-num">PHASE 02 / BUILD</span>
+        <span class="tag" data-i18n="auto-s2-tag">DAYS 11–45</span>
+        <h3 data-i18n="auto-s2-h">Inside the tools you already use</h3>
+        <p data-i18n="auto-s2-p">We automate the two or three workflows that pay back fastest, wired into your email, calendar, forms, accounting and CRM. AI drafts where it helps. A person approves anything that leaves the building.</p>
+      </article>
+      <article class="step">
+        <span class="step-num" data-i18n="auto-s3-num">PHASE 03 / HAND OVER</span>
+        <span class="tag" data-i18n="auto-s3-tag">BY DAY 60</span>
+        <h3 data-i18n="auto-s3-h">Measured again, then yours</h3>
+        <p data-i18n="auto-s3-p">We time the same tasks the same way, train your team, and hand over the code, the accounts and a runbook. The result fits on one page: before, after, and what it is worth.</p>
+      </article>
+    </div>
+
+    <div class="auto-exit">
+      <span class="auto-label" data-i18n="auto-exit-label">The day-10 exit</span>
+      <p data-i18n-html="auto-exit-p"><strong>If the numbers do not justify a build, we say so on day 10 and stop.</strong> You pay for the ten days, keep the map and the measurements, and owe nothing more. We would rather lose the build than sell you one that does not pay.</p>
+    </div>
+
+    <span class="auto-label" data-i18n="auto-vs-label">Before you hire</span>
+    <div class="auto-vs">
+      <div class="auto-vs-col">
+        <h3 data-i18n="auto-vs-hire">Hire an admin</h3>
+        <p class="auto-vs-n"><span data-i18n="auto-vs-hire-n">~$51,700</span> <small data-i18n="auto-vs-hire-l">a year in wages alone, every year</small></p>
+        <ul>
+          <li data-i18n="auto-vs-hire-1">Before payroll costs, benefits, vacation and a desk</li>
+          <li data-i18n="auto-vs-hire-2">Weeks to recruit and train</li>
+          <li data-i18n="auto-vs-hire-3">The know-how leaves when they do</li>
+        </ul>
+      </div>
+      <div class="auto-vs-col auto-vs-us">
+        <h3 data-i18n="auto-vs-auto">Automate</h3>
+        <p class="auto-vs-n"><span data-i18n="auto-vs-auto-n">Once</span> <small data-i18n="auto-vs-auto-l">one fixed price, agreed after day 10</small></p>
+        <ul>
+          <li data-i18n="auto-vs-auto-1">Running by day 60, on a committed date</li>
+          <li data-i18n="auto-vs-auto-2">Written down: the code, accounts and runbook are yours</li>
+          <li data-i18n="auto-vs-auto-3">Optional monthly care, cancel anytime</li>
+        </ul>
+      </div>
+    </div>
+    <p class="auto-src" data-i18n-html="auto-vs-src">Median wage for administrative assistants (NOC 13110) in the Toronto region, $26.50 an hour, at 37.5 hours a week. Source: <a href="https://www.jobbank.gc.ca/marketreport/wages-occupation/24789/geo9219" target="_blank" rel="noopener">Job Bank, Government of Canada, 2023–2024</a>. Automation does not replace judgment. It replaces the typing, so the people you have spend their day on the judgment.</p>
+
+    <article class="card discovery-strip auto-card">
+      <div class="card-top"><span>WAYBILL № NB-006</span><span class="pop" data-i18n="auto-badge">NEW</span></div>
+      <div class="discovery-inner">
+        <div class="discovery-left">
+          <div class="card-main" style="padding-bottom:0">
+            <h3>Automate</h3>
+            <div class="card-when" data-i18n="auto-when">Business automation · running in 60 days</div>
+            <ul>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="auto-f1">Measured before and after</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="auto-f1-body">The task is timed in week one and again at handover, the same way. You get a one-page result you can check, and with your permission it becomes a case study on this page.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="auto-f2">Built on the tools you already have</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="auto-f2-body">Email, calendar, forms, spreadsheets, accounting, CRM. We connect what is there before we suggest anything new, so nobody has to change how they work overnight.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="auto-f3">AI with a person on the send button</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="auto-f3-body">Models draft, sort, summarise and route. Anything that reaches a client is approved by someone on your team, and every model call runs under a spend cap.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="auto-f4">You own all of it</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="auto-f4-body">Code, accounts, credentials and a runbook in plain English. No platform fee, no lock-in, no retainer required to keep it running.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="auto-f5">Optional care after handover</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="auto-f5-body">A monthly plan for monitoring, fixes when a vendor changes something, and new workflows as you find them. By quote, cancel anytime.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="discovery-right">
+          <div class="card-for" style="margin:0 0 18px">
+            <span class="card-for-label" data-i18n="card-for-label">Who you are</span>
+            <ul class="card-for-body">
+              <li data-i18n="auto-for-1">An owner who is still the bottleneck for quotes, invoices or approvals</li>
+              <li data-i18n="auto-for-2">A team of 3 to 50 people copying the same data between tools</li>
+              <li data-i18n="auto-for-3">A firm about to hire for admin work and wondering if it has to</li>
+              <li data-i18n="auto-for-4">You tried Zapier and it became one more thing to maintain</li>
+            </ul>
+          </div>
+          <p class="auto-founder" data-i18n-html="auto-founder"><strong>You work with the founder.</strong> Melanie Arellano runs the diagnostic herself and signs off every workflow before it goes live.</p>
+          <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="auto-price">Fixed price · agreed after day 10</small></div>
+          <div class="barcode" aria-hidden="true"></div>
+          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="auto-cta">Start with the diagnostic →</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -2237,7 +2471,7 @@ footer{
     <dl class="faq-list">
       <div class="faq-item">
         <dt class="faq-q" data-i18n="faq-q1">How long does a build actually take?</dt>
-        <dd class="faq-a" data-i18n="faq-a1">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates. If we miss, you get a discount.</dd>
+        <dd class="faq-a" data-i18n="faq-a1">Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Automate runs to a committed handover by day 60, with a go or no-go decision on day 10. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates. If we miss, you get a discount.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q" data-i18n="faq-q2">What is the Discovery Sprint and do I need it?</dt>
@@ -2270,6 +2504,14 @@ footer{
       <div class="faq-item">
         <dt class="faq-q" data-i18n="faq-q9">Where are you based, and do you work with teams outside Toronto?</dt>
         <dd class="faq-a" data-i18n="faq-a9">We're based in Toronto (YYZ) and work with founders and product teams worldwide. Remote-first from day zero: scoping, weekly demos, and handoff are all async-friendly.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q" data-i18n="faq-q10">What does Automate actually automate?</dt>
+        <dd class="faq-a" data-i18n="faq-a10">The repetitive work between your tools: intake, quoting, reminders, document chasing, data entry, reporting and first drafts of routine emails. We start by timing how it is done today, so the scope is chosen by the numbers, not by a demo. When a task needs judgment, the automation prepares it and a person decides.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q" data-i18n="faq-q11">What if automation is not worth it for us?</dt>
+        <dd class="faq-a" data-i18n="faq-a11">Then we tell you on day 10. The diagnostic is the only thing you pay for, and you keep the process map and the measurements. We only build when the measured hours say the build will pay for itself.</dd>
       </div>
     </dl>
   </div>
@@ -2749,7 +2991,7 @@ var T = {
 en:{
 'nav-process':'How we ship','nav-work':'The work','nav-packages':'Packages','nav-faq':'FAQ','nav-writing':'Writing','nav-cta':'Email us','nav-cta-mobile':'Email us →','nav-burger-aria':'Open menu',
 'hero-eyebrow':'AI-native software development studio · Toronto 🍁','hero-pill-woman':'Woman-owned','hero-h1-r1':'Software','hero-h1-r2':'you can','hero-h1-r3':'check first.',
-'hero-sub':'Northbound builds web, mobile and AI products on a fixed scope, a fixed price and a committed date. <strong>Two doors:</strong> a site or a store-ready app delivered on the date we name, or an AI feature in your product that stops inventing answers and stops outgrowing its budget. <strong>Everything we claim below opens in a browser.</strong>',
+'hero-sub':'Northbound builds web, mobile and AI products on a fixed scope, a fixed price and a committed date. <strong>Three doors:</strong> a site or a store-ready app delivered on the date we name, an AI feature in your product that stops inventing answers and stops outgrowing its budget, or the repetitive admin in your business, measured and automated. <strong>Everything we claim below opens in a browser.</strong>',
 'work-title':'Open the work','work-note':'Most studio portfolios are screenshots of things you cannot open. Everything here is live, ours, and one click away.',
 'tc-eyebrow':'Lead exhibit','tc-name':'Typecase','tc-meta':'Type library &amp; lookbook',
 'tc-h3':'Nobody can choose a typeface from a dropdown',
@@ -2795,7 +3037,7 @@ en:{
 'proof-3':'Prompts you can steal: our fill-in-the-blank meta-prompts <span class="mono">Article ↗</span>',
 'proof-4':'Full writing archive <span class="mono">Blog ↗</span>',
 'faq-title':'Common questions','faq-note':'Answers to the things founders ask before they email us.',
-'faq-q1':'How long does a build actually take?','faq-a1':'Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates. If we miss, you get a discount.',
+'faq-q1':'How long does a build actually take?','faq-a1':'Northbound delivers in 3–30 days depending on the package. Spark (template landing page) ships in 3 days, Launch (custom marketing site) in 7 days, Augment (AI feature added to your product) in 14 days, and Build (full web or mobile app) in 30 days. Automate runs to a committed handover by day 60, with a go or no-go decision on day 10. Pulse is an ongoing monthly subscription with no fixed end date. Build timelines are committed dates, not estimates. If we miss, you get a discount.',
 'faq-q2':'What is the Discovery Sprint and do I need it?','faq-a2':'The Discovery Sprint is an add-on to any of our packages: Spark, Launch, Build, or Augment. When you add it to your project, we layer in CEO-level business evaluation alongside the build: reviewing your competitive landscape, user journey, and product direction to design the features that will actually move the needle. It adds 10 build days to your engagement and includes three dedicated calls (kick-off, mid-sprint, delivery) so there\'s real strategic alignment throughout. You also get a written product brief and roadmap to keep. If you\'re not sure what to build next, or want outside perspective before we start coding, this is the add-on for that.',
 'faq-q3':'What does fixed-price actually mean?','faq-a3':'It means we agree one number before anything is built, and that is the number you pay. No hourly billing, no scope-creep invoices, no surprise charges. Launch includes three rounds of corrections after delivery. If we discover something harder than expected mid-build, that\'s our problem to solve. If you want to add something new, it becomes a new waybill at a new fixed price.',
 'faq-q4':'Can you add AI features to something we already have?','faq-a4':'Yes, that\'s the Augment package (14 days). The work is usually less about adding a model than about the four things that go wrong once one is in production: output nobody validates, a bill that outgrows the usage, no way to tell whether a prompt change helped, and a system your team cannot maintain. We integrate chat, search, summarization or agent workflows into your existing codebase, validate every response against a schema, cap spend per customer before the call rather than after it, build a scored eval set, and walk your team through all of it on handoff.',
@@ -2809,15 +3051,91 @@ en:{
 'form-note':'Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a> <span class="form-note-sep">·</span> Rather talk it through? <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a 20-minute scope call</a>',
 'foot-tagline':'AI-native software studio','foot-owned':'Woman-Owned Business','foot-nav-label':'Navigate','foot-nav-process':'How we ship','foot-nav-packages':'Packages','foot-nav-manifesto':'Manifesto','foot-nav-writing':'Writing','foot-hello-label':'Say hello','foot-hello-quote':'Get a quote','foot-legal-label':'Legal','foot-privacy':'Privacy Policy','foot-terms':'Terms of Use',
 'foot-copyright':'© 2026 Northbound Studio · Woman-Owned Business · Toronto, Canada',
-'ticker-1':'Now accepting Q3 builds','ticker-2':'Fixed scope','ticker-3':'Fixed price','ticker-4':'Fixed timeline','ticker-5':'Toronto · Remote-friendly','ticker-6':'Web · Mobile · AI',
+'ticker-1':'Now accepting Q4 builds','ticker-2':'Fixed scope','ticker-3':'Fixed price','ticker-4':'Fixed timeline','ticker-5':'Toronto · Remote-friendly','ticker-6':'Web · Mobile · AI · Automation',
 'hero-pill-location':'YYZ · Toronto','hero-pill-est':'Est. 2026','hero-circ':'NORTHBOUND · SHIPS ON TIME ·',
 'price-quote':'By quote','price-cad-fixed':'Fixed price · agreed on day zero','price-cad-fixed-add':'Fixed price · add to any package','price-cad-month':'Monthly subscription',
+"nav-automate":"Automate",
+"auto-eyebrow":"New · Waybill № NB-006",
+"auto-title":"Stop doing it twice",
+"auto-note":"Most firms do not need new software. They need the copying, chasing and re-typing to stop. We time where the hours go, automate the worst of it inside the tools you already use, and hand it over running within 60 days.",
+"auto-ind-label":"Where the hours go",
+"auto-ind1-name":"Trades & home services",
+"auto-ind1-1":"Quotes written at night from site photos",
+"auto-ind1-2":"Chasing deposits, confirmations and reviews",
+"auto-ind1-3":"Job details typed again into invoicing",
+"auto-ind1-proof":"We run this ourselves: <strong>Quotefront</strong> turns site photos into an estimate range.",
+"auto-ind2-name":"Bookkeeping & accounting",
+"auto-ind2-1":"Chasing the same client documents every month",
+"auto-ind2-2":"Deadlines tracked in a spreadsheet and in memory",
+"auto-ind2-3":"Recurring work set up again by hand",
+"auto-ind2-proof":"We run this ourselves: <strong>Duebook</strong> handles recurring work, document chasing and deadlines for a whole firm.",
+"auto-ind3-name":"Agencies & consultancies",
+"auto-ind3-1":"Finding and qualifying prospects by hand",
+"auto-ind3-2":"First drafts of outreach and proposals",
+"auto-ind3-3":"Status reports assembled from five tools",
+"auto-ind3-proof":"We run this ourselves: <strong>ZipQuarry</strong> finds local prospects and drafts the first email.",
+"auto-ind4-name":"Clinics & professional offices",
+"auto-ind4-1":"Intake forms typed again into the system",
+"auto-ind4-2":"Reminders and no-show follow-up done by phone",
+"auto-ind4-3":"The same questions answered by email all week",
+"auto-ind4-proof":"What we would build: <strong>one intake</strong>, reminders that send themselves, and first-draft replies a person approves.",
+"auto-s1-num":"PHASE 01 / MEASURE",
+"auto-s1-tag":"DAYS 1–10",
+"auto-s1-h":"We time it before we touch it",
+"auto-s1-p":"We sit with the people doing the work and time it: minutes per task, times per week, who does it. You get a map of where the hours go and a business case in hours and dollars.",
+"auto-s2-num":"PHASE 02 / BUILD",
+"auto-s2-tag":"DAYS 11–45",
+"auto-s2-h":"Inside the tools you already use",
+"auto-s2-p":"We automate the two or three workflows that pay back fastest, wired into your email, calendar, forms, accounting and CRM. AI drafts where it helps. A person approves anything that leaves the building.",
+"auto-s3-num":"PHASE 03 / HAND OVER",
+"auto-s3-tag":"BY DAY 60",
+"auto-s3-h":"Measured again, then yours",
+"auto-s3-p":"We time the same tasks the same way, train your team, and hand over the code, the accounts and a runbook. The result fits on one page: before, after, and what it is worth.",
+"auto-exit-label":"The day-10 exit",
+"auto-exit-p":"<strong>If the numbers do not justify a build, we say so on day 10 and stop.</strong> You pay for the ten days, keep the map and the measurements, and owe nothing more. We would rather lose the build than sell you one that does not pay.",
+"auto-vs-label":"Before you hire",
+"auto-vs-hire":"Hire an admin",
+"auto-vs-hire-n":"~$51,700",
+"auto-vs-hire-l":"a year in wages alone, every year",
+"auto-vs-hire-1":"Before payroll costs, benefits, vacation and a desk",
+"auto-vs-hire-2":"Weeks to recruit and train",
+"auto-vs-hire-3":"The know-how leaves when they do",
+"auto-vs-auto":"Automate",
+"auto-vs-auto-n":"Once",
+"auto-vs-auto-l":"one fixed price, agreed after day 10",
+"auto-vs-auto-1":"Running by day 60, on a committed date",
+"auto-vs-auto-2":"Written down: the code, accounts and runbook are yours",
+"auto-vs-auto-3":"Optional monthly care, cancel anytime",
+"auto-vs-src":"Median wage for administrative assistants (NOC 13110) in the Toronto region, $26.50 an hour, at 37.5 hours a week. Source: <a href=\"https://www.jobbank.gc.ca/marketreport/wages-occupation/24789/geo9219\" target=\"_blank\" rel=\"noopener\">Job Bank, Government of Canada, 2023–2024</a>. Automation does not replace judgment. It replaces the typing, so the people you have spend their day on the judgment.",
+"auto-badge":"NEW",
+"auto-when":"Business automation · running in 60 days",
+"auto-f1":"Measured before and after",
+"auto-f1-body":"The task is timed in week one and again at handover, the same way. You get a one-page result you can check, and with your permission it becomes a case study on this page.",
+"auto-f2":"Built on the tools you already have",
+"auto-f2-body":"Email, calendar, forms, spreadsheets, accounting, CRM. We connect what is there before we suggest anything new, so nobody has to change how they work overnight.",
+"auto-f3":"AI with a person on the send button",
+"auto-f3-body":"Models draft, sort, summarise and route. Anything that reaches a client is approved by someone on your team, and every model call runs under a spend cap.",
+"auto-f4":"You own all of it",
+"auto-f4-body":"Code, accounts, credentials and a runbook in plain English. No platform fee, no lock-in, no retainer required to keep it running.",
+"auto-f5":"Optional care after handover",
+"auto-f5-body":"A monthly plan for monitoring, fixes when a vendor changes something, and new workflows as you find them. By quote, cancel anytime.",
+"auto-for-1":"An owner who is still the bottleneck for quotes, invoices or approvals",
+"auto-for-2":"A team of 3 to 50 people copying the same data between tools",
+"auto-for-3":"A firm about to hire for admin work and wondering if it has to",
+"auto-for-4":"You tried Zapier and it became one more thing to maintain",
+"auto-price":"Fixed price · agreed after day 10",
+"auto-founder":"<strong>You work with the founder.</strong> Melanie Arellano runs the diagnostic herself and signs off every workflow before it goes live.",
+"auto-cta":"Start with the diagnostic →",
+"faq-q10":"What does Automate actually automate?",
+"faq-a10":"The repetitive work between your tools: intake, quoting, reminders, document chasing, data entry, reporting and first drafts of routine emails. We start by timing how it is done today, so the scope is chosen by the numbers, not by a demo. When a task needs judgment, the automation prepares it and a person decides.",
+"faq-q11":"What if automation is not worth it for us?",
+"faq-a11":"Then we tell you on day 10. The diagnostic is the only thing you pay for, and you keep the process map and the measurements. We only build when the measured hours say the build will pay for itself.",
 'compare-tag':'AI-native studio','fa-label-date':'Jun 2026','foot-loc':'YYZ · Toronto, Canada'
 },
 fr:{
 'nav-process':'Comment on livre','nav-work':'Le travail','nav-packages':'Forfaits','nav-faq':'FAQ','nav-writing':'Blogue','nav-cta':'Écrivez-nous','nav-cta-mobile':'Écrivez-nous →','nav-burger-aria':'Ouvrir le menu',
 'hero-eyebrow':'Studio de développement logiciel IA · Toronto 🍁','hero-pill-woman':'Entreprise féminine','hero-h1-r1':'Un logiciel','hero-h1-r2':'vérifiable','hero-h1-r3':'avant de signer.',
-'hero-sub':'Northbound conçoit des produits web, mobiles et IA à portée fixe, prix fixe et date engagée. <strong>Deux portes :</strong> un site ou une application prête pour les magasins, livrée à la date annoncée ; ou une fonction IA dans votre produit qui cesse d\'inventer des réponses et de dépasser son budget. <strong>Tout ce que nous affirmons ci-dessous s\'ouvre dans un navigateur.</strong>',
+'hero-sub':'Northbound conçoit des produits web, mobiles et IA à portée fixe, prix fixe et date engagée. <strong>Trois portes :</strong> un site ou une application prête pour les magasins, livrée à la date annoncée ; une fonction IA dans votre produit qui cesse d\'inventer des réponses et de dépasser son budget ; ou le travail administratif répétitif de votre entreprise, mesuré et automatisé. <strong>Tout ce que nous affirmons ci-dessous s\'ouvre dans un navigateur.</strong>',
 'work-title':'Voir le travail','work-note':'La plupart des portfolios de studio sont des captures d\'écran de choses qu\'on ne peut pas ouvrir. Tout ce qui suit est en ligne, à nous, et à un clic.',
 'tc-eyebrow':'Pièce maîtresse','tc-name':'Typecase','tc-meta':'Fonderie et lookbook',
 'tc-h3':'Personne ne choisit un caractère dans un menu déroulant',
@@ -2863,7 +3181,7 @@ fr:{
 'proof-3':'Des prompts à voler : nos méta-prompts à remplir <span class="mono">Article ↗</span>',
 'proof-4':'Archive complète <span class="mono">Blogue ↗</span>',
 'faq-title':'Questions fréquentes','faq-note':'Les réponses aux questions que les fondateurs posent avant de nous écrire.',
-'faq-q1':'Combien de temps prend vraiment un build ?','faq-a1':'Northbound livre en 3 à 30 jours selon le forfait. Spark (page d\'atterrissage) en 3 jours, Launch (site marketing sur mesure) en 7 jours, Augment (fonctionnalité IA dans votre produit) en 14 jours, et Build (app web ou mobile complète) en 30 jours. Pulse est un abonnement mensuel continu sans date de fin fixe. Les délais du Build sont des dates engagées, pas des estimations. Si on rate, vous obtenez un rabais.',
+'faq-q1':'Combien de temps prend vraiment un build ?','faq-a1':'Northbound livre en 3 à 30 jours selon le forfait. Spark (page d\'atterrissage) en 3 jours, Launch (site marketing sur mesure) en 7 jours, Augment (fonctionnalité IA dans votre produit) en 14 jours, et Build (app web ou mobile complète) en 30 jours. Automatiser se termine par une remise à date engagée au jour 60, avec une décision de poursuivre ou non au jour 10. Pulse est un abonnement mensuel continu sans date de fin fixe. Les délais du Build sont des dates engagées, pas des estimations. Si on rate, vous obtenez un rabais.',
 'faq-q2':'Qu\'est-ce que le Sprint Découverte et en avez-vous besoin ?','faq-a2':'Le Sprint Découverte est un add-on à n\'importe lequel de nos forfaits : Spark, Launch, Build ou Augment. Quand vous l\'ajoutez à votre projet, on intègre une évaluation business au niveau CEO parallèlement au build : on examine votre paysage concurrentiel, le parcours utilisateur et la direction produit pour concevoir les fonctionnalités qui feront vraiment avancer les choses. Ça ajoute 10 jours de build à votre engagement et comprend trois appels dédiés (lancement, mi-sprint, livraison). Vous obtenez également un brief produit écrit et une feuille de route à conserver. Si vous n\'êtes pas sûr·e de quoi construire ensuite, ou voulez un regard extérieur avant qu\'on commence à coder, c\'est l\'add-on pour ça.',
 'faq-q3':'Que signifie vraiment prix fixe ?','faq-a3':'Ça signifie que on convient d\'un chiffre avant qu\'une seule ligne soit écrite, et c\'est ce chiffre que vous payez. Pas de facturation horaire, pas de factures de dérive de portée, pas de frais surprises. Launch inclut trois rondes de corrections après livraison. Si on découvre quelque chose de plus difficile que prévu en cours de build, c\'est notre problème à résoudre. Si vous voulez ajouter quelque chose de nouveau, ça devient un nouveau bordereau à un nouveau prix fixe.',
 'faq-q4':'Pouvez-vous ajouter des fonctionnalités IA à quelque chose qu\'on a déjà ?','faq-a4':'Oui, c\'est le forfait Augment (14 jours). Le travail porte moins sur l\'ajout d\'un modèle que sur les quatre choses qui déraillent une fois qu\'il est en production : des sorties que personne ne valide, une facture qui grossit plus vite que l\'usage, aucun moyen de savoir si un changement de prompt a aidé, et un système que votre équipe ne peut pas maintenir. On intègre du chat, de la recherche, du résumé ou des flux d\'agents dans votre base de code existante, on valide chaque réponse contre un schéma, on plafonne la dépense par client avant l\'appel plutôt qu\'après, on construit un jeu d\'évaluation noté, et on guide votre équipe à travers tout lors du transfert.',
@@ -2877,9 +3195,85 @@ fr:{
 'form-note':'Préférez-vous le courriel ? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a> <span class="form-note-sep">·</span> Vous préférez en parler ? <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Réservez un appel de cadrage de 20 minutes</a>',
 'foot-tagline':'Studio logiciel IA-natif','foot-owned':'Entreprise féminine','foot-nav-label':'Navigation','foot-nav-process':'Comment on livre','foot-nav-packages':'Forfaits','foot-nav-manifesto':'Manifeste','foot-nav-writing':'Blogue','foot-hello-label':'Nous contacter','foot-hello-quote':'Obtenir une soumission','foot-legal-label':'Légal','foot-privacy':'Politique de confidentialité','foot-terms':'Conditions d\'utilisation',
 'foot-copyright':'© 2026 Northbound Studio · Entreprise féminine · Toronto, Canada',
-'ticker-1':'Maintenant disponible pour Q3','ticker-2':'Portée fixe','ticker-3':'Prix fixe','ticker-4':'Délai fixe','ticker-5':'Toronto · Télétravail possible','ticker-6':'Web · Mobile · IA',
+'ticker-1':'Maintenant disponible pour Q4','ticker-2':'Portée fixe','ticker-3':'Prix fixe','ticker-4':'Délai fixe','ticker-5':'Toronto · Télétravail possible','ticker-6':'Web · Mobile · IA · Automatisation',
 'hero-pill-location':'YYZ · Toronto','hero-pill-est':'Est. 2026','hero-circ':'NORTHBOUND · LIVRE À TEMPS ·',
 'price-quote':'Sur devis','price-cad-fixed':'Prix fixe · convenu le premier jour','price-cad-fixed-add':'Prix fixe · ajout à tout forfait','price-cad-month':'Abonnement mensuel',
+"nav-automate":"Automatiser",
+"auto-eyebrow":"Nouveau · Bordereau № NB-006",
+"auto-title":"Arrêtez de tout faire deux fois",
+"auto-note":"La plupart des entreprises n'ont pas besoin d'un nouveau logiciel. Elles ont besoin que la copie, les relances et la ressaisie cessent. On chronomètre où partent les heures, on automatise le pire dans les outils que vous utilisez déjà, et on vous remet le tout en marche en 60 jours.",
+"auto-ind-label":"Où partent les heures",
+"auto-ind1-name":"Métiers et services à domicile",
+"auto-ind1-1":"Des soumissions rédigées le soir à partir de photos de chantier",
+"auto-ind1-2":"Relancer les dépôts, les confirmations et les avis",
+"auto-ind1-3":"Les détails du chantier ressaisis dans la facturation",
+"auto-ind1-proof":"On le fait déjà pour nous : <strong>Quotefront</strong> transforme des photos de chantier en fourchette d'estimation.",
+"auto-ind2-name":"Tenue de livres et comptabilité",
+"auto-ind2-1":"Relancer les mêmes documents clients chaque mois",
+"auto-ind2-2":"Des échéances suivies dans un tableur et de mémoire",
+"auto-ind2-3":"Le travail récurrent recréé à la main",
+"auto-ind2-proof":"On le fait déjà pour nous : <strong>Duebook</strong> gère le travail récurrent, les relances de documents et les échéances de tout un cabinet.",
+"auto-ind3-name":"Agences et cabinets-conseils",
+"auto-ind3-1":"Trouver et qualifier des prospects à la main",
+"auto-ind3-2":"Les premiers jets de prospection et de propositions",
+"auto-ind3-3":"Des rapports d'avancement assemblés à partir de cinq outils",
+"auto-ind3-proof":"On le fait déjà pour nous : <strong>ZipQuarry</strong> trouve des prospects locaux et rédige le premier courriel.",
+"auto-ind4-name":"Cliniques et bureaux professionnels",
+"auto-ind4-1":"Des formulaires d'accueil ressaisis dans le système",
+"auto-ind4-2":"Rappels et suivi des absences faits au téléphone",
+"auto-ind4-3":"Les mêmes questions répondues par courriel toute la semaine",
+"auto-ind4-proof":"Ce qu'on construirait : <strong>un seul accueil</strong>, des rappels qui partent seuls, et des brouillons de réponse qu'une personne approuve.",
+"auto-s1-num":"PHASE 01 / MESURER",
+"auto-s1-tag":"JOURS 1 À 10",
+"auto-s1-h":"On chronomètre avant de toucher",
+"auto-s1-p":"On s'assoit avec les personnes qui font le travail et on le chronomètre : minutes par tâche, fois par semaine, qui s'en charge. Vous recevez une carte des heures perdues et une analyse de rentabilité en heures et en dollars.",
+"auto-s2-num":"PHASE 02 / CONSTRUIRE",
+"auto-s2-tag":"JOURS 11 À 45",
+"auto-s2-h":"Dans vos outils actuels",
+"auto-s2-p":"On automatise les deux ou trois processus les plus rentables, branchés à votre courriel, votre agenda, vos formulaires, votre comptabilité et votre CRM. L'IA rédige là où elle aide. Une personne approuve tout ce qui sort de l'entreprise.",
+"auto-s3-num":"PHASE 03 / REMETTRE",
+"auto-s3-tag":"AU JOUR 60",
+"auto-s3-h":"Mesuré à nouveau, puis à vous",
+"auto-s3-p":"On chronomètre les mêmes tâches de la même façon, on forme votre équipe et on vous remet le code, les comptes et un guide d'exploitation. Le résultat tient sur une page : avant, après, et ce que ça vaut.",
+"auto-exit-label":"La sortie du jour 10",
+"auto-exit-p":"<strong>Si les chiffres ne justifient pas la construction, on vous le dit au jour 10 et on s'arrête.</strong> Vous payez les dix jours, vous gardez la carte et les mesures, et vous ne devez rien de plus. On préfère perdre le mandat que vous vendre une construction qui ne rapporte pas.",
+"auto-vs-label":"Avant d'embaucher",
+"auto-vs-hire":"Embaucher en administration",
+"auto-vs-hire-n":"~51 700 $",
+"auto-vs-hire-l":"par année en salaire seulement, chaque année",
+"auto-vs-hire-1":"Avant les charges sociales, les avantages, les vacances et un bureau",
+"auto-vs-hire-2":"Des semaines pour recruter et former",
+"auto-vs-hire-3":"Le savoir-faire part avec la personne",
+"auto-vs-auto":"Automatiser",
+"auto-vs-auto-n":"Une fois",
+"auto-vs-auto-l":"un prix fixe, convenu après le jour 10",
+"auto-vs-auto-1":"En marche au jour 60, à date engagée",
+"auto-vs-auto-2":"Documenté : le code, les comptes et le guide sont à vous",
+"auto-vs-auto-3":"Entretien mensuel optionnel, résiliable en tout temps",
+"auto-vs-src":"Salaire médian des adjoints administratifs (CNP 13110) dans la région de Toronto, 26,50 $ de l'heure, à 37,5 heures par semaine. Source : <a href=\"https://www.jobbank.gc.ca/marketreport/wages-occupation/24789/geo9219\" target=\"_blank\" rel=\"noopener\">Guichet-Emplois, gouvernement du Canada, 2023-2024</a>. L'automatisation ne remplace pas le jugement. Elle remplace la saisie, pour que votre équipe consacre sa journée au jugement.",
+"auto-badge":"NOUVEAU",
+"auto-when":"Automatisation · en marche en 60 jours",
+"auto-f1":"Mesuré avant et après",
+"auto-f1-body":"La tâche est chronométrée la première semaine puis à la remise, de la même façon. Vous recevez un résultat d'une page que vous pouvez vérifier et, avec votre permission, il devient une étude de cas sur cette page.",
+"auto-f2":"Construit sur vos outils actuels",
+"auto-f2-body":"Courriel, agenda, formulaires, tableurs, comptabilité, CRM. On connecte ce qui existe avant de proposer quoi que ce soit de nouveau, pour que personne ne change sa façon de travailler du jour au lendemain.",
+"auto-f3":"L'IA, avec une personne sur le bouton Envoyer",
+"auto-f3-body":"Les modèles rédigent, trient, résument et acheminent. Tout ce qui atteint un client est approuvé par quelqu'un de votre équipe, et chaque appel de modèle respecte un plafond de dépenses.",
+"auto-f4":"Tout vous appartient",
+"auto-f4-body":"Le code, les comptes, les accès et un guide d'exploitation en langage clair. Aucuns frais de plateforme, aucun verrouillage, aucune avance requise pour que ça continue de tourner.",
+"auto-f5":"Entretien optionnel après la remise",
+"auto-f5-body":"Un forfait mensuel pour la surveillance, les correctifs quand un fournisseur change quelque chose, et de nouveaux processus au fil de vos besoins. Sur devis, résiliable en tout temps.",
+"auto-for-1":"Un propriétaire encore goulot d'étranglement pour les soumissions, les factures ou les approbations",
+"auto-for-2":"Une équipe de 3 à 50 personnes qui copie les mêmes données entre ses outils",
+"auto-for-3":"Une entreprise sur le point d'embaucher en administration, qui se demande si c'est nécessaire",
+"auto-for-4":"Vous avez essayé Zapier et c'est devenu une chose de plus à entretenir",
+"auto-price":"Prix fixe · convenu après le jour 10",
+"auto-founder":"<strong>Vous travaillez avec la fondatrice.</strong> Melanie Arellano mène le diagnostic elle-même et approuve chaque processus avant sa mise en service.",
+"auto-cta":"Commencer par le diagnostic →",
+"faq-q10":"Qu'est-ce que le forfait Automatiser automatise, concrètement ?",
+"faq-a10":"Le travail répétitif entre vos outils : accueil, soumissions, rappels, relances de documents, saisie de données, rapports et premiers jets des courriels courants. On commence par chronométrer la façon dont c'est fait aujourd'hui, pour que la portée soit choisie par les chiffres, pas par une démo. Quand une tâche demande du jugement, l'automatisation la prépare et une personne décide.",
+"faq-q11":"Et si l'automatisation n'en vaut pas la peine pour nous ?",
+"faq-a11":"Alors on vous le dit au jour 10. Le diagnostic est la seule chose que vous payez, et vous gardez la carte des processus et les mesures. On ne construit que lorsque les heures mesurées montrent que la construction se rentabilisera.",
 'compare-tag':'Studio IA-natif','fa-label-date':'Juin 2026','foot-loc':'YYZ · Toronto, Canada'
 }
 };
