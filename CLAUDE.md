@@ -40,13 +40,6 @@ overages, ad spend, storage, build minutes.
 - **Kill a runaway before diagnosing it.** A retry storm, a loop that will not
   terminate, a hung job — stop it first, then investigate.
 
-**Why, with the receipt.** Between 2026-08-24 and 2026-08-28 ZipQuarry billed
-**US$671.66** of Google Places — 19,190 Text Search requests at the Enterprise
-rate of $35/1,000 — on a $758.98 invoice, against a pre-revenue product with zero
-customers and zero revenue. The meter was written four days after billing
-started; a pagination loop billed a request every 300ms until it was killed by
-hand; no console budget existed; the per-user quota was 400 requests/day, which
-is $42/day across three dev accounts all comfortably inside their limits; and the
-$200/month Google credit everyone was mentally budgeting against no longer exists
-(it is per-SKU monthly free tiers now, and Text Search Enterprise gets 1,000
-calls a month). Postmortem: `zipquarry-platform/docs/SPEND-INCIDENT-2026-08.md`.
+**Why.** The reasoning and the incident behind this rule are in the studio's
+private workspace policy (`../SPEND.md`). This repository is public: keep
+spend figures, invoices and incident details out of it.

@@ -4,3 +4,6 @@
 _dev/
 design-audit/
 inspo/
+
+# Repo docs (README, PLAN, CLAUDE, SPEND, ...) are for us, not for visitors.
+*.md

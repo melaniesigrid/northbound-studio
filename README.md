@@ -22,14 +22,9 @@
 >   terminate, a job that hangs: kill it and report. Never leave a process that
 >   is spending money running while you investigate why.
 >
-> **Why this rule exists.** ZipQuarry spent roughly US$700 on Google Places
-> between 2026-08-23 and 2026-09-02, on a product with zero users and zero
-> revenue. Three failures stacked: the spend meter was written four days after
-> the billing started; before that a pagination loop billed a request every 300ms
-> until the process was killed by hand; and every request was on the most
-> expensive Text Search tier. None of it was caught by a person, because nothing
-> was watching and no console budget existed. The full postmortem is in
-> `zipquarry-platform/docs/SPEND-INCIDENT-2026-08.md`.
+> **Why this rule exists** is written up in the studio's private workspace
+> policy (`../SPEND.md`). This repository is public: keep spend figures,
+> invoices and incident details out of it.
 
 The public site for [northboundsoftwarestudio.com](https://northboundsoftwarestudio.com).
 Static HTML/CSS with one serverless function, deployed on Vercel.
