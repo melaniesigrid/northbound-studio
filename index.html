@@ -1897,6 +1897,96 @@ footer{
 @media(max-width:980px){.product-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.product-grid{grid-template-columns:1fr}}
 
+
+/* ---------- UX pass ---------- */
+.skip-link{position:absolute;left:12px;top:-80px;z-index:10000;background:var(--ink);color:var(--paper);padding:12px 18px;font-family:var(--font-mono);font-size:15px;font-weight:600;text-decoration:none;transition:top .15s ease}
+.skip-link:focus{top:12px}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px}
+.nav-links a[aria-current]{color:var(--cobalt)}
+.contact-field input,.contact-field textarea{font-size:16px}
+.contact-field textarea{min-height:110px}
+.topic-field{border:0;margin:0;padding:0;min-width:0;text-align:left}
+.topic-field legend{font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:9px;padding:0}
+.topic-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border:1.5px solid #C6CAC2;border-radius:999px;background:var(--paper);font-size:15px;font-weight:600;transition:background .15s ease,border-color .15s ease,color .15s ease,transform .15s ease}
+.chip:hover span{border-color:var(--ink)}
+.chip input:checked+span{background:var(--cobalt);border-color:var(--cobalt-deep);color:#fff}
+.chip input:checked+span::before{content:"✓";margin-right:6px;font-weight:700}
+.chip input:focus-visible+span{outline:3px solid var(--cobalt);outline-offset:2px}
+.sticky-cta{display:none}
+@media(max-width:760px){
+  .sticky-cta{display:flex;align-items:center;justify-content:center;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;min-height:52px;background:var(--cobalt);color:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transform:translateY(160%);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .sticky-cta.show{transform:none}
+  footer{padding-bottom:84px}
+}
+@media(prefers-reduced-motion:reduce){.sticky-cta{transition:none}}
+.faq-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 22px}
+.faq-f-label{font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-right:6px}
+.faq-filter{min-height:40px;padding:8px 14px;border:var(--line);background:var(--paper-raise);font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;transition:background .15s ease,color .15s ease}
+.faq-filter:hover{background:#fff}
+.faq-filter[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.faq-item[hidden]{display:none}
+.faq-q:focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
+
+
+/* ---------- case studies ---------- */
+.cs-list{display:flex;flex-direction:column;gap:28px;margin-bottom:80px}
+.cs{--cs-bg:var(--ink);--cs-fg:var(--paper);display:grid;grid-template-columns:minmax(220px,300px) 1fr;border:var(--line);background:var(--paper-raise);box-shadow:6px 6px 0 var(--ink);transition:transform .25s ease,box-shadow .25s ease}
+.cs:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--ink)}
+.cs-cobalt{--cs-bg:var(--cobalt);--cs-fg:#fff}
+.cs-hazard{--cs-bg:var(--hazard);--cs-fg:var(--ink)}
+.cs-art{position:relative;background:var(--cs-bg);color:var(--cs-fg);border-right:var(--line);padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.cs-num{position:absolute;right:14px;top:4px;font-family:var(--font-display);font-size:88px;line-height:1;opacity:.14}
+.cs-icon{width:112px;height:112px;margin:6px 0 12px}
+.cs-icon svg{width:100%;height:100%;overflow:visible}
+.cs-name{font-family:var(--font-display);font-size:38px;line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.cs-kind{font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.cs-open{margin-top:auto;padding-top:18px;align-self:flex-start;font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:inherit;text-decoration:none;border-bottom:2px solid currentColor}
+.cs-open:hover{opacity:.8}
+.cs-body{padding:30px 32px 28px;display:flex;flex-direction:column;gap:16px}
+.cs-body h3{font-family:var(--font-display);font-size:clamp(26px,2.8vw,38px);line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
+.cs-body>p{font-size:17.5px;color:var(--ink-soft);max-width:72ch;line-height:1.6}
+.cs-stats{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border:var(--line);margin:4px 0}
+.cs-stats li{padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.cs-stats li+li{border-left:var(--line)}
+.cs-n{font-family:var(--font-display);font-size:clamp(34px,3.4vw,48px);line-height:1;color:var(--cobalt);font-variant-numeric:tabular-nums}
+.cs-l{font-size:15px;line-height:1.4;color:var(--ink-soft)}
+.cs-means{font-size:16.5px;border-left:4px solid var(--hazard);padding:4px 0 4px 14px}
+.cs-means strong{font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px;color:var(--ink)}
+@media(max-width:860px){
+  .cs{grid-template-columns:1fr}
+  .cs-num{display:none}
+  .cs-art{border-right:none;border-bottom:var(--line);display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:center}
+  .cs-icon{width:84px;height:84px;margin:0;grid-row:span 3}
+  .cs-open{margin-top:6px;padding-top:0}
+  .cs-body{padding:22px 20px}
+}
+@media(max-width:620px){
+  .cs-stats{grid-template-columns:1fr}
+  .cs-stats li+li{border-left:none;border-top:var(--line)}
+  .cs-stats li{flex-direction:row;align-items:baseline;gap:14px}
+  .cs-n{min-width:4.4ch;flex-shrink:0}
+}
+/* animation: the icon draws itself, stones drop in, the card rises */
+.cs .draw{stroke-dasharray:1;transition:stroke-dashoffset 1.1s cubic-bezier(.65,0,.35,1) var(--d,0s)}
+.cs .pop{transform-box:fill-box;transform-origin:center;transition:transform .45s cubic-bezier(.34,1.56,.64,1) var(--d,0s)}
+.cs{transition:opacity .6s ease,translate .6s cubic-bezier(.2,.8,.2,1),transform .25s ease,box-shadow .25s ease}
+/* hidden starting states apply only once the script has run (.cs-ready) */
+.cs-ready .cs:not(.in){opacity:0;translate:0 28px}
+.cs-ready .cs:not(.in) .draw{stroke-dashoffset:1}
+.cs-ready .cs:not(.in) .pop{transform:scale(0)}
+.cs.in:hover .cs-icon svg{animation:cs-bob 1.6s ease-in-out infinite}
+@keyframes cs-bob{50%{transform:translateY(-4px) rotate(-2deg)}}
+/* the dashed radius keeps its dashes: it fades in instead of drawing */
+.cs .dash{transition:opacity .8s ease}
+.cs-ready .cs:not(.in) .dash{opacity:0}
+@media(prefers-reduced-motion:reduce){
+  .cs,.cs .draw,.cs .pop{transition:none}
+  .cs.in:hover .cs-icon svg{animation:none}
+}
+
 </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -1909,6 +1999,7 @@ footer{
   gtag('config', 'G-W4RDLFH174');
 </script>
 <body>
+<a class="skip-link" href="#top" data-i18n="skip">Skip to content</a>
 
 <!-- SVG filter defs: letterpress displacement for hero h1 -->
 <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -1932,7 +2023,7 @@ footer{
     <ul class="nav-links">
       <li><a href="#who" data-i18n="nav-who">Who we help</a></li>
       <li><a href="#process" data-i18n="nav-process">How it works</a></li>
-      <li><a href="#work" data-i18n="nav-work">Our work</a></li>
+      <li><a href="#cases" data-i18n="nav-work">Our work</a></li>
       <li><a href="#automate" data-i18n="nav-automate">Automate</a></li>
       <li><a href="#packages" data-i18n="nav-packages">Packages</a></li>
       <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
@@ -1951,7 +2042,7 @@ footer{
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
   <a href="#who" data-i18n="nav-who">Who we help</a>
   <a href="#process" data-i18n="nav-process">How it works</a>
-  <a href="#work" data-i18n="nav-work">Our work</a>
+  <a href="#cases" data-i18n="nav-work">Our work</a>
   <a href="#automate" data-i18n="nav-automate">Automate</a>
   <a href="#packages" data-i18n="nav-packages">Packages</a>
   <a href="#faq" data-i18n="nav-faq">FAQ</a>
@@ -2186,6 +2277,99 @@ footer{
      leads because it is the one exhibit that shows taste and rigour at once,
      and every number on its card is checkable against the source in one click:
      50 families in fonts/, 44 looks in looks.js, 12 articles in articles.js. -->
+<!-- Case studies. Problem as the title, the mechanism in the body, three
+     numbers with units. Sources for every figure are listed in the commit
+     that added this section. -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-i18n="cs-eyebrow">Case studies</span>
+        <h2 class="sec-title" data-i18n="cs-title">How we build, shown on our own products</h2>
+      </div>
+      <p class="sec-note" data-i18n="cs-note">Each one starts with a real problem, shows how we solved it, and gives three numbers you can check in the code.</p>
+    </div>
+    <div class="cs-list">
+      <article class="cs cs-ink" id="case-joseki">
+        <div class="cs-art">
+          <span class="cs-num" aria-hidden="true">01</span>
+          <div class="cs-icon"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <rect x="18" y="18" width="84" height="84" rx="4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw"/>
+    <path d="M18 46 H102 M18 74 H102 M46 18 V102 M74 18 V102" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.25s"/>
+    <circle cx="46" cy="46" r="11" fill="currentColor" class="pop" style="--d:.9s"/>
+    <circle cx="74" cy="74" r="11" fill="var(--cs-bg)" stroke="currentColor" stroke-width="4" class="pop" style="--d:1.1s"/>
+  </svg></div>
+          <div class="cs-name">Joseki</div>
+          <div class="cs-kind" data-i18n="cs1-kind">Online game · built in 3 days</div>
+          <a class="cs-open" href="https://joseki.online" target="_blank" rel="noopener" data-i18n="cs-open">Open it ↗</a>
+        </div>
+        <div class="cs-body">
+          <h3 data-i18n="cs1-h">A game server has to be right about every single move</h3>
+          <p data-i18n="cs1-p">Joseki is a place to play the board game Go online. One rules engine on the server checks every move, so no game can ever reach an illegal position. The computer opponents run a real AI model right in your browser, and a test fails if what the website says about that AI stops matching what it actually does.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-n" data-to="3" data-dec="0" data-pre="" data-suf="" data-from="0">3</span><span class="cs-l" data-i18n="cs1-n1">days from the first line of code to joseki.online</span></li>
+            <li><span class="cs-n" data-to="2700" data-dec="0" data-pre="" data-suf="+" data-from="0">2,700+</span><span class="cs-l" data-i18n="cs1-n2">automated tests that run on every change</span></li>
+            <li><span class="cs-n" data-to="92" data-dec="0" data-pre="31→" data-suf="%" data-from="31">31→92%</span><span class="cs-l" data-i18n="cs1-n3">how sure the AI gets about the same move, from beginner to expert level</span></li>
+          </ul>
+          <p class="cs-means"><strong data-i18n="cs-means">What it means for you</strong> <span data-i18n="cs1-means">The rules of your business live in one place, and tests catch mistakes before your customers do.</span></p>
+        </div>
+      </article>
+      <article class="cs cs-cobalt" id="case-zipquarry">
+        <div class="cs-art">
+          <span class="cs-num" aria-hidden="true">02</span>
+          <div class="cs-icon"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <circle cx="52" cy="58" r="40" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 9" class="dash"/>
+    <path d="M52 78 C40 62 34 54 34 44 a18 18 0 0 1 36 0 c0 10 -6 18 -18 34 z" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.3s"/>
+    <circle cx="52" cy="44" r="6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.7s"/>
+    <rect x="74" y="74" width="34" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.9s"/>
+    <path d="M74 76 L91 88 L108 76" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:1.1s"/>
+  </svg></div>
+          <div class="cs-name">ZipQuarry</div>
+          <div class="cs-kind" data-i18n="cs2-kind">Sales tool · for small businesses</div>
+          <a class="cs-open" href="https://zipquarry.com" target="_blank" rel="noopener" data-i18n="cs-open">Open it ↗</a>
+        </div>
+        <div class="cs-body">
+          <h3 data-i18n="cs2-h">Owners lose their evenings looking for new customers</h3>
+          <p data-i18n="cs2-p">ZipQuarry finds businesses within a set distance of any ZIP or postal code. It reads each business's own website for a contact email, then drafts a first message for a person to review. Every address is saved with the page it came from and the date, so you can always check where it came from.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-n" data-to="3.6" data-dec="1" data-pre="" data-suf="s" data-from="0">3.6s</span><span class="cs-l" data-i18n="cs2-n1">seconds to find 200 local businesses, on the first real run</span></li>
+            <li><span class="cs-n" data-to="58" data-dec="0" data-pre="" data-suf="%" data-from="0">58%</span><span class="cs-l" data-i18n="cs2-n2">of businesses found have a public email (1,021 of 1,770)</span></li>
+            <li><span class="cs-n" data-to="67" data-dec="0" data-pre="" data-suf="" data-from="0">67</span><span class="cs-l" data-i18n="cs2-n3">groups of automated tests</span></li>
+          </ul>
+          <p class="cs-means"><strong data-i18n="cs-means">What it means for you</strong> <span data-i18n="cs2-means">Honest numbers, even when they aren't flattering. When 42% of businesses have no public email, the app says so instead of guessing.</span></p>
+        </div>
+      </article>
+      <article class="cs cs-hazard" id="case-quotefront">
+        <div class="cs-art">
+          <span class="cs-num" aria-hidden="true">03</span>
+          <div class="cs-icon"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+    <rect x="10" y="30" width="44" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw"/>
+    <circle cx="32" cy="47" r="9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.2s"/>
+    <path d="M22 30 l4 -7 h12 l4 7" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.35s"/>
+    <path d="M58 47 H70 M64 41 L70 47 L64 53" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.6s"/>
+    <path d="M76 20 H108 V100 L102 95 L96 100 L90 95 L84 100 L78 95 L76 97 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:.8s"/>
+    <path d="M84 36 H100 M84 50 H100 M84 64 H94" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:1.1s"/>
+    <path d="M84 78 H100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="draw" style="--d:1.3s;stroke-width:6"/>
+  </svg></div>
+          <div class="cs-name">Quotefront</div>
+          <div class="cs-kind" data-i18n="cs3-kind">Quoting app · for contractors</div>
+          <a class="cs-open" href="https://melaniesigrid.github.io/quoteFront/" target="_blank" rel="noopener" data-i18n="cs-open">Open it ↗</a>
+        </div>
+        <div class="cs-body">
+          <h3 data-i18n="cs3-h">Contractors write quotes at night from job photos</h3>
+          <p data-i18n="cs3-p">A customer sends photos and measurements. AI looks at the photos and describes what it sees. Then plain code, not the AI, turns that into a price range using the contractor's own rates, with line items that add up exactly. If the photo check fails, the request is still saved and flagged, so no customer is lost.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-n" data-to="0" data-dec="0" data-pre="" data-suf="" data-from="0">0</span><span class="cs-l" data-i18n="cs3-n1">prices made up by the AI. Code does all the math.</span></li>
+            <li><span class="cs-n" data-to="6" data-dec="0" data-pre="" data-suf="" data-from="0">6</span><span class="cs-l" data-i18n="cs3-n2">trades supported, from roofing to paving</span></li>
+            <li><span class="cs-n" data-to="3.2" data-dec="1" data-pre="" data-suf="×" data-from="0">3.2×</span><span class="cs-l" data-i18n="cs3-n3">the most the top of a price range can be over the bottom, enforced by a test</span></li>
+          </ul>
+          <p class="cs-means"><strong data-i18n="cs-means">What it means for you</strong> <span data-i18n="cs3-means">AI where it helps, plain code where it has to be exact. That is how we add AI to your product.</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
     <div class="sec-head">
@@ -2416,7 +2600,7 @@ footer{
           <p class="auto-founder" data-i18n-html="auto-founder"><strong>You work with the founder.</strong> Melanie Baratto does the measuring herself and approves every automation before it goes live.</p>
           <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="auto-price">Fixed price · set after day 10</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="auto-cta">Start with the 10-day check →</a>
+          <a data-topic="automation" data-pkg="Automate" class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="auto-cta">Start with the 10-day check →</a>
         </div>
       </div>
     </article>
@@ -2465,7 +2649,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact" data-i18n="spark-cta">Start Spark →</a>
+        <a data-topic="website" data-pkg="Spark" class="btn card-cta" href="#contact" data-i18n="spark-cta">Start Spark →</a>
       </article>
 
       <article class="card">
@@ -2507,7 +2691,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact" data-i18n="launch-cta">Start Launch →</a>
+        <a data-topic="website" data-pkg="Launch" class="btn card-cta" href="#contact" data-i18n="launch-cta">Start Launch →</a>
       </article>
 
       <article class="card flag" id="build">
@@ -2545,7 +2729,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn btn-primary card-cta" href="#contact" data-i18n="build-cta">Start Build →</a>
+        <a data-topic="app" data-pkg="Build" class="btn btn-primary card-cta" href="#contact" data-i18n="build-cta">Start Build →</a>
       </article>
 
       <article class="card">
@@ -2583,7 +2767,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a class="btn card-cta" href="#contact" data-i18n="augment-cta">Start Augment →</a>
+        <a data-topic="ai" data-pkg="Augment" class="btn card-cta" href="#contact" data-i18n="augment-cta">Start Augment →</a>
       </article>
     </div>
 
@@ -2631,7 +2815,7 @@ footer{
           </div>
           <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed-add">Fixed price · add to any package</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="disc-cta">Start Discovery →</a>
+          <a data-topic="app" data-pkg="Discovery Sprint" class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="disc-cta">Start Discovery →</a>
         </div>
       </div>
     </article>
@@ -2684,7 +2868,7 @@ footer{
           </div>
           <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="salv-cta">Start Salvage →</a>
+          <a data-topic="fix" data-pkg="Salvage" class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="salv-cta">Start Salvage →</a>
         </div>
       </div>
     </article>
@@ -2718,7 +2902,7 @@ footer{
             <div class="sub-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-month">Monthly subscription</small></div>
             <div class="sub-cancel" data-i18n="moor-cancel">Optional · cancel any month</div>
           </div>
-          <a class="btn" href="#contact" data-i18n="moor-cta">Start Moorage →</a>
+          <a data-topic="other" data-pkg="Moorage" class="btn" href="#contact" data-i18n="moor-cta">Start Moorage →</a>
         </div>
       </div>
     </div>
@@ -2752,7 +2936,7 @@ footer{
             <div class="sub-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-month">Monthly subscription</small></div>
             <div class="sub-cancel" data-i18n="pulse-cancel">Cancel anytime</div>
           </div>
-          <a class="btn" href="#contact" data-i18n="pulse-cta">Start Pulse →</a>
+          <a data-topic="other" data-pkg="Pulse" class="btn" href="#contact" data-i18n="pulse-cta">Start Pulse →</a>
         </div>
       </div>
     </div>
@@ -2877,64 +3061,73 @@ footer{
       <h2 class="sec-title" data-i18n="faq-title">Common questions</h2>
       <p class="sec-note" data-i18n="faq-note">Answers to what people ask before they email us.</p>
     </div>
+    <div class="faq-filters" role="group" aria-labelledby="faq-f-label">
+      <span class="faq-f-label" id="faq-f-label" data-i18n="faq-f-label">Show questions about</span>
+      <button type="button" class="faq-filter" data-filter="all" aria-pressed="true" data-i18n="faq-f-all">Everything</button>
+      <button type="button" class="faq-filter" data-filter="start" aria-pressed="false" data-i18n="faq-f-start">Getting started</button>
+      <button type="button" class="faq-filter" data-filter="price" aria-pressed="false" data-i18n="faq-f-price">Price &amp; timing</button>
+      <button type="button" class="faq-filter" data-filter="biz" aria-pressed="false" data-i18n="faq-f-biz">Small business</button>
+      <button type="button" class="faq-filter" data-filter="ai" aria-pressed="false" data-i18n="faq-f-ai">AI</button>
+      <button type="button" class="faq-filter" data-filter="care" aria-pressed="false" data-i18n="faq-f-care">After launch</button>
+    </div>
     <dl class="faq-list">
-      <div class="faq-item">
+      <div class="faq-item" data-topic="start">
         <dt class="faq-q" data-i18n="faq-q12">I have an app idea but no tech team. Can you help?</dt>
         <dd class="faq-a" data-i18n="faq-a12">Yes. This is the most common reason people email us. You tell us what the app should do, in your own words. In the first two days we turn that into a written plan with a fixed price and a launch date. You don't need to know how to code, and you own everything we build.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="biz">
         <dt class="faq-q" data-i18n="faq-q13">Do you work with restaurants?</dt>
         <dd class="faq-a" data-i18n="faq-a13">Yes. We build fast restaurant websites in 3 days, automate booking reminders and review replies, and run your social media with Pulse. We start by timing where your hours go, so we only build what will really save you time.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="price">
         <dt class="faq-q" data-i18n="faq-q1">How long does it take?</dt>
         <dd class="faq-a" data-i18n="faq-a1">It depends on the package. A website (Spark) takes 3 days. Fixing software you inherited (Salvage) takes 5 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Moorage and Pulse are monthly plans with no end date. These are promised dates, not guesses. If we are late, you pay less.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="start">
         <dt class="faq-q" data-i18n="faq-q2">What is the Discovery Sprint? Do I need it?</dt>
         <dd class="faq-a" data-i18n="faq-a2">It's an add-on for any package. We look at your business the way an experienced product leader would: your competitors, your customers and where your product should go next. It adds 10 days of building, three calls (start, middle and end), and a written plan you keep. If you're not sure what to build next, or you want an outside opinion before we start, this is for you.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="price">
         <dt class="faq-q" data-i18n="faq-q3">What does fixed price mean?</dt>
         <dd class="faq-a" data-i18n="faq-a3">We agree on one price before we build anything, and that's what you pay. No hourly billing and no surprise charges. Launch includes three rounds of changes after delivery. If something turns out harder than we expected, that's our problem, not yours. If you want to add something new, we give you a new fixed price for it.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="ai">
         <dt class="faq-q" data-i18n="faq-q4">Can you add AI to a product we already have?</dt>
         <dd class="faq-a" data-i18n="faq-a4">Yes, that's the Augment package (14 days). Adding AI is the easy part. The hard part is what goes wrong later: the AI makes things up, the bill grows too fast, nobody can tell if a change helped, and your team can't maintain it. We fix all four. We check every AI answer, set spending limits for each customer, build tests that score quality, and teach your team how it all works.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="ai">
         <dt class="faq-q" data-i18n="faq-q5">How do you use AI to build faster?</dt>
         <dd class="faq-a" data-i18n="faq-a5">AI tools handle the repetitive parts of building software, which is most of the work. They can plan a task, do it and check it. They also spot problems early and run tests as we go. A senior developer designs the product and checks everything before it ships. The result is faster builds, lower cost and fewer surprises after launch.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="start">
         <dt class="faq-q" data-i18n="faq-q6">What do I get at the end?</dt>
         <dd class="faq-a" data-i18n="faq-a6">A working product that real customers can use, not a test link. You also get all of the code, which you own forever, and a simple guide that someone who doesn't code can read. No ongoing contract required.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="biz">
         <dt class="faq-q" data-i18n="faq-q7">What is Pulse?</dt>
         <dd class="faq-a" data-i18n="faq-a7">Pulse is a monthly social media plan with no long contract. Cancel anytime. We write and design 12 to 15 posts a month for your channels, then schedule and post them. It's made for restaurants, shops, coaches, consultants and any local business that wants to stay active online without hiring someone. Email us and we'll agree on your channels and style before the first post.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="start">
         <dt class="faq-q" data-i18n="faq-q8">Why is there no chatbot on your site?</dt>
         <dd class="faq-a" data-i18n="faq-a8">Because we think it would make your visit worse. Chatbots on websites often give generic answers and make people feel brushed off. We use AI where it really helps: building faster, writing better code and making clearer plans. To talk about your project, a real email from a real person works better. That's why this page asks you to email us.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="start">
         <dt class="faq-q" data-i18n="faq-q9">Where are you based? Do you work outside Toronto?</dt>
         <dd class="faq-a" data-i18n="faq-a9">We're based in Toronto and work with clients anywhere. Everything can be done remotely: planning, weekly demos and handover.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="biz">
         <dt class="faq-q" data-i18n="faq-q10">What can Automate actually do?</dt>
         <dd class="faq-a" data-i18n="faq-a10">It takes over the repetitive work between your apps: new requests, quotes, reminders, chasing documents, data entry, reports and first drafts of routine emails. We start by timing how you do it today, so we pick what to automate based on real numbers. When a task needs judgment, the automation gets it ready and a person decides.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="biz">
         <dt class="faq-q" data-i18n="faq-q11">What if automation isn't worth it for us?</dt>
         <dd class="faq-a" data-i18n="faq-a11">Then we tell you on day 10. You only pay for the first 10 days, and you keep the notes and measurements. We only build when the numbers show it will pay for itself.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="care">
         <dt class="faq-q" data-i18n="faq-q14">We have software nobody understands. Can you help?</dt>
         <dd class="faq-a" data-i18n="faq-a14">Yes, that's Salvage (5 days). You get a written map of how your software works, a safe way to make changes, a check of security risks, and our advice on whether to fix it or replace it, with a price for each option. You don't have to hire us for the next step.</dd>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-topic="care">
         <dt class="faq-q" data-i18n="faq-q15">What is Moorage? Do I have to buy it?</dt>
         <dd class="faq-a" data-i18n="faq-a15">No. Moorage is an optional monthly care plan for software we built for you. We keep it updated and secure, check that it stays up and fast, test your backups, and make small changes each month. You own the code either way, and you can cancel any month.</dd>
       </div>
@@ -2942,6 +3135,8 @@ footer{
   </div>
 </section>
 </main>
+
+<a class="sticky-cta" href="#contact" data-i18n="sticky-cta" aria-hidden="true" tabindex="-1">Tell us your idea →</a>
 
 <div class="exit-section">
 <section class="dock" id="contact">
@@ -2957,6 +3152,18 @@ footer{
       <label for="email" data-i18n="form-email-label">Email</label>
       <input id="email" name="email" type="email" placeholder="you@company.com" required>
     </div>
+    <fieldset class="topic-field">
+      <legend data-i18n="form-topic-label">What is it about?</legend>
+      <div class="topic-chips">
+        <label class="chip"><input type="radio" name="topic" value="app"><span data-i18n="topic-app">An app</span></label>
+        <label class="chip"><input type="radio" name="topic" value="website"><span data-i18n="topic-website">A website</span></label>
+        <label class="chip"><input type="radio" name="topic" value="restaurant"><span data-i18n="topic-restaurant">My restaurant</span></label>
+        <label class="chip"><input type="radio" name="topic" value="automation"><span data-i18n="topic-automation">Automating busywork</span></label>
+        <label class="chip"><input type="radio" name="topic" value="ai"><span data-i18n="topic-ai">Adding AI</span></label>
+        <label class="chip"><input type="radio" name="topic" value="fix"><span data-i18n="topic-fix">Fixing old software</span></label>
+        <label class="chip"><input type="radio" name="topic" value="other"><span data-i18n="topic-other">Something else</span></label>
+      </div>
+    </fieldset>
     <div class="contact-field">
       <label for="project" data-i18n="form-project-label">What do you want to build?</label>
       <textarea id="project" name="message" placeholder="A few sentences about your app, website or business" data-i18n-ph="form-project-ph" required></textarea>
@@ -3233,16 +3440,7 @@ document.querySelectorAll('a[href="#contact"], a[href^="mailto:"]').forEach(func
   });
 })();
 
-/* faq accordion */
-document.querySelectorAll('.faq-item').forEach(function(item){
-  var q = item.querySelector('.faq-q');
-  if(!q) return;
-  q.addEventListener('click', function(){
-    var wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); });
-    if(!wasOpen) item.classList.add('open');
-  });
-});
+/* faq accordion: see "UX pass" script at the end of the page */
 
 /* expandable feature bullets */
 document.querySelectorAll('.feat-toggle').forEach(function(btn){
@@ -3267,22 +3465,10 @@ document.querySelectorAll('.proof-list a').forEach(function(a){
   });
 });
 
-/* pre-fill message when a service card CTA is clicked */
-document.querySelectorAll('.card-cta').forEach(function(a){
-  a.addEventListener('click', function(){
-    var label = a.textContent.trim(); // e.g. "Start Spark"
-    var textarea = document.getElementById('project');
-    if(textarea && !textarea.value){
-      textarea.value = label + ': ';
-      setTimeout(function(){
-        textarea.focus();
-        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
-      }, 300);
-    }
-  });
-});
+/* package CTAs pre-fill the contact form: see "UX pass" script at the end of the page */
 
 /* contact form fetch handler */
+function nbT(k, fallback){ var l = document.documentElement.lang || 'en'; return (window.NB_T && NB_T[l] && NB_T[l][k]) || fallback; }
 (function(){
   var form = document.getElementById('contact-form');
   if(!form) return;
@@ -3293,12 +3479,12 @@ document.querySelectorAll('.card-cta').forEach(function(a){
     var data = {
       name: form.querySelector('[name="name"]').value,
       email: form.querySelector('[name="email"]').value,
-      message: form.querySelector('[name="message"]').value,
+      message: (function(){ var t = form.querySelector('[name="topic"]:checked'); var m = form.querySelector('[name="message"]').value; return t ? '[' + t.value + '] ' + m : m; })(),
       company_website: (form.querySelector('[name="company_website"]') || {}).value || '',
       elapsed: Date.now() - openedAt
     };
     var orig = btn.textContent;
-    btn.textContent = 'Sending…';
+    btn.textContent = nbT('form-sending', 'Sending…');
     btn.disabled = true;
     fetch('/api/contact', {
       method: 'POST',
@@ -3309,7 +3495,8 @@ document.querySelectorAll('.card-cta').forEach(function(a){
     .then(function(res){
       if(res.ok){
         if(typeof gtag === 'function') gtag('event', 'generate_lead', {event_category:'contact',event_label:'contact_form'});
-        form.innerHTML = '<p class="form-success">Got it. We\'ll be in touch within one business day.</p>';
+        form.innerHTML = '<p class="form-success" role="status"></p>';
+        form.querySelector('.form-success').textContent = nbT('form-success', 'Got it.');
       } else {
         btn.textContent = orig;
         btn.disabled = false;
@@ -3325,7 +3512,8 @@ document.querySelectorAll('.card-cta').forEach(function(a){
       if(form.querySelector('.form-error')) return;
       var p = document.createElement('p');
       p.className = 'form-error';
-      p.textContent = 'Something went wrong. Email us at hello@northboundsoftwarestudio.com';
+      p.setAttribute('role', 'alert');
+      p.textContent = nbT('form-error', 'Something went wrong. Email us at hello@northboundsoftwarestudio.com');
       form.appendChild(p);
     }
   });
@@ -3813,7 +4001,54 @@ en:{
 "faq-q14":"We have software nobody understands. Can you help?",
 "faq-a14":"Yes, that's Salvage (5 days). You get a written map of how your software works, a safe way to make changes, a check of security risks, and our advice on whether to fix it or replace it, with a price for each option. You don't have to hire us for the next step.",
 "faq-q15":"What is Moorage? Do I have to buy it?",
-"faq-a15":"No. Moorage is an optional monthly care plan for software we built for you. We keep it updated and secure, check that it stays up and fast, test your backups, and make small changes each month. You own the code either way, and you can cancel any month."
+"faq-a15":"No. Moorage is an optional monthly care plan for software we built for you. We keep it updated and secure, check that it stays up and fast, test your backups, and make small changes each month. You own the code either way, and you can cancel any month.",
+"skip":"Skip to content",
+"form-topic-label":"What is it about?",
+"topic-app":"An app",
+"topic-website":"A website",
+"topic-restaurant":"My restaurant",
+"topic-automation":"Automating busywork",
+"topic-ai":"Adding AI",
+"topic-fix":"Fixing old software",
+"topic-other":"Something else",
+"form-prefill":"I'm interested in {pkg}. ",
+"form-sending":"Sending…",
+"form-success":"Got it. We'll reply within one business day.",
+"form-error":"Something went wrong. Email us at hello@northboundsoftwarestudio.com",
+"sticky-cta":"Tell us your idea →",
+"faq-f-label":"Show questions about",
+"faq-f-all":"Everything",
+"faq-f-start":"Getting started",
+"faq-f-price":"Price & timing",
+"faq-f-biz":"Small business",
+"faq-f-ai":"AI",
+"faq-f-care":"After launch",
+"cs-eyebrow":"Case studies",
+"cs-title":"How we build, shown on our own products",
+"cs-note":"Each one starts with a real problem, shows how we solved it, and gives three numbers you can check in the code.",
+"cs-means":"What it means for you",
+"cs-open":"Open it ↗",
+"cs1-kind":"Online game · built in 3 days",
+"cs1-h":"A game server has to be right about every single move",
+"cs1-p":"Joseki is a place to play the board game Go online. One rules engine on the server checks every move, so no game can ever reach an illegal position. The computer opponents run a real AI model right in your browser, and a test fails if what the website says about that AI stops matching what it actually does.",
+"cs1-n1":"days from the first line of code to joseki.online",
+"cs1-n2":"automated tests that run on every change",
+"cs1-n3":"how sure the AI gets about the same move, from beginner to expert level",
+"cs1-means":"The rules of your business live in one place, and tests catch mistakes before your customers do.",
+"cs2-kind":"Sales tool · for small businesses",
+"cs2-h":"Owners lose their evenings looking for new customers",
+"cs2-p":"ZipQuarry finds businesses within a set distance of any ZIP or postal code. It reads each business's own website for a contact email, then drafts a first message for a person to review. Every address is saved with the page it came from and the date, so you can always check where it came from.",
+"cs2-n1":"seconds to find 200 local businesses, on the first real run",
+"cs2-n2":"of businesses found have a public email (1,021 of 1,770)",
+"cs2-n3":"groups of automated tests",
+"cs2-means":"Honest numbers, even when they aren't flattering. When 42% of businesses have no public email, the app says so instead of guessing.",
+"cs3-kind":"Quoting app · for contractors",
+"cs3-h":"Contractors write quotes at night from job photos",
+"cs3-p":"A customer sends photos and measurements. AI looks at the photos and describes what it sees. Then plain code, not the AI, turns that into a price range using the contractor's own rates, with line items that add up exactly. If the photo check fails, the request is still saved and flagged, so no customer is lost.",
+"cs3-n1":"prices made up by the AI. Code does all the math.",
+"cs3-n2":"trades supported, from roofing to paving",
+"cs3-n3":"the most the top of a price range can be over the bottom, enforced by a test",
+"cs3-means":"AI where it helps, plain code where it has to be exact. That is how we add AI to your product."
 },
 fr:{
 "nav-process":"Comment ça marche",
@@ -4215,10 +4450,58 @@ fr:{
 "faq-q14":"Nous avons un logiciel que personne ne comprend. Pouvez-vous aider ?",
 "faq-a14":"Oui, c'est Salvage (5 jours). Vous recevez une carte écrite du fonctionnement de votre logiciel, une façon sûre de faire des changements, une vérification des risques de sécurité, et notre conseil pour le réparer ou le remplacer, avec un prix pour chaque option. Vous n'êtes pas obligé de nous engager pour la suite.",
 "faq-q15":"Qu'est-ce que Moorage ? Dois-je l'acheter ?",
-"faq-a15":"Non. Moorage est un forfait mensuel optionnel pour entretenir le logiciel que nous avons créé pour vous. Nous le gardons à jour et sécuritaire, vérifions qu'il reste en ligne et rapide, testons vos sauvegardes et faisons de petits changements chaque mois. Le code vous appartient de toute façon, et vous pouvez annuler n'importe quel mois."
+"faq-a15":"Non. Moorage est un forfait mensuel optionnel pour entretenir le logiciel que nous avons créé pour vous. Nous le gardons à jour et sécuritaire, vérifions qu'il reste en ligne et rapide, testons vos sauvegardes et faisons de petits changements chaque mois. Le code vous appartient de toute façon, et vous pouvez annuler n'importe quel mois.",
+"skip":"Aller au contenu",
+"form-topic-label":"De quoi s'agit-il ?",
+"topic-app":"Une appli",
+"topic-website":"Un site web",
+"topic-restaurant":"Mon restaurant",
+"topic-automation":"Automatiser des tâches",
+"topic-ai":"Ajouter l'IA",
+"topic-fix":"Réparer un logiciel",
+"topic-other":"Autre chose",
+"form-prefill":"Le forfait {pkg} m'intéresse. ",
+"form-sending":"Envoi…",
+"form-success":"Bien reçu. Nous répondons en un jour ouvrable.",
+"form-error":"Un problème est survenu. Écrivez-nous à hello@northboundsoftwarestudio.com",
+"sticky-cta":"Parlez-nous de votre idée →",
+"faq-f-label":"Afficher les questions sur",
+"faq-f-all":"Tout",
+"faq-f-start":"Pour commencer",
+"faq-f-price":"Prix et délais",
+"faq-f-biz":"Petites entreprises",
+"faq-f-ai":"IA",
+"faq-f-care":"Après le lancement",
+"cs-eyebrow":"Études de cas",
+"cs-title":"Notre façon de créer, montrée sur nos propres produits",
+"cs-note":"Chacune part d'un vrai problème, montre comment nous l'avons réglé, et donne trois chiffres vérifiables dans le code.",
+"cs-means":"Ce que ça veut dire pour vous",
+"cs-open":"L'ouvrir ↗",
+"cs1-kind":"Jeu en ligne · créé en 3 jours",
+"cs1-h":"Un serveur de jeu doit avoir raison à chaque coup",
+"cs1-p":"Joseki est un endroit pour jouer au go en ligne. Un seul moteur de règles sur le serveur vérifie chaque coup, pour qu'aucune partie n'atteigne jamais une position illégale. Les adversaires virtuels font tourner un vrai modèle d'IA dans votre navigateur, et un test échoue si ce que le site dit de cette IA ne correspond plus à ce qu'elle fait vraiment.",
+"cs1-n1":"jours entre la première ligne de code et joseki.online",
+"cs1-n2":"tests automatisés lancés à chaque changement",
+"cs1-n3":"la certitude de l'IA sur un même coup, du niveau débutant à expert",
+"cs1-means":"Les règles de votre entreprise vivent à un seul endroit, et les tests attrapent les erreurs avant vos clients.",
+"cs2-kind":"Outil de vente · pour petites entreprises",
+"cs2-h":"Les propriétaires perdent leurs soirées à chercher des clients",
+"cs2-p":"ZipQuarry trouve des entreprises dans un rayon donné autour d'un code postal. Il lit le site de chaque entreprise pour trouver un courriel de contact, puis rédige un premier message qu'une personne relit. Chaque adresse est enregistrée avec la page d'où elle vient et la date, pour toujours pouvoir vérifier sa source.",
+"cs2-n1":"secondes pour trouver 200 entreprises locales, au premier vrai essai",
+"cs2-n2":"des entreprises trouvées ont un courriel public (1 021 sur 1 770)",
+"cs2-n3":"groupes de tests automatisés",
+"cs2-means":"Des chiffres honnêtes, même quand ils ne sont pas flatteurs. Quand 42 % des entreprises n'ont pas de courriel public, l'appli le dit au lieu de deviner.",
+"cs3-kind":"Appli de soumission · pour entrepreneurs",
+"cs3-h":"Les entrepreneurs rédigent leurs soumissions le soir, à partir de photos",
+"cs3-p":"Un client envoie des photos et des mesures. L'IA regarde les photos et décrit ce qu'elle voit. Puis du code simple, pas l'IA, en fait une fourchette de prix avec les tarifs de l'entrepreneur, et des lignes qui s'additionnent exactement. Si l'analyse des photos échoue, la demande est quand même enregistrée et signalée, pour ne perdre aucun client.",
+"cs3-n1":"prix inventé par l'IA. Le code fait tous les calculs.",
+"cs3-n2":"métiers pris en charge, de la toiture au pavage",
+"cs3-n3":"l'écart maximal entre le haut et le bas d'une fourchette, garanti par un test",
+"cs3-means":"L'IA là où elle aide, du code simple là où il faut être exact. C'est ainsi que nous ajoutons l'IA à votre produit."
 }
 };
 
+window.NB_T = T;
 function setLang(lang){
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(function(el){
@@ -4244,6 +4527,7 @@ function setLang(lang){
   var acc = document.querySelector('.compare-accordion');
   if(acc) rebuildAccordion(acc);
   localStorage.setItem('nb-lang', lang);
+  document.dispatchEvent(new CustomEvent('nb:lang', {detail: lang}));
 }
 
 function rebuildAccordion(acc){
@@ -4424,5 +4708,125 @@ document.querySelectorAll('.lang-opt').forEach(function(btn){
      Both 404 harmlessly until enabled on the project in the Vercel dashboard. -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+<script>
+/* ===== UX pass ===== */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scrollspy: the nav marks the section you are reading. */
+  var links = {};
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var a = links[en.target.id]; if (!a) return;
+        if (en.isIntersecting) {
+          Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
+          a.setAttribute('aria-current', 'true');
+        } else if (a.hasAttribute('aria-current') && en.boundingClientRect.top > 0) {
+          a.removeAttribute('aria-current');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(links).forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
+
+  /* Package buttons carry their topic into the contact form. */
+  var form = document.getElementById('contact-form');
+  var msg = form && form.querySelector('[name="message"]');
+  document.querySelectorAll('a[href="#contact"][data-topic]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if (!form) return;
+      var r = form.querySelector('[name="topic"][value="' + a.dataset.topic + '"]');
+      if (r) r.checked = true;
+      var pre = nbT('form-prefill', "I'm interested in {pkg}. ").replace('{pkg}', a.dataset.pkg);
+      if (msg && (!msg.value.trim() || msg.dataset.prefilled === msg.value)) { msg.value = pre; msg.dataset.prefilled = pre; }
+      setTimeout(function(){ var n = form.querySelector('[name="name"]'); if (n) n.focus({ preventScroll: true }); }, reduce ? 0 : 650);
+    });
+  });
+
+  /* Sticky call to action on phones: after the hero, until the contact form. */
+  var sticky = document.querySelector('.sticky-cta');
+  var hero = document.querySelector('.hero');
+  var dock = document.getElementById('contact');
+  if (sticky && hero && dock && 'IntersectionObserver' in window) {
+    var pastHero = false, atDock = false;
+    var sync = function(){
+      var show = pastHero && !atDock;
+      sticky.classList.toggle('show', show);
+      sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+      sticky.tabIndex = show ? 0 : -1;
+    };
+    new IntersectionObserver(function(e){ pastHero = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; sync(); }).observe(hero);
+    new IntersectionObserver(function(e){ atDock = e[0].isIntersecting || e[0].boundingClientRect.top < 0; sync(); }, { rootMargin: '0px 0px -20% 0px' }).observe(dock);
+  }
+
+  /* FAQ: real buttons semantics, one open at a time, keyboard friendly. */
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item, i){
+    var q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+    if (!q || !a) return;
+    a.id = a.id || 'faq-a-' + i;
+    q.setAttribute('role', 'button'); q.tabIndex = 0;
+    q.setAttribute('aria-controls', a.id); q.setAttribute('aria-expanded', 'false');
+    var toggle = function(){
+      var wasOpen = item.classList.contains('open');
+      items.forEach(function(o){ o.classList.remove('open'); var oq = o.querySelector('.faq-q'); if (oq) oq.setAttribute('aria-expanded', 'false'); });
+      if (!wasOpen) { item.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
+    };
+    q.addEventListener('click', toggle);
+    q.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+  document.querySelectorAll('.faq-filter').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var f = btn.dataset.filter;
+      document.querySelectorAll('.faq-filter').forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      items.forEach(function(item){
+        var hide = f !== 'all' && item.dataset.topic !== f;
+        item.hidden = hide;
+        if (hide && item.classList.contains('open')) { item.classList.remove('open'); item.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); }
+      });
+    });
+  });
+})();
+</script>
+<script>
+/* ===== case studies: reveal, draw icons, count up ===== */
+(function(){
+  var cards = document.querySelectorAll('.cs');
+  if (!cards.length) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* French puts a comma in decimals and a narrow space before % and units. */
+  function show(v, el){
+    var d = +el.dataset.dec, fr = document.documentElement.lang === 'fr';
+    var suf = el.dataset.suf, spaced = fr && suf && suf !== '+' ? '\u202F' + suf : suf;
+    el.textContent = el.dataset.pre + v.toLocaleString(fr ? 'fr-CA' : 'en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) + spaced;
+  }
+  document.addEventListener('nb:lang', function(){
+    document.querySelectorAll('.cs-n').forEach(function(el){ if (!el.dataset.running) show(+el.dataset.to, el); });
+  });
+  function count(el){
+    var to = +el.dataset.to, from = +el.dataset.from, t0 = null, dur = 1400;
+    function step(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      show(from + (to - from) * e, el);
+      if (p < 1) requestAnimationFrame(step); else { delete el.dataset.running; show(to, el); }
+    }
+    el.dataset.running = 1; show(from, el); requestAnimationFrame(step);
+  }
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.querySelector('.cs-list').classList.add('cs-ready');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      en.target.querySelectorAll('.cs-n').forEach(function(n, i){ setTimeout(function(){ count(n); }, 250 + i * 150); });
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.25 });
+  cards.forEach(function(c){ io.observe(c); });
+})();
+</script>
 </body>
 </html>
