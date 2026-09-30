@@ -6,7 +6,9 @@ new paid vendor, and why: [`../SPEND.md`](../SPEND.md).
 
 ## Northbound studio site, no paid vendors
 
-This repository calls no metered API today. **If that changes, read
+This repository calls no metered API today. Cal.com (booking, through
+`api/slots.js` and `api/book.js`) is used via its free public API, with no key
+and no card, so nothing it does is billed. **If that changes, read
 [`../SPEND.md`](../SPEND.md) §4 before the first billable call**: the console
 cap, the budget alert, the ledger entry and the hard maximum go in first, and
 the vendor is added to the table in `../SPEND.md` §5.

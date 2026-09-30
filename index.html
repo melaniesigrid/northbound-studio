@@ -1987,6 +1987,134 @@ footer{
   .cs.in:hover .cs-icon svg{animation:none}
 }
 
+
+/* ---------- booking section ---------- */
+.book{border-bottom:var(--line);background:
+  radial-gradient(circle at 8% 12%,rgba(37,70,240,.10),transparent 34%),
+  radial-gradient(circle at 92% 88%,rgba(255,198,41,.20),transparent 38%),var(--paper);padding:72px 0}
+.book-wrap{max-width:1240px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
+.book-side h2{font-family:var(--font-display);font-size:clamp(44px,5.6vw,80px);line-height:1;text-transform:uppercase;margin:16px 0 18px}
+.book-side h2 em{font-style:normal;color:var(--cobalt)}
+.book-lede{font-size:19px;color:var(--ink-soft);max-width:44ch;margin-bottom:28px}
+.book-steps{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.book-steps li{display:flex;gap:16px;align-items:flex-start}
+.book-steps strong{display:block;font-size:18px}
+.book-steps li>span:last-child span{color:var(--ink-soft);font-size:16.5px}
+.book-ic{flex:0 0 52px;height:52px;display:flex;align-items:center;justify-content:center;border:var(--line);background:var(--paper-raise);box-shadow:3px 3px 0 var(--ink)}
+.book-ic svg{width:30px;height:30px;fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.book-ic .tick{stroke:var(--cobalt)}
+.book-steps li:nth-child(2) .book-ic{background:var(--hazard)}
+.book-steps li:nth-child(3) .book-ic{background:var(--cobalt)}
+.book-steps li:nth-child(3) .book-ic svg{stroke:#fff}
+.book-founder{display:flex;align-items:center;gap:12px;font-weight:600}
+.book-founder small{display:block;font-weight:400;color:var(--ink-soft);font-size:15px}
+.book-avatar{width:52px;height:52px;border-radius:50%;border:var(--line);object-fit:cover;background:var(--paper-raise)}
+@media(max-width:980px){.book-wrap{grid-template-columns:minmax(0,1fr);gap:32px}.book{padding:52px 0}}
+
+/* ---------- NBBooking widget ---------- */
+.bk{background:#fff;border:var(--line);box-shadow:8px 8px 0 var(--ink);min-height:520px;display:flex;flex-direction:column}
+.bk-noscript{padding:28px}.bk-noscript a{color:var(--cobalt);font-weight:600}
+.bk-steps{list-style:none;display:flex;border-bottom:var(--line);background:var(--paper-raise)}
+.bk-steps li{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:12px 16px;font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);transition:background .3s ease,color .3s ease}
+.bk-steps li+li{border-left:var(--line)}
+.bk-steps span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bk-steps b{flex:0 0 26px;width:26px;height:26px;border-radius:50%;border:2px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:13px;transition:background .3s ease,color .3s ease,border-color .3s ease}
+.bk-steps li.on{color:var(--ink)}
+.bk-steps li.on b{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.bk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:14px 20px;border-bottom:1px solid #E4E6E0}
+.bk-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border:1.5px solid #D5D8D1;border-radius:999px;font-size:14.5px;font-weight:600}
+.bk-chip::before{font-size:14px}
+.bk-clock::before{content:"◷"}.bk-video::before{content:"▶";font-size:11px;color:var(--cobalt)}
+.bk-tz{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft)}
+.bk-tz select{max-width:190px;font:inherit;font-size:14.5px;color:var(--ink);padding:6px 8px;border:1.5px solid #D5D8D1;border-radius:8px;background:var(--paper)}
+.bk-body{flex:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.bk-cal{padding:20px 22px 22px;border-right:1px solid #E4E6E0}
+.bk-cal-head{display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.bk-month{flex:1;font-family:var(--font-display);font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.bk-nav{width:38px;height:38px;border:var(--line);background:var(--paper-raise);font-size:22px;line-height:1;cursor:pointer;transition:background .15s ease,transform .15s ease}
+.bk-nav:hover:not(:disabled){background:var(--hazard);transform:translateY(-1px)}
+.bk-nav:disabled{opacity:.3;cursor:default}
+.bk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.bk-wd{text-align:center;font-family:var(--font-mono);font-size:13px;color:var(--ink-soft);padding:4px 0 6px;text-transform:uppercase}
+.bk-day{position:relative;aspect-ratio:1;border:1.5px solid transparent;border-radius:10px;background:transparent;font:inherit;font-size:16px;font-weight:500;color:#A4A9A1;cursor:default}
+.bk-day.open{background:rgba(37,70,240,.07);color:var(--ink);font-weight:700;cursor:pointer;transition:background .15s ease,transform .15s ease,border-color .15s ease}
+.bk-day.open::after{content:"";position:absolute;left:50%;bottom:6px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--cobalt)}
+.bk-day.open:hover{border-color:var(--cobalt);transform:translateY(-1px)}
+.bk-day.today{text-decoration:underline;text-underline-offset:4px}
+.bk-day.sel{background:var(--cobalt);color:#fff;border-color:var(--cobalt-deep);animation:bk-pop .28s cubic-bezier(.34,1.56,.64,1)}
+.bk-day.sel::after{background:#fff}
+@keyframes bk-pop{from{transform:scale(.86)}}
+.bk-more{margin-top:14px;border:0;background:none;color:var(--cobalt);font:inherit;font-weight:600;cursor:pointer}
+.bk-side{padding:20px 22px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bk-dayname{font-family:var(--font-display);font-size:22px;text-transform:uppercase;letter-spacing:.02em}
+.bk-times{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;max-height:340px;overflow:auto;padding:2px 4px 4px 2px}
+.bk-time{min-height:44px;border:var(--line);background:var(--paper-raise);font:inherit;font-size:15.5px;font-weight:600;cursor:pointer;animation:bk-in .35s ease both;transition:background .15s ease,color .15s ease,box-shadow .15s ease,transform .15s ease}
+.bk-time:hover{background:var(--cobalt);color:#fff;box-shadow:3px 3px 0 var(--ink);transform:translate(-1px,-1px)}
+@keyframes bk-in{from{opacity:0;transform:translateY(6px)}}
+.bk-hint{color:var(--ink-soft);font-size:16px}
+.bk-loading .bk-day{animation:bk-pulse 1.2s ease-in-out infinite;background:#F1EFEA}
+@keyframes bk-pulse{50%{opacity:.4}}
+.bk-back{align-self:flex-start;border:0;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--cobalt);cursor:pointer;padding:0}
+.bk-pick{display:inline-block;align-self:flex-start;padding:8px 12px;background:var(--hazard);border:var(--line);font-weight:700;font-size:16px}
+.bk-form{display:flex;flex-direction:column;gap:12px;animation:bk-in .3s ease both}
+.bk-field{display:flex;flex-direction:column;gap:6px}
+.bk-field span{font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.bk-field input,.bk-field textarea{width:100%;border:1.5px solid #C6CAC2;border-radius:10px;background:var(--paper);padding:11px 12px;font:inherit;font-size:16px;color:var(--ink)}
+.bk-field textarea{min-height:84px;resize:vertical}
+.bk-field input:focus,.bk-field textarea:focus{outline:3px solid rgba(37,70,240,.35);border-color:var(--cobalt)}
+.bk-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.bk-err{color:#B42318;font-size:15px;font-weight:600;min-height:0}
+.bk-err:empty{display:none}
+.bk-go{align-self:stretch;justify-content:center}
+.bk-fallback{align-self:flex-start}
+.bk-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.bk-ok{width:84px;height:84px}
+.bk-ok svg{width:100%;height:100%;fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.bk-ok circle{stroke:var(--cobalt);stroke-dasharray:176;stroke-dashoffset:176;animation:bk-draw .6s ease forwards}
+.bk-ok path{stroke:var(--ink);stroke-dasharray:40;stroke-dashoffset:40;animation:bk-draw .4s ease .45s forwards}
+@keyframes bk-draw{to{stroke-dashoffset:0}}
+.bk-done-h{font-family:var(--font-display);font-size:34px;text-transform:uppercase}
+.bk-done-p{color:var(--ink-soft);font-size:16.5px}
+@media(max-width:760px){
+  .bk-body{grid-template-columns:1fr}
+  .bk-cal{border-right:0;border-bottom:1px solid #E4E6E0}
+  .bk-tz{margin-left:0;width:100%}
+  .bk-tz select{max-width:none;flex:1}
+  .bk-steps li{padding:10px 8px;justify-content:center;font-size:12.5px;gap:6px}
+  .bk{box-shadow:5px 5px 0 var(--ink)}
+}
+/* dialog */
+.bk-dialog{margin:auto;width:min(980px,calc(100vw - 32px));max-height:calc(100vh - 32px);padding:0;border:0;background:transparent;overflow:visible}
+.bk-dialog::backdrop{background:rgba(20,24,31,.62);backdrop-filter:blur(3px)}
+.bk-dialog[open]{animation:bk-rise .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes bk-rise{from{opacity:0;transform:translateY(18px) scale(.98)}}
+.bk-dlg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--paper);padding:14px 18px;border:var(--line);border-bottom:0}
+.bk-dlg-head h2{font-family:var(--font-display);font-size:24px;text-transform:uppercase;letter-spacing:.02em}
+.bk-x{width:40px;height:40px;border:2px solid var(--paper);background:transparent;color:var(--paper);font-size:26px;line-height:1;cursor:pointer}
+.bk-x:hover{background:var(--paper);color:var(--ink)}
+.bk-dialog .bk{max-height:calc(100vh - 110px);overflow:auto}
+html.bk-lock{overflow:hidden}
+@media(max-width:480px){.nav-cta{padding:0 14px;font-size:12.5px;line-height:1.25;max-width:118px;white-space:normal;text-align:center}}
+@media(max-width:620px){.bk-dialog{width:100vw;max-width:100vw;max-height:100vh;height:100%;margin:0}.bk-dialog .bk{max-height:calc(100vh - 70px);box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.bk-time,.bk-form,.bk-day.sel,.bk-dialog[open]{animation:none}.bk-ok circle,.bk-ok path{animation:none;stroke-dashoffset:0}.bk-loading .bk-day{animation:none}}
+
+
+/* ---------- hero: next open call times ---------- */
+.next-slots{border-top:1px solid #2A3140;padding:16px 20px 18px;background:linear-gradient(180deg,rgba(37,70,240,.16),rgba(37,70,240,.05))}
+.ns-label{display:flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.ns-dot{width:9px;height:9px;border-radius:50%;background:#35D07F;box-shadow:0 0 0 0 rgba(53,208,127,.6);animation:ns-ping 2s ease-out infinite}
+@keyframes ns-ping{70%{box-shadow:0 0 0 9px rgba(53,208,127,0)}100%{box-shadow:0 0 0 0 rgba(53,208,127,0)}}
+.ns-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.ns-slot{display:flex;flex-direction:column;gap:2px;align-items:flex-start;padding:10px 12px;border:2px solid #fff;background:transparent;color:#fff;font:inherit;cursor:pointer;text-align:left;animation:bk-in .4s ease both;transition:background .15s ease,color .15s ease,transform .15s ease}
+.ns-slot:nth-child(2){animation-delay:.08s}.ns-slot:nth-child(3){animation-delay:.16s}
+.ns-slot:hover,.ns-slot:focus-visible{background:#fff;color:var(--ink);transform:translateY(-2px)}
+.ns-day{font-size:13.5px;opacity:.85}
+.ns-time{font-family:var(--font-display);font-size:22px;letter-spacing:.02em;line-height:1.1}
+.ns-all{font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--hazard);text-decoration:none}
+.ns-all:hover{text-decoration:underline}
+@media(max-width:760px){.ns-list{grid-template-columns:1fr 1fr 1fr}.ns-time{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.ns-dot,.ns-slot{animation:none}}
+
 </style>
 </head>
 <!-- Google tag (gtag.js) -->
@@ -2036,7 +2164,7 @@ footer{
     <button class="nav-burger" id="nav-burger" data-i18n-aria="nav-burger-aria" aria-label="Open menu" aria-expanded="false">
       <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="0" y1="1" x2="20" y2="1"/><line x1="0" y1="7" x2="20" y2="7"/><line x1="0" y1="13" x2="20" y2="13"/></svg>
     </button>
-    <a class="nav-cta" href="#contact" data-i18n="nav-cta">Email us</a>
+    <a class="nav-cta" href="#book" data-book data-i18n="nav-cta">Book a call</a>
   </div>
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
@@ -2047,7 +2175,7 @@ footer{
   <a href="#packages" data-i18n="nav-packages">Packages</a>
   <a href="#faq" data-i18n="nav-faq">FAQ</a>
   <a href="blog.html" data-i18n="nav-writing">Writing</a>
-  <a href="#contact" class="mobile-nav-cta" data-i18n="nav-cta-mobile">Email us →</a>
+  <a href="#book" data-book class="mobile-nav-cta" data-i18n="nav-cta-mobile">Book a call →</a>
 </nav>
 
 <div class="ticker" aria-hidden="true">
@@ -2074,8 +2202,8 @@ footer{
       </h1>
       <p class="hero-sub" data-i18n-html="hero-sub">You know what you want to build. You don't have the budget for a big team, or six months to wait. <strong>We build websites, mobile apps and AI tools for founders and small businesses, like restaurants.</strong> You get one fixed price and a delivery date before any work starts. Every product on this page is real, and you can open it and try it.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#packages" data-i18n="hero-cta-1">See the packages →</a>
-        <a class="btn" href="#contact" data-i18n="hero-cta-2">Tell us your idea →</a>
+        <a class="btn btn-primary" href="#book" data-book data-i18n="hero-cta-book">Book a free call →</a>
+        <a class="btn" href="#packages" data-i18n="hero-cta-1">See the packages →</a>
       </div>
       <div class="stamp-wrap" id="stamp-wrap">
         <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
@@ -2093,10 +2221,15 @@ footer{
 
     <div class="hero-right" aria-label="Live demonstration of our AI agent workflow">
       <div class="term-bar">
-        <span data-i18n="term-bar-left">agent · build loop</span>
+        <span data-i18n="term-bar-left">Example build · how we work</span>
         <span class="live" data-i18n="term-bar-live">Live</span>
       </div>
       <div class="term-body"><div id="term"></div></div>
+      <div class="next-slots" data-next-slots hidden>
+        <p class="ns-label"><span class="ns-dot" aria-hidden="true"></span><span data-i18n="ns-label">Next open call times</span></p>
+        <div class="ns-list"></div>
+        <a class="ns-all" href="#book" data-book data-i18n="ns-all">See all times →</a>
+      </div>
       <div class="term-foot" data-i18n="term-foot">How we work: AI writes the first draft, a person checks every step, then we ship.</div>
     </div>
   </div>
@@ -2600,7 +2733,7 @@ footer{
           <p class="auto-founder" data-i18n-html="auto-founder"><strong>You work with the founder.</strong> Melanie Baratto does the measuring herself and approves every automation before it goes live.</p>
           <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="auto-price">Fixed price · set after day 10</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a data-topic="automation" data-pkg="Automate" class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="auto-cta">Start with the 10-day check →</a>
+          <a data-topic="automation" data-pkg="Automate" class="btn card-cta" href="#book" data-book style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="auto-cta">Start with the 10-day check →</a>
         </div>
       </div>
     </article>
@@ -2649,7 +2782,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a data-topic="website" data-pkg="Spark" class="btn card-cta" href="#contact" data-i18n="spark-cta">Start Spark →</a>
+        <a data-topic="website" data-pkg="Spark" class="btn card-cta" href="#book" data-book data-i18n="spark-cta">Start Spark →</a>
       </article>
 
       <article class="card">
@@ -2691,7 +2824,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a data-topic="website" data-pkg="Launch" class="btn card-cta" href="#contact" data-i18n="launch-cta">Start Launch →</a>
+        <a data-topic="website" data-pkg="Launch" class="btn card-cta" href="#book" data-book data-i18n="launch-cta">Start Launch →</a>
       </article>
 
       <article class="card flag" id="build">
@@ -2729,7 +2862,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a data-topic="app" data-pkg="Build" class="btn btn-primary card-cta" href="#contact" data-i18n="build-cta">Start Build →</a>
+        <a data-topic="app" data-pkg="Build" class="btn btn-primary card-cta" href="#book" data-book data-i18n="build-cta">Start Build →</a>
       </article>
 
       <article class="card">
@@ -2767,7 +2900,7 @@ footer{
         </div>
         <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
         <div class="barcode" aria-hidden="true"></div>
-        <a data-topic="ai" data-pkg="Augment" class="btn card-cta" href="#contact" data-i18n="augment-cta">Start Augment →</a>
+        <a data-topic="ai" data-pkg="Augment" class="btn card-cta" href="#book" data-book data-i18n="augment-cta">Start Augment →</a>
       </article>
     </div>
 
@@ -2815,7 +2948,7 @@ footer{
           </div>
           <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed-add">Fixed price · add to any package</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a data-topic="app" data-pkg="Discovery Sprint" class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="disc-cta">Start Discovery →</a>
+          <a data-topic="app" data-pkg="Discovery Sprint" class="btn card-cta" href="#book" data-book style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="disc-cta">Start Discovery →</a>
         </div>
       </div>
     </article>
@@ -2868,7 +3001,7 @@ footer{
           </div>
           <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
           <div class="barcode" aria-hidden="true"></div>
-          <a data-topic="fix" data-pkg="Salvage" class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="salv-cta">Start Salvage →</a>
+          <a data-topic="fix" data-pkg="Salvage" class="btn card-cta" href="#book" data-book style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="salv-cta">Start Salvage →</a>
         </div>
       </div>
     </article>
@@ -2902,7 +3035,7 @@ footer{
             <div class="sub-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-month">Monthly subscription</small></div>
             <div class="sub-cancel" data-i18n="moor-cancel">Optional · cancel any month</div>
           </div>
-          <a data-topic="other" data-pkg="Moorage" class="btn" href="#contact" data-i18n="moor-cta">Start Moorage →</a>
+          <a data-topic="other" data-pkg="Moorage" class="btn" href="#book" data-book data-i18n="moor-cta">Start Moorage →</a>
         </div>
       </div>
     </div>
@@ -2936,7 +3069,7 @@ footer{
             <div class="sub-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-month">Monthly subscription</small></div>
             <div class="sub-cancel" data-i18n="pulse-cancel">Cancel anytime</div>
           </div>
-          <a data-topic="other" data-pkg="Pulse" class="btn" href="#contact" data-i18n="pulse-cta">Start Pulse →</a>
+          <a data-topic="other" data-pkg="Pulse" class="btn" href="#book" data-book data-i18n="pulse-cta">Start Pulse →</a>
         </div>
       </div>
     </div>
@@ -3136,13 +3269,36 @@ footer{
 </section>
 </main>
 
-<a class="sticky-cta" href="#contact" data-i18n="sticky-cta" aria-hidden="true" tabindex="-1">Tell us your idea →</a>
+<a class="sticky-cta" href="#book" data-book data-i18n="sticky-cta" aria-hidden="true" tabindex="-1">Book a free call →</a>
+
+<!-- Booking. The calendar below is ours (NBBooking, end of page); availability
+     and bookings go through api/slots.js and api/book.js to Cal.com. -->
+<section class="book" id="book" aria-labelledby="book-h2">
+  <div class="book-wrap">
+    <div class="book-side">
+      <span class="eyebrow" data-i18n="book-eyebrow">Free · 20 minutes · No obligation</span>
+      <h2 id="book-h2" data-i18n-html="book-h2">Book a call.<br><em>Tell us your idea.</em></h2>
+      <p class="book-lede" data-i18n="book-p">Pick a time that works for you and talk it through with the founder, in plain words. You don't need anything prepared.</p>
+      <ol class="book-steps">
+        <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="6" y="10" width="36" height="32" rx="3"/><path d="M6 19h36M16 5v9M32 5v9"/><path d="M17 30l5 5 10-10" class="tick"/></svg></span><span><strong data-i18n="book-s1-h">Pick a time</strong><span data-i18n="book-s1-p">Any open time in the calendar. It's booked right away.</span></span></li>
+        <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 10h32a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H22l-9 8v-8H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/><path d="M14 20h20M14 26h12"/></svg></span><span><strong data-i18n="book-s2-h">Tell us your idea</strong><span data-i18n="book-s2-p">Twenty minutes on a video call, in your own words. No slides needed.</span></span></li>
+        <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M12 5h18l8 8v30H12z"/><path d="M30 5v8h8M18 22h14M18 29h14M18 36h8"/></svg></span><span><strong data-i18n="book-s3-h">Get a plan</strong><span data-i18n="book-s3-p">Within one business day: what we would build, the price and the date.</span></span></li>
+      </ol>
+      <p class="book-founder"><img class="book-avatar" src="logo/people/melanie-192.webp" alt="" width="52" height="52" loading="lazy" decoding="async"><span>Melanie Baratto<small data-i18n="book-founder-role">Founder, Northbound</small></span></p>
+    </div>
+    <div class="bk-host">
+      <div class="bk" id="bk-inline" data-bk-inline>
+        <noscript><p class="bk-noscript"><a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Open the booking calendar ↗</a></p></noscript>
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="exit-section">
 <section class="dock" id="contact">
-  <span class="eyebrow" data-i18n="dock-eyebrow">Taking new projects this month</span>
-  <h2 data-i18n-html="dock-h2">Tell us what<br><em>you want to build</em>.</h2>
-  <p data-i18n="dock-p">Send one email. In our reply you'll get the plan, the price and the launch date.</p>
+  <span class="eyebrow" data-i18n="dock-eyebrow">Prefer to write?</span>
+  <h2 data-i18n-html="dock-h2">Send us<br><em>an email instead</em>.</h2>
+  <p data-i18n="dock-p">Tell us what you want to build. In our reply you'll get the plan, the price and the launch date.</p>
   <form class="contact-form" id="contact-form">
     <div class="contact-field">
       <label for="name" data-i18n="form-name-label">Your name</label>
@@ -3171,7 +3327,7 @@ footer{
     <input class="nb-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
     <button class="btn btn-primary form-submit" type="submit" data-i18n="form-submit">Send it →</button>
   </form>
-  <p class="form-note" data-i18n-html="form-note">Prefer email? <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a> <span class="form-note-sep">·</span> Rather talk it through? <a href="https://cal.com/northboundsoftwarestudio/scope-call" target="_blank" rel="noopener">Book a 20-minute scope call</a></p>
+  <p class="form-note" data-i18n-html="form-note">Or write to us directly: <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a></p>
 </section>
 
 <footer>
@@ -3194,7 +3350,7 @@ footer{
       <div class="foot-col foot-col-hello">
         <span class="foot-col-label" data-i18n="foot-hello-label">Say hello</span>
         <a href="mailto:hello@northboundsoftwarestudio.com">hello@northboundsoftwarestudio.com</a>
-        <a href="#contact" data-i18n="foot-hello-quote">Get a quote</a>
+        <a href="#book" data-book data-i18n="foot-hello-quote">Book a call</a>
         <a href="https://www.linkedin.com/company/northbound-software/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://www.instagram.com/northboundsoftware/" target="_blank" rel="noopener">Instagram</a>
       </div>
@@ -3229,88 +3385,59 @@ footer{
     '-- next departure --'
   ];
 
-  var scenarios = [
+  /* Example builds, not client case studies: no names, no invented results. */
+  var SCEN = { en: [
     [
-      {cls:'t-thought', text:'Thought: Fitness studio needs booking flow + trainer scheduling. Modelling schema.', d:26},
-      {cls:'t-action',  text:'Action: scaffold_api(resources=["trainers","slots","bookings","queue"])', d:18},
-      {cls:'t-obs',     text:'Observation: 18 endpoints scaffolded. Concurrency conflict on slot locking.', d:16},
-      {cls:'t-thought', text:'Thought: Double-booking race condition. Hard gate. Flagging before any UI work.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="vlad", scope="slot locking + race condition")', d:18},
-      {cls:'t-obs',     text:'Observation: Optimistic locking approved. 63 tests passing. Push notifications wired.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production", platform="ios+android")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 22 of 30. App Store submission queued. Ahead of schedule.', d:14}
+      {cls:'t-thought', text:"Plan: a restaurant wants guests to order from their table with a QR code.", d:24},
+      {cls:'t-action', text:"Build: menu, table codes, a kitchen screen and card payments.", d:18},
+      {cls:'t-obs', text:"Check: the kitchen screen has to update the moment an order comes in.", d:18},
+      {cls:'t-thought', text:"Review: the owner approves how orders look in the kitchen.", d:24},
+      {cls:'t-obs', text:"Test: every way to order runs through automated tests.", d:18},
+      {cls:'t-ship', text:"LIVE → on the date we agreed.", d:18}
     ],
     [
-      {cls:'t-thought', text:'Thought: Bakery needs a site before Saturday. Single-page, no CMS, fast path.', d:26},
-      {cls:'t-action',  text:'Action: scaffold_site(type="static", sections=["hero","menu","hours","contact"])', d:18},
-      {cls:'t-obs',     text:'Observation: Layout done. Menu images too heavy: 4.2 MB total. Compressing now.', d:16},
-      {cls:'t-thought', text:'Thought: No framework needed. Vanilla HTML/CSS ships faster and scores better.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="adi", scope="copy + mobile layout")', d:18},
-      {cls:'t-obs',     text:'Observation: Copy approved. Images compressed. Lighthouse score: 98. Ready.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production", domain="client-domain.com")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 2 of 3. Live on domain. Client confirmed Friday morning.', d:14}
+      {cls:'t-thought', text:"Plan: a founder wants an app where customers book a personal trainer.", d:24},
+      {cls:'t-action', text:"Build: sign-up, trainer calendars, bookings and payments.", d:18},
+      {cls:'t-obs', text:"Check: two people must never book the same time slot.", d:18},
+      {cls:'t-thought', text:"Review: the founder tries the app in the weekly demo.", d:24},
+      {cls:'t-action', text:"Submit: App Store and Google Play listings.", d:18},
+      {cls:'t-ship', text:"LIVE → the founder owns all of the code.", d:18}
     ],
     [
-      {cls:'t-thought', text:'Thought: Legal SaaS needs semantic search over 10k documents. RAG pipeline first.', d:26},
-      {cls:'t-action',  text:'Action: analyze_corpus(strategy="chunk+embed", model="text-embedding-3-large")', d:18},
-      {cls:'t-obs',     text:'Observation: 10,412 chunks indexed. Retrieval precision at 81%, below target.', d:16},
-      {cls:'t-thought', text:'Thought: Hybrid BM25 + vector search should recover precision. Proposing to Dylan.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="dylan", scope="retrieval strategy + result ranking")', d:18},
-      {cls:'t-obs',     text:'Observation: Hybrid approved. Precision 94%. Latency 580ms. Eval suite locked.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production", feature_flag="semantic_search_v1")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 11 of 14. Flag live. Eval suite handed off to team.', d:14}
-    ],
-    [
-      {cls:'t-thought', text:'Thought: Fashion brand needs products, variants, cart, Stripe and fulfilment webhooks.', d:26},
-      {cls:'t-action',  text:'Action: design_schema(entities=["products","variants","cart","orders","webhooks"])', d:18},
-      {cls:'t-obs',     text:'Observation: Schema modelled. Inventory sync edge case on low-stock variants.', d:16},
-      {cls:'t-thought', text:'Thought: Oversell risk on limited drops. Locking strategy needed before Stripe.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="maryam", scope="inventory lock + Stripe intent flow")', d:18},
-      {cls:'t-obs',     text:'Observation: Flow confirmed. 97 tests passing. Fulfillment webhook tested end-to-end.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production", provider="vercel")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 26 of 30. Store live. First real order in staging verified.', d:14}
-    ],
-    [
-      {cls:'t-thought', text:'Thought: Support team: 400 tickets/day, 70% repeat questions. Chatbot scope.', d:26},
-      {cls:'t-action',  text:'Action: analyze_tickets(sample=500, classify="intent+resolution_path")', d:18},
-      {cls:'t-obs',     text:'Observation: 68% resolved by 12 intent clusters. Escalation paths mapped.', d:16},
-      {cls:'t-thought', text:'Thought: Wrong deflection costs trust. Escalation guardrails need explicit sign-off.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="maryam", scope="escalation rules + tone policy")', d:18},
-      {cls:'t-obs',     text:'Observation: Rules approved. Eval score: 96%. Human handoff completes in under 3s.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production", feature_flag="support_bot_v1")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 13 of 14. 71% deflection rate on day one.', d:14}
-    ],
-    [
-      {cls:'t-thought', text:'Thought: Two-sided marketplace. Sellers list, buyers bid, escrow on match.', d:26},
-      {cls:'t-action',  text:'Action: design_schema(entities=["listings","bids","escrow","payouts","disputes"])', d:18},
-      {cls:'t-obs',     text:'Observation: Schema done. Payout timing edge case flagged for regulatory exposure.', d:16},
-      {cls:'t-thought', text:'Thought: Escrow release timing has legal risk. Need explicit sign-off before build.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="adi", scope="escrow logic + payout timing")', d:18},
-      {cls:'t-obs',     text:'Observation: Payout rules confirmed. 84 tests passing. Stripe Connect wired.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production", provider="vercel")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 28 of 30. First listing live within 2 hrs of launch.', d:14}
-    ],
-    [
-      {cls:'t-thought', text:'Thought: SaaS platform needs multi-tenant, RBAC and an audit log. Threat model first.', d:26},
-      {cls:'t-action',  text:'Action: plan_architecture(scope="tenancy isolation, RBAC, session hygiene")', d:18},
-      {cls:'t-obs',     text:'Observation: 5 attack surfaces in planning, zero code written yet.', d:16},
-      {cls:'t-thought', text:'Thought: Cross-tenant data leak is critical path. Hard gate before any build.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="vlad", scope="tenant isolation + RBAC matrix")', d:18},
-      {cls:'t-obs',     text:'Observation: Review passed. 128 tests. Row-level security validated. Audit clean.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 24 of 30. Zero known vulns. SOC-2 controls documented.', d:14}
-    ],
-    [
-      {cls:'t-thought', text:'Thought: QR table ordering + kitchen display + Stripe checkout. 30-day scope.', d:26},
-      {cls:'t-action',  text:'Action: scaffold_api(resources=["tables","menu","orders","kitchen_queue"])', d:18},
-      {cls:'t-obs',     text:'Observation: Kitchen queue needs real-time. REST polling won\'t cut it here.', d:16},
-      {cls:'t-thought', text:'Thought: WebSocket adds scope risk. Proposing Server-Sent Events instead.', d:26},
-      {cls:'t-action',  text:'Action: request_review(owner="sam", scope="realtime strategy + kitchen display")', d:18},
-      {cls:'t-obs',     text:'Observation: SSE approved. 54 tests passing. QR-to-order flow: under 8 seconds.', d:16},
-      {cls:'t-action',  text:'Action: deploy(target="production")', d:20},
-      {cls:'t-ship',    text:'SHIPPED → day 25 of 30. Tested at lunch service. Zero issues reported.', d:14}
+      {cls:'t-thought', text:"Plan: a bookkeeping firm asks clients for the same papers every month.", d:24},
+      {cls:'t-action', text:"Build: reminders that go out on their own, in the tools they already use.", d:18},
+      {cls:'t-obs', text:"Check: nothing reaches a client until a person approves it.", d:18},
+      {cls:'t-thought', text:"Measure: time each task before and after.", d:24},
+      {cls:'t-ship', text:"HANDED OVER → with a plain-English guide.", d:18}
     ]
-  ];
+  ], fr: [
+    [
+      {cls:'t-thought', text:"Plan : un restaurant veut que les clients commandent à table avec un code QR.", d:24},
+      {cls:'t-action', text:"Création : menu, codes de table, écran en cuisine et paiement par carte.", d:18},
+      {cls:'t-obs', text:"Vérification : l'écran de la cuisine doit se mettre à jour dès qu'une commande arrive.", d:18},
+      {cls:'t-thought', text:"Révision : le propriétaire approuve l'affichage des commandes en cuisine.", d:24},
+      {cls:'t-obs', text:"Tests : chaque façon de commander passe par des tests automatisés.", d:18},
+      {cls:'t-ship', text:"EN LIGNE → à la date convenue.", d:18}
+    ],
+    [
+      {cls:'t-thought', text:"Plan : un fondateur veut une appli pour réserver un entraîneur personnel.", d:24},
+      {cls:'t-action', text:"Création : inscription, calendriers, réservations et paiements.", d:18},
+      {cls:'t-obs', text:"Vérification : deux personnes ne doivent jamais réserver la même plage.", d:18},
+      {cls:'t-thought', text:"Révision : le fondateur essaie l'appli à la démo hebdomadaire.", d:24},
+      {cls:'t-action', text:"Publication : fiches App Store et Google Play.", d:18},
+      {cls:'t-ship', text:"EN LIGNE → tout le code appartient au fondateur.", d:18}
+    ],
+    [
+      {cls:'t-thought', text:"Plan : un cabinet comptable redemande les mêmes documents chaque mois.", d:24},
+      {cls:'t-action', text:"Création : des rappels qui partent seuls, dans les outils déjà utilisés.", d:18},
+      {cls:'t-obs', text:"Vérification : rien ne part vers un client sans l'accord d'une personne.", d:18},
+      {cls:'t-thought', text:"Mesure : chronométrer chaque tâche avant et après.", d:24},
+      {cls:'t-ship', text:"REMIS → avec un guide en langage simple.", d:18}
+    ]
+  ] };
+  /* this runs before setLang(), so read the saved choice the same way it does */
+  function scen(){ var l = document.documentElement.lang; try { l = localStorage.getItem('nb-lang') || l; } catch (e) {} return SCEN[l === 'fr' ? 'fr' : 'en']; }
+  var scenarios = scen();
   var scenarioIdx = 0;
   var script = scenarios[scenarioIdx];
   var MAXLINES = 60;
@@ -3338,13 +3465,15 @@ footer{
   }
 
   function run(idx){
+    if(idx === 0){ scenarios = scen(); script = scenarios[scenarioIdx % scenarios.length]; }   // language is known by now
     if(idx >= script.length){
       setTimeout(function(){
         var div = document.createElement('div');
         div.className = 'term-line t-thought';
-        div.textContent = '-- next shipment --';
+        div.textContent = document.documentElement.lang === 'fr' ? '-- projet suivant --' : '-- next example --';
         term.appendChild(div);
         while(term.children.length > MAXLINES){ term.removeChild(term.firstChild); }
+        scenarios = scen();
         scenarioIdx = (scenarioIdx + 1) % scenarios.length;
         script = scenarios[scenarioIdx];
         setTimeout(function(){ run(0); }, 1400);
@@ -3415,7 +3544,7 @@ footer{
 })();
 
 /* GA4 CTA click tracking */
-document.querySelectorAll('a[href="#contact"], a[href^="mailto:"]').forEach(function(a){
+document.querySelectorAll('a[href="#contact"], a[href^="mailto:"], a[data-book]').forEach(function(a){
   a.addEventListener('click', function(){
     if(typeof gtag === 'function') gtag('event', 'click', {event_category:'cta',event_label:'contact'});
   });
@@ -3607,8 +3736,8 @@ en:{
 "nav-packages":"Packages",
 "nav-faq":"FAQ",
 "nav-writing":"Writing",
-"nav-cta":"Email us",
-"nav-cta-mobile":"Email us →",
+"nav-cta":"Book a call",
+"nav-cta-mobile":"Book a call →",
 "nav-burger-aria":"Open menu",
 "hero-eyebrow":"Software studio · Toronto 🍁",
 "hero-pill-woman":"Woman-owned",
@@ -3631,7 +3760,7 @@ en:{
 "tc-btn":"Open Typecase ↗",
 "hero-cta-1":"See the packages →",
 "hero-cta-2":"Tell us your idea →",
-"term-bar-left":"agent · build loop",
+"term-bar-left":"Example build · how we work",
 "term-bar-live":"Live",
 "term-foot":"How we work: AI writes the first draft, a person checks every step, then we ship.",
 "stat-l-1":"Days to launch a website",
@@ -3810,16 +3939,16 @@ en:{
 "faq-a8":"Because we think it would make your visit worse. Chatbots on websites often give generic answers and make people feel brushed off. We use AI where it really helps: building faster, writing better code and making clearer plans. To talk about your project, a real email from a real person works better. That's why this page asks you to email us.",
 "faq-q9":"Where are you based? Do you work outside Toronto?",
 "faq-a9":"We're based in Toronto and work with clients anywhere. Everything can be done remotely: planning, weekly demos and handover.",
-"dock-eyebrow":"Taking new projects this month",
-"dock-h2":"Tell us what<br><em>you want to build</em>.",
-"dock-p":"Send one email. In our reply you'll get the plan, the price and the launch date.",
+"dock-eyebrow":"Prefer to write?",
+"dock-h2":"Send us<br><em>an email instead</em>.",
+"dock-p":"Tell us what you want to build. In our reply you'll get the plan, the price and the launch date.",
 "form-name-label":"Your name",
 "form-name-ph":"Your name",
 "form-email-label":"Email",
 "form-project-label":"What do you want to build?",
 "form-project-ph":"A few sentences about your app, website or business",
 "form-submit":"Send it →",
-"form-note":"Prefer email? <a href=\"mailto:hello@northboundsoftwarestudio.com\">hello@northboundsoftwarestudio.com</a> <span class=\"form-note-sep\">·</span> Rather talk it through? <a href=\"https://cal.com/northboundsoftwarestudio/scope-call\" target=\"_blank\" rel=\"noopener\">Book a 20-minute scope call</a>",
+"form-note":"Or write to us directly: <a href=\"mailto:hello@northboundsoftwarestudio.com\">hello@northboundsoftwarestudio.com</a>",
 "foot-tagline":"Software studio for founders and small businesses",
 "foot-owned":"Woman-Owned Business",
 "foot-nav-label":"Navigate",
@@ -3828,7 +3957,7 @@ en:{
 "foot-nav-manifesto":"Manifesto",
 "foot-nav-writing":"Writing",
 "foot-hello-label":"Say hello",
-"foot-hello-quote":"Get a quote",
+"foot-hello-quote":"Book a call",
 "foot-legal-label":"Legal",
 "foot-privacy":"Privacy Policy",
 "foot-terms":"Terms of Use",
@@ -4015,7 +4144,7 @@ en:{
 "form-sending":"Sending…",
 "form-success":"Got it. We'll reply within one business day.",
 "form-error":"Something went wrong. Email us at hello@northboundsoftwarestudio.com",
-"sticky-cta":"Tell us your idea →",
+"sticky-cta":"Book a free call →",
 "faq-f-label":"Show questions about",
 "faq-f-all":"Everything",
 "faq-f-start":"Getting started",
@@ -4048,7 +4177,51 @@ en:{
 "cs3-n1":"prices made up by the AI. Code does all the math.",
 "cs3-n2":"trades supported, from roofing to paving",
 "cs3-n3":"the most the top of a price range can be over the bottom, enforced by a test",
-"cs3-means":"AI where it helps, plain code where it has to be exact. That is how we add AI to your product."
+"cs3-means":"AI where it helps, plain code where it has to be exact. That is how we add AI to your product.",
+"hero-cta-book":"Book a free call →",
+"book-eyebrow":"Free · 20 minutes · No obligation",
+"book-h2":"Book a call.<br><em>Tell us your idea.</em>",
+"book-p":"Pick a time that works for you and talk it through with the founder, in plain words. You don't need anything prepared.",
+"book-s1-h":"Pick a time",
+"book-s1-p":"Any open time in the calendar. It's booked right away.",
+"book-s2-h":"Tell us your idea",
+"book-s2-p":"Twenty minutes on a video call, in your own words. No slides needed.",
+"book-s3-h":"Get a plan",
+"book-s3-p":"Within one business day: what we would build, the price and the date.",
+"book-founder-role":"Founder, Northbound",
+"book-noscript":"Open the booking calendar ↗",
+"bk-step1":"Day",
+"bk-step2":"Time",
+"bk-step3":"Details",
+"bk-prev":"Previous month",
+"bk-next":"Next month",
+"bk-loading":"Finding open times…",
+"bk-pick-day":"Pick a day with a dot to see open times.",
+"bk-none-day":"No open times this day.",
+"bk-none-month":"Nothing open this month. Try the next one →",
+"bk-tz":"Times shown in",
+"bk-mins":"20 min",
+"bk-video":"Video call",
+"bk-back":"← Change time",
+"bk-name":"Your name",
+"bk-email":"Email",
+"bk-notes":"What do you want to build? (optional)",
+"bk-notes-ph":"A sentence or two is plenty.",
+"bk-note-pkg":"I'd like to talk about {pkg}. ",
+"bk-confirm":"Confirm booking →",
+"bk-booking":"Booking…",
+"bk-done-h":"You're booked!",
+"bk-done-p":"A calendar invite with the video link is on its way to {email}.",
+"bk-again":"Book another time",
+"bk-err-taken":"Someone just took that time. Please pick another one.",
+"bk-err-down":"The calendar isn't answering right now.",
+"bk-err-fields":"Please add your name and a valid email.",
+"bk-err-rate":"Too many bookings from this connection. Email hello@northboundsoftwarestudio.com instead.",
+"bk-fallback":"Open the calendar on Cal.com ↗",
+"bk-close":"Close",
+"bk-dialog-title":"Book a free 20-minute call",
+"ns-label":"Next open call times",
+"ns-all":"See all times →"
 },
 fr:{
 "nav-process":"Comment ça marche",
@@ -4056,8 +4229,8 @@ fr:{
 "nav-packages":"Forfaits",
 "nav-faq":"FAQ",
 "nav-writing":"Blogue",
-"nav-cta":"Écrivez-nous",
-"nav-cta-mobile":"Écrivez-nous →",
+"nav-cta":"Réserver un appel",
+"nav-cta-mobile":"Réserver un appel →",
 "nav-burger-aria":"Ouvrir le menu",
 "hero-eyebrow":"Studio de logiciels · Toronto 🍁",
 "hero-pill-woman":"Entreprise féminine",
@@ -4080,7 +4253,7 @@ fr:{
 "tc-btn":"Ouvrir Typecase ↗",
 "hero-cta-1":"Voir les forfaits →",
 "hero-cta-2":"Parlez-nous de votre idée →",
-"term-bar-left":"agent · boucle de build",
+"term-bar-left":"Exemple de projet · notre méthode",
 "term-bar-live":"En direct",
 "term-foot":"Notre méthode : l'IA écrit le premier jet, une personne vérifie chaque étape, puis on livre.",
 "stat-l-1":"Jours pour lancer un site",
@@ -4259,16 +4432,16 @@ fr:{
 "faq-a8":"Parce que nous pensons que ça rendrait votre visite moins agréable. Les robots sur les sites donnent souvent des réponses génériques et donnent l'impression d'être ignoré. Nous utilisons l'IA là où elle aide vraiment : créer plus vite, écrire un meilleur code et faire des plans plus clairs. Pour parler de votre projet, un vrai courriel d'une vraie personne fonctionne mieux. C'est pour ça que cette page vous invite à nous écrire.",
 "faq-q9":"Où êtes-vous situés ? Travaillez-vous hors de Toronto ?",
 "faq-a9":"Nous sommes à Toronto et travaillons avec des clients partout. Tout peut se faire à distance : la planification, les démos hebdomadaires et la remise.",
-"dock-eyebrow":"Nouveaux projets acceptés ce mois-ci",
-"dock-h2":"Dites-nous ce que<br><em>vous voulez créer</em>.",
-"dock-p":"Envoyez un seul courriel. Dans notre réponse, vous aurez le plan, le prix et la date de lancement.",
+"dock-eyebrow":"Vous préférez écrire ?",
+"dock-h2":"Envoyez-nous<br><em>plutôt un courriel</em>.",
+"dock-p":"Dites-nous ce que vous voulez créer. Dans notre réponse, vous aurez le plan, le prix et la date de lancement.",
 "form-name-label":"Votre nom",
 "form-name-ph":"Votre nom",
 "form-email-label":"Courriel",
 "form-project-label":"Que voulez-vous créer ?",
 "form-project-ph":"Quelques phrases sur votre appli, votre site ou votre entreprise",
 "form-submit":"Envoyer →",
-"form-note":"Préférez-vous le courriel ? <a href=\"mailto:hello@northboundsoftwarestudio.com\">hello@northboundsoftwarestudio.com</a> <span class=\"form-note-sep\">·</span> Vous préférez en parler ? <a href=\"https://cal.com/northboundsoftwarestudio/scope-call\" target=\"_blank\" rel=\"noopener\">Réservez un appel de cadrage de 20 minutes</a>",
+"form-note":"Ou écrivez-nous directement : <a href=\"mailto:hello@northboundsoftwarestudio.com\">hello@northboundsoftwarestudio.com</a>",
 "foot-tagline":"Studio de logiciels pour fondateurs et petites entreprises",
 "foot-owned":"Entreprise féminine",
 "foot-nav-label":"Navigation",
@@ -4277,7 +4450,7 @@ fr:{
 "foot-nav-manifesto":"Manifeste",
 "foot-nav-writing":"Blogue",
 "foot-hello-label":"Nous contacter",
-"foot-hello-quote":"Obtenir une soumission",
+"foot-hello-quote":"Réserver un appel",
 "foot-legal-label":"Légal",
 "foot-privacy":"Politique de confidentialité",
 "foot-terms":"Conditions d'utilisation",
@@ -4464,7 +4637,7 @@ fr:{
 "form-sending":"Envoi…",
 "form-success":"Bien reçu. Nous répondons en un jour ouvrable.",
 "form-error":"Un problème est survenu. Écrivez-nous à hello@northboundsoftwarestudio.com",
-"sticky-cta":"Parlez-nous de votre idée →",
+"sticky-cta":"Réserver un appel gratuit →",
 "faq-f-label":"Afficher les questions sur",
 "faq-f-all":"Tout",
 "faq-f-start":"Pour commencer",
@@ -4497,7 +4670,51 @@ fr:{
 "cs3-n1":"prix inventé par l'IA. Le code fait tous les calculs.",
 "cs3-n2":"métiers pris en charge, de la toiture au pavage",
 "cs3-n3":"l'écart maximal entre le haut et le bas d'une fourchette, garanti par un test",
-"cs3-means":"L'IA là où elle aide, du code simple là où il faut être exact. C'est ainsi que nous ajoutons l'IA à votre produit."
+"cs3-means":"L'IA là où elle aide, du code simple là où il faut être exact. C'est ainsi que nous ajoutons l'IA à votre produit.",
+"hero-cta-book":"Réserver un appel gratuit →",
+"book-eyebrow":"Gratuit · 20 minutes · Sans engagement",
+"book-h2":"Réservez un appel.<br><em>Parlez-nous de votre idée.</em>",
+"book-p":"Choisissez un moment qui vous convient et parlez-en avec la fondatrice, simplement. Pas besoin de préparer quoi que ce soit.",
+"book-s1-h":"Choisissez un moment",
+"book-s1-p":"N'importe quelle plage libre du calendrier. C'est réservé tout de suite.",
+"book-s2-h":"Parlez-nous de votre idée",
+"book-s2-p":"Vingt minutes en appel vidéo, dans vos mots. Pas besoin de diapositives.",
+"book-s3-h":"Recevez un plan",
+"book-s3-p":"En un jour ouvrable : ce que nous créerions, le prix et la date.",
+"book-founder-role":"Fondatrice, Northbound",
+"book-noscript":"Ouvrir le calendrier de réservation ↗",
+"bk-step1":"Jour",
+"bk-step2":"Heure",
+"bk-step3":"Coordonnées",
+"bk-prev":"Mois précédent",
+"bk-next":"Mois suivant",
+"bk-loading":"Recherche des plages libres…",
+"bk-pick-day":"Choisissez un jour marqué d'un point pour voir les heures libres.",
+"bk-none-day":"Aucune plage libre ce jour-là.",
+"bk-none-month":"Rien de libre ce mois-ci. Essayez le suivant →",
+"bk-tz":"Heures affichées en",
+"bk-mins":"20 min",
+"bk-video":"Appel vidéo",
+"bk-back":"← Changer l'heure",
+"bk-name":"Votre nom",
+"bk-email":"Courriel",
+"bk-notes":"Que voulez-vous créer ? (optionnel)",
+"bk-notes-ph":"Une phrase ou deux, c'est parfait.",
+"bk-note-pkg":"J'aimerais parler du forfait {pkg}. ",
+"bk-confirm":"Confirmer la réservation →",
+"bk-booking":"Réservation…",
+"bk-done-h":"C'est réservé !",
+"bk-done-p":"Une invitation avec le lien vidéo est en route vers {email}.",
+"bk-again":"Réserver un autre moment",
+"bk-err-taken":"Quelqu'un vient de prendre cette plage. Choisissez-en une autre.",
+"bk-err-down":"Le calendrier ne répond pas pour le moment.",
+"bk-err-fields":"Ajoutez votre nom et un courriel valide.",
+"bk-err-rate":"Trop de réservations depuis cette connexion. Écrivez plutôt à hello@northboundsoftwarestudio.com.",
+"bk-fallback":"Ouvrir le calendrier sur Cal.com ↗",
+"bk-close":"Fermer",
+"bk-dialog-title":"Réservez un appel gratuit de 20 minutes",
+"ns-label":"Prochains appels disponibles",
+"ns-all":"Voir toutes les heures →"
 }
 };
 
@@ -4731,24 +4948,12 @@ document.querySelectorAll('.lang-opt').forEach(function(btn){
     Object.keys(links).forEach(function(id){ var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
-  /* Package buttons carry their topic into the contact form. */
-  var form = document.getElementById('contact-form');
-  var msg = form && form.querySelector('[name="message"]');
-  document.querySelectorAll('a[href="#contact"][data-topic]').forEach(function(a){
-    a.addEventListener('click', function(){
-      if (!form) return;
-      var r = form.querySelector('[name="topic"][value="' + a.dataset.topic + '"]');
-      if (r) r.checked = true;
-      var pre = nbT('form-prefill', "I'm interested in {pkg}. ").replace('{pkg}', a.dataset.pkg);
-      if (msg && (!msg.value.trim() || msg.dataset.prefilled === msg.value)) { msg.value = pre; msg.dataset.prefilled = pre; }
-      setTimeout(function(){ var n = form.querySelector('[name="name"]'); if (n) n.focus({ preventScroll: true }); }, reduce ? 0 : 650);
-    });
-  });
+  /* Package buttons open the booking calendar: see NBBooking below. */
 
   /* Sticky call to action on phones: after the hero, until the contact form. */
   var sticky = document.querySelector('.sticky-cta');
   var hero = document.querySelector('.hero');
-  var dock = document.getElementById('contact');
+  var dock = document.getElementById('book');
   if (sticky && hero && dock && 'IntersectionObserver' in window) {
     var pastHero = false, atDock = false;
     var sync = function(){
@@ -4826,6 +5031,285 @@ document.querySelectorAll('.lang-opt').forEach(function(btn){
     });
   }, { threshold: 0.25 });
   cards.forEach(function(c){ io.observe(c); });
+})();
+</script>
+<script>
+/* ===== NBBooking: our own booking calendar =====
+   One component, mounted inline in #book and inside a <dialog> for every
+   Book / package button. Open times come from /api/slots, bookings go to
+   /api/book (both proxy Cal.com). Strings come from the EN/FR dictionary. */
+(function(){
+  var FALLBACK = 'https://cal.com/northboundsoftwarestudio/scope-call';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cache = {};   // tz -> Promise<{days}>
+  function lang(){ return document.documentElement.lang === 'fr' ? 'fr' : 'en'; }
+  function t(k){ var l = lang(); return (window.NB_T && NB_T[l] && NB_T[l][k]) || (window.NB_T && NB_T.en[k]) || k; }
+  function loc(){ return lang() === 'fr' ? 'fr-CA' : 'en-CA'; }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function ymd(d){ return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function h(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  var localTz = (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'America/Toronto';
+
+  function fetchSlots(tz){
+    if (cache[tz]) return cache[tz];
+    var s = new Date(), e = new Date(); e.setDate(e.getDate() + 60);
+    cache[tz] = fetch('/api/slots?' + new URLSearchParams({ start: ymd(s), end: ymd(e), tz: tz }))
+      .then(function(r){ return r.json(); })
+      .then(function(j){ if (!j.ok) throw new Error('down'); return j.days; })
+      .catch(function(err){ delete cache[tz]; throw err; });
+    return cache[tz];
+  }
+  // A time string like 2026-10-01T09:00:00.000-04:00 is already in tz; show it as such.
+  function fmtTime(iso, tz){ return new Date(iso).toLocaleTimeString(loc(), { hour: 'numeric', minute: '2-digit', timeZone: tz }); }
+  function fmtDay(key, opts){ var p = key.split('-'); return new Date(+p[0], p[1] - 1, +p[2]).toLocaleDateString(loc(), opts); }
+
+  function Booking(root, opts){
+    opts = opts || {};
+    var st = { tz: localTz, days: null, month: null, day: null, time: null, pkg: opts.pkg || '', step: 1, openedAt: Date.now(), busy: false, email: '' };
+    root.classList.add('bk');
+    root.innerHTML = '';
+
+    var steps = h('ol', 'bk-steps');
+    ['bk-step1', 'bk-step2', 'bk-step3'].forEach(function(k, i){ var li = h('li'); li.dataset.k = k; li.innerHTML = '<b>' + (i + 1) + '</b><span></span>'; steps.appendChild(li); });
+    var meta = h('div', 'bk-meta');
+    var live = h('p', 'bk-live'); live.setAttribute('role', 'status'); live.setAttribute('aria-live', 'polite');
+    var body = h('div', 'bk-body');
+    var calCol = h('div', 'bk-cal'), side = h('div', 'bk-side');
+    body.appendChild(calCol); body.appendChild(side);
+    root.appendChild(steps); root.appendChild(meta); root.appendChild(body); root.appendChild(live);
+
+    function setStep(n){ st.step = n; root.dataset.step = n; [].forEach.call(steps.children, function(li, i){ li.classList.toggle('on', i + 1 <= n); li.querySelector('span').textContent = t(li.dataset.k); }); }
+    function say(msg){ live.textContent = msg || ''; }
+    var narrow = window.matchMedia('(max-width: 760px)');
+    function reveal(){ if (narrow.matches) setTimeout(function(){ side.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 40); }
+
+    function renderMeta(){
+      meta.innerHTML = '';
+      var chips = [['clock', t('bk-mins')], ['video', t('bk-video')]];
+      chips.forEach(function(c){ var s = h('span', 'bk-chip bk-' + c[0], c[1]); meta.appendChild(s); });
+      var tzWrap = h('label', 'bk-tz');
+      tzWrap.appendChild(h('span', null, t('bk-tz')));
+      var sel = h('select');
+      var zones = (Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : [localTz, 'America/Toronto', 'America/Vancouver', 'America/New_York', 'Europe/London', 'Europe/Paris']);
+      if (zones.indexOf(st.tz) < 0) zones = [st.tz].concat(zones);
+      zones.forEach(function(z){ var o = h('option', null, z.replace(/_/g, ' ')); o.value = z; if (z === st.tz) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener('change', function(){ st.tz = sel.value; st.time = null; load(); });
+      tzWrap.appendChild(sel); meta.appendChild(tzWrap);
+    }
+
+    function load(){
+      root.classList.add('bk-loading'); root.classList.remove('bk-down');
+      renderCal(); side.innerHTML = ''; side.appendChild(h('p', 'bk-hint', t('bk-loading')));
+      fetchSlots(st.tz).then(function(days){
+        st.days = days; root.classList.remove('bk-loading');
+        var keys = Object.keys(days).filter(function(k){ return days[k].length; }).sort();
+        if (!st.day || !days[st.day] || !days[st.day].length) st.day = keys[0] || null;   // next open day, preselected
+        if (!st.month) { var d = st.day ? st.day.split('-') : [new Date().getFullYear(), new Date().getMonth() + 1]; st.month = [+d[0], +d[1] - 1]; }
+        if (st.pending) { var iso = st.pending; st.pending = null; st.day = iso.slice(0, 10); st.time = iso; var pp = st.day.split('-'); st.month = [+pp[0], +pp[1] - 1]; renderCal(); renderForm(); setStep(3); return; }
+        renderCal(); renderTimes(); setStep(st.day ? 2 : 1);
+      }).catch(function(){ root.classList.remove('bk-loading'); down(); });
+    }
+
+    function down(){
+      root.classList.add('bk-down'); side.innerHTML = '';
+      side.appendChild(h('p', 'bk-err', t('bk-err-down')));
+      var a = h('a', 'btn bk-fallback', t('bk-fallback')); a.href = FALLBACK; a.target = '_blank'; a.rel = 'noopener'; side.appendChild(a);
+    }
+
+    function renderCal(){
+      calCol.innerHTML = '';
+      var now = new Date(), m = st.month || [now.getFullYear(), now.getMonth()];
+      var head = h('div', 'bk-cal-head');
+      var prev = h('button', 'bk-nav', '‹'), next = h('button', 'bk-nav', '›');
+      prev.type = next.type = 'button'; prev.setAttribute('aria-label', t('bk-prev')); next.setAttribute('aria-label', t('bk-next'));
+      var first = new Date(m[0], m[1], 1);
+      prev.disabled = m[0] === now.getFullYear() && m[1] === now.getMonth();
+      var limit = new Date(); limit.setDate(limit.getDate() + 60);
+      next.disabled = new Date(m[0], m[1] + 1, 1) > limit;
+      prev.addEventListener('click', function(){ st.month = [m[1] === 0 ? m[0] - 1 : m[0], (m[1] + 11) % 12]; renderCal(); });
+      next.addEventListener('click', function(){ st.month = [m[1] === 11 ? m[0] + 1 : m[0], (m[1] + 1) % 12]; renderCal(); });
+      var title = h('h3', 'bk-month', first.toLocaleDateString(loc(), { month: 'long', year: 'numeric' }));
+      head.appendChild(title); head.appendChild(prev); head.appendChild(next); calCol.appendChild(head);
+
+      var grid = h('div', 'bk-grid'); grid.setAttribute('role', 'group'); grid.setAttribute('aria-label', title.textContent);
+      var mondayFirst = lang() === 'fr';
+      for (var i = 0; i < 7; i++) { var wd = new Date(2024, 0, (mondayFirst ? 1 : 7) + i); grid.appendChild(h('span', 'bk-wd', wd.toLocaleDateString(loc(), { weekday: 'narrow' }))); }
+      var offset = (first.getDay() + (mondayFirst ? 6 : 0)) % 7;
+      for (var j = 0; j < offset; j++) grid.appendChild(h('span', 'bk-pad'));
+      var dim = new Date(m[0], m[1] + 1, 0).getDate(), today = ymd(now), anyOpen = false;
+      for (var d = 1; d <= dim; d++) {
+        var key = m[0] + '-' + pad(m[1] + 1) + '-' + pad(d);
+        var open = !!(st.days && st.days[key] && st.days[key].length);
+        anyOpen = anyOpen || open;
+        var b = h('button', 'bk-day', String(d)); b.type = 'button'; b.dataset.key = key;
+        b.setAttribute('aria-label', fmtDay(key, { weekday: 'long', month: 'long', day: 'numeric' }));
+        if (key === today) b.classList.add('today');
+        if (open) b.classList.add('open'); else b.disabled = true;
+        if (key === st.day) { b.classList.add('sel'); b.setAttribute('aria-pressed', 'true'); }
+        b.addEventListener('click', function(e){ st.day = e.currentTarget.dataset.key; st.time = null; renderCal(); renderTimes(); setStep(2); reveal(); });
+        grid.appendChild(b);
+      }
+      calCol.appendChild(grid);
+      if (st.days && !anyOpen && !next.disabled) {
+        var more = h('button', 'bk-more', t('bk-none-month')); more.type = 'button';
+        more.addEventListener('click', function(){ next.click(); }); calCol.appendChild(more);
+      }
+    }
+
+    function renderTimes(){
+      side.innerHTML = '';
+      if (!st.day) { side.appendChild(h('p', 'bk-hint', t('bk-pick-day'))); return; }
+      side.appendChild(h('h4', 'bk-dayname', fmtDay(st.day, { weekday: 'long', month: 'long', day: 'numeric' })));
+      var list = (st.days && st.days[st.day]) || [];
+      if (!list.length) { side.appendChild(h('p', 'bk-hint', t('bk-none-day'))); return; }
+      var wrap = h('div', 'bk-times');
+      list.forEach(function(iso, i){
+        var b = h('button', 'bk-time', fmtTime(iso, st.tz)); b.type = 'button';
+        if (!reduce) b.style.animationDelay = Math.min(i * 30, 450) + 'ms';
+        b.addEventListener('click', function(){ st.time = iso; renderForm(); setStep(3); reveal(); });
+        wrap.appendChild(b);
+      });
+      side.appendChild(wrap);
+    }
+
+    function summary(){
+      return fmtDay(st.day, { weekday: 'short', month: 'short', day: 'numeric' }) + ' · ' + fmtTime(st.time, st.tz);
+    }
+
+    function renderForm(msg){
+      side.innerHTML = '';
+      var back = h('button', 'bk-back', t('bk-back')); back.type = 'button';
+      back.addEventListener('click', function(){ st.time = null; renderTimes(); setStep(2); });
+      side.appendChild(back);
+      side.appendChild(h('p', 'bk-pick', summary()));
+      var f = h('form', 'bk-form'); f.noValidate = true;
+      function field(k, type, name, auto){ var l = h('label', 'bk-field'); l.appendChild(h('span', null, t(k))); var i = h(type === 'textarea' ? 'textarea' : 'input'); if (type !== 'textarea') i.type = type; i.name = name; if (auto) i.autocomplete = auto; l.appendChild(i); f.appendChild(l); return i; }
+      var nameI = field('bk-name', 'text', 'name', 'name');
+      var mailI = field('bk-email', 'email', 'email', 'email');
+      var notesI = field('bk-notes', 'textarea', 'notes');
+      notesI.placeholder = t('bk-notes-ph');
+      if (st.pkg && !notesI.value) notesI.value = t('bk-note-pkg').replace('{pkg}', st.pkg);
+      var hp = h('input'); hp.name = 'company_website'; hp.tabIndex = -1; hp.autocomplete = 'off'; hp.className = 'bk-hp'; hp.setAttribute('aria-hidden', 'true'); f.appendChild(hp);
+      var err = h('p', 'bk-err'); err.setAttribute('role', 'alert'); if (msg) err.textContent = msg; f.appendChild(err);
+      var go = h('button', 'btn btn-primary bk-go', t('bk-confirm')); go.type = 'submit'; f.appendChild(go);
+      f.addEventListener('submit', function(e){
+        e.preventDefault(); if (st.busy) return;
+        var name = nameI.value.trim(), email = mailI.value.trim();
+        if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = t('bk-err-fields'); (name ? mailI : nameI).focus(); return; }
+        st.busy = true; go.disabled = true; go.textContent = t('bk-booking'); err.textContent = '';
+        fetch('/api/book', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+          start: st.time, name: name, email: email, notes: notesI.value.trim(), tz: st.tz, lang: lang(), pkg: st.pkg,
+          company_website: hp.value, elapsed: Date.now() - st.openedAt }) })
+          .then(function(r){ return r.json().then(function(j){ return { status: r.status, j: j }; }); })
+          .then(function(res){
+            st.busy = false;
+            if (res.j.ok) { st.email = email; done(); if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'booking', event_label: st.pkg || 'call' }); return; }
+            if (res.j.error === 'taken') { delete cache[st.tz]; st.time = null; say(t('bk-err-taken')); load(); setTimeout(function(){ side.insertBefore(h('p', 'bk-err', t('bk-err-taken')), side.firstChild); }, 50); return; }
+            go.disabled = false; go.textContent = t('bk-confirm');
+            err.textContent = res.j.error === 'rate' ? t('bk-err-rate') : res.j.error === 'email' ? t('bk-err-fields') : t('bk-err-down');
+          })
+          .catch(function(){ st.busy = false; go.disabled = false; go.textContent = t('bk-confirm'); err.textContent = t('bk-err-down'); });
+      });
+      side.appendChild(f);
+      setTimeout(function(){ nameI.focus({ preventScroll: true }); }, 30);
+    }
+
+    function done(){
+      delete cache[st.tz];
+      root.classList.add('bk-done');
+      side.innerHTML = '';
+      var ok = h('div', 'bk-ok');
+      ok.innerHTML = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28"/><path d="M19 33l9 9 17-19"/></svg>';
+      side.appendChild(ok);
+      side.appendChild(h('h4', 'bk-done-h', t('bk-done-h')));
+      side.appendChild(h('p', 'bk-pick', summary()));
+      side.appendChild(h('p', 'bk-done-p', t('bk-done-p').replace('{email}', st.email)));
+      var again = h('button', 'bk-back', t('bk-again')); again.type = 'button';
+      again.addEventListener('click', function(){ root.classList.remove('bk-done'); st.time = null; load(); });
+      side.appendChild(again);
+      say(t('bk-done-h') + ' ' + summary());
+      reveal();
+    }
+
+    function relabel(){ renderMeta(); setStep(st.step); renderCal(); if (st.step === 3 && st.time && !root.classList.contains('bk-done')) renderForm(); else if (!root.classList.contains('bk-done') && st.days) renderTimes(); }
+    document.addEventListener('nb:lang', relabel);
+    renderMeta(); setStep(1); load();
+    function pick(iso){
+      st.day = iso.slice(0, 10); st.time = iso;
+      var p = st.day.split('-'); st.month = [+p[0], +p[1] - 1];
+      if (st.days) { root.classList.remove('bk-done'); renderCal(); renderForm(); setStep(3); }
+      else st.pending = iso;
+    }
+    return { setPkg: function(p){ st.pkg = p || ''; if (st.step === 3 && st.time) renderForm(); }, pick: pick };
+  }
+
+  /* inline instance: mounted when the section comes near the screen */
+  var inlineEl = document.querySelector('[data-bk-inline]');
+  if (inlineEl) {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(e){ if (e[0].isIntersecting) { Booking(inlineEl); io.disconnect(); } }, { rootMargin: '600px 0px' });
+      io.observe(inlineEl);
+    } else Booking(inlineEl);
+  }
+
+  /* dialog instance: every Book / package button */
+  var dlg = null, dlgBooking = null;
+  function openDialog(pkg, iso){
+    if (!dlg) {
+      dlg = h('dialog', 'bk-dialog'); dlg.setAttribute('aria-labelledby', 'bk-dlg-title');
+      var head = h('div', 'bk-dlg-head');
+      var title = h('h2', null, t('bk-dialog-title')); title.id = 'bk-dlg-title'; title.dataset.i18n = 'bk-dialog-title';
+      var x = h('button', 'bk-x', '×'); x.type = 'button'; x.setAttribute('aria-label', t('bk-close'));
+      x.addEventListener('click', function(){ dlg.close(); });
+      head.appendChild(title); head.appendChild(x); dlg.appendChild(head);
+      var inner = h('div'); dlg.appendChild(inner);
+      dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });   // click on the backdrop
+      document.body.appendChild(dlg);
+      dlgBooking = Booking(inner, { pkg: pkg });
+      if (iso) dlgBooking.pick(iso);
+    } else dlgBooking.setPkg(pkg);
+    if (iso) dlgBooking.pick(iso);
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else { location.hash = '#book'; return; }
+    document.documentElement.classList.add('bk-lock');
+    dlg.addEventListener('close', function(){ document.documentElement.classList.remove('bk-lock'); }, { once: true });
+  }
+  /* Hero card: the next three open times, each one books in a tap. */
+  var ns = document.querySelector('[data-next-slots]');
+  function fillNext(){
+    if (!ns) return;
+    fetchSlots(localTz).then(function(days){
+      var all = [];
+      Object.keys(days).sort().forEach(function(k){ all = all.concat(days[k]); });
+      all = all.filter(function(iso){ return Date.parse(iso) > Date.now() + 30 * 60e3; }).slice(0, 3);
+      var list = ns.querySelector('.ns-list'); list.innerHTML = '';
+      if (!all.length) { ns.hidden = true; return; }
+      all.forEach(function(iso){
+        var b = h('button', 'ns-slot'); b.type = 'button';
+        var key = iso.slice(0, 10);
+        b.appendChild(h('span', 'ns-day', fmtDay(key, { weekday: 'short', month: 'short', day: 'numeric' })));
+        b.appendChild(h('span', 'ns-time', fmtTime(iso, localTz)));
+        b.addEventListener('click', function(){ if (window.HTMLDialogElement) openDialog('', iso); else location.hash = '#book'; });
+        list.appendChild(b);
+      });
+      ns.hidden = false;
+    }).catch(function(){ ns.hidden = true; });
+  }
+  if (ns) {
+    var idle = window.requestIdleCallback || function(f){ return setTimeout(f, 1200); };
+    idle(fillNext);
+    document.addEventListener('nb:lang', fillNext);
+  }
+
+  document.querySelectorAll('a[data-book]').forEach(function(a){
+    a.addEventListener('pointerenter', function(){ fetchSlots(localTz).catch(function(){}); }, { passive: true });   // warm the cache
+    a.addEventListener('click', function(e){
+      if (!window.HTMLDialogElement) return;   // old browsers: follow the link to #book
+      e.preventDefault();
+      var nav = document.getElementById('mobile-nav');
+      if (nav && nav.classList.contains('open')) { var burger = document.getElementById('nav-burger'); if (burger) burger.click(); }
+      openDialog(a.dataset.pkg || '');
+    });
+  });
 })();
 </script>
 </body>
