@@ -31,8 +31,9 @@ Static HTML/CSS with one serverless function, deployed on Vercel.
 
 Northbound is an AI-native product studio: web, mobile, and AI-enabled products
 with fixed scope, a fixed price, and a committed date. Read **[PLAN.md](PLAN.md)**
-before changing positioning, copy, or the funnel. It records what changed on
-2026-08-28 and why.
+before changing positioning, copy, or the funnel, and **[OFFERINGS.md](OFFERINGS.md)**
+before adding or removing a package. Between them they record what changed on
+2026-08-28 and 2026-08-29, and why.
 
 ---
 
@@ -76,16 +77,18 @@ English, once in the `var T = {en:{…}, fr:{…}}` dictionary near the bottom o
 `index.html`. Change one and the other silently wins on language toggle. Several
 strings appear a **third** time inside the JSON-LD `FAQPage` block in `<head>`.
 
-After any copy edit, check all three:
+After any copy edit, run the checker:
 
 ```bash
-node -e "const h=require('fs').readFileSync('index.html','utf8');
-JSON.parse(h.match(/<script type=\"application\/ld\+json\">([\s\S]*?)<\/script>/)[1]);
-console.log('JSON-LD ok')"
-
-grep -nE '\$[0-9]' index.html      # prices: only the $0 "surprise invoices" stat may match
-grep -c 'cal\.com' index.html      # must be 3: the secondary scope-call link + its EN/FR strings
+node _dev/check-copy.js index.html
 ```
+
+It parses every JSON-LD block, evaluates the `T` dictionary, asserts EN/FR key
+parity, confirms every `data-i18n` key in the markup resolves, and enforces the
+two rules above: no price figures (the $0 stat and the sourced Job Bank wage
+comparison are allowed), and `cal.com` exactly 3 times (the secondary scope-call
+link and its EN/FR strings). Exit code is non-zero on failure. `_dev/` is
+excluded by `.vercelignore`, so it never ships.
 
 The file is **CRLF**. Scripted edits must normalise line endings or multi-line
 matches will silently fail.

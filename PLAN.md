@@ -2,6 +2,11 @@
 
 Status: working plan, 2026-08-28. Supersedes nothing. This is the first one.
 
+Updated 2026-08-29: see **[OFFERINGS.md](OFFERINGS.md)** for the Indai evaluation
+and the packages it added (Salvage and Moorage, live since 2026-09-30). Nothing in
+this plan is superseded: section 1 (case studies) is still the highest-leverage
+item and is still blocked on measured data.
+
 The trigger was evaluating **Panorama** (SF, a16z speedrun-backed applied-AI
 consultancy) as a competitor. Read that as the benchmark throughout: they sell
 into the same "we need AI shipped properly" budget, and their site does two
