@@ -123,6 +123,20 @@
           "description": "Monthly social media management: content writing, branded graphics, scheduling, and posting. Cancel anytime.",
           "availability": "https://schema.org/InStock",
           "url": "https://northboundsoftwarestudio.com/#packages"
+        },
+        {
+          "@type": "Offer",
+          "name": "Salvage",
+          "description": "A fixed-price, 5-day rescue of software you inherited: a written map of the system, a safe way to make changes, a security and access check, and advice on whether to fix or replace it, with a price for each option.",
+          "availability": "https://schema.org/InStock",
+          "url": "https://northboundsoftwarestudio.com/#salvage"
+        },
+        {
+          "@type": "Offer",
+          "name": "Moorage: Care Plan",
+          "description": "Optional monthly care for software we built: tested security updates, uptime and speed monitoring, time for small changes each month, and backups tested by restoring them. Cancel any month.",
+          "availability": "https://schema.org/InStock",
+          "url": "https://northboundsoftwarestudio.com/#moorage"
         }
       ]
     }
@@ -152,7 +166,7 @@
         "name": "How long does it take?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It depends on the package. A website (Spark) takes 3 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Pulse is a monthly plan with no end date. These are promised dates, not guesses. If we are late, you pay less."
+          "text": "It depends on the package. A website (Spark) takes 3 days. Fixing software you inherited (Salvage) takes 5 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Moorage and Pulse are monthly plans with no end date. These are promised dates, not guesses. If we are late, you pay less."
         }
       },
       {
@@ -233,6 +247,22 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Then we tell you on day 10. You only pay for the first 10 days, and you keep the notes and measurements. We only build when the numbers show it will pay for itself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "We have software nobody understands. Can you help?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, that's Salvage (5 days). You get a written map of how your software works, a safe way to make changes, a check of security risks, and our advice on whether to fix it or replace it, with a price for each option. You don't have to hire us for the next step."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Moorage? Do I have to buy it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Moorage is an optional monthly care plan for software we built for you. We keep it updated and secure, check that it stays up and fast, test your backups, and make small changes each month. You own the code either way, and you can cancel any month."
         }
       }
     ]
@@ -2397,7 +2427,7 @@ footer{
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title" data-i18n="packages-title">Our packages</h2>
-      <p class="sec-note" data-i18n="packages-note">Four ways to work with us. Each has a set scope and a set timeline. Pick one, send us a note, and we plan it with you on day one.</p>
+      <p class="sec-note" data-i18n="packages-note">Five packages, one add-on and two monthly plans. Each package has a set scope and a set timeline. Pick one, send us a note, and we plan it with you on day one.</p>
     </div>
     <div class="manifest">
       <article class="card">
@@ -2614,6 +2644,85 @@ footer{
     @media(max-width:760px){.discovery-inner{grid-template-columns:1fr;}.discovery-left{border-right:none;border-bottom:var(--line);}}
     </style>
 
+    <!-- Salvage: shares the full-width strip layout with Discovery above -->
+    <article class="card discovery-strip" id="salvage">
+      <div class="card-top"><span>WAYBILL № NB-007</span><span>5 DAYS</span></div>
+      <div class="discovery-inner">
+        <div class="discovery-left">
+          <div class="card-main" style="padding-bottom:0">
+            <h3>Salvage</h3>
+            <div class="card-when" data-i18n="salv-when">Fix software you inherited · 5 days</div>
+            <ul>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="salv-f1">Nobody knows how it works anymore</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="salv-f1-body">In five days you get a written map of the system: what runs where, what connects to what, what is no longer used, and what would break first as traffic grows.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="salv-f2">You're afraid to change anything</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="salv-f2-body">We set up a safe copy to work on and a reliable way to publish changes. If something blocks us, we tell you plainly what it is and what fixing it would cost.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="salv-f3">You don't know how exposed you are</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="salv-f3-body">We check for outdated parts, passwords saved where they shouldn't be, and who still has access to what.</div>
+              </li>
+              <li class="feat-item">
+                <button class="feat-toggle" aria-expanded="false"><span data-i18n="salv-f4">Fix it or replace it? You need to decide.</span><span class="feat-arrow" aria-hidden="true">+</span></button>
+                <div class="feat-body" hidden data-i18n="salv-f4-body">The report ends with our advice and a price for each option, so you decide on facts, not a feeling. If you want, we can then do the work through Build, Augment or Moorage.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="discovery-right">
+          <div class="card-for" style="margin:0 0 18px">
+            <span class="card-for-label" data-i18n="card-for-label">A good fit if you are</span>
+            <ul class="card-for-body">
+              <li data-i18n="salv-for-1">Your developer left and nothing is written down</li>
+              <li data-i18n="salv-for-2">You bought a business and its software came with it</li>
+              <li data-i18n="salv-for-3">Your team wants to rebuild everything and you can't tell if they're right</li>
+              <li data-i18n="salv-for-4">You want a second opinion before paying for a rebuild</li>
+            </ul>
+          </div>
+          <div class="card-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-fixed">Fixed price · agreed before we start</small></div>
+          <div class="barcode" aria-hidden="true"></div>
+          <a class="btn card-cta" href="#contact" style="margin:16px 22px 22px;display:block;text-align:center" data-i18n="salv-cta">Start Salvage →</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="sub-strip" id="moorage" style="margin-bottom:24px">
+      <div class="sub-inner">
+        <div class="sub-label">
+          <span class="sub-badge" data-i18n="moor-badge">Subscription</span>
+          <div class="sub-name">Moorage</div>
+          <div class="sub-tagline" data-i18n="moor-tagline">Care for software we built · monthly</div>
+        </div>
+        <div class="sub-features-col">
+          <ul class="sub-features">
+            <li data-i18n="moor-f1">Security updates, tested before they go live</li>
+            <li data-i18n="moor-f2">We watch that your site stays up and fast, so we spot problems first</li>
+            <li data-i18n="moor-f3">Time each month for small changes, no meeting needed</li>
+            <li data-i18n="moor-f4">Backups we actually test by restoring them</li>
+          </ul>
+        </div>
+        <div class="sub-examples-col">
+          <span class="sub-examples-label" data-i18n="card-for-label">A good fit if you are</span>
+          <ul class="sub-who">
+            <li data-i18n="moor-for-1">You launched with us and don't want to think about it again</li>
+            <li data-i18n="moor-for-2">You have one website, no developer, and no time to watch it</li>
+            <li data-i18n="moor-for-3">Your last developer left and nothing has been updated since</li>
+            <li data-i18n="moor-for-4">You want someone to call who already knows your software</li>
+          </ul>
+        </div>
+        <div class="sub-price-col">
+          <div>
+            <div class="sub-price"><span data-i18n="price-quote">By quote</span> <small data-i18n="price-cad-month">Monthly subscription</small></div>
+            <div class="sub-cancel" data-i18n="moor-cancel">Optional · cancel any month</div>
+          </div>
+          <a class="btn" href="#contact" data-i18n="moor-cta">Start Moorage →</a>
+        </div>
+      </div>
+    </div>
+
     <div class="sub-strip">
       <div class="sub-inner">
         <div class="sub-label">
@@ -2779,7 +2888,7 @@ footer{
       </div>
       <div class="faq-item">
         <dt class="faq-q" data-i18n="faq-q1">How long does it take?</dt>
-        <dd class="faq-a" data-i18n="faq-a1">It depends on the package. A website (Spark) takes 3 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Pulse is a monthly plan with no end date. These are promised dates, not guesses. If we are late, you pay less.</dd>
+        <dd class="faq-a" data-i18n="faq-a1">It depends on the package. A website (Spark) takes 3 days. Fixing software you inherited (Salvage) takes 5 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Moorage and Pulse are monthly plans with no end date. These are promised dates, not guesses. If we are late, you pay less.</dd>
       </div>
       <div class="faq-item">
         <dt class="faq-q" data-i18n="faq-q2">What is the Discovery Sprint? Do I need it?</dt>
@@ -2820,6 +2929,14 @@ footer{
       <div class="faq-item">
         <dt class="faq-q" data-i18n="faq-q11">What if automation isn't worth it for us?</dt>
         <dd class="faq-a" data-i18n="faq-a11">Then we tell you on day 10. You only pay for the first 10 days, and you keep the notes and measurements. We only build when the numbers show it will pay for itself.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q" data-i18n="faq-q14">We have software nobody understands. Can you help?</dt>
+        <dd class="faq-a" data-i18n="faq-a14">Yes, that's Salvage (5 days). You get a written map of how your software works, a safe way to make changes, a check of security risks, and our advice on whether to fix it or replace it, with a price for each option. You don't have to hire us for the next step.</dd>
+      </div>
+      <div class="faq-item">
+        <dt class="faq-q" data-i18n="faq-q15">What is Moorage? Do I have to buy it?</dt>
+        <dd class="faq-a" data-i18n="faq-a15">No. Moorage is an optional monthly care plan for software we built for you. We keep it updated and secure, check that it stays up and fast, test your backups, and make small changes each month. You own the code either way, and you can cancel any month.</dd>
       </div>
     </dl>
   </div>
@@ -3348,7 +3465,7 @@ en:{
 "step-3-h":"Live on the day we promised",
 "step-3-p":"You get the working product, all of the code, and a simple guide anyone can read. If we are late, you get a discount.",
 "packages-title":"Our packages",
-"packages-note":"Four ways to work with us. Each has a set scope and a set timeline. Pick one, send us a note, and we plan it with you on day one.",
+"packages-note":"Five packages, one add-on and two monthly plans. Each package has a set scope and a set timeline. Pick one, send us a note, and we plan it with you on day one.",
 "card-for-label":"A good fit if you are",
 "spark-when":"A website on your own web address · 3 days",
 "spark-f1":"A hand-coded website, not a page builder",
@@ -3488,7 +3605,7 @@ en:{
 "faq-title":"Common questions",
 "faq-note":"Answers to what people ask before they email us.",
 "faq-q1":"How long does it take?",
-"faq-a1":"It depends on the package. A website (Spark) takes 3 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Pulse is a monthly plan with no end date. These are promised dates, not guesses. If we are late, you pay less.",
+"faq-a1":"It depends on the package. A website (Spark) takes 3 days. Fixing software you inherited (Salvage) takes 5 days. A custom website (Launch) takes 7 days. Adding AI to your product (Augment) takes 14 days. A full app (Build) takes 30 days. Automate is done by day 60, with a go or stop decision on day 10. Moorage and Pulse are monthly plans with no end date. These are promised dates, not guesses. If we are late, you pay less.",
 "faq-q2":"What is the Discovery Sprint? Do I need it?",
 "faq-a2":"It's an add-on for any package. We look at your business the way an experienced product leader would: your competitors, your customers and where your product should go next. It adds 10 days of building, three calls (start, middle and end), and a written plan you keep. If you're not sure what to build next, or you want an outside opinion before we start, this is for you.",
 "faq-q3":"What does fixed price mean?",
@@ -3666,7 +3783,37 @@ en:{
 "faq-q12":"I have an app idea but no tech team. Can you help?",
 "faq-a12":"Yes. This is the most common reason people email us. You tell us what the app should do, in your own words. In the first two days we turn that into a written plan with a fixed price and a launch date. You don't need to know how to code, and you own everything we build.",
 "faq-q13":"Do you work with restaurants?",
-"faq-a13":"Yes. We build fast restaurant websites in 3 days, automate booking reminders and review replies, and run your social media with Pulse. We start by timing where your hours go, so we only build what will really save you time."
+"faq-a13":"Yes. We build fast restaurant websites in 3 days, automate booking reminders and review replies, and run your social media with Pulse. We start by timing where your hours go, so we only build what will really save you time.",
+"salv-when":"Fix software you inherited · 5 days",
+"salv-f1":"Nobody knows how it works anymore",
+"salv-f1-body":"In five days you get a written map of the system: what runs where, what connects to what, what is no longer used, and what would break first as traffic grows.",
+"salv-f2":"You're afraid to change anything",
+"salv-f2-body":"We set up a safe copy to work on and a reliable way to publish changes. If something blocks us, we tell you plainly what it is and what fixing it would cost.",
+"salv-f3":"You don't know how exposed you are",
+"salv-f3-body":"We check for outdated parts, passwords saved where they shouldn't be, and who still has access to what.",
+"salv-f4":"Fix it or replace it? You need to decide.",
+"salv-f4-body":"The report ends with our advice and a price for each option, so you decide on facts, not a feeling. If you want, we can then do the work through Build, Augment or Moorage.",
+"salv-for-1":"Your developer left and nothing is written down",
+"salv-for-2":"You bought a business and its software came with it",
+"salv-for-3":"Your team wants to rebuild everything and you can't tell if they're right",
+"salv-for-4":"You want a second opinion before paying for a rebuild",
+"salv-cta":"Start Salvage →",
+"moor-badge":"Subscription",
+"moor-tagline":"Care for software we built · monthly",
+"moor-f1":"Security updates, tested before they go live",
+"moor-f2":"We watch that your site stays up and fast, so we spot problems first",
+"moor-f3":"Time each month for small changes, no meeting needed",
+"moor-f4":"Backups we actually test by restoring them",
+"moor-for-1":"You launched with us and don't want to think about it again",
+"moor-for-2":"You have one website, no developer, and no time to watch it",
+"moor-for-3":"Your last developer left and nothing has been updated since",
+"moor-for-4":"You want someone to call who already knows your software",
+"moor-cancel":"Optional · cancel any month",
+"moor-cta":"Start Moorage →",
+"faq-q14":"We have software nobody understands. Can you help?",
+"faq-a14":"Yes, that's Salvage (5 days). You get a written map of how your software works, a safe way to make changes, a check of security risks, and our advice on whether to fix it or replace it, with a price for each option. You don't have to hire us for the next step.",
+"faq-q15":"What is Moorage? Do I have to buy it?",
+"faq-a15":"No. Moorage is an optional monthly care plan for software we built for you. We keep it updated and secure, check that it stays up and fast, test your backups, and make small changes each month. You own the code either way, and you can cancel any month."
 },
 fr:{
 "nav-process":"Comment ça marche",
@@ -3720,7 +3867,7 @@ fr:{
 "step-3-h":"En ligne le jour promis",
 "step-3-p":"Vous recevez le produit qui fonctionne, tout le code et un guide simple que tout le monde peut lire. Si nous sommes en retard, vous obtenez un rabais.",
 "packages-title":"Nos forfaits",
-"packages-note":"Quatre façons de travailler avec nous. Chacune a un contenu et un délai fixes. Choisissez-en une, écrivez-nous, et nous la planifions avec vous dès le premier jour.",
+"packages-note":"Cinq forfaits, un ajout et deux forfaits mensuels. Chaque forfait a un contenu et un délai fixes. Choisissez-en une, écrivez-nous, et nous la planifions avec vous dès le premier jour.",
 "card-for-label":"Idéal si vous êtes",
 "spark-when":"Un site web à votre adresse · 3 jours",
 "spark-f1":"Un site codé à la main, pas un générateur de pages",
@@ -3860,7 +4007,7 @@ fr:{
 "faq-title":"Questions fréquentes",
 "faq-note":"Les réponses aux questions qu'on nous pose avant de nous écrire.",
 "faq-q1":"Combien de temps ça prend ?",
-"faq-a1":"Ça dépend du forfait. Un site web (Spark) prend 3 jours. Un site sur mesure (Launch) prend 7 jours. Ajouter l'IA à votre produit (Augment) prend 14 jours. Une appli complète (Build) prend 30 jours. Automate est terminé au jour 60, avec une décision de continuer ou d'arrêter au jour 10. Pulse est un forfait mensuel sans date de fin. Ce sont des dates promises, pas des estimations. Si nous sommes en retard, vous payez moins.",
+"faq-a1":"Ça dépend du forfait. Un site web (Spark) prend 3 jours. Réparer un logiciel hérité (Salvage) prend 5 jours. Un site sur mesure (Launch) prend 7 jours. Ajouter l'IA à votre produit (Augment) prend 14 jours. Une appli complète (Build) prend 30 jours. Automate est terminé au jour 60, avec une décision de continuer ou d'arrêter au jour 10. Moorage et Pulse sont des forfaits mensuels sans date de fin. Ce sont des dates promises, pas des estimations. Si nous sommes en retard, vous payez moins.",
 "faq-q2":"Qu'est-ce que le Discovery Sprint ? En ai-je besoin ?",
 "faq-a2":"C'est un ajout possible à tout forfait. Nous regardons votre entreprise comme le ferait un leader produit d'expérience : vos concurrents, vos clients et la prochaine direction de votre produit. Il ajoute 10 jours de création, trois appels (début, milieu et fin) et un plan écrit que vous gardez. Si vous ne savez pas quoi créer ensuite, ou voulez un avis extérieur avant de commencer, c'est pour vous.",
 "faq-q3":"Que veut dire prix fixe ?",
@@ -4038,7 +4185,37 @@ fr:{
 "faq-q12":"J'ai une idée d'appli mais pas d'équipe technique. Pouvez-vous m'aider ?",
 "faq-a12":"Oui. C'est la raison la plus fréquente pour laquelle on nous écrit. Vous nous dites ce que l'appli doit faire, dans vos mots. Dans les deux premiers jours, nous en faisons un plan écrit avec un prix fixe et une date de lancement. Pas besoin de savoir coder, et tout ce que nous créons vous appartient.",
 "faq-q13":"Travaillez-vous avec des restaurants ?",
-"faq-a13":"Oui. Nous créons des sites de restaurant rapides en 3 jours, automatisons les rappels de réservation et les réponses aux avis, et gérons vos réseaux sociaux avec Pulse. Nous commençons par mesurer où vont vos heures, pour ne créer que ce qui vous fera vraiment gagner du temps."
+"faq-a13":"Oui. Nous créons des sites de restaurant rapides en 3 jours, automatisons les rappels de réservation et les réponses aux avis, et gérons vos réseaux sociaux avec Pulse. Nous commençons par mesurer où vont vos heures, pour ne créer que ce qui vous fera vraiment gagner du temps.",
+"salv-when":"Réparer un logiciel hérité · 5 jours",
+"salv-f1":"Plus personne ne sait comment ça marche",
+"salv-f1-body":"En cinq jours, vous recevez une carte écrite du système : ce qui tourne où, ce qui est relié à quoi, ce qui ne sert plus, et ce qui casserait en premier si le trafic augmente.",
+"salv-f2":"Vous avez peur de toucher à quoi que ce soit",
+"salv-f2-body":"Nous installons une copie sûre pour travailler et une façon fiable de publier les changements. Si quelque chose nous bloque, nous vous disons clairement quoi, et ce que ça coûterait de le régler.",
+"salv-f3":"Vous ne savez pas à quel point vous êtes exposé",
+"salv-f3-body":"Nous vérifions les composants périmés, les mots de passe enregistrés au mauvais endroit, et qui a encore accès à quoi.",
+"salv-f4":"Réparer ou remplacer ? Vous devez décider.",
+"salv-f4-body":"Le rapport se termine par notre conseil et un prix pour chaque option, pour décider sur des faits, pas une impression. Si vous le voulez, nous faisons ensuite le travail avec Build, Augment ou Moorage.",
+"salv-for-1":"Votre développeur est parti et rien n'est écrit",
+"salv-for-2":"Vous avez acheté une entreprise et son logiciel venait avec",
+"salv-for-3":"Votre équipe veut tout refaire et vous ne savez pas si elle a raison",
+"salv-for-4":"Vous voulez un deuxième avis avant de payer une refonte",
+"salv-cta":"Commencer Salvage →",
+"moor-badge":"Abonnement",
+"moor-tagline":"Entretien de ce que nous avons créé · mensuel",
+"moor-f1":"Mises à jour de sécurité, testées avant la mise en ligne",
+"moor-f2":"Nous surveillons que votre site reste en ligne et rapide, pour voir les problèmes avant vous",
+"moor-f3":"Du temps chaque mois pour de petits changements, sans réunion",
+"moor-f4":"Des sauvegardes vraiment testées, en les restaurant",
+"moor-for-1":"Vous avez lancé avec nous et ne voulez plus y penser",
+"moor-for-2":"Vous avez un site, pas de développeur, et pas le temps de le surveiller",
+"moor-for-3":"Votre dernier développeur est parti et rien n'a été mis à jour depuis",
+"moor-for-4":"Vous voulez pouvoir appeler quelqu'un qui connaît déjà votre logiciel",
+"moor-cancel":"Optionnel · annulable chaque mois",
+"moor-cta":"Commencer Moorage →",
+"faq-q14":"Nous avons un logiciel que personne ne comprend. Pouvez-vous aider ?",
+"faq-a14":"Oui, c'est Salvage (5 jours). Vous recevez une carte écrite du fonctionnement de votre logiciel, une façon sûre de faire des changements, une vérification des risques de sécurité, et notre conseil pour le réparer ou le remplacer, avec un prix pour chaque option. Vous n'êtes pas obligé de nous engager pour la suite.",
+"faq-q15":"Qu'est-ce que Moorage ? Dois-je l'acheter ?",
+"faq-a15":"Non. Moorage est un forfait mensuel optionnel pour entretenir le logiciel que nous avons créé pour vous. Nous le gardons à jour et sécuritaire, vérifions qu'il reste en ligne et rapide, testons vos sauvegardes et faisons de petits changements chaque mois. Le code vous appartient de toute façon, et vous pouvez annuler n'importe quel mois."
 }
 };
 
