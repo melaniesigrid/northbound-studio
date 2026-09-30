@@ -1249,6 +1249,55 @@ footer{
   .fa-label{border-right:none;border-bottom:var(--line);}
 }
 
+/* ---------- lead exhibit ---------- */
+/* Reuses .featured-article so the exhibit inherits this section's grid, hover
+   and scroll-reveal treatment. Only the facts strip and the kicker are new. */
+.exhibit .fa-body h3{
+  font-family:var(--font-display);
+  font-size:clamp(20px,2.2vw,28px);
+  line-height:1.1;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+.exhibit-facts{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border:var(--line);
+  margin:10px 0 4px;
+}
+.exhibit-facts li{
+  padding:18px 20px;
+  border-right:var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.exhibit-facts li:last-child{border-right:none;}
+.fact-n{
+  font-family:var(--font-display);
+  font-size:34px;
+  line-height:1;
+  color:var(--cobalt);
+}
+.fact-l{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  line-height:1.5;
+}
+.exhibit-kicker{
+  border-left:3px solid var(--cobalt);
+  padding-left:16px;
+}
+@media(max-width:700px){
+  .exhibit-facts{grid-template-columns:1fr;}
+  .exhibit-facts li{border-right:none;border-bottom:var(--line);}
+  .exhibit-facts li:last-child{border-bottom:none;}
+}
+
 
 /* ---------- sec-title underline draw ---------- */
 .sec-title{display:inline-block;position:relative;}
@@ -1646,6 +1695,7 @@ footer{
     <a class="brand" href="#top">NORTHBOUND<span class="dot" aria-hidden="true"></span></a>
     <ul class="nav-links">
       <li><a href="#process" data-i18n="nav-process">How we ship</a></li>
+      <li><a href="#work" data-i18n="nav-work">The work</a></li>
       <li><a href="#packages" data-i18n="nav-packages">Packages</a></li>
       <li><a href="#faq" data-i18n="nav-faq">FAQ</a></li>
       <li><a href="blog.html" data-i18n="nav-writing">Writing</a></li>
@@ -1663,6 +1713,7 @@ footer{
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
   <a href="#process" data-i18n="nav-process">How we ship</a>
+  <a href="#work" data-i18n="nav-work">The work</a>
   <a href="#packages" data-i18n="nav-packages">Packages</a>
   <a href="#faq" data-i18n="nav-faq">FAQ</a>
   <a href="blog.html" data-i18n="nav-writing">Writing</a>
@@ -1687,11 +1738,11 @@ footer{
         <span class="pill-badge" style="background:var(--ink);color:var(--paper);border-color:var(--ink)" data-i18n="hero-pill-est">Est. 2026</span>
       </div>
       <h1 class="hero-h1">
-        <span class="row" data-i18n="hero-h1-r1">We ship</span>
-        <span class="row" data-i18n="hero-h1-r2">software.</span>
-        <span class="row" data-i18n="hero-h1-r3">Fast.</span>
+        <span class="row" data-i18n="hero-h1-r1">Software</span>
+        <span class="row" data-i18n="hero-h1-r2">you can</span>
+        <span class="row" data-i18n="hero-h1-r3">check first.</span>
       </h1>
-      <p class="hero-sub" data-i18n-html="hero-sub">Northbound builds web, mobile, and AI-enabled products with agent-driven speed and senior craftsmanship. Fixed scope, fixed price, fixed timeline: no hourly meters, no surprise invoices. <strong>Founded by a senior engineer and AI practitioner based in Toronto.</strong></p>
+      <p class="hero-sub" data-i18n-html="hero-sub">Northbound builds web, mobile and AI products on a fixed scope, a fixed price and a committed date. <strong>Two doors:</strong> a site or a store-ready app delivered on the date we name, or an AI feature in your product that stops inventing answers and stops outgrowing its budget. <strong>Everything we claim below opens in a browser.</strong></p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#packages" data-i18n="hero-cta-1">See the packages →</a>
         <a class="btn" href="#contact" data-i18n="hero-cta-2">Tell us what you need →</a>
@@ -1755,6 +1806,55 @@ footer{
         <h3 data-i18n="step-3-h">Delivered, not drifted</h3>
         <p data-i18n="step-3-p">You get a deployed product, the source code, and a handoff doc a non-developer can read. If we miss the date, you get a discount. We don't miss.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- Proof, deliberately placed before the prices. A stranger will not read four
+     package cards without a reason to; this section is the reason. Typecase
+     leads because it is the one exhibit that shows taste and rigour at once,
+     and every number on its card is checkable against the source in one click:
+     50 families in fonts/, 44 looks in looks.js, 12 articles in articles.js. -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title" data-i18n="work-title">Open the work</h2>
+      <p class="sec-note" data-i18n="work-note">Most studio portfolios are screenshots of things you cannot open. Everything here is live, ours, and one click away.</p>
+    </div>
+
+    <article class="featured-article exhibit">
+      <div class="fa-label">
+        <span class="eyebrow" data-i18n="tc-eyebrow">Lead exhibit</span>
+        <span class="fa-label-title" data-i18n="tc-name">Typecase</span>
+        <span class="fa-label-date" data-i18n="tc-meta">Type library &amp; lookbook</span>
+      </div>
+      <div class="fa-body">
+        <h3 data-i18n="tc-h3">Nobody can choose a typeface from a dropdown</h3>
+        <p data-i18n-html="tc-p1">Typecase reads a folder of font binaries and measures them: the real vertical metrics ruled straight off the file, the exact character set each cut contains, its OpenType features toggled live. Then it does the part that actually decides a project &mdash; the <strong>lookbook</strong>, where every pairing is composed as a finished piece in its own palette, so a face is judged in use instead of in a list.</p>
+        <p data-i18n-html="tc-p2">A glyph a cut does not contain is marked as missing rather than drawn as a hollow box. That one decision is the whole character of the thing: <strong>it refuses to show you something prettier than the truth.</strong></p>
+        <ul class="exhibit-facts">
+          <li><span class="fact-n">50</span><span class="fact-l" data-i18n="tc-f1">families, parsed from the binary</span></li>
+          <li><span class="fact-n">44</span><span class="fact-l" data-i18n="tc-f2">pairings composed as finished pieces</span></li>
+          <li><span class="fact-n">12</span><span class="fact-l" data-i18n="tc-f3">articles, with the evidence set live</span></li>
+        </ul>
+        <p class="exhibit-kicker" data-i18n="tc-kicker">This is the standard we hold on a type library nobody commissioned and nobody paid for. It is the same standard your checkout page gets.</p>
+        <a class="btn" href="https://melaniesigrid.github.io/typecase/" target="_blank" rel="noopener" data-i18n="tc-btn">Open Typecase &#8599;</a>
+      </div>
+    </article>
+
+    <div class="receipts shipped">
+      <div class="receipt-copy">
+        <span class="eyebrow" data-i18n="shipped-eyebrow">Also running</span>
+        <p data-i18n-html="shipped-p1"><strong>Five more products the studio designed, built and still operates.</strong> Not case studies about work done for somebody else &mdash; software with users, uptime and a bill to pay.</p>
+        <p data-i18n="shipped-p2">Same constraint every time: a committed date, a fixed number, and something a stranger can open in a browser. Every link goes to the live product, not to a slide about it.</p>
+      </div>
+      <ul class="proof-list">
+        <li><a href="https://joseki.online" target="_blank" rel="noopener" data-i18n-html="shipped-1">Joseki: a go server with lessons, ranked play and an engine that proves every claim it makes <span class="mono">joseki.online ↗</span></a></li>
+        <li><a href="https://zipquarry.com" target="_blank" rel="noopener" data-i18n-html="shipped-2">ZipQuarry: local prospects inside a ZIP radius, enriched and ready to email <span class="mono">zipquarry.com ↗</span></a></li>
+        <li><a href="https://melaniesigrid.github.io/quoteFront/" target="_blank" rel="noopener" data-i18n-html="shipped-3">Quotefront: photos and job details in, a structured estimate range out <span class="mono">Site ↗</span></a></li>
+        <li><a href="https://duebook.com" target="_blank" rel="noopener" data-i18n-html="shipped-4">Duebook: one flat price for a whole bookkeeping firm: recurring work, document chasing and deadlines <span class="mono">duebook.com ↗</span></a></li>
+        <li><a href="https://melaniesigrid.github.io/millwright/" target="_blank" rel="noopener" data-i18n-html="shipped-5">Millwright: custom apps, workflows and AI agents, built around a business that already works <span class="mono">Site ↗</span></a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -2125,23 +2225,6 @@ footer{
       </ul>
     </div>
 
-    <!-- The other kind of receipt. The articles above are how we think; these
-         are things a stranger can open in a browser right now. Every link
-         goes to the live product rather than to a case study about it. -->
-    <div class="receipts shipped">
-      <div class="receipt-copy">
-        <span class="eyebrow" data-i18n="shipped-eyebrow">What we’ve shipped</span>
-        <p data-i18n-html="shipped-p1"><strong>The other receipt is software that is already running.</strong> These are products the studio designed, built and operates, not case studies about work done for somebody else.</p>
-        <p data-i18n="shipped-p2">Same constraint every time: a committed date, a fixed number, and something a stranger can open in a browser. The links go to the live product, not to a slide about it.</p>
-      </div>
-      <ul class="proof-list">
-        <li><a href="https://joseki.online" target="_blank" rel="noopener" data-i18n-html="shipped-1">Joseki: a go server with lessons, ranked play and an engine that proves every claim it makes <span class="mono">joseki.online ↗</span></a></li>
-        <li><a href="https://zipquarry.com" target="_blank" rel="noopener" data-i18n-html="shipped-2">ZipQuarry: local prospects inside a ZIP radius, enriched and ready to email <span class="mono">zipquarry.com ↗</span></a></li>
-        <li><a href="https://melaniesigrid.github.io/quoteFront/" target="_blank" rel="noopener" data-i18n-html="shipped-3">Quotefront: photos and job details in, a structured estimate range out <span class="mono">Site ↗</span></a></li>
-        <li><a href="https://duebook.com" target="_blank" rel="noopener" data-i18n-html="shipped-4">Duebook: one flat price for a whole bookkeeping firm: recurring work, document chasing and deadlines <span class="mono">duebook.com ↗</span></a></li>
-        <li><a href="https://melaniesigrid.github.io/millwright/" target="_blank" rel="noopener" data-i18n-html="shipped-5">Millwright: custom apps, workflows and AI agents, built around a business that already works <span class="mono">Site ↗</span></a></li>
-      </ul>
-    </div>
   </div>
 </section>
 
@@ -2664,9 +2747,16 @@ document.querySelectorAll('.card-cta').forEach(function(a){
 (function(){
 var T = {
 en:{
-'nav-process':'How we ship','nav-packages':'Packages','nav-faq':'FAQ','nav-writing':'Writing','nav-cta':'Email us','nav-cta-mobile':'Email us →','nav-burger-aria':'Open menu',
-'hero-eyebrow':'AI-native software development studio · Toronto 🍁','hero-pill-woman':'Woman-owned','hero-h1-r1':'We ship','hero-h1-r2':'software.','hero-h1-r3':'Fast.',
-'hero-sub':'Northbound builds web, mobile, and AI-enabled products with agent-driven speed and senior craftsmanship. Fixed scope, fixed price, fixed timeline: no hourly meters, no surprise invoices. <strong>Founded by a senior engineer and AI practitioner based in Toronto.</strong>',
+'nav-process':'How we ship','nav-work':'The work','nav-packages':'Packages','nav-faq':'FAQ','nav-writing':'Writing','nav-cta':'Email us','nav-cta-mobile':'Email us →','nav-burger-aria':'Open menu',
+'hero-eyebrow':'AI-native software development studio · Toronto 🍁','hero-pill-woman':'Woman-owned','hero-h1-r1':'Software','hero-h1-r2':'you can','hero-h1-r3':'check first.',
+'hero-sub':'Northbound builds web, mobile and AI products on a fixed scope, a fixed price and a committed date. <strong>Two doors:</strong> a site or a store-ready app delivered on the date we name, or an AI feature in your product that stops inventing answers and stops outgrowing its budget. <strong>Everything we claim below opens in a browser.</strong>',
+'work-title':'Open the work','work-note':'Most studio portfolios are screenshots of things you cannot open. Everything here is live, ours, and one click away.',
+'tc-eyebrow':'Lead exhibit','tc-name':'Typecase','tc-meta':'Type library &amp; lookbook',
+'tc-h3':'Nobody can choose a typeface from a dropdown',
+'tc-p1':'Typecase reads a folder of font binaries and measures them: the real vertical metrics ruled straight off the file, the exact character set each cut contains, its OpenType features toggled live. Then it does the part that actually decides a project &mdash; the <strong>lookbook</strong>, where every pairing is composed as a finished piece in its own palette, so a face is judged in use instead of in a list.',
+'tc-p2':'A glyph a cut does not contain is marked as missing rather than drawn as a hollow box. That one decision is the whole character of the thing: <strong>it refuses to show you something prettier than the truth.</strong>',
+'tc-f1':'families, parsed from the binary','tc-f2':'pairings composed as finished pieces','tc-f3':'articles, with the evidence set live',
+'tc-kicker':'This is the standard we hold on a type library nobody commissioned and nobody paid for. It is the same standard your checkout page gets.','tc-btn':'Open Typecase &#8599;',
 'hero-cta-1':'See the packages →','hero-cta-2':'Tell us what you need →',
 'term-bar-left':'agent · build loop','term-bar-live':'Live','term-foot':'This is how we actually work. Reasoning loop, human review, ship.',
 'stat-l-1':'Day spark sprint','stat-l-2':'Fixed-price guarantee','stat-l-3':'Days to launch','stat-l-4':'Surprise invoices',
@@ -2692,7 +2782,7 @@ en:{
 'compare-nb-ai':'Yes, every project','compare-trad-ai':'Rarely','compare-free-ai':'Rarely',
 'manifesto-title':'Our Manifesto','manifesto-note':'Mission, values, and the studio mascots live on their own page now. <a href="/manifesto">Read the full manifesto →</a>',
 'receipts-title':'Receipts','receipts-note':'We don\'t just say "AI-native." We publish how we work, in public, where anyone can check.',
-'shipped-eyebrow':'What we’ve shipped','shipped-p1':'<strong>The other receipt is software that is already running.</strong> These are products the studio designed, built and operates, not case studies about work done for somebody else.','shipped-p2':'Same constraint every time: a committed date, a fixed number, and something a stranger can open in a browser. The links go to the live product, not to a slide about it.','shipped-1':'Joseki: a go server with lessons, ranked play and an engine that proves every claim it makes <span class="mono">joseki.online ↗</span>','shipped-2':'ZipQuarry: local prospects inside a ZIP radius, enriched and ready to email <span class="mono">zipquarry.com ↗</span>','shipped-3':'Quotefront: photos and job details in, a structured estimate range out <span class="mono">Site ↗</span>','shipped-4':'Duebook: one flat price for a whole bookkeeping firm: recurring work, document chasing and deadlines <span class="mono">duebook.com ↗</span>','shipped-5':'Millwright: custom apps, workflows and AI agents, built around a business that already works <span class="mono">Site ↗</span>',
+'shipped-eyebrow':'Also running','shipped-p1':'<strong>The other receipt is software that is already running.</strong> These are products the studio designed, built and operates, not case studies about work done for somebody else.','shipped-p2':'Same constraint every time: a committed date, a fixed number, and something a stranger can open in a browser. The links go to the live product, not to a slide about it.','shipped-1':'Joseki: a go server with lessons, ranked play and an engine that proves every claim it makes <span class="mono">joseki.online ↗</span>','shipped-2':'ZipQuarry: local prospects inside a ZIP radius, enriched and ready to email <span class="mono">zipquarry.com ↗</span>','shipped-3':'Quotefront: photos and job details in, a structured estimate range out <span class="mono">Site ↗</span>','shipped-4':'Duebook: one flat price for a whole bookkeeping firm: recurring work, document chasing and deadlines <span class="mono">duebook.com ↗</span>','shipped-5':'Millwright: custom apps, workflows and AI agents, built around a business that already works <span class="mono">Site ↗</span>',
 'fa-eyebrow':'Deep Dive','fa-title':'Agentic AI &amp; the 30-day build','fa-h3':'Why agentic AI changes what\'s possible in a fixed-scope sprint',
 'fa-p1':'Traditional shops quote 90 days because they\'re padding for unknown unknowns. Agentic systems (models that loop through plan, act, and verify steps autonomously) compress the routine work that accounts for most of that time. What used to take a sprint now takes a session.',
 'fa-p2':'The more interesting shift isn\'t speed. It\'s scope confidence. Agents surface edge cases before a line of implementation code exists, run test suites in real time, and maintain consistent style across a large codebase without drift. That\'s what makes fixed-scope, fixed-price delivery viable at a quality bar that used to require a large team.',
@@ -2725,9 +2815,16 @@ en:{
 'compare-tag':'AI-native studio','fa-label-date':'Jun 2026','foot-loc':'YYZ · Toronto, Canada'
 },
 fr:{
-'nav-process':'Comment on livre','nav-packages':'Forfaits','nav-faq':'FAQ','nav-writing':'Blogue','nav-cta':'Écrivez-nous','nav-cta-mobile':'Écrivez-nous →','nav-burger-aria':'Ouvrir le menu',
-'hero-eyebrow':'Studio de développement logiciel IA · Toronto 🍁','hero-pill-woman':'Entreprise féminine','hero-h1-r1':'On livre','hero-h1-r2':'du logiciel.','hero-h1-r3':'Vite.',
-'hero-sub':'Northbound conçoit des produits web, mobiles et IA avec la vitesse des agents et le savoir-faire d\'une équipe senior. Portée fixe, prix fixe, délai fixe : pas de tarif horaire, pas de surprises. <strong>Fondé par une ingénieure senior et praticienne en IA, basée à Toronto.</strong>',
+'nav-process':'Comment on livre','nav-work':'Le travail','nav-packages':'Forfaits','nav-faq':'FAQ','nav-writing':'Blogue','nav-cta':'Écrivez-nous','nav-cta-mobile':'Écrivez-nous →','nav-burger-aria':'Ouvrir le menu',
+'hero-eyebrow':'Studio de développement logiciel IA · Toronto 🍁','hero-pill-woman':'Entreprise féminine','hero-h1-r1':'Un logiciel','hero-h1-r2':'vérifiable','hero-h1-r3':'avant de signer.',
+'hero-sub':'Northbound conçoit des produits web, mobiles et IA à portée fixe, prix fixe et date engagée. <strong>Deux portes :</strong> un site ou une application prête pour les magasins, livrée à la date annoncée ; ou une fonction IA dans votre produit qui cesse d\'inventer des réponses et de dépasser son budget. <strong>Tout ce que nous affirmons ci-dessous s\'ouvre dans un navigateur.</strong>',
+'work-title':'Voir le travail','work-note':'La plupart des portfolios de studio sont des captures d\'écran de choses qu\'on ne peut pas ouvrir. Tout ce qui suit est en ligne, à nous, et à un clic.',
+'tc-eyebrow':'Pièce maîtresse','tc-name':'Typecase','tc-meta':'Fonderie et lookbook',
+'tc-h3':'Personne ne choisit un caractère dans un menu déroulant',
+'tc-p1':'Typecase lit un dossier de fichiers de polices et les mesure : les vraies métriques verticales relevées directement dans le fichier, le jeu de caractères exact que contient chaque coupe, ses fonctions OpenType activables en direct. Puis vient ce qui décide vraiment d\'un projet &mdash; le <strong>lookbook</strong>, où chaque association est composée comme une pièce finie dans sa propre palette, pour juger un caractère à l\'usage plutôt que dans une liste.',
+'tc-p2':'Un glyphe absent d\'une coupe est signalé comme manquant plutôt que dessiné en carré vide. Cette seule décision résume tout : <strong>l\'outil refuse de vous montrer plus joli que la vérité.</strong>',
+'tc-f1':'familles, lues dans le fichier','tc-f2':'associations composées en pièces finies','tc-f3':'articles, avec les preuves composées en direct',
+'tc-kicker':'C\'est le niveau d\'exigence qu\'on applique à une fonderie que personne n\'a commandée ni payée. C\'est le même niveau que reçoit votre page de paiement.','tc-btn':'Ouvrir Typecase &#8599;',
 'hero-cta-1':'Voir les forfaits →','hero-cta-2':'Dites-nous ce dont vous avez besoin →',
 'term-bar-left':'agent · boucle de build','term-bar-live':'En direct','term-foot':'C\'est vraiment comme ça qu\'on travaille. Boucle de raisonnement, revue humaine, livraison.',
 'stat-l-1':'Jours sprint Spark','stat-l-2':'Garantie prix fixe','stat-l-3':'Jours pour livrer','stat-l-4':'Factures surprises',
@@ -2753,7 +2850,7 @@ fr:{
 'compare-nb-ai':'Oui, chaque projet','compare-trad-ai':'Rarement','compare-free-ai':'Rarement',
 'manifesto-title':'Notre Manifeste','manifesto-note':'Mission, valeurs et les mascottes du studio ont maintenant leur propre page. <a href="/manifesto">Lire le manifeste complet →</a>',
 'receipts-title':'Preuves','receipts-note':'On ne dit pas juste « IA-natif ». On publie comment on travaille, publiquement, là où tout le monde peut vérifier.',
-'shipped-eyebrow':'Ce que nous avons livré','shipped-p1':'<strong>L\'autre reçu, c\'est un logiciel qui tourne déjà.</strong> Ce sont des produits que le studio a conçus, construits et qu\'il exploite, pas des études de cas sur du travail fait pour quelqu\'un d\'autre.','shipped-p2':'La même contrainte à chaque fois : une date engagée, un prix fixe, et quelque chose qu\'un inconnu peut ouvrir dans son navigateur. Les liens mènent au produit en ligne, pas à une diapositive qui en parle.','shipped-1':'Joseki : un serveur de go : leçons, parties classées et un moteur qui prouve chacune de ses affirmations <span class="mono">joseki.online ↗</span>','shipped-2':'ZipQuarry : des prospects locaux dans un rayon de codes ZIP, enrichis et prêts à contacter <span class="mono">zipquarry.com ↗</span>','shipped-3':'Quotefront : des photos et des détails de chantier entrent, une fourchette d\'estimation structurée sort <span class="mono">Site ↗</span>','shipped-4':'Duebook : un prix unique pour tout un cabinet comptable : travail récurrent, relances de documents et échéances <span class="mono">duebook.com ↗</span>','shipped-5':'Millwright : des applications, des flux de travail et des agents IA sur mesure, bâtis autour d\'une entreprise qui fonctionne déjà <span class="mono">Site ↗</span>',
+'shipped-eyebrow':'Aussi en ligne','shipped-p1':'<strong>L\'autre reçu, c\'est un logiciel qui tourne déjà.</strong> Ce sont des produits que le studio a conçus, construits et qu\'il exploite, pas des études de cas sur du travail fait pour quelqu\'un d\'autre.','shipped-p2':'La même contrainte à chaque fois : une date engagée, un prix fixe, et quelque chose qu\'un inconnu peut ouvrir dans son navigateur. Les liens mènent au produit en ligne, pas à une diapositive qui en parle.','shipped-1':'Joseki : un serveur de go : leçons, parties classées et un moteur qui prouve chacune de ses affirmations <span class="mono">joseki.online ↗</span>','shipped-2':'ZipQuarry : des prospects locaux dans un rayon de codes ZIP, enrichis et prêts à contacter <span class="mono">zipquarry.com ↗</span>','shipped-3':'Quotefront : des photos et des détails de chantier entrent, une fourchette d\'estimation structurée sort <span class="mono">Site ↗</span>','shipped-4':'Duebook : un prix unique pour tout un cabinet comptable : travail récurrent, relances de documents et échéances <span class="mono">duebook.com ↗</span>','shipped-5':'Millwright : des applications, des flux de travail et des agents IA sur mesure, bâtis autour d\'une entreprise qui fonctionne déjà <span class="mono">Site ↗</span>',
 'fa-eyebrow':'Analyse approfondie','fa-title':'L\'IA agentique et le build de 30 jours','fa-h3':'Pourquoi l\'IA agentique change ce qui est possible dans un sprint à portée fixe',
 'fa-p1':'Les agences traditionnelles citent 90 jours parce qu\'elles ajoutent un coussin pour les imprévus. Les systèmes agentiques (des modèles qui bouclent à travers des étapes planifier, agir et vérifier de manière autonome) compriment le travail routinier qui représente la plupart de ce temps. Ce qui prenait un sprint prend maintenant une session.',
 'fa-p2':'Le changement le plus intéressant n\'est pas la vitesse. C\'est la confiance dans la portée. Les agents font remonter les cas limites avant qu\'une ligne de code d\'implémentation existe, exécutent des suites de tests en temps réel et maintiennent un style cohérent sur une grande base de code sans dérive. C\'est ce qui rend la livraison à portée fixe et prix fixe viable à un niveau de qualité qui nécessitait autrefois une grande équipe.',
