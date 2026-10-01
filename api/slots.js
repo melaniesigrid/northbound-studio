@@ -3,6 +3,7 @@
 // endpoint. No API key: the event type is public. Cal.com is free here and
 // nothing it does is metered (see SPEND.md).
 const { clientIp, rateLimit } = require('./_guard');
+const { earliestStart } = require('./_notice');
 
 const CAL = 'https://api.cal.com/v2/slots';
 const EVENT = { eventTypeSlug: 'scope-call', username: 'northboundsoftwarestudio' };
@@ -38,8 +39,13 @@ module.exports = async function handler(req, res) {
       return res.status(502).json({ ok: false, error: 'Calendar unavailable' });
     }
     // { "2026-10-01": ["2026-10-01T09:00:00.000-04:00", ...], ... }
+    // Anything inside the notice window is dropped, and so is a day left empty.
+    const earliest = earliestStart();
     const days = {};
-    for (const [day, list] of Object.entries(body.data)) days[day] = list.map(s => s.start);
+    for (const [day, list] of Object.entries(body.data)) {
+      const open = list.map(s => s.start).filter(s => Date.parse(s) >= earliest);
+      if (open.length) days[day] = open;
+    }
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
     return res.status(200).json({ ok: true, tz, days });
   } catch (err) {
