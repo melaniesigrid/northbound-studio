@@ -1831,7 +1831,14 @@ footer{
 .brand-logo a:focus-visible{outline:2px solid var(--cobalt);outline-offset:8px}
 .brand-logo img{display:block;width:auto;height:calc(var(--h) * 1.1);max-width:none;filter:grayscale(1) contrast(1.1);opacity:.78;transition:filter .3s ease,opacity .3s ease}
 .brand-logo a:hover img,.brand-logo a:focus-visible img{filter:none;opacity:1}
-@media(max-width:620px){.brand-logo{padding:0 26px;height:56px}.brand-logo img{height:calc(var(--h) * .85)}}
+/* Phones: a marquee shows two logos at a time behind its fades, so lay all ten out as a still grid instead. */
+@media(max-width:620px){
+  .brands-track{animation:none;width:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2px 12px;padding:0 4px}
+  .brands-track [aria-hidden="true"]{display:none}
+  .brands-wall::before,.brands-wall::after{display:none}
+  .brand-logo{padding:0;height:48px;justify-content:center}
+  .brand-logo img{height:calc(var(--h) * .72);max-width:100%;object-fit:contain}
+}
 @media(prefers-reduced-motion:reduce){
   .brands-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center;row-gap:10px;padding:0 24px}
   .brands-track [aria-hidden="true"]{display:none}
@@ -2546,10 +2553,10 @@ html.bk-lock{overflow:hidden}
           <span class="product-desc" data-i18n="prod-qf">Contractors upload job photos and get a price estimate back.</span>
           <span class="product-url">quotefront ↗</span>
         </a></li>
-        <li><a href="https://duebook.com" target="_blank" rel="noopener">
+        <li><a href="https://melaniesigrid.github.io/duebook/" target="_blank" rel="noopener">
           <span class="product-top"><img class="product-logo" src="logo/products/duebook.svg" alt="DueBook" loading="lazy" decoding="async"><span class="product-status beta" data-i18n="prod-beta">Beta</span></span>
-          <span class="product-desc" data-i18n="prod-db">Keeps a bookkeeping firm's monthly work, client documents and deadlines in one place.</span>
-          <span class="product-url">duebook.com ↗</span>
+          <span class="product-desc" data-i18n="prod-db">Brings past customers back to book again, and chases invoices that haven't been paid.</span>
+          <span class="product-url">duebook ↗</span>
         </a></li>
         <li><a href="https://melaniesigrid.github.io/millwright/" target="_blank" rel="noopener">
           <span class="product-top"><img class="product-logo" src="logo/products/millwright.svg" alt="Millwright" loading="lazy" decoding="async"><span class="product-status live" data-i18n="prod-live">Live</span></span>
@@ -2627,7 +2634,7 @@ html.bk-lock{overflow:hidden}
           <li data-i18n="auto-ind2-2">Tracking deadlines in a spreadsheet, or from memory</li>
           <li data-i18n="auto-ind2-3">Setting up the same monthly work by hand</li>
         </ul>
-        <p class="auto-ind-proof" data-i18n-html="auto-ind2-proof">We built this: <strong>DueBook</strong> tracks monthly work, documents and deadlines for a whole firm.</p>
+        <p class="auto-ind-proof" data-i18n-html="auto-ind2-proof">What we would build: <strong>document requests</strong> that chase themselves, a deadline calendar for every client, and monthly work set up once.</p>
       </article>
       <article class="auto-ind">
         <h3 data-i18n="auto-ind3-name">Agencies &amp; consultants</h3>
@@ -3989,7 +3996,7 @@ en:{
 "auto-ind2-1":"Asking clients for the same documents every month",
 "auto-ind2-2":"Tracking deadlines in a spreadsheet, or from memory",
 "auto-ind2-3":"Setting up the same monthly work by hand",
-"auto-ind2-proof":"We built this: <strong>DueBook</strong> tracks monthly work, documents and deadlines for a whole firm.",
+"auto-ind2-proof":"What we would build: <strong>document requests</strong> that chase themselves, a deadline calendar for every client, and monthly work set up once.",
 "auto-ind3-name":"Agencies & consultants",
 "auto-ind3-1":"Finding new clients by hand",
 "auto-ind3-2":"Writing first drafts of emails and proposals",
@@ -4090,7 +4097,7 @@ en:{
 "prod-code":"Open code",
 "prod-zq":"Finds local businesses near a ZIP or postal code and writes the first email to each one.",
 "prod-qf":"Contractors upload job photos and get a price estimate back.",
-"prod-db":"Keeps a bookkeeping firm's monthly work, client documents and deadlines in one place.",
+"prod-db":"Brings past customers back to book again, and chases invoices that haven't been paid.",
 "prod-mw":"Custom apps and AI helpers, built around how a business already works.",
 "prod-rc":"Matches invoices to purchase orders, so nobody has to check them by hand.",
 "prod-jo":"Play and learn the game of Go online, with lessons and ranked games.",
@@ -4483,7 +4490,7 @@ fr:{
 "auto-ind2-1":"Demander aux clients les mêmes documents chaque mois",
 "auto-ind2-2":"Suivre les échéances dans un tableur, ou de mémoire",
 "auto-ind2-3":"Préparer à la main le même travail chaque mois",
-"auto-ind2-proof":"Nous l'avons créé : <strong>DueBook</strong> suit le travail mensuel, les documents et les échéances de tout un cabinet.",
+"auto-ind2-proof":"Ce que nous créerions : des <strong>demandes de documents</strong> qui se relancent seules, un calendrier d'échéances pour chaque client, et le travail mensuel configuré une seule fois.",
 "auto-ind3-name":"Agences et consultants",
 "auto-ind3-1":"Chercher de nouveaux clients à la main",
 "auto-ind3-2":"Écrire les premiers jets de courriels et de propositions",
@@ -4584,7 +4591,7 @@ fr:{
 "prod-code":"Code ouvert",
 "prod-zq":"Trouve des entreprises locales près d'un code postal et écrit le premier courriel à chacune.",
 "prod-qf":"Les entrepreneurs envoient des photos du chantier et reçoivent une estimation de prix.",
-"prod-db":"Regroupe le travail mensuel, les documents clients et les échéances d'un cabinet comptable.",
+"prod-db":"Fait revenir les anciens clients pour qu'ils réservent de nouveau, et relance les factures impayées.",
 "prod-mw":"Des applis sur mesure et des assistants IA, construits autour du fonctionnement d'une entreprise.",
 "prod-rc":"Associe les factures aux bons de commande, pour que personne n'ait à les vérifier à la main.",
 "prod-jo":"Jouez et apprenez le jeu de go en ligne, avec des leçons et des parties classées.",

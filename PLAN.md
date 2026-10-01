@@ -233,7 +233,7 @@ its CTA at `northboundsoftwarestudio.com/#automate`.
   we say so and stop; the client pays for the diagnostic only and keeps the map
   and the numbers. This is deliberately an exit rather than a refund.
 - **By industry**, four buyers, three of them backed by a product we already run:
-  trades (Quotefront), bookkeeping (Duebook), agencies and consultancies
+  trades (Quotefront), bookkeeping (no product; says what we would build), agencies and consultancies
   (ZipQuarry), clinics and professional offices (no product; says what we would
   build). No industry statistics: we have none we can source.
 - **Before you hire.** Against the median Toronto administrative-assistant wage,
