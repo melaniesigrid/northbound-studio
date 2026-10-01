@@ -3280,7 +3280,7 @@ html.bk-lock{overflow:hidden}
       <h2 id="book-h2" data-i18n-html="book-h2">Book a call.<br><em>Tell us your idea.</em></h2>
       <p class="book-lede" data-i18n="book-p">Pick a time that works for you and talk it through with the founder, in plain words. You don't need anything prepared.</p>
       <ol class="book-steps">
-        <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="6" y="10" width="36" height="32" rx="3"/><path d="M6 19h36M16 5v9M32 5v9"/><path d="M17 30l5 5 10-10" class="tick"/></svg></span><span><strong data-i18n="book-s1-h">Pick a time</strong><span data-i18n="book-s1-p">Any open time in the calendar. It's booked right away.</span></span></li>
+        <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect x="6" y="10" width="36" height="32" rx="3"/><path d="M6 19h36M16 5v9M32 5v9"/><path d="M17 30l5 5 10-10" class="tick"/></svg></span><span><strong data-i18n="book-s1-h">Pick a time</strong><span data-i18n="book-s1-p">Any open time from five days out, so we come to the call prepared. It's booked right away.</span></span></li>
         <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 10h32a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H22l-9 8v-8H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/><path d="M14 20h20M14 26h12"/></svg></span><span><strong data-i18n="book-s2-h">Tell us your idea</strong><span data-i18n="book-s2-p">Twenty minutes on a video call, in your own words. No slides needed.</span></span></li>
         <li><span class="book-ic"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M12 5h18l8 8v30H12z"/><path d="M30 5v8h8M18 22h14M18 29h14M18 36h8"/></svg></span><span><strong data-i18n="book-s3-h">Get a plan</strong><span data-i18n="book-s3-p">Within one business day: what we would build, the price and the date.</span></span></li>
       </ol>
@@ -4183,7 +4183,7 @@ en:{
 "book-h2":"Book a call.<br><em>Tell us your idea.</em>",
 "book-p":"Pick a time that works for you and talk it through with the founder, in plain words. You don't need anything prepared.",
 "book-s1-h":"Pick a time",
-"book-s1-p":"Any open time in the calendar. It's booked right away.",
+"book-s1-p":"Any open time from five days out, so we come to the call prepared. It's booked right away.",
 "book-s2-h":"Tell us your idea",
 "book-s2-p":"Twenty minutes on a video call, in your own words. No slides needed.",
 "book-s3-h":"Get a plan",
@@ -4214,6 +4214,7 @@ en:{
 "bk-done-p":"A calendar invite with the video link is on its way to {email}.",
 "bk-again":"Book another time",
 "bk-err-taken":"Someone just took that time. Please pick another one.",
+"bk-err-soon":"That time is now less than five days away. Please pick a later one.",
 "bk-err-down":"The calendar isn't answering right now.",
 "bk-err-fields":"Please add your name and a valid email.",
 "bk-err-rate":"Too many bookings from this connection. Email hello@northboundsoftwarestudio.com instead.",
@@ -4676,7 +4677,7 @@ fr:{
 "book-h2":"Réservez un appel.<br><em>Parlez-nous de votre idée.</em>",
 "book-p":"Choisissez un moment qui vous convient et parlez-en avec la fondatrice, simplement. Pas besoin de préparer quoi que ce soit.",
 "book-s1-h":"Choisissez un moment",
-"book-s1-p":"N'importe quelle plage libre du calendrier. C'est réservé tout de suite.",
+"book-s1-p":"N'importe quelle plage libre à partir de cinq jours, pour arriver à l'appel bien préparés. C'est réservé tout de suite.",
 "book-s2-h":"Parlez-nous de votre idée",
 "book-s2-p":"Vingt minutes en appel vidéo, dans vos mots. Pas besoin de diapositives.",
 "book-s3-h":"Recevez un plan",
@@ -4707,6 +4708,7 @@ fr:{
 "bk-done-p":"Une invitation avec le lien vidéo est en route vers {email}.",
 "bk-again":"Réserver un autre moment",
 "bk-err-taken":"Quelqu'un vient de prendre cette plage. Choisissez-en une autre.",
+"bk-err-soon":"Cette plage est maintenant à moins de cinq jours. Choisissez-en une plus tard.",
 "bk-err-down":"Le calendrier ne répond pas pour le moment.",
 "bk-err-fields":"Ajoutez votre nom et un courriel valide.",
 "bk-err-rate":"Trop de réservations depuis cette connexion. Écrivez plutôt à hello@northboundsoftwarestudio.com.",
@@ -5204,7 +5206,7 @@ document.querySelectorAll('.lang-opt').forEach(function(btn){
           .then(function(res){
             st.busy = false;
             if (res.j.ok) { st.email = email; done(); if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'booking', event_label: st.pkg || 'call' }); return; }
-            if (res.j.error === 'taken') { delete cache[st.tz]; st.time = null; say(t('bk-err-taken')); load(); setTimeout(function(){ side.insertBefore(h('p', 'bk-err', t('bk-err-taken')), side.firstChild); }, 50); return; }
+            if (res.j.error === 'taken' || res.j.error === 'soon') { var k = res.j.error === 'soon' ? 'bk-err-soon' : 'bk-err-taken'; delete cache[st.tz]; st.time = null; say(t(k)); load(); setTimeout(function(){ side.insertBefore(h('p', 'bk-err', t(k)), side.firstChild); }, 50); return; }
             go.disabled = false; go.textContent = t('bk-confirm');
             err.textContent = res.j.error === 'rate' ? t('bk-err-rate') : res.j.error === 'email' ? t('bk-err-fields') : t('bk-err-down');
           })

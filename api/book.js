@@ -3,6 +3,7 @@
 // Cal.com sends the confirmation and the calendar invite to both sides.
 // Same bot guards as the contact form (api/_guard.js).
 const { clientIp, rateLimit, str, isEmail, looksAutomated, accepted } = require('./_guard');
+const { earliestStart } = require('./_notice');
 
 const CAL = 'https://api.cal.com/v2/bookings';
 const EVENT = { eventTypeSlug: 'scope-call', username: 'northboundsoftwarestudio' };
@@ -37,6 +38,8 @@ module.exports = async function handler(req, res) {
   if (!isEmail(email)) return res.status(400).json({ ok: false, error: 'email' });
   const when = Date.parse(start);
   if (!Number.isFinite(when) || when < Date.now()) return res.status(400).json({ ok: false, error: 'time' });
+  // A page left open for days can still hold a time that is now too soon.
+  if (when < earliestStart()) return res.status(400).json({ ok: false, error: 'soon' });
 
   const payload = {
     ...EVENT,
